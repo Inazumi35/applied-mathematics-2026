@@ -163,14 +163,15 @@ subsections:
         content: "次の公式を証明せよ: L[cos t] = s/(s²+1)  (s > 0)"
         answer:
           steps:
-            - "例題4 と同様に部分積分を2回繰り返す"
-            - "f(t) = cos t とおくと f'(t) = -sin t, f(0) = 1"
-            - "F(s) = ∫₀^∞ e^{-st} cos t dt"
-            - "1回目の部分積分：F(s) = [e^{-st}·(-(-sin t))]₀^∞ ... 整理すると"
-            - "または例題4の結果 L[sin t] = 1/(s²+1) と s·F(s) - f(0) = L[sin t] を使う方法"
-            - "L[cos t] = sF(s) - f(0) の形から: L[(cos t)'] = L[-sin t] = -L[sin t]"
-            - "sF(s) - 1 = -L[sin t] = -1/(s²+1)"
-            - "F(s) = (1/s)(1 - 1/(s²+1)) = (1/s)·s²/(s²+1)"
+            - "F(s) = ∫₀^∞ e^{-st} cos t dt に部分積分を適用する"
+            - "u = cos t → du = -sin t dt"
+            - "dv = e^{-st} dt → v = -1/s · e^{-st}"
+            - "F(s) = [v·u]₀^∞ - ∫₀^∞ v du = [-1/s · e^{-st} · cos t]₀^∞ - ∫₀^∞ (-1/s · e^{-st})(-sin t) dt"
+            - "第1項：s > 0 のとき e^{-st} → 0 なので [-1/s · e^{-st} cos t]₀^∞ = 0 - (-1/s) = 1/s"
+            - "第2項：-∫₀^∞ (1/s) e^{-st} sin t dt = -(1/s) L[sin t]"
+            - "よって F(s) = 1/s - (1/s) L[sin t]"
+            - "例題4の結果 L[sin t] = 1/(s²+1) を代入："
+            - "F(s) = 1/s - 1/(s(s²+1)) = (1/s)·(1 - 1/(s²+1)) = (1/s)·s²/(s²+1)"
           result: "L[cos t] = s/(s²+1)  (s > 0)"
 
       - id: 問5

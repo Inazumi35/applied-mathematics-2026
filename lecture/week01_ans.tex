@@ -196,14 +196,15 @@
 \begin{frame}{問4　解答}
   \begin{block}{}
   \begin{itemize}\setlength{\itemsep}{2pt}
-    \item 例題4 と同様に部分積分を2回繰り返す
-    \item $f(t) = \cos t$ とおくと $f'(t) = -\sin t, f(0) = 1$
-    \item $F(s) = \int_{0}^\infty e^{-st} \cos t dt$
-    \item 1回目の部分積分：$F(s) = [e^{-st}\cdot(-(-\sin t))]_{0}^\infty ...$ 整理すると
-    \item または例題 4 の結果 $L[\sin t] = 1/(s^{2}+1)$ と $s\cdot F(s) - f(0) = L[\sin t]$ を使う方法
-    \item $L[\cos t] = sF(s) - f(0)$ の形から $: L[(\cos t)'] = L[-\sin t] = -L[\sin t]$
-    \item $sF(s) - 1 = -L[\sin t] = -1/(s^{2}+1)$
-    \item $F(s) = (1/s)(1 - 1/(s^{2}+1)) = (1/s)\cdot s^{2}/(s^{2}+1)$
+    \item $F(s) = \int_{0}^\infty e^{-st} \cos t dt$ に部分積分を適用する
+    \item $u = \cos t  \to  du = -\sin t dt$
+    \item $dv = e^{-st} dt  \to  v = -1/s \cdot e^{-st}$
+    \item $F(s) = [v\cdot u]_{0}^\infty - \int_{0}^\infty v du = [-1/s \cdot e^{-st} \cdot \cos t]_{0}^\infty - \int_{0}^\infty (-1/s \cdot e^{-st})(-\sin t) dt$
+    \item 第1項：s > 0 のとき $e^{-st} \to 0$ なので $[-1/s \cdot e^{-st} \cos t]_{0}^\infty = 0 - (-1/s) = 1/s$
+    \item 第2項：$-\int_{0}^\infty (1/s) e^{-st} \sin t dt = -(1/s) L[\sin t]$
+    \item よって $F(s) = 1/s - (1/s) L[\sin t]$
+    \item 例題4の結果 L[sin t] = 1/(s^{2}+1) を代入：
+    \item $F(s) = 1/s - 1/(s(s^{2}+1)) = (1/s)\cdot(1 - 1/(s^{2}+1)) = (1/s)\cdot s^{2}/(s^{2}+1)$
   \end{itemize}
   \end{block}
   \begin{exampleblock}{答え}
