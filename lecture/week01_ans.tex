@@ -135,8 +135,8 @@
 \begin{frame}{演習問題（p.\,46--49）}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問1] $L[3 + 2^t]$ を線形性を用いて求めよ
-    \item[問2] $L[3 + 2^t]$ を求めよ
+    \item[問1] $L[t^{2}]$ を線形性を用いて求めよ
+    \item[問2] $L[t + 2t^{2}]$ を求めよ
     \item[問3] $L[e^{-t} + e^{-2t}]$ を求めよ
     \item[問4] 次の公式を証明せよ $: L[\cos t] = s/(s^{2}+1) (s > 0)$
     \item[問5] 双曲線関数 sinh t, cosh t のラプラス変換を求めよ
@@ -151,14 +151,13 @@
 \begin{frame}{問1　解答}
   \begin{block}{}
   \begin{itemize}\setlength{\itemsep}{2pt}
-    \item $2^t = e^{t \ln 2}$ なので例題 3 より $L[2^t] = 1/(s - \ln 2) (s > \ln 2)$
-    \item 線形性より $L[3 + 2^t] = L[3] + L[2^t] = 3\cdot L[1] + L[2^t]$
-    \item $= 3\cdot(1/s) + 1/(s - \ln 2)$
+    \item $L[t^{n}] = n!/s^{n+1}$ において $n = 2$ とすると
+    \item $L[t^{2}] = 2!/s^{3} = 2/s^{3}$
   \end{itemize}
   \end{block}
   \begin{exampleblock}{答え}
     \[
-    L[3 + 2^t] = 3/s + 1/(s - \ln 2)  (s > \ln 2)
+    L[t^{2}] = 2/s^{3}  (s > 0)
   \]
   \end{exampleblock}
 \end{frame}
@@ -166,14 +165,14 @@
 \begin{frame}{問2　解答}
   \begin{block}{}
   \begin{itemize}\setlength{\itemsep}{2pt}
-    \item $2^t = e^{t \ln 2}$ と書き直す
-    \item 線形性と例題1・例題3を用いると
-    \item $L[3 + 2^t] = 3\cdot(1/s) + 1/(s - \ln 2)$
+    \item 線形性より $L[t + 2t^{2}] = L[t] + 2\cdot L[t^{2}]$
+    \item 例題 2 より $L[t] = 1/s^{2}$ ， $L[t^{2}] = 2!/s^{3} = 2/s^{3}$
+    \item $= 1/s^{2} + 2\cdot(2/s^{3})$
   \end{itemize}
   \end{block}
   \begin{exampleblock}{答え}
     \[
-    L[3 + 2^t] = 3/s + 1/(s - \ln 2)  (s > \ln 2)
+    L[t + 2t^{2}] = 1/s^{2} + 4/s^{3}  (s > 0)
   \]
   \end{exampleblock}
 \end{frame}
