@@ -134,6 +134,40 @@ exercises:
 3. 全14週 PDF で見た目確認
 4. （別タスク）kaken2026: `rd_pilot_2axis.pdf` を tex に挿入 → 最終コンパイル
 
+## Git 管理
+
+### リポジトリ
+- ローカル：`C:\Users\inazumi\workspace\応用数学\`
+- GitHub：`Inazumi35/applied-mathematics-2026`（**プライベート**）
+- ブランチ：`master`
+
+### .gitignore（除外ルール）
+```
+*.pdf          # 生成物
+*.nav *.snm    # LaTeX 中間ファイル
+*.log *.aux 等 # LaTeX ログ類
+scan_pages/    # スキャン画像（大容量）
+```
+
+### よく使うコマンド
+```bash
+cd C:\Users\inazumi\workspace\応用数学
+
+# 状態確認
+git status
+
+# YAML・スクリプト変更後にコミット
+git add chapter2_section1.yaml yaml2beamer_chapter.py  # など変更ファイル
+git commit -m "変更内容の説明"
+
+# GitHub に push（GH_TOKEN は MEMORY.md 参照）
+GH_TOKEN=<token> git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GH_TOKEN; };f' push origin master
+```
+
+### ノート
+- `skills/applied-math/SKILL.md` もこのリポジトリで管理（コミット対象）
+- スキルを更新したら `git add skills/applied-math/SKILL.md && git commit` を忘れずに
+
 ## iCloud 写真スキャンのパス
 
 ```
