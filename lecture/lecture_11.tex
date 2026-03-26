@@ -1,0 +1,66 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=43,professionalfonts,handout]{beamer}
+\usepackage{beamer_template}
+
+\newcommand{\LectureNum}{11}
+\newcommand{\LectureTitle}{複素フーリエ級数}
+\newcommand{\TextPages}{p.\,87-89}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{\CourseName\quad 第\LectureNum 回「\LectureTitle」}
+  {\small \TermName\quad \TeacherName\quad ／\quad 教科書 \TextPages}
+
+  \textbf{目標}：複素フーリエ級数と複素フーリエ係数を求めることができる
+
+\end{frame}
+
+\begin{frame}{実数形から複素形へ}
+  \begin{block}{}
+  \begin{itemize}
+    \item オイラーの公式：$e^{i\theta} = \cos \theta + i \sin \theta$
+    \item cos, sin を指数関数で表す
+    \item フーリエ係数の複素形への変換
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{複素フーリエ係数}
+  \begin{block}{}
+  \begin{itemize}
+    \item $c_{n} = (1/2l)\int_{-l}^{l} f(x)e^{-in\pi x/l} dx$
+    \item $n = 0, ±1, ±2, ...$
+    \item 実数形との対応
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題6}
+  \begin{block}{}
+  \begin{itemize}
+    \item $f(x)=x+1(-2\leq x<2), f(x+4)=f(x)$
+    \item $c_{n}$ の計算（ n\neq0 と $n=0$ で場合分け）
+    \item 複素フーリエ級数の表示
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{演習}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{itemize}
+    \item 問6・7より選題
+  \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{まとめ}
+  \begin{itemize}
+    \item 複素フーリエ係数の公式
+    \item 実数形との関係
+    \item 次回：フーリエ変換
+  \end{itemize}
+\end{frame}
+
+\end{document}

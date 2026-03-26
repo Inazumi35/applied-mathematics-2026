@@ -1,0 +1,32 @@
+chapter: 3
+chapter_title: フーリエ解析
+section: null
+pages: "73"
+note: "本ファイルはスキャン範囲内（p.73 冒頭）のみ。本文は別途スキャン予定。"
+
+introduction:
+  title: フーリエ解析
+  page: "73"
+
+  motivation:
+    description: "音の波形を正弦波の重ね合わせに分解する"
+    example:
+      title: "音の波形と正弦波への分解"
+      instruments:
+        - name: ピアノの成形
+          description: "複雑な波形 → 基本波 + 倍音の重ね合わせ"
+        - name: フルートの成形
+          description: "比較的単純な波形 → 基本波に近い"
+      note: |
+        どちらの楽器の波形も、周波数の異なる正弦波（sin, cos）の
+        有限または無限個の和として表現できる。
+        これがフーリエ解析の基本的な考え方。
+
+  key_concept:
+    name: フーリエ展開
+    description: |
+      周期関数 f(t) を正弦波・余弦波の無限級数として表す
+      f(t) = a₀/2 + Σ(aₙcos(nωt) + bₙsin(nωt))
+    connection_to_laplace: |
+      ラプラス変換が微分方程式を代数方程式に変換したように、
+      フーリエ解析は周期現象を周波数成分に分解する強力な手法である。

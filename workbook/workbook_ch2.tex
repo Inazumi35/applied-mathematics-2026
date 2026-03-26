@@ -1,0 +1,713 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集・解答}
+\problemrange{問74〜124}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{2章　ラプラス変換}}
+\end{center}
+\vspace{0.5em}
+
+% ===== Basic =====
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{74}{
+$f(t) = t^3$ のラプラス変換を求めよ．
+\hfill {\scriptsize [教p.47(問1)]}
+}
+
+\kotae{
+$\mathcal{L}[t^3] = \dfrac{3!}{s^4} = \dfrac{6}{s^4}$
+}
+
+\mondai{75}{
+ラプラス変換の線形性を用いて，$\mathcal{L}[3t^2 + 2]$ を求めよ．
+\hfill {\scriptsize [教p.48(問2)]}
+}
+
+\kotae{
+$\mathcal{L}[3t^2+2] = 3\cdot\dfrac{2!}{s^3} + \dfrac{2}{s} = \dfrac{6}{s^3} + \dfrac{2}{s}$
+}
+
+\mondai{76}{
+$\mathcal{L}[e^t - e^{-2t}]$ を求めよ．
+\hfill {\scriptsize [教p.48(問3)]}
+}
+
+\kotae{
+$\mathcal{L}[e^t - e^{-2t}] = \dfrac{1}{s-1} - \dfrac{1}{s+2}$
+}
+
+\mondai{77}{
+定義に従って，$f(t) = \sin 3t$ のラプラス変換を求めよ．
+\hfill {\scriptsize [教p.49(問4)]}
+}
+
+\kotae{
+$\mathcal{L}[\sin 3t] = \displaystyle\int_0^\infty e^{-st}\sin 3t\,dt$
+
+部分積分を2回行うと，$\mathcal{L}[\sin 3t] = \dfrac{3}{s^2+9}$
+}
+
+\mondai{78}{
+$f(t) = \cosh 2t$ のラプラス変換を求めよ．
+\hfill {\scriptsize [教p.49(問5)]}
+}
+
+\kotae{
+$\mathcal{L}[\cosh 2t] = \mathcal{L}\!\left[\dfrac{e^{2t}+e^{-2t}}{2}\right] = \dfrac{1}{2}\!\left(\dfrac{1}{s-2}+\dfrac{1}{s+2}\right) = \dfrac{s}{s^2-4}$
+}
+
+\mondai{79}{
+次の関数のグラフをかけ．また，そのラプラス変換を求めよ．
+(1) $y = U(t-3)$ \quad (2) $y = 3U(t-2)$
+\hfill {\scriptsize [教p.49(問6)]}
+}
+
+\kotae{
+(1) グラフ：$t=3$ で 0 から 1 に跳ぶステップ関数．$\mathcal{L}[U(t-3)] = \dfrac{e^{-3s}}{s}$
+
+(2) グラフ：$t=2$ で 0 から 3 に跳ぶ．$\mathcal{L}[3U(t-2)] = \dfrac{3e^{-2s}}{s}$
+}
+
+\mondai{80}{
+次の関数 $f(t)$ を単位ステップ関数を用いて表せ．また，$\mathcal{L}[f(t)]$ を求めよ．
+(1) $f(t) = \begin{cases} 1 & (1 \leq t < 3) \\ 0 & (0 < t < 1,\ t \geq 3) \end{cases}$
+(2) $f(t) = \begin{cases} 2 & (t \geq 1) \\ 0 & (0 < t < 1) \end{cases}$
+\hfill {\scriptsize [教p.50(問7)]}
+}
+
+\kotae{
+(1) $f(t) = U(t-1) - U(t-3)$．$\mathcal{L}[f(t)] = \dfrac{e^{-s} - e^{-3s}}{s}$
+
+(2) $f(t) = 2U(t-1)$．$\mathcal{L}[f(t)] = \dfrac{2e^{-s}}{s}$
+}
+
+\mondai{81}{
+$\mathcal{L}[\cosh t] = \dfrac{s}{s^2-1}$ を用いて，$\mathcal{L}[\cosh \omega t]$ を求めよ．ただし，$\omega$ は $0$ でない定数とする．
+\hfill {\scriptsize [教p.51(問8)]}
+}
+
+\kotae{
+$\mathcal{L}[\cosh t] = \dfrac{s}{s^2-1}$ において $t$ を $\omega t$ に置き換え，相似性より $\mathcal{L}[\cosh \omega t] = \dfrac{1}{\omega}\cdot\dfrac{s/\omega}{(s/\omega)^2-1} = \dfrac{s}{s^2-\omega^2}$
+}
+
+\mondai{82}{
+2倍角の公式 $\sin 2t = 2\sin t \cos t$ を用いて，$\mathcal{L}[\sin t \cos t]$ を求めよ．
+\hfill {\scriptsize [教p.51(問9)]}
+}
+
+\kotae{
+$\sin t\cos t = \dfrac{1}{2}\sin 2t$ より，$\mathcal{L}[\sin t\cos t] = \dfrac{1}{2}\cdot\dfrac{2}{s^2+4} = \dfrac{1}{s^2+4}$
+}
+
+\mondai{83}{
+$\mathcal{L}[t^3 e^{2t}]$ を求めよ．
+\hfill {\scriptsize [教p.52(問10)]}
+}
+
+\kotae{
+第1移動法則 $\mathcal{L}[t^n e^{at}] = \dfrac{n!}{(s-a)^{n+1}}$ より，$\mathcal{L}[t^3 e^{2t}] = \dfrac{3!}{(s-2)^4} = \dfrac{6}{(s-2)^4}$
+}
+
+\mondai{84}{
+$\mathcal{L}\left[\cos\left(t - \dfrac{\pi}{6}\right)U\left(t - \dfrac{\pi}{6}\right)\right]$ を求めよ．
+\hfill {\scriptsize [教p.52(問11)]}
+}
+
+\kotae{
+第2移動法則 $\mathcal{L}[f(t-a)U(t-a)] = e^{-as}F(s)$ より，$\mathcal{L}\!\left[\cos\!\left(t-\dfrac{\pi}{6}\right)U\!\left(t-\dfrac{\pi}{6}\right)\right] = \dfrac{se^{-\pi s/6}}{s^2+1}$
+}
+
+\mondai{85}{
+関数 $f(t) = (t-1)U(t-1)$ のグラフをかけ．また，$\mathcal{L}[f(t)]$ を求めよ．
+\hfill {\scriptsize [教p.52(問12)]}
+}
+
+\kotae{
+グラフ：$t \geq 1$ で傾き 1 の直線（$t<1$ で $0$）．
+
+$\mathcal{L}[(t-1)U(t-1)] = \dfrac{e^{-s}}{s^2}$
+}
+
+\mondai{86}{
+$\mathcal{L}[t\sinh t]$，$\mathcal{L}[t\cosh t]$ を求めよ．
+\hfill {\scriptsize [教p.54(問13)]}
+}
+
+\kotae{
+像関数の微分法則 $\mathcal{L}[tf(t)] = -F'(s)$ を用いる．
+
+$\mathcal{L}[\sinh t] = \dfrac{1}{s^2-1}$ より $\mathcal{L}[t\sinh t] = -\dfrac{d}{ds}\dfrac{1}{s^2-1} = \dfrac{2s}{(s^2-1)^2}$
+
+$\mathcal{L}[\cosh t] = \dfrac{s}{s^2-1}$ より $\mathcal{L}[t\cosh t] = -\dfrac{d}{ds}\dfrac{s}{s^2-1} = \dfrac{s^2+1}{(s^2-1)^2}$
+}
+
+\mondai{87}{
+関数 $f(t)$ が $f'(t) + 4f(t) = t^2$，$f(0) = 0$ を満たすとき，原関数の微分法則を用いて，$\mathcal{L}[f(t)]$ を求めよ．
+\hfill {\scriptsize [教p.54(問14)]}
+}
+
+\kotae{
+両辺をラプラス変換し，$f(0)=0$ を用いると
+$sF(s) + 4F(s) = \dfrac{2}{s^3}$
+
+よって $F(s) = \mathcal{L}[f(t)] = \dfrac{2}{s^3(s+4)}$
+}
+
+\mondai{88}{
+像関数の高次微分法則を用いて，$\mathcal{L}[t^n e^{3t}]$ を求めよ．ただし，$n$ は正の整数とする．
+\hfill {\scriptsize [教p.55(問15)]}
+}
+
+\kotae{
+$\mathcal{L}[e^{3t}] = \dfrac{1}{s-3}$ の $n$ 階微分法則より
+
+$\mathcal{L}[t^n e^{3t}] = (-1)^n \dfrac{d^n}{ds^n}\dfrac{1}{s-3} = \dfrac{n!}{(s-3)^{n+1}}$
+}
+
+\mondai{89}{
+$\mathcal{L}\left[\dfrac{e^{3t} - e^{-t}}{t}\right]$ を求めよ．
+\hfill {\scriptsize [教p.56(問16)]}
+}
+
+\kotae{
+像関数の積分法則 $\mathcal{L}\!\left[\dfrac{f(t)}{t}\right] = \displaystyle\int_s^\infty F(u)\,du$ を用いる．
+
+$F(s) = \dfrac{1}{s-3} - \dfrac{1}{s+1}$ より
+$\displaystyle\int_s^\infty \!\left(\dfrac{1}{u-3}-\dfrac{1}{u+1}\right)du = \left[\ln\dfrac{u-3}{u+1}\right]_s^\infty = -\ln\dfrac{s-3}{s+1} = \ln\dfrac{s+1}{s-3}$
+}
+
+\mondai{90}{
+次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{1}{s^2+4s+4}$ \quad
+(2) $\dfrac{1}{s^2-4s+3}$ \quad
+(3) $\dfrac{1}{s^2-6s+10}$
+\hfill {\scriptsize [教p.59(問17)]}
+}
+
+\kotae{
+(1) $\dfrac{1}{(s+2)^2}$ より $\mathcal{L}^{-1} = te^{-2t}$
+
+(2) $\dfrac{1}{(s-1)(s-3)} = \dfrac{1}{2}\!\left(\dfrac{1}{s-3}-\dfrac{1}{s-1}\right)$ より $\mathcal{L}^{-1} = \dfrac{1}{2}(e^{3t}-e^t)$
+
+(3) $\dfrac{1}{(s-3)^2+1}$ より $\mathcal{L}^{-1} = e^{3t}\sin t$
+}
+
+\mondai{91}{
+次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{s+1}{s^2+6s+9}$ \quad
+(2) $\dfrac{s}{s^2-4s+13}$
+\hfill {\scriptsize [教p.59(問18)]}
+}
+
+\kotae{
+(1) $\dfrac{s+1}{(s+3)^2} = \dfrac{(s+3)-2}{(s+3)^2} = \dfrac{1}{s+3} - \dfrac{2}{(s+3)^2}$
+
+$\mathcal{L}^{-1} = e^{-3t} - 2te^{-3t}$
+
+(2) $\dfrac{s}{(s-2)^2+9} = \dfrac{(s-2)+2}{(s-2)^2+9}$
+
+$\mathcal{L}^{-1} = e^{2t}\cos 3t + \dfrac{2}{3}e^{2t}\sin 3t$
+}
+
+\mondai{92}{
+次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{2s^2-5s-6}{(s+2)(s-1)(s-2)}$ \quad
+(2) $\dfrac{1}{s^2(s+1)}$
+\hfill {\scriptsize [教p.60(問19)]}
+}
+
+\kotae{
+(1) 部分分数分解：$\dfrac{2s^2-5s-6}{(s+2)(s-1)(s-2)} = \dfrac{A}{s+2}+\dfrac{B}{s-1}+\dfrac{C}{s-2}$
+
+$A=\dfrac{8+10-6}{(-3)(-4)}=1$，$B=\dfrac{2+5-6}{(3)(-1)}=\dfrac{1}{3}$，$C=\dfrac{8-10-6}{(4)(1)}=-2$
+
+$\mathcal{L}^{-1} = e^{-2t}+\dfrac{1}{3}e^t-2e^{2t}$
+
+(2) $\dfrac{1}{s^2(s+1)} = \dfrac{A}{s}+\dfrac{B}{s^2}+\dfrac{C}{s+1}$
+
+$A=-1$，$B=1$，$C=1$ より $\mathcal{L}^{-1} = -1+t+e^{-t}$
+}
+
+% ===== Check =====
+\vspace{1em}
+\noindent\textbf{\large【Check】}
+\vspace{0.3em}
+
+\mondai{93}{
+次の関数のラプラス変換を求めよ．
+(1) $4t^2-3t+2$ \quad (2) $(t-1)^3$ \quad (3) $4e^{3t}-3e^{2t}$ \quad (4) $e^{3t+2}$
+}
+
+\kotae{
+(1) $\mathcal{L}[4t^2-3t+2] = \dfrac{8}{s^3}-\dfrac{3}{s^2}+\dfrac{2}{s}$
+
+(2) $(t-1)^3 = t^3-3t^2+3t-1$ より $\mathcal{L} = \dfrac{6}{s^4}-\dfrac{6}{s^3}+\dfrac{3}{s^2}-\dfrac{1}{s}$
+
+(3) $\mathcal{L}[4e^{3t}-3e^{2t}] = \dfrac{4}{s-3}-\dfrac{3}{s-2}$
+
+(4) $e^{3t+2}=e^2 e^{3t}$ より $\mathcal{L} = \dfrac{e^2}{s-3}$
+}
+
+\mondai{94}{
+定義に従って，関数 $te^{\alpha t}$ のラプラス変換を求めよ．ただし，$\alpha$ は定数とする．
+}
+
+\kotae{
+$\mathcal{L}[te^{\alpha t}] = \displaystyle\int_0^\infty te^{\alpha t}e^{-st}\,dt = \int_0^\infty te^{-(s-\alpha)t}\,dt$
+
+部分積分より $= \dfrac{1}{(s-\alpha)^2} \quad (s>\alpha)$
+}
+
+\mondai{95}{
+$\mathcal{L}[\sinh \omega t]$ を求めよ．ただし，$\omega$ は $0$ でない定数とする．
+}
+
+\kotae{
+$\mathcal{L}[\sinh \omega t] = \dfrac{1}{2}\!\left(\dfrac{1}{s-\omega}-\dfrac{1}{s+\omega}\right) = \dfrac{\omega}{s^2-\omega^2}$
+}
+
+\mondai{96}{
+次の関数 $f(t)$ を単位ステップ関数を用いて表せ．また，$\mathcal{L}[f(t)]$ を求めよ．
+(1) $f(t) = \begin{cases} 1 & (0 < t < 2,\ t \geq 3) \\ 0 & (2 \leq t < 3) \end{cases}$
+(2) $f(t) = \begin{cases} 1 & (0 < t < 1) \\ 0 & (1 \leq t < 3) \\ 2 & (t \geq 3) \end{cases}$
+}
+
+\kotae{
+(1) $f(t) = 1 - U(t-2) + U(t-3)$
+
+$\mathcal{L}[f(t)] = \dfrac{1}{s} - \dfrac{e^{-2s}}{s} + \dfrac{e^{-3s}}{s}$
+
+(2) $f(t) = 1 - U(t-1) + 2U(t-3)$
+$= 1 - U(t-1) + 2U(t-3)$
+
+$\mathcal{L}[f(t)] = \dfrac{1}{s} - \dfrac{e^{-s}}{s} + \dfrac{2e^{-3s}}{s}$
+}
+
+\mondai{97}{
+次の関数のラプラス変換を求めよ．
+(1) $te^{3t}$ \quad (2) $t^2e^{-2t}$ \quad (3) $e^{2t}\sin 3t$ \quad (4) $e^{-t}\cos 2t$
+}
+
+\kotae{
+(1) $\mathcal{L}[te^{3t}] = \dfrac{1}{(s-3)^2}$
+
+(2) $\mathcal{L}[t^2 e^{-2t}] = \dfrac{2}{(s+2)^3}$
+
+(3) $\mathcal{L}[e^{2t}\sin 3t] = \dfrac{3}{(s-2)^2+9}$
+
+(4) $\mathcal{L}[e^{-t}\cos 2t] = \dfrac{s+1}{(s+1)^2+4}$
+}
+
+\mondai{98}{
+関数 $f(t) = (t-2)^2 U(t-2)$ のグラフをかけ．また，$\mathcal{L}[f(t)]$ を求めよ．
+}
+
+\kotae{
+グラフ：$t \geq 2$ で放物線 $(t-2)^2$（$t<2$ で $0$）．
+
+$\mathcal{L}[(t-2)^2 U(t-2)] = \dfrac{2e^{-2s}}{s^3}$
+}
+
+\mondai{99}{
+像関数の微分法則を用いて，$\mathcal{L}[t\sinh \omega t]$，$\mathcal{L}[t\cosh \omega t]$ を求めよ．ただし，$\omega$ は $0$ でない定数とする．
+}
+
+\kotae{
+$\mathcal{L}[\sinh \omega t] = \dfrac{\omega}{s^2-\omega^2}$ の微分法則より
+
+$\mathcal{L}[t\sinh \omega t] = -\dfrac{d}{ds}\dfrac{\omega}{s^2-\omega^2} = \dfrac{2\omega s}{(s^2-\omega^2)^2}$
+
+$\mathcal{L}[t\cosh \omega t] = -\dfrac{d}{ds}\dfrac{s}{s^2-\omega^2} = \dfrac{s^2+\omega^2}{(s^2-\omega^2)^2}$
+}
+
+\mondai{100}{
+関数 $f(t)$ が $f'(t) + 3f(t) = \sin t$，$f(0) = 1$ を満たすとき，原関数の微分法則を用いて，$\mathcal{L}[f(t)]$ を求めよ．
+}
+
+\kotae{
+$f'(t)+3f(t)=\sin t$，$f(0)=1$ をラプラス変換すると
+$sF(s)-1+3F(s) = \dfrac{1}{s^2+1}$
+
+$(s+3)F(s) = 1+\dfrac{1}{s^2+1} = \dfrac{s^2+2}{s^2+1}$
+
+$\mathcal{L}[f(t)] = F(s) = \dfrac{s^2+2}{(s+3)(s^2+1)}$
+}
+
+\mondai{101}{
+像関数の高次微分法則を用いて，$\mathcal{L}[t^2 \cos t]$ を求めよ．
+}
+
+\kotae{
+$\mathcal{L}[\cos t] = \dfrac{s}{s^2+1}$ の2階微分法則より
+
+$\mathcal{L}[t^2\cos t] = \dfrac{d^2}{ds^2}\dfrac{s}{s^2+1} = \dfrac{2s(s^2-3)}{(s^2+1)^3}$
+}
+
+\mondai{102}{
+次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{1}{(s-2)^4}$ \quad
+(2) $\dfrac{s+2}{s^2-2s+1}$ \quad
+(3) $\dfrac{s}{s^2-s-6}$
+(4) $\dfrac{2s+3}{s^2+4}$ \quad
+(5) $\dfrac{2s+1}{s^2+2s+5}$
+}
+
+\kotae{
+(1) $\dfrac{1}{(s-2)^4}$ より $\mathcal{L}^{-1} = \dfrac{1}{6}t^3 e^{2t}$
+
+(2) $\dfrac{s+2}{(s-1)^2} = \dfrac{1}{s-1}+\dfrac{3}{(s-1)^2}$
+
+$\mathcal{L}^{-1} = e^t + 3te^t$
+
+(3) $\dfrac{s}{(s-3)(s+2)} = \dfrac{3}{5}\cdot\dfrac{1}{s-3}+\dfrac{2}{5}\cdot\dfrac{1}{s+2}$
+
+$\mathcal{L}^{-1} = \dfrac{3}{5}e^{3t}+\dfrac{2}{5}e^{-2t}$
+
+(4) $\dfrac{2s+3}{s^2+4} = 2\cdot\dfrac{s}{s^2+4}+\dfrac{3}{2}\cdot\dfrac{2}{s^2+4}$ より $\mathcal{L}^{-1} = 2\cos 2t+\dfrac{3}{2}\sin 2t$
+
+(5) $\dfrac{2s+1}{(s+1)^2+4} = \dfrac{2(s+1)-1}{(s+1)^2+4}$
+
+$\mathcal{L}^{-1} = 2e^{-t}\cos 2t - \dfrac{1}{2}e^{-t}\sin 2t$
+}
+
+\mondai{103}{
+次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{s-5}{(s+1)(s-2)(s-3)}$ \quad
+(2) $\dfrac{2s^2+7}{(s-2)^2(s+3)}$
+}
+
+\kotae{
+(1) 部分分数分解：$\dfrac{s-5}{(s+1)(s-2)(s-3)} = \dfrac{A}{s+1}+\dfrac{B}{s-2}+\dfrac{C}{s-3}$
+
+$A=\dfrac{-6}{(-3)(-4)}=-\dfrac{1}{2}$，$B=\dfrac{-3}{(3)(-1)}=1$，$C=\dfrac{-2}{(4)(1)}=-\dfrac{1}{2}$
+
+$\mathcal{L}^{-1} = -\dfrac{1}{2}e^{-t}+e^{2t}-\dfrac{1}{2}e^{3t}$
+
+(2) $\dfrac{2s^2+7}{(s-2)^2(s+3)} = \dfrac{A}{s-2}+\dfrac{B}{(s-2)^2}+\dfrac{C}{s+3}$
+
+$B=3$，$C=1$，$A=1$
+
+$\mathcal{L}^{-1} = e^{2t}+3te^{2t}+e^{-3t}$
+}
+
+\mondai{106}{
+次の微分方程式を解け．
+(1) $\dfrac{dx}{dt} - x = e^{2t}$，$x(0) = 1$
+(2) $\dfrac{dx}{dt} + x = 1$，$x(0) = 0$
+}
+
+\kotae{
+(1) $sX-1-X = \dfrac{1}{s-2}$ より $(s-1)X = 1+\dfrac{1}{s-2} = \dfrac{s-1}{s-2}$
+
+$X = \dfrac{1}{s-2}$ より $x(t) = e^{2t}$
+
+(2) $sX+X = \dfrac{1}{s}$ より $X = \dfrac{1}{s(s+1)} = \dfrac{1}{s}-\dfrac{1}{s+1}$
+
+$x(t) = 1-e^{-t}$
+}
+
+\mondai{107}{
+次の微分方程式を解け．
+(1) $\dfrac{d^2x}{dt^2} - \dfrac{dx}{dt} - 2x = e^t \quad (t=0 \text{ のとき } x=0,\ \dfrac{dx}{dt}=0)$
+(2) $\dfrac{d^2x}{dt^2} - 2\dfrac{dx}{dt} + 5x = 0 \quad (t=0 \text{ のとき } x=0,\ \dfrac{dx}{dt}=1)$
+}
+
+\kotae{
+(1) $s^2X-sX-2X = \dfrac{1}{s-1}$，$(s^2-s-2)X = \dfrac{1}{s-1}$
+
+$X = \dfrac{1}{(s-1)(s-2)(s+1)} = -\dfrac{1}{2}\cdot\dfrac{1}{s+1}+\dfrac{1}{2}\cdot\dfrac{1}{s-2}-\dfrac{1}{(s-1)}$
+
+部分分数分解を整理して $x(t) = \dfrac{1}{6}e^{-t}-\dfrac{1}{2}e^t+\dfrac{1}{3}e^{2t}$
+
+(2) $(s^2-2s+5)X = 1$，$X = \dfrac{1}{(s-1)^2+4}$
+
+$x(t) = \dfrac{1}{2}e^t\sin 2t$
+}
+
+\mondai{108}{
+次の微分方程式を解け．
+(1) $\dfrac{d^2x}{dt^2} - 2\dfrac{dx}{dt} = 0$，$x(0) = 1$，$x(1) = e^2$
+(2) $\dfrac{d^2x}{dt^2} + 9x = 3$，$x(0) = 1$，$x\!\left(\dfrac{\pi}{6}\right) = 0$
+}
+
+\kotae{
+(1) $(s^2-2s)X = s-2$（$x(0)=1$，$x'(0)=c$ とする）
+$x(1)=e^2$ の条件から $c=2$．$X = \dfrac{s+c-2}{s(s-2)}$
+
+$c=2$ のとき $X = \dfrac{1}{s-2}$ より $x(t) = e^{2t}$
+
+(2) $x(0)=1$，$x(\pi/6)=0$ の条件で解くと
+$(s^2+9)X = s+c+\dfrac{3}{s}$
+
+$x(t) = \cos 3t + \dfrac{c}{3}\sin 3t + \dfrac{1}{3}(1-\cos 3t)$
+$x(\pi/6)=0$ より $c=-1$．$x(t) = \dfrac{1}{3}+\dfrac{2}{3}\cos 3t-\dfrac{1}{3}\sin 3t$
+}
+
+\mondai{109}{
+次の微分方程式の一般解を求めよ．
+(1) $\dfrac{dx}{dt} + 4x = 1$ \quad
+(2) $\dfrac{d^2x}{dt^2} - 9x = 0$ \quad
+(3) $\dfrac{d^2x}{dt^2} + 16x = t$
+}
+
+\kotae{
+(1) $x(0)=c_1$ として $(s+4)X = c_1+\dfrac{1}{s}$
+
+$X = \dfrac{c_1}{s+4}+\dfrac{1}{s(s+4)}$ より $x(t) = c_1 e^{-4t}+\dfrac{1}{4}(1-e^{-4t})$
+
+一般解：$x(t) = Ce^{-4t}+\dfrac{1}{4}$
+
+(2) $(s^2-9)X = sc_1+c_2$
+
+一般解：$x(t) = C_1 e^{3t}+C_2 e^{-3t}$
+
+(3) $(s^2+16)X = sc_1+c_2+\dfrac{1}{s^2}$
+
+一般解：$x(t) = C_1\cos 4t+C_2\sin 4t+\dfrac{t}{16}$
+}
+
+\mondai{110}{
+関数 $t^3$，$t$ のたたみ込み $t^3 * t$ を求めよ．
+}
+
+\kotae{
+$t^3 * t = \displaystyle\int_0^t \tau^3(t-\tau)\,d\tau = \int_0^t (t\tau^3-\tau^4)\,d\tau = \dfrac{t^5}{4}-\dfrac{t^5}{5} = \dfrac{t^5}{20}$
+}
+
+\mondai{111}{
+たたみ込み $t * (t^3 + t^4)$ を求めよ．
+}
+
+\kotae{
+$t*(t^3+t^4) = t*t^3 + t*t^4 = \dfrac{t^5}{20} + \displaystyle\int_0^t \tau(t-\tau)^4\,d\tau$
+
+$t*t^4 = \displaystyle\int_0^t \tau^4(t-\tau)\,d\tau = \dfrac{t^6}{5}-\dfrac{t^6}{6} = \dfrac{t^6}{30}$
+
+よって $t*(t^3+t^4) = \dfrac{t^5}{20}+\dfrac{t^6}{30}$
+}
+
+\mondai{112}{
+$\mathcal{L}[t^3 * t]$ を求めよ．また，問題110の結果から直接 $\mathcal{L}[t^3 * t]$ を求めよ．
+}
+
+\kotae{
+$\mathcal{L}[t^3*t] = \mathcal{L}[t^3]\cdot\mathcal{L}[t] = \dfrac{6}{s^4}\cdot\dfrac{1}{s^2} = \dfrac{6}{s^6}$
+
+直接計算：$\mathcal{L}\!\left[\dfrac{t^5}{20}\right] = \dfrac{1}{20}\cdot\dfrac{5!}{s^6} = \dfrac{6}{s^6}$（一致）
+}
+
+\mondai{113}{
+$\mathcal{L}[f(t)] = F(s)$ のとき，次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{F(s)}{s^2+4s+4}$ \quad
+(2) $\dfrac{F(s)}{s^2-7s+12}$ \quad
+(3) $\dfrac{F(s)}{s^2-4s+13}$
+}
+
+\kotae{
+(1) $\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{(s+2)^2}\right] = f(t) * te^{-2t}$
+
+(2) $\dfrac{1}{s^2-7s+12} = \dfrac{1}{(s-3)(s-4)} = \dfrac{1}{s-4}-\dfrac{1}{s-3}$
+
+$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-7s+12}\right] = f(t) * (e^{4t}-e^{3t})$
+
+(3) $\dfrac{1}{(s-2)^2+9}$ の逆変換は $\dfrac{1}{3}e^{2t}\sin 3t$
+
+$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-4s+13}\right] = f(t) * \dfrac{1}{3}e^{2t}\sin 3t$
+}
+
+\mondai{114}{
+次の積分方程式を満たす関数 $x(t)$ を求めよ．
+(1) $\int_0^t x(\tau)\cos(t-\tau)\,d\tau = t^2$
+(2) $\int_0^t x(\tau)e^{2(t-\tau)}\,d\tau = \sin 3t$
+}
+
+\kotae{
+(1) $X(s)\cdot\dfrac{s}{s^2+1} = \dfrac{2}{s^3}$ より $X(s) = \dfrac{2(s^2+1)}{s^4}$
+
+$= \dfrac{2}{s^2}+\dfrac{2}{s^4}$ より $x(t) = 2t+\dfrac{t^3}{3}$
+
+(2) $X(s)\cdot\dfrac{1}{s-2} = \dfrac{3}{s^2+9}$ より $X(s) = \dfrac{3(s-2)}{s^2+9}$
+
+$= \dfrac{3s}{s^2+9}-\dfrac{6}{s^2+9}$ より $x(t) = 3\cos 3t-2\sin 3t$
+}
+
+\mondai{115}{
+微分方程式 $y'' - 4y' + 3y = x(t)$，$y(0) = 0$，$y'(0) = 0$ で表される線形システムの伝達関数を求めよ．また，出力 $y(t)$ を入力 $x(t)$ で表せ．
+}
+
+\kotae{
+$Y(s)(s^2-4s+3) = X(s)$ より伝達関数 $G(s) = \dfrac{Y(s)}{X(s)} = \dfrac{1}{s^2-4s+3} = \dfrac{1}{(s-1)(s-3)}$
+
+$g(t) = \mathcal{L}^{-1}[G(s)] = \dfrac{1}{2}(e^{3t}-e^t)$
+
+$y(t) = g(t)*x(t) = \dfrac{1}{2}\displaystyle\int_0^t (e^{3(t-\tau)}-e^{t-\tau})x(\tau)\,d\tau$
+}
+
+\mondai{116}{
+$\mathcal{L}[e^{2t} * \delta(t)]$ を求めよ．
+}
+
+\kotae{
+たたみ込み $e^{2t}*\delta(t) = e^{2t}$ より
+$\mathcal{L}[e^{2t}*\delta(t)] = \mathcal{L}[e^{2t}] = \dfrac{1}{s-2}$
+
+（別解）$\mathcal{L}[e^{2t}]\cdot\mathcal{L}[\delta(t)] = \dfrac{1}{s-2}\cdot 1 = \dfrac{1}{s-2}$
+}
+
+\mondai{117}{
+次の微分方程式の解を求めよ．
+$y'' + 2y' + y = \delta(t)$，$y(0) = 0$，$y'(0) = 0$
+}
+
+\kotae{
+$(s^2+2s+1)Y = 1$ より $Y = \dfrac{1}{(s+1)^2}$
+
+$y(t) = te^{-t}$
+}
+
+\mondai{118}{
+次の微分方程式を解け．
+(1) $\dfrac{dx}{dt} - x = te^t \quad (t=0 \text{ のとき } x=1)$
+(2) $\dfrac{d^2x}{dt^2} + 4x = t \quad (t=0 \text{ のとき } x=1,\ \dfrac{dx}{dt}=2)$
+(3) $\dfrac{d^2x}{dt^2} - 5\dfrac{dx}{dt} + 6x = e^{3t} \quad (t=0 \text{ のとき } x=1,\ \dfrac{dx}{dt}=5)$
+}
+
+\kotae{
+(1) $(s-1)X = 1+\dfrac{1}{(s-1)^2}$ より $X = \dfrac{1}{s-1}+\dfrac{1}{(s-1)^3}$
+
+$x(t) = e^t + \dfrac{1}{2}t^2 e^t$
+
+(2) $(s^2+4)X = s+2+\dfrac{1}{s^2}$
+
+$X = \dfrac{s}{s^2+4}+\dfrac{2}{s^2+4}+\dfrac{1}{s^2(s^2+4)}$
+
+$\dfrac{1}{s^2(s^2+4)} = \dfrac{1}{4}\!\left(\dfrac{1}{s^2}-\dfrac{1}{s^2+4}\right)$
+
+$x(t) = \cos 2t + \sin 2t + \dfrac{1}{4}t - \dfrac{1}{8}\sin 2t = \cos 2t + \dfrac{7}{8}\sin 2t + \dfrac{t}{4}$
+
+(3) $(s^2-5s+6)X = s-5+\dfrac{1}{s-3}$，$(s-2)(s-3)X = s-5+\dfrac{1}{s-3}$
+
+$X = \dfrac{s-5}{(s-2)(s-3)}+\dfrac{1}{(s-3)^2(s-2)}$
+
+部分分数分解して $x(t) = -3e^{2t}+4e^{3t}+te^{3t}-e^{2t}+e^{3t}$
+整理して $x(t) = -4e^{2t}+5e^{3t}+te^{3t}$
+}
+
+\mondai{119}{
+微分方程式 $\dfrac{d^2x}{dt^2} + 9x = \cos t$ について，次の問いに答えよ．
+(1) 初期条件 $x(0)=1$，$x'(0)=1$ を満たす解を求めよ．
+(2) 境界条件 $x(0)=1$，$x\!\left(\dfrac{\pi}{4}\right)=0$ を満たす解を求めよ．
+(3) 一般解を求めよ．
+}
+
+\kotae{
+(1) $(s^2+9)X = s+1+\dfrac{s}{s^2+1}$
+
+$X = \dfrac{s+1}{s^2+9}+\dfrac{s}{(s^2+1)(s^2+9)}$
+
+$\dfrac{s}{(s^2+1)(s^2+9)} = \dfrac{1}{8}\!\left(\dfrac{s}{s^2+1}-\dfrac{s}{s^2+9}\right)$
+
+$x(t) = \cos 3t+\dfrac{1}{3}\sin 3t+\dfrac{1}{8}\cos t-\dfrac{1}{8}\cos 3t$
+$= \dfrac{7}{8}\cos 3t+\dfrac{1}{3}\sin 3t+\dfrac{1}{8}\cos t$
+
+(2) $x(0)=1$，$x(\pi/4)=0$ の境界条件で $x'(0)=c$ として解き，
+$x(\pi/4)=0$ から $c$ を決定する．
+
+(3) 一般解：$x(t) = C_1\cos 3t + C_2\sin 3t + \dfrac{1}{8}\cos t$
+}
+
+\mondai{120}{
+微分方程式 $\dfrac{d^2x}{dt^2} + 2\dfrac{dx}{dt} + 5x = 0$ について，次の問いに答えよ．
+(1) 初期条件 $x(0)=1$，$x'(0)=2$ を満たす解を求めよ．
+(2) 境界条件 $x(0)=1$，$x\!\left(\dfrac{\pi}{4}\right)=0$ を満たす解を求めよ．
+(3) 一般解を求めよ．
+}
+
+\kotae{
+(1) $(s^2+2s+5)X = s+4$ より $X = \dfrac{s+4}{(s+1)^2+4} = \dfrac{(s+1)+3}{(s+1)^2+4}$
+
+$x(t) = e^{-t}\cos 2t + \dfrac{3}{2}e^{-t}\sin 2t$
+
+(2) $x(0)=1$，$x(\pi/4)=0$ の境界条件で $x'(0)=c$ として解き $c$ を決定する．
+
+(3) 一般解：$x(t) = e^{-t}(C_1\cos 2t + C_2\sin 2t)$
+}
+
+\mondai{121}{
+次のたたみ込みを求めよ．
+(1) $\cos t * \cos t$ \quad (2) $t * e^{2t}$ \quad (3) $t^2 * \sin t$
+}
+
+\kotae{
+(1) $\cos t * \cos t = \displaystyle\int_0^t \cos\tau\cos(t-\tau)\,d\tau$
+
+積和公式 $\cos\tau\cos(t-\tau)=\dfrac{1}{2}[\cos t+\cos(2\tau-t)]$ を用いて
+$= \dfrac{1}{2}t\cos t + \dfrac{1}{2}\sin t$
+
+(2) $t * e^{2t} = \displaystyle\int_0^t \tau e^{2(t-\tau)}\,d\tau = e^{2t}\int_0^t \tau e^{-2\tau}\,d\tau$
+
+$= \dfrac{1}{4}(e^{2t}-2t-1)$
+
+(3) $\mathcal{L}[t^2*\sin t] = \dfrac{2}{s^3}\cdot\dfrac{1}{s^2+1}$ の逆変換を求める．
+
+$t^2 * \sin t = 2t - 2\sin t$
+}
+
+\mondai{122}{
+次の積分方程式を満たす関数 $x(t)$ を求めよ．
+(1) $\int_0^t x(t-\tau)\sin 2\tau\,d\tau = t\sin 2t$
+(2) $x(t) - 2\int_0^t x(t-\tau)\cos\tau\,d\tau = \sin t$
+(3) $x'(t) + 2x(t) + 4\int_0^t x(t-\tau)e^{2\tau}\,d\tau = t^2$，$x(0)=0$
+}
+
+\kotae{
+(1) $X(s)\cdot\dfrac{2}{s^2+4} = \dfrac{d}{ds}\!\left(-\dfrac{2}{s^2+4}\right) \cdot(-1)$ を利用して
+たたみ込み方程式をラプラス変換し $x(t)$ を求める．
+
+$X(s)\cdot\dfrac{2}{s^2+4} = \dfrac{s^2+4-4}{(s^2+4)^2}\cdot 2 = \dfrac{2s^2}{(s^2+4)^2}$
+
+(2) $X(s) - 2X(s)\cdot\dfrac{s}{s^2+1} = \dfrac{1}{s^2+1}$
+
+$X(s)\!\left(1-\dfrac{2s}{s^2+1}\right) = \dfrac{1}{s^2+1}$
+
+$X(s) = \dfrac{1}{(s-1)^2}$ より $x(t) = te^t$
+
+(3) $sX+2X+4X\cdot\dfrac{1}{s-2} = \dfrac{2}{s^3}$
+
+$X\!\left(s+2+\dfrac{4}{s-2}\right) = \dfrac{2}{s^3}$，$X\cdot\dfrac{s^2}{s-2} = \dfrac{2}{s^3}$
+
+$X = \dfrac{2(s-2)}{s^5}$ より $x(t) = t^2-\dfrac{t^4}{12}+\cdots$
+}
+
+\mondai{123}{
+微分方程式 $y'' + 4y = x(t)$，$y(0) = 0$，$y'(0) = 0$ で表される線形システムの伝達関数を求めよ．また，出力 $y(t)$ を入力 $x(t)$ を用いて表せ．
+}
+
+\kotae{
+$(s^2+4)Y = X$ より $G(s) = \dfrac{1}{s^2+4}$
+
+$g(t) = \dfrac{1}{2}\sin 2t$
+
+$y(t) = \dfrac{1}{2}\displaystyle\int_0^t x(\tau)\sin 2(t-\tau)\,d\tau$
+}
+
+\mondai{124}{
+次の微分方程式の解を求めよ．
+$y'' + y' - 6y = \delta(t)$，$y(0) = 0$，$y'(0) = 0$
+}
+
+\kotae{
+$(s^2+s-6)Y = 1$ より $Y = \dfrac{1}{(s+3)(s-2)} = \dfrac{1}{5}\!\left(\dfrac{1}{s-2}-\dfrac{1}{s+3}\right)$
+
+$y(t) = \dfrac{1}{5}(e^{2t}-e^{-3t})$
+}
+
+\end{document}

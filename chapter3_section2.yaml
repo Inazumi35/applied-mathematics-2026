@@ -1,0 +1,246 @@
+chapter: 3
+chapter_title: フーリエ解析
+section: 2
+section_title: フーリエ変換と積分定理
+pages: "91-104"
+
+subsections:
+
+  - id: 1
+    title: フーリエ積分定理とフーリエ変換
+    pages: "91-95"
+
+    fourier_integral_theorem:
+      name: フーリエ積分定理
+      conditions:
+        - "f(t) は任意の有限区間で区分的に滑らか"
+        - "∫_{-∞}^{∞} |f(t)| dt < ∞（絶対可積分）"
+      formula: |
+        f(t) = (1/π) ∫₀^∞ [∫_{-∞}^{∞} f(τ)cos(ω(t-τ)) dτ] dω
+      complex_form: |
+        f(t) = (1/2π) ∫_{-∞}^{∞} [∫_{-∞}^{∞} f(τ) e^{iω(t-τ)} dτ] dω
+      note: "不連続点では (f(t+0) + f(t-0))/2 に収束"
+
+    definition:
+      name: フーリエ変換
+      forward:
+        symbol: "F(ω) = F[f(t)]"
+        formula: "F(ω) = ∫_{-∞}^{∞} f(t) e^{-iωt} dt"
+      inverse:
+        symbol: "f(t) = F⁻¹[F(ω)]"
+        formula: "f(t) = (1/2π) ∫_{-∞}^{∞} F(ω) e^{iωt} dω"
+      note: "F(ω) を f(t) のフーリエ変換、f(t) を F(ω) の逆フーリエ変換という"
+
+    cosine_sine_transform:
+      cosine:
+        name: フーリエ余弦変換
+        formula: "Fc(ω) = ∫₀^∞ f(t)cos(ωt) dt"
+        inverse: "f(t) = (2/π) ∫₀^∞ Fc(ω)cos(ωt) dω"
+        note: "f(t) が偶関数の場合に対応"
+      sine:
+        name: フーリエサイン変換
+        formula: "Fs(ω) = ∫₀^∞ f(t)sin(ωt) dt"
+        inverse: "f(t) = (2/π) ∫₀^∞ Fs(ω)sin(ωt) dω"
+        note: "f(t) が奇関数の場合に対応"
+
+    examples:
+      - id: 例題1
+        page: "91"
+        problem: "f(x) = e^{-|x|} のフーリエ変換を求めよ"
+        solution:
+          steps:
+            - "F(u) = ∫_{-∞}^{∞} e^{-|x|} e^{-iux} dx"
+            - "= ∫_{-∞}^{0} e^{x} e^{-iux} dx + ∫_{0}^{∞} e^{-x} e^{-iux} dx"
+            - "= 1/(1-iu) + 1/(1+iu)"
+        result: "F(u) = 2/(1+u²)"
+        note: "lim_{x→±∞} e^{(1-iu)x} = 0 を用いる"
+
+      - id: 例題2
+        page: "92"
+        problem: "f(x) = { 1  (|x| ≤ 1),  0  (|x| > 1) } のフーリエ変換を求めよ"
+        solution:
+          steps:
+            - "F(u) = ∫_{-1}^{1} e^{-iux} dx = [-e^{-iux}/(iu)]_{-1}^{1}"
+            - "= (e^{iu} - e^{-iu})/(iu) = 2sin u / u"
+        result: "F(u) = 2sin u / u"
+
+      - id: 例題3
+        page: "95"
+        problem: "f(x) = { 1-|x|  (|x| ≤ 1),  0  (|x| > 1) } のフーリエ余弦変換を求めよ"
+        solution:
+          steps:
+            - "f(x) は偶関数なのでフーリエ余弦変換を用いる"
+            - "F(u) = 2∫₀^{1} (1-x) cos(ux) dx"
+            - "= 2{[(1-x)sin(ux)/u]₀^1 + (1/u)∫₀^1 sin(ux) dx}"
+            - "= 2{0 + (1/u)[-cos(ux)/u]₀^1} = 2(1-cos u)/u²"
+        result: "F(u) = 2(1-cos u)/u²"
+
+    exercises:
+      - id: 問1
+        content: |
+          次の関数のフーリエ変換を求めよ
+          (1) f(x) = { 0  (x > 0),  e^x  (x ≤ 0) }
+          (2) g(x) = { xe^{-x}  (x > 0),  0  (x ≤ 0) }
+      - id: 問2
+        content: |
+          次の関数のフーリエ変換を求めよ
+          (1) f(x) = { 1  (0 ≤ x ≤ 1),  0  (x < 0, x > 1) }
+          (2) g(x) = { x  (|x| ≤ 1),  0  (|x| > 1) }
+      - id: 問3
+        content: |
+          問2(1)の関数に積分定理を適用して、次の等式を証明せよ
+          (1) (1/2π)∫_{-∞}^{∞} (1-e^{-iu})/iu · e^{iux} du = { 1  (0<x<1),  1/2  (x=0,1),  0  (x<0, x>1) }
+          (2) ∫_{-∞}^{∞} sin u / u  du = π
+      - id: 問4
+        content: |
+          次の関数のフーリエサイン変換を求めよ
+          f(x) = { -1  (-1 ≤ x < 0),  1  (0 ≤ x ≤ 1),  0  (|x| > 1) }
+
+
+  - id: 2
+    title: フーリエ変換の性質と公式
+    pages: "96-99"
+
+    properties:
+      title: フーリエ変換の性質
+      note: "F[f(x)]=F(u), F[f₁(x)]=F₁(u), F[f₂(x)]=F₂(u) のとき"
+      items:
+        - id: I
+          name: 線形性
+          formula: "F[c₁f₁(x) + c₂f₂(x)] = c₁F₁(u) + c₂F₂(u)  (c₁, c₂ は定数)"
+
+        - id: II
+          name: 移動則（時間シフト）
+          formula: "F[f(x-a)] = e^{-iau} F(u)  (a は実数)"
+
+        - id: III
+          name: 移動則（周波数シフト）
+          formula: "F[e^{iax}f(x)] = F(u-a)  (a は実数)"
+
+        - id: IV
+          name: 相似性（スケーリング）
+          formula: "F[f(ax)] = (1/|a|) F(u/a)  (a は 0 でない実数)"
+
+        - id: V
+          name: 微分則
+          formula: "F[f^{(n)}(x)] = (iu)^n F(u)  (n は自然数)"
+
+        - id: VI
+          name: 双対微分則
+          formula: "F[(-ix)^n f(x)] = F^{(n)}(u)  (n は自然数)"
+
+    parseval_formula:
+      name: パーセバルの等式
+      formula: "∫_{-∞}^∞ |f(t)|² dt = (1/2π) ∫_{-∞}^∞ |F(ω)|² dω"
+
+    examples:
+      - id: 例題4
+        page: "99"
+        problem: |
+          次の等式を証明せよ
+          (1) F[e^{-a²x²} * e^{-b²x²}] = (π/(ab)) e^{-u²(a²+b²)/(4a²b²)}  等（たたみこみのフーリエ変換と98ページの公式(1)を利用）
+          (2) 上記の結果と比較して、畳み込み関数の閉じた形を求める
+        key_formula: "F[e^{-ax²}] = √(π/a) · e^{-u²/(4a)}  (a は正の定数)  ← p.98 公式(1)"
+        note: "たたみこみ定理: F[f*g] = F(u)G(u) を適用"
+
+    exercises:
+      - id: 問5
+        content: "性質 III および VI を証明せよ"
+      - id: 問6
+        content: |
+          F[f(x)] = F(u), F[g(x)] = G(u) のとき、次の等式を証明せよ
+          F[f(x)g(x)] = (1/(2π)) F(u) * G(u)
+      - id: 問7
+        content: |
+          96ページの性質を用いて、次の関数のフーリエ変換を求めよ
+          (1) xe^{-x²/2}
+          (2) x²e^{-x²/2}
+        hint: "性質 VI (双対微分則) と F[e^{-x²/2}]=√(2π)·e^{-u²/2} を利用"
+      - id: 問8
+        content: |
+          次の等式を証明せよ
+          F⁻¹[e^{-bu²}] = 1/(2√πb) · e^{-x²/(4b)}  （b は正の定数）
+      - id: 問9
+        content: |
+          次の等式を証明せよ
+          (1) F[e^{-x²/2} * xe^{-x²/2}] = -2πiu·e^{-u²}
+          (2) e^{-x²/2} * xe^{-x²/2} = (√π/2)·xe^{-x²/4}
+        note: "* はたたみこみ。178ページで偏微分方程式を解くときに用いられる"
+
+
+  - id: 3
+    title: スペクトル
+    pages: "100-103"
+
+    spectrum:
+      amplitude_spectrum:
+        name: 振幅スペクトル
+        symbol: "|cₙ|"
+        description: "フーリエ係数 cₙ の絶対値。各周波数成分の大きさを表す"
+      phase_spectrum:
+        name: 位相スペクトル
+        symbol: "arg(cₙ)"
+        description: "フーリエ係数 cₙ の偏角。各周波数成分の位相を表す"
+      continuous_spectrum:
+        description: "フーリエ変換 F(ω) による連続スペクトル: |F(ω)| を角周波数 ω の関数として描く"
+      line_spectrum:
+        description: "周期関数の場合、スペクトルの値が0でない ω はとびとびに現れる。これを線スペクトルという"
+      sampling_theorem:
+        page: "102"
+        content: |
+          ある関数 f(x) のスペクトルが、正の定数 ω₀ より大きい成分をもたないとする。
+          このとき、π/ω₀ ごとの関数値を知ることにより、もとの関数 f(x) を求めることができる。
+          これをサンプリング定理という。補章の162ページで説明する。
+
+    examples:
+      - id: 例2
+        page: "100"
+        problem: |
+          周期4の矩形波のスペクトルを求めよ
+          f(x) = { 1  (-1 < x < 1),  1/2  (x = 1, 3),  0  (1 < x < 3) },  f(x+4) = f(x)
+        solution:
+          fourier_series: "f(x) = 1/2 + (2/π)(cos(πx/2) - (1/3)cos(3πx/2) + (1/5)cos(5πx/2) - ...)"
+          spectrum: |
+            S_i(ω) = { 1/2                    (ω = 0)
+                      { (-1)^{k+1}/ω           (ω = (2k-1)π/2, k=1,2,...)
+                      { 0                      (それ以外のとき) }
+        note: "線スペクトル（ω の値がとびとびに現れる）"
+
+      - id: 例3
+        page: "101"
+        problem: |
+          次の関数のスペクトルを求めよ
+          f(x) = { 1  (|x| < 1),  1/2  (|x| = 1),  0  (|x| > 1) }
+        solution:
+          fourier_transform: "F(u) = 2sinu/u"
+          inverse_formula: "f(x) = (1/π) ∫₀^∞ (2sinω/ω) cosωx dω"
+          spectrum: |
+            S_i(ω) = { 2/π          (ω = 0)
+                      { 2sinω/(πω)  (ω > 0) }
+        note: "連続スペクトル（S_i(ω) の値が連続的に変化する）"
+
+    exercises:
+      - id: 問10
+        content: |
+          次の関数のスペクトルを求めよ
+          f(x) = 1 - |x|  (|x| ≤ 1),  f(x+2) = f(x)
+      - id: 問11
+        content: |
+          次の関数のスペクトルを求めよ
+          f(x) = { 1-|x|  (|x| ≤ 1),  0  (|x| > 1) }
+
+
+practice_problems:
+  id: 練習問題2
+  page: "104"
+  problems:
+    - id: 1
+      content: |
+        次の関数のフーリエ変換を求めよ
+        (1) f(x) = { 2  (0 ≤ x < 2),  1  (2 ≤ x < 3),  0  (x < 0, x ≥ 3) }
+        (2) g(x) = { 1 - x/2  (0 ≤ x < 2),  0  (x < 0, x ≥ 2) }
+    - id: 2
+      content: |
+        次の関数について、(1) はフーリエ正弦変換、(2) はフーリエ余弦変換をそれぞれ求めよ
+        (1) f(x) = { sin x  (|x| ≤ π),  0  (|x| > π) }
+        (2) g(x) = { cos x  (|x| ≤ π/2),  0  (|x| > π/2) }

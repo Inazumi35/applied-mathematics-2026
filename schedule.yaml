@@ -1,0 +1,102 @@
+# 応用数学 授業スケジュール（週別 Beamer 生成用）
+# yaml2beamer_week.py が参照する
+
+weeks:
+
+  # ─── 第2章 §1 ラプラス変換の定義と性質 ──────────────────────
+  - week: 1
+    title: ラプラス変換の定義
+    source: chapter2_section1.yaml
+    subsections:
+      - id: 1          # ラプラス変換の定義（p.46-49）
+
+  - week: 2
+    title: 相似性と移動法則
+    source: chapter2_section1.yaml
+    subsections:
+      - id: 2          # 相似性・移動法則（p.50-53）
+
+  - week: 3
+    title: 微分法則と積分法則
+    source: chapter2_section1.yaml
+    subsections:
+      - id: 3          # 微分法則・積分法則（p.52-57）
+
+  - week: 4
+    title: 逆ラプラス変換
+    source: chapter2_section1.yaml
+    subsections:
+      - id: 4          # 逆ラプラス変換（p.56-61）
+    include_practice: true   # 練習問題1（p.61）
+
+  # ─── 第2章 §2 ラプラス変換の応用 ────────────────────────────
+  - week: 5
+    title: 微分方程式への応用
+    source: chapter2_section2.yaml
+    subsections:
+      - id: 1          # 微分方程式への応用（p.62-65）
+
+  - week: 6
+    title: たたみ込み
+    source: chapter2_section2.yaml
+    subsections:
+      - id: 2          # たたみこみ（p.66-68）
+
+  - week: 7
+    title: 線形システムの伝達関数とデルタ関数
+    source: chapter2_section2.yaml
+    subsections:
+      - id: 3          # 線形システム・デルタ関数（p.68-72）
+    include_practice: true   # 練習問題2（p.72）
+
+  # ─── 第3章 §1 フーリエ展開 ───────────────────────────────────
+  - week: 8
+    title: 周期 2π の周期関数のフーリエ級数
+    source: chapter3_section1.yaml
+    subsections:
+      - id: 1          # フーリエ級数（p.74-79）全部
+
+  - week: 9
+    title: 一般の周期関数のフーリエ級数（１）
+    source: chapter3_section1.yaml
+    subsections:
+      - id: 2
+        include_fields: [definition]       # 一般周期の定義・係数のみ
+        include_examples: [例題3]          # p.83 (f(x)=|x|)
+        include_exercises: [問3]           # p.82
+
+  - week: 10
+    title: 一般の周期関数のフーリエ級数（２）
+    source: chapter3_section1.yaml
+    subsections:
+      - id: 2
+        include_fields: [even_odd]         # 偶関数・奇関数展開
+        include_examples: [例題4, 例題5]   # p.84-86
+        include_exercises: [問4, 問5]      # p.84, p.86
+
+  - week: 11
+    title: 複素フーリエ級数
+    source: chapter3_section1.yaml
+    subsections:
+      - id: 3          # 複素フーリエ級数（p.86-89）全部
+    include_practice: true   # 練習問題1（p.90）
+
+  # ─── 第3章 §2 フーリエ変換と積分定理 ────────────────────────
+  - week: 12
+    title: フーリエ変換と積分定理
+    source: chapter3_section2.yaml
+    subsections:
+      - id: 1          # フーリエ変換の定義・積分定理（p.91-95）
+
+  - week: 13
+    title: フーリエ変換の性質と公式
+    source: chapter3_section2.yaml
+    subsections:
+      - id: 2          # 性質 I-VI、パーセバル（p.96-99）
+
+  - week: 14
+    title: スペクトル
+    source: chapter3_section2.yaml
+    subsections:
+      - id: 3          # スペクトル（p.100-104）
+    include_practice: true   # 練習問題2（p.104）

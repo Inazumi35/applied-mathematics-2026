@@ -1,0 +1,352 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=43,professionalfonts,handout]{beamer}
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{7}
+\newcommand{\LectureTitle}{第2章 ラプラス変換　2節 ラプラス変換の応用}
+\newcommand{\TextPages}{p.\,62-72}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第2章 ラプラス変換　2節 ラプラス変換の応用}
+  \begin{block}{本節の内容}
+  \begin{itemize}
+    \item 微分方程式への応用　（p.\,62--65）
+    \item たたみこみ　（p.\,64--67）
+    \item 線形システムの伝達関数とデルタ関数　（p.\,68--72）
+  \end{itemize}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{教科書 p.\,62--72}}
+\end{frame}
+
+\begin{frame}{微分方程式への応用}
+  \begin{block}{}
+  {\large 微分方程式への応用}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,62--65}}
+\end{frame}
+
+\begin{frame}{ラプラス変換による微分方程式の解法}
+  \begin{block}{}
+  \begin{enumerate}[Step 1.]
+    \item 微分方程式と初期条件をラプラス変換
+    $\Rightarrow$ $X(s)$ に関する代数方程式\\
+    \item 代数方程式を $X(s)$ について解く
+    $\Rightarrow$ $X(s)$ の有理式（部分分数分解）\\
+    \item $X(s)$ を逆ラプラス変換
+    $\Rightarrow$ 解 $x(t)$\\
+  \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題1}
+  \begin{exampleblock}{問題}
+    $dx/dt + x = e^t, x(0) = 1$ を解け\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題1　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $L[x(t)] = X(s)$ とする
+    \item[] 原関数の微分法則より $L[dx/dt] = sX(s) - x(0) = sX(s) - 1$
+    \item[] 方程式の両辺をラプラス変換 $: (sX(s) - 1) + X(s) = 1/(s-1)$
+    \item[] $(s+1)X(s) = 1 + 1/(s-1) = s/(s-1)$
+    \item[] $X(s) = s/((s+1)(s-1))$ 部分分数分解 :
+    \item[] $s = A(s+1) + B(s-1)$ より $A = 1/2, B = 1/2$
+    \item[] $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$
+    \item[] 逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = \cosh t$
+  \end{alertblock}
+  {\footnotesize \textcolor{gray}{\textit{$\sinh t + \cosh t = e^t$ より確認可能}}}
+\end{frame}
+
+\begin{frame}{例題2}
+  \begin{exampleblock}{問題}
+    $d^{2}x/dt^{2} + 4x = e^{-t}, x(0) = 0, x'(0) = 0$ を解け\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題2　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $L[x(t)] = X(s)$ とする
+    \item[] $(s^{2}+4)X(s) - s\cdot x(0) - x'(0) = 1/(s+1)$
+    \item[] $(s^{2}+4)X(s) = 1/(s+1)$
+    \item[] $X(s) = 1/((s+1)(s^{2}+4))$
+    \item[] 部分分数分解 $: A/(s+1) + (Bs+C)/(s^{2}+4)$
+    \item[] $1 = A(s^{2}+4) + (Bs+C)(s+1)$
+    \item[] $s=-1: A = 1/5; s^{2}$ の係数 $: B = -1/5;$ 定数項 $: C = 1/5$
+    \item[] $X(s) = (1/5)/(s+1) - (1/5)\cdot s/(s^{2}+4) + (1/10)\cdot2/(s^{2}+4)$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題3}
+  \begin{exampleblock}{問題}
+    $d^{2}x/dt^{2} - x = 0, x(0) = 0, x(1) = 1$ を解け（境界値問題）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題3　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $x'(0) = a$ とおき、 $L[x(t)] = X(s)$ とする
+    \item[] $(s^{2}-1)X(s) - s\cdot x(0) - x'(0) = 0$
+    \item[] $(s^{2}-1)X(s) = a$
+    \item[] $X(s) = a/(s^{2}-1)$
+    \item[] 逆変換 $: x(t) = a\cdot \sinh(t)$
+    \item[] 境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = \sinh(t)/\sinh(1)$
+  \end{alertblock}
+  {\footnotesize \textcolor{gray}{\textit{境界値問題では未知の初期値 a を置き、もう一方の境界条件で決定する}}}
+\end{frame}
+
+\begin{frame}{例題4}
+  \begin{exampleblock}{問題}
+    次の微分方程式の一般解を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題4　解答}
+  \begin{exampleblock}{解答}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,62--65）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問1] 次の微分方程式を解け
+    $(1) dx/dt - 2x = 0,  x(0) = 1$\\
+    $(2) dx/dt - x = e^{-t},  x(0) = 0$\\
+    \item[問2] 次の微分方程式を解け（ $t = 0$ のとき $x = 0, dx/dt = 0$ ）
+    $(1) d^{2}x/dt^{2} - 2x = e^t$\\
+    $(2) d^{2}x/dt^{2} + 4x = e^{-t}$\\
+    \item[問3] 次の微分方程式を解け（境界値問題）
+    $d^{2}x/dt^{2} - x = 1,  x(0) = 0,  x(\pi/2) = 0$\\
+    \item[問4] 次の微分方程式の一般解を求めよ
+    $(1) dx/dt - 2x = e^{3t}$\\
+    $(2) d^{2}x/dt^{2} + 4x = \cos 2t$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{たたみこみ}
+  \begin{block}{}
+  {\large たたみこみ}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定義：たたみこみ（合成積）}
+  \begin{block}{}
+  \[
+    (f * g)(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定理：交換法則}
+  \begin{block}{}
+  \[
+    f(t) * g(t) = g(t) * f(t)
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定理：分配法則}
+  \begin{block}{}
+  \[
+    f * (g_{1} + g_{2}) = f*g_{1} + f*g_{2}
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定理：たたみこみのラプラス変換（たたみこみ定理）}
+  \begin{block}{}
+  \[
+    L[f(t) * g(t)] = L[f(t)] \cdot L[g(t)] = F(s) \cdot G(s)
+  \]
+  \[
+    L^{-}^{1}[F(s) \cdot G(s)] = f(t) * g(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{例題5}
+  \begin{exampleblock}{問題}
+    $\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau$ を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題5　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] これは sin t * cos t のたたみこみ
+    \item[] 積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$
+    \item[] $= (1/2)[\sin t + \sin(2\tau-t)]$
+    \item[] $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$
+    \item[] $= (1/2)\begin{cases} [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \end{cases}$
+    \item[] $= (1/2)\begin{cases} t \sin t + & (-\cos t/2 - (-\cos(-t)/2)) \end{cases}$
+    \item[] $= (1/2){t \sin t + 0}$（cos(-t) = cos t より）
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題6}
+  \begin{exampleblock}{問題}
+    $f(t) * g(t) = g(t) * f(t)$ を証明せよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題6　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$
+    \item[] $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$
+    \item[] $= \intₜ^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$
+    \item[] $= g(t)*f(t)$
+  \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題7}
+  \begin{exampleblock}{問題}
+    $L[f(t)] = F(s)$ のとき、関数 $F(s)/(s-\alpha)$ の逆ラプラス変換を求めよ。ただし $\alpha$ は定数とする。\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題7　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $L^{-}^{1}[F(s)/(s-\alpha)] = L^{-}^{1}[F(s) \cdot 1/(s-\alpha)]$
+    \item[] $L^{-}^{1}[1/(s-\alpha)] = e^{\alpha t}$ より、たたみこみ定理を適用
+    \item[] $= L^{-}^{1}[F(s)] * e^{\alpha t} = f(t) * e^{\alpha t}$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $L^{-}^{1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題8}
+  \begin{exampleblock}{問題}
+    $\int_{0}^t x(\tau) \sin(t-\tau) d\tau = t^{2}$ を満たす関数 $x(t)$ を求めよ（積分方程式）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題8　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] 左辺は $x(t) * \sin t$ のたたみこみ
+    \item[] 両辺をラプラス変換 $: X(s) \cdot L[\sin t] = L[t^{2}]$
+    \item[] $X(s) \cdot 1/(s^{2}+1) = 2/s^{3}$
+    \item[] $X(s) = 2(s^{2}+1)/s^{3} = 2/s + 2/s^{3}$
+    \item[] 逆ラプラス変換 $: x(t) = 2 + t^{2}$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = t^{2} + 2$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,64--67）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問5] 次のたたみこみを求めよ
+    $(1) \int_{0}^t e^\tau \sin(t-\tau) d\tau$\\
+    $(2) \int_{0}^t \tau\cdot \cos(t-\tau) d\tau$\\
+    \item[問6] 分配法則 $f*(g_{1}+g_{2}) = f*g_{1} + f*g_{2}$ を証明せよ
+    \item[問7] $L^{-}^{1}[\cos(\alpha t)]$ のたたみこみ表現を求めよ
+    \item[問8] $L[f(t)] = F(s)$ のとき、次の関数の逆ラプラス変換を求めよ。
+    ただし $\alpha, \beta$ は定数で、 (2) では $\alpha \neq \beta$ 、 (3) では $\beta \neq 0$ とする。\\
+    $(1) F(s)/(s-\alpha)^{2}$\\
+    $(2) F(s)/((s-\alpha)(s-\beta))$\\
+    $(3) F(s)/((s-\alpha)^{2}+\beta^{2})$\\
+    \item[問9] 次の積分方程式を満たす関数 $x(t)$ を求めよ。
+    $x(t) + \int_{0}^t x(t-\tau)e^\tau d\tau = \cos 3t$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{線形システムの伝達関数とデルタ関数}
+  \begin{block}{}
+  {\large 線形システムの伝達関数とデルタ関数}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,68--72}}
+\end{frame}
+
+\begin{frame}{例題9}
+  \begin{exampleblock}{問題}
+    微分方程式 $x'' + ax' + bx = y(t)$ （ a, b は定数 $, x(0)=0, x'(0)=0$ ）に対して\\[2pt]
+    線形システムの伝達関数 $H(s)$ を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題9　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] 初期値ゼロで両辺をラプラス変換:
+    \item[] $(s^{2}+as+b)X(s) = Y(s)$
+    \item[] $H(s) = X(s)/Y(s) = 1/(s^{2}+as+b)$
+  \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,68--72）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問10] 微分方程式 $x'' + ax' + bx = y(t), x(0)=0, x'(0)=0$ の
+    伝達関数 $H(s)$ を求めよ\\
+    \item[問11] $f(t)*\delta(t) = \delta(t)*f(t) = f(t)$ を、たたみこみの性質を用いて証明せよ
+    \item[問12] 次の微分方程式を解け（ただし $\mu$ は正の定数）
+    $x'' + a\cdot x' + b = y(t),  x(0) = 0,  x'(0) = 0$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{練習問題2　（p.\,72）}
+  \begin{block}{}
+  \begin{description}
+    \item[問1] 次の微分方程式を解け
+    $(1) d^{2}x/dt^{2} + 25x = 25t$（t=0 のとき x=0, dx/dt=0）\\
+    $(2) d^{3}x/dt^{3} + 3d^{2}x/dt^{2} + 3dx/dt + x = 0$（t=0 のとき x=0, dx/dt=1, d^{2}x/dt^{2}=-2）\\
+    $(3) d^{2}x/dt^{2} + 4x = 1,  x(0) = 0,  x(\pi/4) = 0$（境界値問題）\\
+    $(4) d^{2}x/dt^{2} + x = 2sin 2t$\\
+    \item[問2] 次の関係を同時に満たす関数 $x(t), y(t)$ を求めよ
+    $dx/dt = 3x - y,  dy/dt = x + y,  x(0) = 0,  y(0) = 1$\\
+    \item[問3] たたみこみのラプラス変換の性質を用いて、次の関数の逆ラプラス変換を求めよ
+    $(1) 1/(s^{2}(s-1))$\\
+    $(2) s^{2}/(s^{2}+4)^{2}$\\
+    \item[問4] 次の積分方程式を満たす関数 $x(t)$ を求めよ
+    $x(t) = 4\int_{0}^t x(\tau) \cos 2(t-\tau) d\tau + 1$\\
+    \item[問5] 微分方程式 $y'' - 5y' + 6y = x(t), y(0) = 0, y'(0) = 0$ で表される
+    線形システムについて、次の問いに答えよ\\
+    (1) この線形システムの伝達関数 $H(s)$ を求めよ\\
+    (2) 入力 $x(t) = \delta(t)$ のとき、出力 $y(t)$ を求めよ\\
+    (3) 入力 $x(t) = U(t)$ のとき、出力 $y(t)$ を求めよ\\
+    (4) 入力 $x(t) = e^{-t} (t>0)$ のとき、出力 $y(t)$ を求めよ\\
+  \end{description}
+  \end{block}
+\end{frame}
+
+\end{document}

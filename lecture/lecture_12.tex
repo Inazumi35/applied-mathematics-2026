@@ -1,0 +1,66 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=43,professionalfonts,handout]{beamer}
+\usepackage{beamer_template}
+
+\newcommand{\LectureNum}{12}
+\newcommand{\LectureTitle}{フーリエ変換と積分定理}
+\newcommand{\TextPages}{p.\,91-93}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{\CourseName\quad 第\LectureNum 回「\LectureTitle」}
+  {\small \TermName\quad \TeacherName\quad ／\quad 教科書 \TextPages}
+
+  \textbf{目標}：フーリエ変換の定義と積分定理を理解し、基本的なフーリエ変換を求めることができる
+
+\end{frame}
+
+\begin{frame}{フーリエ変換の定義}
+  \begin{block}{}
+  \begin{itemize}
+    \item 非周期関数への拡張（周期 $ \to \infty$ ）
+    \item $F(u) = \int_{-\infty}^{\infty} f(x)e^{-iux} dx$
+    \item ラプラス変換との比較
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{フーリエ積分定理・反転公式}
+  \begin{block}{}
+  \begin{itemize}
+    \item 積分定理：$f(x) \approx (1/2\pi)\int F(u)e^{iux}du$
+    \item 反転公式 $f = \mathcal{F}^{-1}[F]$
+    \item 連続点では等号成立
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題1・2}
+  \begin{block}{}
+  \begin{itemize}
+    \item 例題1：$f(x)=e^{-|x|}  \to  F(u)=2/(1+u^{2})$
+    \item 例題2：矩形波のフーリエ変換
+    \item 余弦・正弦変換（偶関数・奇関数）
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{演習}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{itemize}
+    \item 問1〜4より選題
+  \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{まとめ}
+  \begin{itemize}
+    \item フーリエ変換の定義
+    \item 積分定理・反転公式
+    \item 次回：フーリエ変換の性質
+  \end{itemize}
+\end{frame}
+
+\end{document}

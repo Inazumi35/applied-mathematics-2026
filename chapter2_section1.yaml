@@ -1,0 +1,714 @@
+chapter: 2
+chapter_title: ラプラス変換
+section: 1
+section_title: ラプラス変換の定義と性質
+pages: "46-61"
+
+subsections:
+
+  - id: 1
+    title: ラプラス変換の定義
+    pages: "46-49"
+
+    definition:
+      name: ラプラス変換
+      formula: "F(s) = ∫₀^∞ e^{-st} f(t) dt = lim_{T→∞} ∫₀^T e^{-st} f(t) dt"
+      notation:
+        - "F(s) = L[f(t)]"
+        - "f(t) → F(s)"
+      terms:
+        原関数: "f(t)"
+        像関数: "F(s)"
+
+    properties:
+      - name: 線形性
+        formula: "L[c₁f₁(t) + c₂f₂(t)] = c₁L[f₁(t)] + c₂L[f₂(t)]"
+        note: "c₁, c₂ は定数"
+
+    mathematical_tools:
+      - name: 部分積分法
+        formula: "∫_a^b f(t)g'(t) dt = [f(t)g(t)]_a^b - ∫_a^b f'(t)g(t) dt"
+        note: "u = f(t), dv = g'(t)dt とおくと ∫u dv = [uv] - ∫v du の形"
+        used_in:
+          - "例題2: ∫₀^∞ e^{-st}·t dt の計算"
+          - "例題4: ∫₀^∞ e^{-st}·sin t dt の計算（2回適用）"
+          - "例題11: 像関数の積分の導出"
+
+      - name: ロピタルの定理
+        statement: |
+          lim_{x→a} f(x) = lim_{x→a} g(x) = 0（または ±∞）のとき
+          lim_{x→a} f(x)/g(x) = lim_{x→a} f'(x)/g'(x)
+        application: |
+          ラプラス変換では t → ∞ における極限の評価に使用する
+          例: lim_{t→∞} t·e^{-st} = lim_{t→∞} t/e^{st}
+                                    = lim_{t→∞} 1/(s·e^{st}) = 0  (s > 0)
+        used_in:
+          - "例題2: lim_{t→∞} t·e^{-st} = 0 の確認"
+          - "例題4: lim_{t→∞} e^{-st}·sin t = 0 および lim_{t→∞} e^{-st}·cos t = 0 の確認"
+
+    examples:
+      - id: 例題1
+        problem: "f(t) = 1 のラプラス変換を求めよ"
+        solution:
+          - condition: "s > 0"
+            steps:
+              - "lim_{t→∞} e^{-st} = 0 だから"
+              - "F(s) = ∫₀^∞ e^{-st} dt = [-1/s · e^{-st}]₀^∞ = 1/s"
+          - condition: "s = 0"
+            steps:
+              - "∫₀^∞ dt は存在しない"
+        result: "L[1] = 1/s  (s > 0)"
+
+      - id: 例題2
+        problem: "f(t) = t のラプラス変換を求めよ"
+        solution:
+          - condition: "s > 0"
+            steps:
+              - "分部積分を用いると"
+              - "F(s) = ∫₀^∞ e^{-st}·t dt = [-1/s · e^{-st} · t]₀^∞ + 1/s ∫₀^∞ e^{-st} dt"
+              - "ロピタルの定理より lim_{t→∞} t·e^{-st} = lim_{t→∞} t/e^{st} = lim_{t→∞} 1/(s·e^{st}) = 0"
+              - "よって F(s) = 0 + (1/s)·L[1] = (1/s)·(1/s) = 1/s²"
+          - condition: "s ≤ 0"
+            steps:
+              - "∫₀^∞ t dt は存在しない"
+        result: "L[t] = 1/s²  (s > 0)"
+
+      - id: 例題3
+        problem: "f(t) = e^{at}（a は定数）のラプラス変換を求めよ"
+        solution:
+          - "F(s) = ∫₀^∞ e^{-st} · e^{at} dt = ∫₀^∞ e^{-(s-a)t} dt"
+          - "例題1 と同様に、s-a > 0 すなわち s > a のとき"
+          - "F(s) = [-1/(s-a) · e^{-(s-a)t}]₀^∞ = 1/(s-a)"
+          - condition: "s ≤ a"
+            steps:
+              - "e^{-(s-a)t} は存在しない"
+        result: "L[e^{at}] = 1/(s-a)  (s > a)"
+
+      - id: 例題4
+        problem: "f(t) = sin t のラプラス変換を求めよ"
+        solution:
+          - "s > 0 のとき lim_{t→∞} e^{-st}sin t = 0, lim_{t→∞} e^{-st}cos t = 0"
+          - "部分積分を2回繰り返すと"
+          - "F(s) = [-e^{-st}(-cos t)]₀^∞ - s∫₀^∞ e^{-st}(-cos t)dt"
+          - "     = 1 - s·L[cos t]"
+          - "同様に L[cos t] = s·F(s) から代入すると"
+          - "F(s) = 1 - s²F(s)  →  (1 + s²)F(s) = 1"
+        result: "L[sin t] = 1/(s²+1)  (s > 0)"
+
+      - id: 例題6
+        problem: |
+          正の実数 a, b（ただし a < b）について、関数 f(t) を
+            f(t) = { 0  (0 ≤ t < a)
+                   { 1  (a ≤ t < b)
+                   { 0  (b ≤ t)
+          で定めるとき、f(t) を単位ステップ関数を用いて表し、L[f(t)] を求めよ
+        solution:
+          - "単位ステップ関数 U(t-a), U(t-b) を用いると"
+          - "f(t) = U(t-a) - U(t-b)"
+          - "線形性より"
+          - "L[f(t)] = L[U(t-a)] - L[U(t-b)]"
+          - "       = e^{-as}/s - e^{-bs}/s"
+        result: "L[f(t)] = (e^{-as} - e^{-bs})/s  (s > 0)"
+
+    special_functions:
+      - name: 双曲線関数
+        definitions:
+          sinh: "sinh t = (e^t - e^{-t}) / 2"
+          cosh: "cosh t = (e^t + e^{-t}) / 2"
+        transforms:
+          - "L[sinh t] = 1/(s²-1)  (s > 1)"
+          - "L[cosh t] = s/(s²-1)  (s > 1)"
+
+      - name: 単位ステップ関数
+        definition: "U(t-a) = { 1  (t ≥ a),  0  (t < a) }"
+        graph_note: "t = a で 0 から 1 に跳躍"
+        example:
+          id: 例題5
+          problem: "a ≥ 0 のとき U(t-a) のラプラス変換を求めよ"
+          solution:
+            - "F(s) = ∫₀^∞ e^{-st}U(t-a)dt = ∫ₐ^∞ e^{-st}dt"
+            - "= [-1/s · e^{-st}]ₐ^∞ = e^{-as}/s"
+          result: "L[U(t-a)] = e^{-as}/s  (s > 0)"
+          note: "a → 0 とすると L[U(t)] = 1/s（例題1と一致）"
+
+    exercises:
+      - id: 問1
+        content: "L[3 + 2^t] を線形性を用いて求めよ"
+        answer:
+          steps:
+            - "2^t = e^{t \\ln 2} なので例題3より L[2^t] = 1/(s - \\ln 2)  (s > \\ln 2)"
+            - "線形性より L[3 + 2^t] = L[3] + L[2^t] = 3·L[1] + L[2^t]"
+            - "= 3·(1/s) + 1/(s - \\ln 2)"
+          result: "L[3 + 2^t] = 3/s + 1/(s - \\ln 2)  (s > \\ln 2)"
+
+      - id: 問2
+        content: "L[3 + 2^t] を求めよ"
+        answer:
+          steps:
+            - "2^t = e^{t \\ln 2} と書き直す"
+            - "線形性と例題1・例題3を用いると"
+            - "L[3 + 2^t] = 3·(1/s) + 1/(s - \\ln 2)"
+          result: "L[3 + 2^t] = 3/s + 1/(s - \\ln 2)  (s > \\ln 2)"
+
+      - id: 問3
+        content: "L[e^{-t} + e^{-2t}] を求めよ"
+        answer:
+          steps:
+            - "例題3より L[e^{at}] = 1/(s-a) なので"
+            - "L[e^{-t}] = 1/(s+1)  (s > -1)"
+            - "L[e^{-2t}] = 1/(s+2)  (s > -2)"
+            - "線形性より"
+          result: "L[e^{-t} + e^{-2t}] = 1/(s+1) + 1/(s+2)  (s > -1)"
+
+      - id: 問4
+        content: "次の公式を証明せよ: L[cos t] = s/(s²+1)  (s > 0)"
+        answer:
+          steps:
+            - "例題4 と同様に部分積分を2回繰り返す"
+            - "f(t) = cos t とおくと f'(t) = -sin t, f(0) = 1"
+            - "F(s) = ∫₀^∞ e^{-st} cos t dt"
+            - "1回目の部分積分：F(s) = [e^{-st}·(-(-sin t))]₀^∞ ... 整理すると"
+            - "または例題4の結果 L[sin t] = 1/(s²+1) と s·F(s) - f(0) = L[sin t] を使う方法"
+            - "L[cos t] = sF(s) - f(0) の形から: L[(cos t)'] = L[-sin t] = -L[sin t]"
+            - "sF(s) - 1 = -L[sin t] = -1/(s²+1)"
+            - "F(s) = (1/s)(1 - 1/(s²+1)) = (1/s)·s²/(s²+1)"
+          result: "L[cos t] = s/(s²+1)  (s > 0)"
+
+      - id: 問5
+        content: "双曲線関数 sinh t, cosh t のラプラス変換を求めよ"
+        answer:
+          steps:
+            - "定義より sinh t = (e^t - e^{-t})/2,  cosh t = (e^t + e^{-t})/2"
+            - "線形性と例題3（L[e^{at}] = 1/(s-a)）を使う"
+            - "L[sinh t] = (1/2)(L[e^t] - L[e^{-t}]) = (1/2)(1/(s-1) - 1/(s+1))"
+            - "        = (1/2)·2/((s-1)(s+1)) = 1/(s²-1)"
+            - "L[cosh t] = (1/2)(L[e^t] + L[e^{-t}]) = (1/2)(1/(s-1) + 1/(s+1))"
+            - "        = (1/2)·2s/((s-1)(s+1)) = s/(s²-1)"
+          results:
+            - "L[sinh t] = 1/(s²-1)  (s > 1)"
+            - "L[cosh t] = s/(s²-1)  (s > 1)"
+
+      - id: 問6
+        content: "関数 g(t) = U(t-2) のグラフをかけ。また L[U(t-2)] を求めよ"
+        answer:
+          graph_note: "t < 2 では g(t) = 0，t ≥ 2 では g(t) = 1 の階段形"
+          steps:
+            - "例題5（L[U(t-a)] = e^{-as}/s）に a = 2 を代入"
+          result: "L[U(t-2)] = e^{-2s}/s  (s > 0)"
+
+      - id: 問7
+        content: |
+          正の実数 a, b, c（ただし a < b < c）について，関数 f(t) を
+            f(t) = { 1  (0 < t < a, b ≤ t < c)
+                   { 0  (a ≤ t < b, t ≥ c)
+          で定めるとき，f(t) を単位ステップ関数を用いて表せ。また，L[f(t)] を求めよ。
+        answer:
+          graph_note: "t=0〜a と t=b〜c の2区間だけ 1 になる矩形2つ型"
+          steps:
+            - "f(t) = U(t) - U(t-a) で 0〜a の矩形（ただし t=0 で U(t)=1）"
+            - "b〜c の矩形は U(t-b) - U(t-c)"
+            - "合わせると"
+            - "f(t) = U(t) - U(t-a) + U(t-b) - U(t-c)  (t > 0)"
+            - "L[f(t)] = L[U(t)] - L[U(t-a)] + L[U(t-b)] - L[U(t-c)]"
+            - "       = 1/s - e^{-as}/s + e^{-bs}/s - e^{-cs}/s"
+          result: "L[f(t)] = (1 - e^{-as} + e^{-bs} - e^{-cs})/s  (s > 0)"
+
+
+  - id: 2
+    title: 相似性と移動法則
+    pages: "50-53"
+
+    theorems:
+      - name: 相似性
+        formula: "L[f(at)] = (1/a) F(s/a)  (a は正の定数)"
+
+      - name: 像関数の移動法則
+        formula: "L[e^{at}f(t)] = F(s-a)  (a は定数)"
+        note: "F(s) = L[f(t)]"
+
+      - name: 原関数の移動法則（ヘビサイドの移動定理）
+        formula: "L[f(t-μ)U(t-μ)] = e^{-μs}F(s)  (μ ≥ 0)"
+        proof_sketch: |
+          L[f(t-μ)U(t-μ)] = ∫₀^∞ e^{-st}f(t-μ)U(t-μ)dt
+                           = ∫_μ^∞ e^{-st}f(t-μ)dt   (u = t-μ と置換)
+                           = e^{-μs}∫₀^∞ e^{-su}f(u)du = e^{-μs}F(s)
+        inverse: "L⁻¹[e^{-μs}F(s)] = f(t-μ)U(t-μ)"
+
+    examples:
+      - id: 例題7
+        problem: "L[sin(ωt)] を求めよ（ω は 0 でない定数）"
+        solution:
+          - "ω > 0 のとき: 相似性と例題4の結果から"
+          - "L[sin(ωt)] = (1/ω) · 1/((s/ω)²+1) = ω/(s²+ω²)"
+          - "ω < 0 のとき: sin(-ωt) = -sin(ωt) を利用"
+          - "L[sin(ωt)] = -L[sin(-ωt)] = -(-ω)/(s²+ω²) = ω/(s²+ω²)"
+        result: "L[sin(ωt)] = ω/(s²+ω²)  （ω の正負に関係なく）"
+
+      - id: 例題8
+        problem: "L[e^{αt}sin(μt)] を求めよ（α は定数、μ ≠ 0）"
+        solution:
+          - "例題7 より L[sin(μt)] = μ/(s²+μ²)  (s > 0)"
+          - "像関数の移動法則 L[e^{αt}f(t)] = F(s-α) を適用すると"
+          - "s を s-α に置き換えて"
+          - "L[e^{αt}sin(μt)] = μ/((s-α)²+μ²)"
+        result: "L[e^{αt}sin(μt)] = μ/((s-α)²+μ²)"
+
+    exercises:
+      - id: 問8
+        content: "L[cos(ωt)] を求めよ（ω は 0 でない定数）"
+        answer:
+          steps:
+            - "相似性: L[f(at)] = (1/a)F(s/a), F(s) = L[cos t] = s/(s²+1) を利用"
+            - "L[cos(ωt)] = (1/ω)·(s/ω)/((s/ω)²+1) = (1/ω)·(s/ω)·ω²/(s²+ω²)"
+          result: "L[cos(ωt)] = s/(s²+ω²)  (s > 0)"
+
+      - id: 問9
+        content: "cos²t, sin²t, sin t·cos t のラプラス変換を求めよ（平方の公式を使用）"
+        answer:
+          steps:
+            - "cos²t = (1+cos 2t)/2  →  L[cos²t] = (1/2)(1/s + s/(s²+4)) = (s²+2)/(s(s²+4))"
+            - "sin²t = (1-cos 2t)/2  →  L[sin²t] = (1/2)(1/s - s/(s²+4)) = 2/(s(s²+4))"
+            - "sin t cos t = (1/2)sin 2t  →  L[sin t cos t] = (1/2)·2/(s²+4)"
+          results:
+            - "L[cos²t] = (s²+2)/(s(s²+4))"
+            - "L[sin²t] = 2/(s(s²+4))"
+            - "L[sin t cos t] = 1/(s²+4)"
+
+      - id: 問10
+        content: "L[e^{μt}·cos(μt)] を求めよ（μ は定数）"
+        answer:
+          steps:
+            - "L[cos(μt)] = s/(s²+μ²)"
+            - "像関数の移動法則: L[e^{μt}f(t)] = F(s-μ) より s → s-μ に置き換える"
+          result: "L[e^{μt}cos(μt)] = (s-μ)/((s-μ)²+μ²)"
+
+      - id: 問11
+        content: "L[sin(t - π/4)·U(t - π/4)] を求めよ"
+        answer:
+          steps:
+            - "原関数の移動法則: L[f(t-μ)U(t-μ)] = e^{-μs}F(s)"
+            - "ここで f(t) = sin t, μ = π/4, F(s) = L[sin t] = 1/(s²+1)"
+          result: "L[sin(t-π/4)·U(t-π/4)] = e^{-πs/4}/(s²+1)"
+          note: "YAML に L⁻¹ とあるが正しくは L（ラプラス変換）"
+
+      - id: 問12
+        content: "関数 f(t) = (t-2)U(t-2) のグラフをかけ。また L[f(t)] を求めよ"
+        answer:
+          graph_note: "t < 2 では f(t)=0, t≧2 では原点を t=2 に平行移動した直線（傾き1）"
+          steps:
+            - "f(t) = g(t-2)U(t-2) と見る（g(t) = t）"
+            - "原関数の移動法則: L[g(t-2)U(t-2)] = e^{-2s}·L[t] = e^{-2s}/s²"
+          result: "L[f(t)] = e^{-2s}/s²  (s > 0)"
+
+
+  - id: 3
+    title: 微分法則と積分法則
+    pages: "52-57"
+
+    theorems:
+      - name: 原関数の微分法則
+        formulas:
+          - "L[f'(t)]    = sF(s) - f(0)"
+          - "L[f''(t)]   = s²F(s) - sf(0) - f'(0)"
+          - "L[f^{(n)}(t)] = s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - … - f^{(n-1)}(0)"
+        proof_sketch: |
+          L[f'(t)] = ∫₀^∞ e^{-st}f'(t)dt
+                   = [e^{-st}f(t)]₀^∞ + s∫₀^∞ e^{-st}f(t)dt
+                   = -f(0) + sF(s)
+
+      - name: 像関数の高次微分
+        formula: "L[t^n f(t)] = (-1)^n F^{(n)}(s)"
+
+      - name: 原関数の積分法則
+        formula: "L[∫₀^t f(τ)dτ] = F(s)/s"
+        proof_sketch: |
+          g(t) = ∫₀^t f(τ)dτ とおくと g'(t) = f(t), g(0) = 0
+          L[g'(t)] = sG(s) - g(0) = sG(s) = F(s)
+          よって G(s) = F(s)/s
+
+      - name: 像関数の積分
+        formula: "L[f(t)/t] = ∫ₛ^∞ F(u)du"
+
+    examples:
+      - id: 例題9
+        problem: "微分法則を用いて次の問いに答えよ"
+        subproblems:
+          - id: "(1)"
+            content: "L[e^{at}] を求めよ（a は定数）"
+            solution:
+              - "f(t) = e^{at} とおくと F(s) = L[f(t)], f'(t) = a·e^{at} = a·f(t)"
+              - "微分法則より L[f'(t)] = sF(s) - f(0) = sF(s) - 1"
+              - "一方 L[f'(t)] = L[af(t)] = aF(s)"
+              - "よって (s-a)F(s) = 1"
+              - "L[e^{at}] = 1/(s-a)"
+          - id: "(2)"
+            content: "L[sin(αt)] を求めよ（α は任意の定数）"
+            solution:
+              - "f(t) = sin(αt) とおくと f''(t) = -α²f(t), f(0) = 0, f'(0) = α"
+              - "微分法則より s²F(s) - sf(0) - f'(0) = -α²F(s)"
+              - "(s²+α²)F(s) = α"
+              - "L[sin(αt)] = α/(s²+α²)"
+
+      - id: 例題10
+        problem: "L[t^n] を求めよ（n は正の整数）"
+        solution:
+          - "f(t) = t^n とおくと"
+          - "f^{(n)}(t) = n!, f(0) = f'(0) = … = f^{(n-1)}(0) = 0"
+          - "微分法則を n 回適用: s^n F(s) - 0 = L[n!] = n!/s"
+        result: "L[t^n] = n!/s^{n+1}  (s > 0)"
+
+      - id: 例題11
+        problem: "L[sin(αt)/t] を求めよ（α は正の定数）"
+        solution:
+          - "像関数の積分: L[f(t)/t] = ∫ₛ^∞ F(u)du を利用"
+          - "L[sin(αt)] = α/(u²+α²) なので"
+          - "L[sin(αt)/t] = ∫ₛ^∞ α/(u²+α²) du = [arctan(u/α)]ₛ^∞"
+          - "= π/2 - arctan(s/α)"
+        result: "L[sin(αt)/t] = π/2 - arctan(s/α) = arctan(α/s)  (s > 0)"
+
+    exercises:
+      - id: 問13
+        content: "L[t cos(αt)] を求めよ"
+        answer:
+          steps:
+            - "像関数の高次微分: L[t^n f(t)] = (-1)^n F^{(n)}(s)  を n=1 で使用"
+            - "F(s) = L[cos(αt)] = s/(s²+α²)"
+            - "F'(s) = d/ds [s/(s²+α²)] = (s²+α²-2s²)/(s²+α²)² = (α²-s²)/(s²+α²)²"
+            - "L[t cos(αt)] = (-1)¹·F'(s) = -F'(s)"
+          result: "L[t cos(αt)] = (s²-α²)/(s²+α²)²"
+
+      - id: 問14
+        content: "f(t) が f'(t)+2f(t)=f(0) を満たすとき、L[f(t)] を求めよ"
+        answer:
+          steps:
+            - "両辺をラプラス変換: (sF(s)-f(0)) + 2F(s) = f(0)/s"
+            - "(s+2)F(s) = f(0) + f(0)/s = f(0)(s+1)/s"
+            - "F(s) = f(0)(s+1)/(s(s+2))"
+            - "部分分数: (s+1)/(s(s+2)) = A/s + B/(s+2)"
+            - "A = 1/2, B = 1/2"
+          result: "F(s) = (f(0)/2)(1/s + 1/(s+2))  →  f(t) = (f(0)/2)(1 + e^{-2t})"
+          note: "問題文は f'(t)+2f(t)-f(0)=0 → f'(t)+2f(t)=f(0) と同値"
+
+      - id: 問15
+        content: "L[t^n] を求めよ（n は正の整数）（像関数の高次微分を使用）"
+        answer:
+          steps:
+            - "f(t) = 1 とおくと F(s) = L[1] = 1/s"
+            - "F^{(n)}(s) = d^n/ds^n [1/s] = (-1)^n n!/s^{n+1}"
+            - "L[t^n·1] = (-1)^n F^{(n)}(s) = (-1)^n·(-1)^n n!/s^{n+1}"
+          result: "L[t^n] = n!/s^{n+1}  (s > 0)"
+
+      - id: 問16
+        content: "L[(e^{2t} - e^t)/t] を求めよ"
+        answer:
+          steps:
+            - "像関数の積分: L[f(t)/t] = ∫ₛ^∞ F(u)du を利用"
+            - "f(t) = e^{2t} - e^t とおくと F(u) = L[e^{2t}-e^t]|_{s=u} = 1/(u-2) - 1/(u-1)"
+            - "L[(e^{2t}-e^t)/t] = ∫ₛ^∞ (1/(u-2) - 1/(u-1)) du"
+            - "= [ln(u-2) - ln(u-1)]ₛ^∞"
+            - "= lim_{u→∞} ln((u-2)/(u-1)) - ln((s-2)/(s-1))"
+            - "= 0 - ln((s-2)/(s-1)) = ln((s-1)/(s-2))"
+          result: "L[(e^{2t}-e^t)/t] = ln((s-1)/(s-2))  (s > 2)"
+          note: "p.56 スキャンで確認（元YAMLの e^{-τ}/τ は誤記）"
+
+
+  - id: 4
+    title: 逆ラプラス変換
+    pages: "56-61"
+
+    definition:
+      name: 逆ラプラス変換
+      notation: "f(t) = L⁻¹[F(s)]"
+      description: "F(s) = L[f(t)] のとき f(t) を F(s) の逆ラプラス変換という"
+      conditions_for_existence:
+        - "(i) f(t) は t ≥ 0 で有界"
+        - "(ii) 各有限区間で f(t) は有限個の極大・極小しか持たない（区分的に単調）"
+        - "(iii) f(t) はいたる箇所で右側極限・左側極限が存在する"
+
+    properties:
+      - name: 一意性
+        content: |
+          f₁(t) と f₂(t) がともに連続で L[f₁(t)] = L[f₂(t)] = F(s) ならば
+          f₁(t) = f₂(t)
+      - name: 線形性
+        formula: "L⁻¹[c₁F₁(s) + c₂F₂(s)] = c₁f₁(t) + c₂f₂(t)"
+      - name: 移動法則
+        formula: "L⁻¹[F(s-a)] = e^{at}f(t)"
+
+    basic_inverse_transforms:
+      - F_s: "1/(s-α)"
+        f_t: "e^{αt}"
+      - F_s: "1/(s-α)²"
+        f_t: "te^{αt}"
+      - F_s: "1/((s-α)(s-β))  (α ≠ β)"
+        f_t: "(e^{αt} - e^{βt}) / (α - β)"
+      - F_s: "1/((s-α)²+β²)  (β ≠ 0)"
+        f_t: "(1/β)e^{αt}sin(βt)"
+      - F_s: "(s-α)/((s-α)²+β²)"
+        f_t: "e^{αt}cos(βt)"
+
+    method:
+      name: 部分分数分解による逆ラプラス変換
+      description: |
+        有理関数 F(s) を部分分数に分解し、各項の逆ラプラス変換の和として求める
+
+    examples:
+      - id: 例題12
+        problem: |
+          次の逆ラプラス変換を求めよ（α, β は定数）
+          (1) 1/(s-α)
+          (2) 1/(s-α)²
+          (3) 1/((s-α)(s-β))  α ≠ β
+          (4) 1/((s-α)²+β²)  β ≠ 0
+        results:
+          - "(1): e^{αt}"
+          - "(2): te^{αt}"
+          - "(3): (e^{αt} - e^{βt}) / (α - β)"
+          - "(4): (1/β)e^{αt}sin(βt)"
+
+      - id: 例題13
+        problem: |
+          次の関数の逆ラプラス変換を求めよ
+          (1) 1/((s-1)²+4)
+          (2) (s+2)/((s+2)²+9)
+        solution:
+          - id: "(1)"
+            steps:
+              - "分母を (s-α)²+β² の形に整理: α=1, β=2"
+              - "L⁻¹[1/((s-1)²+4)] = L⁻¹[(1/2)·2/((s-1)²+2²)]"
+              - "基本公式 L⁻¹[β/((s-α)²+β²)] = e^{αt}sin(βt) を適用"
+            result: "(1/2)e^t sin(2t)"
+          - id: "(2)"
+            steps:
+              - "分母を (s-α)²+β² の形に整理: α=-2, β=3"
+              - "分子 s+2 = (s-α)|_{α=-2} に一致"
+              - "基本公式 L⁻¹[(s-α)/((s-α)²+β²)] = e^{αt}cos(βt) を適用"
+            result: "e^{-2t}cos(3t)"
+
+      - id: 例題14
+        problem: |
+          次の逆ラプラス変換を求めよ
+          (1) 1/((s+2)(s+3)(s+4))
+          (2) (3s²+5) / (s(s+1)²(s-3))
+        solution_1:
+          partial_fraction: "A/(s+2) + B/(s+3) + C/(s+4)"
+          coefficients: "A = -1, B = 3, C = -2"
+          result: "-e^{-2t} + 3e^{-3t} - 2e^{-4t}"
+        solution_2:
+          partial_fraction: "A/s + B/(s+1) + C/(s+1)² + D/(s-3)"
+          coefficients: "A = -5/3, B = 1, C = -2, D = 2/3  （概略）"
+          result: "(-5/3) + e^{-t} - 2te^{-t} + (2/3)e^{3t}"
+
+    exercises:
+      - id: 問17
+        content: "次の逆ラプラス変換を求めよ: (1) 1/(s²-2s+5)  (2) 1/(s²-4s+8)"
+        answer:
+          steps:
+            - "(1) 平方完成: s²-2s+5 = (s-1)²+4 = (s-1)²+2²"
+            - "    L⁻¹[1/((s-1)²+4)] = (1/2)·L⁻¹[2/((s-1)²+2²)] = (1/2)e^t sin(2t)"
+            - "(2) 平方完成: s²-4s+8 = (s-2)²+4 = (s-2)²+2²"
+            - "    L⁻¹[1/((s-2)²+4)] = (1/2)e^{2t}sin(2t)"
+          results:
+            - "(1) (1/2)e^t sin(2t)"
+            - "(2) (1/2)e^{2t}sin(2t)"
+
+      - id: 問13_演習
+        content: |
+          次の関数の逆ラプラス変換を求めよ
+          (1) 1/(s-4)²
+          (2) 1/((s-1)²+4)
+        answer:
+          steps:
+            - "(1) 基本公式 L⁻¹[1/(s-α)²] = te^{αt} に α=4 を代入"
+            - "(2) L⁻¹[1/((s-1)²+4)] = (1/2)e^t sin(2t)（問17(1)と同じ）"
+          results:
+            - "(1) te^{4t}"
+            - "(2) (1/2)e^t sin(2t)"
+
+      - id: 問18
+        content: |
+          次の逆ラプラス変換を求めよ
+          (1) (s-1)/(s²-4s+5)
+          (2) (s-2)/(s²-6s+10)
+        answer:
+          steps:
+            - "(1) 平方完成: s²-4s+5 = (s-2)²+1  分子 s-1 = (s-2)+1"
+            - "    (s-1)/((s-2)²+1) = (s-2)/((s-2)²+1) + 1/((s-2)²+1)"
+            - "    L⁻¹ = e^{2t}cos t + e^{2t}sin t = e^{2t}(cos t + sin t)"
+            - "(2) 平方完成: s²-6s+10 = (s-3)²+1  分子 s-2 = (s-3)+1"
+            - "    (s-2)/((s-3)²+1) = (s-3)/((s-3)²+1) + 1/((s-3)²+1)"
+            - "    L⁻¹ = e^{3t}cos t + e^{3t}sin t = e^{3t}(cos t + sin t)"
+          results:
+            - "(1) e^{2t}(cos t + sin t)"
+            - "(2) e^{3t}(cos t + sin t)"
+
+      - id: 問19
+        content: |
+          次の逆ラプラス変換を求めよ
+          (1) 1/(s(s-1)(s-2))
+          (2) (5s+1)/(s(s-1)(s+2))
+        answer:
+          steps:
+            - "(1) 部分分数: A/s + B/(s-1) + C/(s-2)"
+            - "    A = 1/((0-1)(0-2)) = 1/2"
+            - "    B = 1/(1·(1-2)) = -1"
+            - "    C = 1/(2·(2-1)) = 1/2"
+            - "    L⁻¹ = 1/2 - e^t + (1/2)e^{2t}"
+            - "(2) 部分分数: A/s + B/(s-1) + C/(s+2)"
+            - "    A = 1/((0-1)(0+2)) = -1/2"
+            - "    B = (5+1)/(1·(1+2)) = 2"
+            - "    C = (-10+1)/((-2)(-3)) = -9/6 = -3/2"
+            - "    L⁻¹ = -1/2 + 2e^t - (3/2)e^{-2t}"
+          results:
+            - "(1) 1/2 - e^t + (1/2)e^{2t}"
+            - "(2) -1/2 + 2e^t - (3/2)e^{-2t}"
+
+
+practice_problems:
+  id: 練習問題1
+  page: "61"
+  problems:
+    - id: 1
+      title: "次の関数のラプラス変換を求めよ"
+      subproblems:
+        - id: "(1)"
+          content: "f(t) = 1"
+          hint: "例題1"
+        - id: "(2)"
+          content: "sin 2t"
+          hint: "例題4 + 相似性"
+        - id: "(3)"
+          content: "(2^t + 3^t)sin 4t"
+          hint: "線形性 + 像関数の移動法則（e^{at} = e^{t·ln a}）"
+        - id: "(4)"
+          content: "t^n cos t"
+          hint: "像関数の高次微分: L[t^n f(t)] = (-1)^n F^{(n)}(s)"
+
+    - id: 2
+      title: |
+        正の実数 a, b, k（ただし a < b ≤ c）について、次の関数のグラフを用いて
+        単位ステップ関数で表し、そのラプラス変換を求めよ
+      subproblems:
+        - id: "(1)"
+          content: |
+            f(t) = { 0  (0 ≤ t < a)
+                   { k  (a ≤ t < b)
+                   { 0  (b ≤ t)
+          hint: "f(t) = k[U(t-a) - U(t-b)]"
+        - id: "(2)"
+          content: |
+            g(t) = 階段状の関数（グラフ参照）
+          hint: "複数のステップ関数の和"
+
+    - id: 3
+      title: "次の関数の逆ラプラス変換を求めよ"
+      subproblems:
+        - id: "(1)"
+          content: "(s+1)/(s²+2s+5)"
+          hint: "平方完成: (s+1)/((s+1)²+4) → 移動法則"
+          result: "e^{-t}cos(2t)"
+        - id: "(2)"
+          content: "1/(s²-2s+5)"
+          hint: "平方完成: 1/((s-1)²+4) → 移動法則"
+          result: "(1/2)e^t sin(2t)"
+        - id: "(3)"
+          content: "(s+3)/((s+1)(s²+4))"
+          hint: "部分分数: A/(s+1) + (Bs+C)/(s²+4)"
+          partial_fractions:
+            A: "2/5"
+            B: "-2/5"
+            C: "7/5"
+          result: "(2/5)e^{-t} - (2/5)cos(2t) + (7/10)sin(2t)"
+          note: "スキャン Scan2026-03-24_122253.jpg p.61 より確認"
+        - id: "(4)"
+          content: "s/(2s-1)²"
+          hint: "部分分数: A/(2s-1) + B/(2s-1)²"
+          result: "(1/4)e^{t/2}(1+t)"
+
+    - id: 4
+      title: "関数 F(s) = s/((s+2)(s²+4)) について、次の問いに答えよ"
+      note: "スキャン Scan2026-03-24_122253.jpg p.61 より確認"
+      subproblems:
+        - id: "(1)"
+          content: |
+            次の形式が成り立つように A, B, C の値を定めよ
+            F(s) = A/(s+2) + (Bs+C)/(s²+4)
+          partial_fractions:
+            A: "-1/4"
+            B: "1/4"
+            C: "1/2"
+        - id: "(2)"
+          content: "関数 F(s) の逆ラプラス変換を求めよ"
+          result: "(-1/4)e^{-2t} + (1/4)cos(2t) + (1/4)sin(2t)"
+
+    - id: 5
+      title: "像関数の微分法則を用いて、次の関数の逆ラプラス変換を求めよ"
+      note: "スキャン Scan2026-03-24_122253.jpg p.61 より確認"
+      subproblems:
+        - id: "(1)"
+          content: "s/(s²+4)²"
+          hint: "F(s) = 1/(s²+4) の微分: F'(s) = -2s/(s²+4)²  →  L^{-1}[s/(s²+4)²] = t sin(2t)/4"
+          result: "t sin(2t)/4"
+        - id: "(2)"
+          content: "1/(s²+4)²"
+          hint: "F(s) = s/(s²+4) の微分または畳み込みを利用"
+          result: "(sin(2t) - 2t cos(2t))/16"
+
+
+basic_laplace_table:
+  title: 基本ラプラス変換表
+  entries:
+    - f_t: "1"
+      F_s: "1/s"
+      condition: "s > 0"
+    - f_t: "t"
+      F_s: "1/s²"
+      condition: "s > 0"
+    - f_t: "t^n  (n = 1,2,…)"
+      F_s: "n!/s^{n+1}"
+      condition: "s > 0"
+    - f_t: "e^{at}"
+      F_s: "1/(s-a)"
+      condition: "s > a"
+    - f_t: "sin(ωt)"
+      F_s: "ω/(s²+ω²)"
+      condition: "s > 0"
+    - f_t: "cos(ωt)"
+      F_s: "s/(s²+ω²)"
+      condition: "s > 0"
+    - f_t: "sinh t"
+      F_s: "1/(s²-1)"
+      condition: "s > 1"
+    - f_t: "cosh t"
+      F_s: "s/(s²-1)"
+      condition: "s > 1"
+    - f_t: "U(t-a)"
+      F_s: "e^{-as}/s"
+      condition: "s > 0, a ≥ 0"
+    - f_t: "f(at)"
+      F_s: "(1/a)F(s/a)"
+      condition: "a > 0（相似性）"
+    - f_t: "e^{at}f(t)"
+      F_s: "F(s-a)"
+      condition: "像関数の移動法則"
+    - f_t: "e^{αt}sin(μt)"
+      F_s: "μ/((s-α)²+μ²)"
+      condition: "像関数の移動法則の応用"
+    - f_t: "f(t-μ)U(t-μ)"
+      F_s: "e^{-μs}F(s)"
+      condition: "μ ≥ 0（原関数の移動法則）"
+    - f_t: "f'(t)"
+      F_s: "sF(s) - f(0)"
+      condition: "原関数の微分法則"
+    - f_t: "f^{(n)}(t)"
+      F_s: "s^n F(s) - s^{n-1}f(0) - … - f^{(n-1)}(0)"
+      condition: "高次微分法則"
+    - f_t: "t^n f(t)"
+      F_s: "(-1)^n F^{(n)}(s)"
+      condition: "像関数の高次微分"
+    - f_t: "∫₀^t f(τ)dτ"
+      F_s: "F(s)/s"
+      condition: "原関数の積分法則"
+    - f_t: "f(t)/t"
+      F_s: "∫ₛ^∞ F(u)du"
+      condition: "像関数の積分"

@@ -1,0 +1,186 @@
+% ============================================================
+% 共通 Beamer テンプレート（スタイル定義）
+% ============================================================
+% このファイルは編集不要（1回作成すれば全講義で使い回せる）
+% 個別の講義ファイルから \usepackage{beamer_template} で読み込む
+% ============================================================
+
+\ProvidesPackage{beamer_template}
+
+% --- 数式マクロ集を読み込み（同じディレクトリから自動検出） ---
+\RequirePackage{math_macros}
+
+% --- 出力モード判定（デフォルトは handout = 0, slide = 1） ---
+\providecommand{\slidemode}{0}
+
+% --- handout モードの場合のみ配布資料レイアウトを適用 ---
+\RequirePackage{pgfpages}
+
+\ifnum\slidemode=1
+  % slide モード: 何もしない（フルスクリーン）
+\else
+  % handout モード: 配布資料レイアウト: 4スライド/ページ
+  \pgfpagesuselayout{4 on 1}[a4paper, landscape, border shrink=5mm]
+  \pgfpageslogicalpageoptions{1}{border code=\pgfsetlinewidth{0.6pt}\pgfusepath{stroke}}
+  \pgfpageslogicalpageoptions{2}{border code=\pgfsetlinewidth{0.6pt}\pgfusepath{stroke}}
+  \pgfpageslogicalpageoptions{3}{border code=\pgfsetlinewidth{0.6pt}\pgfusepath{stroke}}
+  \pgfpageslogicalpageoptions{4}{border code=\pgfsetlinewidth{0.6pt}\pgfusepath{stroke}}
+\fi
+
+% --- 日本語 ---
+\RequirePackage{luatexja}
+\RequirePackage{luatexja-fontspec}
+\IfFontExistsTF{Hiragino Sans}{
+  \setmainjfont{Hiragino Sans}
+  \setsansjfont{Hiragino Sans}
+}{
+  \IfFontExistsTF{Noto Sans CJK JP}{
+    \setmainjfont{Noto Serif CJK JP}
+    \setsansjfont{Noto Sans CJK JP}
+  }{
+    \IfFontExistsTF{Yu Mincho}{
+      \setmainjfont{Yu Mincho}
+      \setsansjfont{Yu Gothic}
+    }{
+      \setmainjfont{IPAexMincho}
+      \setsansjfont{IPAexGothic}
+    }
+  }
+}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+
+% --- 数式 ---
+\RequirePackage{amsmath,amssymb,mathtools,bm}
+
+% --- 図表 ---
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{subcaption}
+\captionsetup[subfigure]{labelformat=empty}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+
+% --- コード表示 ---
+\RequirePackage{listings}
+\RequirePackage{xcolor}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  stringstyle=\ttfamily,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=8pt,
+  frame=single,
+  frameround=tttt,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4,
+  showstringspaces=false,
+  captionpos=b,
+  backgroundcolor=\color{black!3},
+  rulecolor=\color{black!30}
+}
+
+% --- 枠付きボックス（モノクロでも区別しやすい） ---
+\RequirePackage{tcolorbox}
+\tcbuselibrary{skins}
+
+% 重要ボックス（宿題など）: 太枠＋白背景
+\newtcolorbox{importantbox}[1][]{%
+  colback=white, colframe=black,
+  boxrule=1.5pt, arc=0pt,
+  fonttitle=\bfseries, title={#1},
+  coltitle=white, colbacktitle=black,
+  top=3pt, bottom=3pt, left=4pt, right=4pt
+}
+
+% 注意ボックス: 破線枠
+\newtcolorbox{noticebox}[1][]{%
+  colback=white, colframe=black,
+  boxrule=0.8pt, arc=0pt,
+  borderline={0.8pt}{0pt}{black, dashed},
+  fonttitle=\bfseries, title={#1},
+  coltitle=black, colbacktitle=black!5,
+  top=3pt, bottom=3pt, left=4pt, right=4pt
+}
+
+% --- テーマ ---
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=8mm, text margin right=8mm}
+
+% ============================================================
+% カラー設定（slidemode=1: カラー投影用 / slidemode=0: モノクロ配布用）
+% ============================================================
+\ifnum\slidemode=1
+  % ----- カラー投影用（Navy Blue） -----
+  \definecolor{maincolor}{RGB}{31,73,125}
+  \setbeamercolor{structure}{fg=maincolor}
+  \setbeamercolor{frametitle}{fg=white, bg=maincolor}
+  \setbeamercolor{block title}{bg=maincolor, fg=white}
+  \setbeamercolor{block body}{bg=maincolor!8, fg=black}
+  \setbeamercolor{block title example}{bg=maincolor!60, fg=white}
+  \setbeamercolor{block body example}{bg=maincolor!5, fg=black}
+  \setbeamercolor{block title alerted}{bg=orange!85!red, fg=white}
+  \setbeamercolor{block body alerted}{bg=orange!5, fg=black}
+  \setbeamerfont{block title alerted}{series=\bfseries}
+  \setbeamercolor{palette primary}{bg=maincolor, fg=white}
+  \setbeamercolor{palette secondary}{bg=maincolor!80, fg=white}
+  \setbeamercolor{palette tertiary}{bg=maincolor!60, fg=white}
+  \setbeamercolor{palette quaternary}{bg=maincolor!40, fg=white}
+  \setbeamercolor{title in head/foot}{bg=maincolor!80, fg=white}
+  \setbeamercolor{page number in head/foot}{bg=maincolor!60, fg=white}
+  \setbeamercolor{author in head/foot}{bg=maincolor!80, fg=white}
+  \setbeamercolor{title}{fg=maincolor}
+  \setbeamercolor{subtitle}{fg=maincolor!70}
+  \setbeamercolor{description item}{fg=maincolor}
+  \setbeamercolor{item}{fg=maincolor!80}
+\else
+  % ----- モノクロ配布用 -----
+  \setbeamercolor{block title}{bg=black!70, fg=white}
+  \setbeamercolor{block body}{bg=black!3, fg=black}
+  \setbeamercolor{block title example}{bg=black!40, fg=white}
+  \setbeamercolor{block body example}{bg=black!1, fg=black}
+  \setbeamercolor{block title alerted}{bg=black, fg=white}
+  \setbeamercolor{block body alerted}{bg=white, fg=black}
+  \setbeamerfont{block title alerted}{series=\bfseries}
+  \setbeamercolor{structure}{fg=black!80}
+  \setbeamercolor{frametitle}{fg=black, bg=black!8}
+  \setbeamercolor{title}{fg=black}
+  \setbeamercolor{subtitle}{fg=black!70}
+  \setbeamercolor{description item}{fg=black}
+  \setbeamercolor{item}{fg=black!70}
+\fi
+
+% --- フッタ ---
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{
+  \leavevmode\hbox{
+    \begin{beamercolorbox}[wd=.493\paperwidth,ht=2.2ex,dp=1ex,leftskip=8mm]{author in head/foot}
+      \tiny \CourseName\quad 第\LectureNum 回
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.493\paperwidth,ht=2.2ex,dp=1ex,rightskip=8mm]{page number in head/foot}
+      \hfill\tiny \insertframenumber/\inserttotalframenumber
+    \end{beamercolorbox}
+  }
+}
+
+% --- 便利コマンド ---
+\newcommand{\kw}[1]{\textbf{#1}}
+
+% --- デフォルト値（各講義ファイルで上書き可能） ---
+% TermName はプリアンブルで \renewcommand されるため先に定義
+\providecommand{\TermName}{2026年度}
+% 他は \AtBeginDocument 内で定義（各講義ファイルの \newcommand と競合しない）
+\AtBeginDocument{%
+  \providecommand{\LectureNum}{0}%
+  \providecommand{\CourseName}{講義}%
+  \providecommand{\TeacherName}{稲積 泰宏}%
+  \providecommand{\InstituteName}{石川工業高等専門学校}%
+}
+
+\endinput

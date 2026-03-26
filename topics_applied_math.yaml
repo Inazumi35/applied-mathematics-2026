@@ -1,0 +1,640 @@
+course:
+  name: 応用数学
+  grade: 4
+  textbook: 高遠節夫ほか「新応用数学」（大日本図書）
+  workbook: 高遠節夫ほか「新応用数学 問題集」（大日本図書）
+  evaluation:
+    zenki: 前期中間試験35%、前期末試験35%、課題30%
+  goals:
+    - ラプラス変換の定義を理解し、ラプラス変換、逆ラプラス変換を求めることができる
+    - ラプラス変換を用いて微分方程式を解くことができる
+    - 周期関数のフーリエ級数を求めることができる
+    - フーリエ変換とその性質を理解している
+
+schedule:
+  zenki:
+  # ===== 第1章 ラプラス変換（第1〜7週）=====
+  - week: 1
+    quarter: 1stQ
+    topic: ラプラス変換の定義
+    goal: ラプラス変換の定義を理解し、基本的な関数のラプラス変換を求めることができる
+    summary:
+    - ラプラス変換の定義 F(s)=∫₀^∞ f(t)e^{-st}dt
+    - 基本関数のラプラス変換（1, t, t^n, e^{at}）
+    - ラプラス変換の線形性
+    textbook_pages: 1-8
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - ラプラス変換
+        - 原関数 f(t)
+        - 像関数 F(s)
+        - 線形性
+      slide2:
+        title: 公式・性質
+        content:
+        - "ラプラス変換の定義：$\\mathcal{L}[f(t)] = F(s) = \\int_0^\\infty f(t)e^{-st}\\,dt$"
+        - "$\\mathcal{L}[1] = \\frac{1}{s}$"
+        - "$\\mathcal{L}[t^n] = \\frac{n!}{s^{n+1}}$"
+        - "$\\mathcal{L}[e^{at}] = \\frac{1}{s-a}$"
+        - "線形性：$\\mathcal{L}[af(t)+bg(t)] = aF(s)+bG(s)$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 原関数 f(t) と像関数 F(s) の対応イメージ
+      slide4:
+        title: 例題→問
+        example: 例1) p.3
+        exercise: 問1) p.4
+      slide5:
+        title: 例題→問
+        example: 例2) p.5
+        exercise: 問2) p.6
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 2
+    quarter: 1stQ
+    topic: 相似性と移動法則
+    goal: 相似性と移動法則を用いてラプラス変換を求めることができる
+    summary:
+    - "相似性：$\\mathcal{L}[f(at)] = \\frac{1}{a}F\\left(\\frac{s}{a}\\right)$"
+    - "s移動法則（第1移動法則）：$\\mathcal{L}[e^{at}f(t)] = F(s-a)$"
+    - "t移動法則（第2移動法則）：$\\mathcal{L}[f(t-a)u(t-a)] = e^{-as}F(s)$"
+    - 単位ステップ関数 u(t-a) の定義とラプラス変換
+    textbook_pages: 8-14
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 相似性
+        - s移動法則（第1移動法則）
+        - t移動法則（第2移動法則）
+        - 単位ステップ関数 u(t)
+      slide2:
+        title: 公式・性質
+        content:
+        - "相似性：$\\mathcal{L}[f(at)] = \\frac{1}{a}F\\left(\\frac{s}{a}\\right)$"
+        - "第1移動法則：$\\mathcal{L}[e^{at}f(t)] = F(s-a)$"
+        - "第2移動法則：$\\mathcal{L}[f(t-a)u(t-a)] = e^{-as}F(s)$"
+        - "$\\mathcal{L}[\\sin at] = \\frac{a}{s^2+a^2}$、$\\mathcal{L}[\\cos at] = \\frac{s}{s^2+a^2}$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 単位ステップ関数 u(t-a) のグラフ
+        - t移動の視覚的イメージ
+      slide4:
+        title: 例題→問
+        example: 例3) p.9
+        exercise: 問3) p.10
+      slide5:
+        title: 例題→問
+        example: 例4) p.11
+        exercise: 問4) p.12
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 3
+    quarter: 1stQ
+    topic: 微分法則と積分法則
+    goal: ラプラス変換の微分法則・積分法則を理解し適用できる
+    summary:
+    - "微分法則：$\\mathcal{L}[f'(t)] = sF(s) - f(0)$"
+    - "$\\mathcal{L}[f''(t)] = s^2F(s) - sf(0) - f'(0)$"
+    - "積分法則：$\\mathcal{L}\\left[\\int_0^t f(\\tau)d\\tau\\right] = \\frac{F(s)}{s}$"
+    - "像の微分：$\\mathcal{L}[tf(t)] = -F'(s)$"
+    textbook_pages: 14-20
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 微分法則
+        - 積分法則
+        - 像の微分
+      slide2:
+        title: 公式・性質
+        content:
+        - "微分法則：$\\mathcal{L}[f'(t)] = sF(s) - f(0)$"
+        - "2階微分：$\\mathcal{L}[f''(t)] = s^2F(s) - sf(0) - f'(0)$"
+        - "積分法則：$\\mathcal{L}\\left[\\int_0^t f(\\tau)d\\tau\\right] = \\frac{F(s)}{s}$"
+        - "像の微分：$\\mathcal{L}[tf(t)] = -F'(s)$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 微分法則の導出イメージ
+      slide4:
+        title: 例題→問
+        example: 例5) p.15
+        exercise: 問5) p.16
+      slide5:
+        title: 例題→問
+        example: 例6) p.17
+        exercise: 問6) p.18
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 4
+    quarter: 1stQ
+    topic: 逆ラプラス変換
+    goal: 部分分数分解を用いて逆ラプラス変換を求めることができる
+    summary:
+    - 逆ラプラス変換の定義と記法
+    - 部分分数分解による逆ラプラス変換
+    - ラプラス変換表の活用
+    textbook_pages: 20-26
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 逆ラプラス変換
+        - 部分分数分解
+        - ラプラス変換表
+      slide2:
+        title: 公式・性質
+        content:
+        - "逆ラプラス変換：$\\mathcal{L}^{-1}[F(s)] = f(t)$"
+        - "逆変換の線形性：$\\mathcal{L}^{-1}[aF(s)+bG(s)] = af(t)+bg(t)$"
+        - 部分分数分解の手順
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 部分分数分解の手順フローチャート
+      slide4:
+        title: 例題→問
+        example: 例7) p.21
+        exercise: 問7) p.22
+      slide5:
+        title: 例題→問
+        example: 例8) p.23
+        exercise: 問8) p.24
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 5
+    quarter: 1stQ
+    topic: 微分方程式への応用
+    goal: ラプラス変換を用いて微分方程式（初期値問題）を解くことができる
+    summary:
+    - ラプラス変換による微分方程式の解法手順
+    - "手順：①両辺をラプラス変換 → ②代数方程式を解く → ③逆変換"
+    - 初期条件の代入
+    textbook_pages: 26-32
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 初期値問題
+        - 代数方程式への変換
+      slide2:
+        title: 公式・性質
+        content:
+        - "解法手順："
+        - "①微分方程式の両辺をラプラス変換する"
+        - "②像関数 Y(s) について代数方程式を解く"
+        - "③逆ラプラス変換で y(t) を求める"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - ラプラス変換による解法のフローチャート（t領域 → s領域 → t領域）
+      slide4:
+        title: 例題→問
+        example: 例9) p.27
+        exercise: 問9) p.28
+      slide5:
+        title: 例題→問
+        example: 例10) p.29
+        exercise: 問10) p.30
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 6
+    quarter: 1stQ
+    topic: たたみ込み
+    goal: たたみ込みの定義とラプラス変換との関係を理解し活用できる
+    summary:
+    - "たたみ込みの定義：$(f*g)(t) = \\int_0^t f(\\tau)g(t-\\tau)d\\tau$"
+    - "たたみ込み定理：$\\mathcal{L}[f*g] = F(s)G(s)$"
+    - たたみ込みを用いた逆ラプラス変換
+    textbook_pages: 32-36
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - たたみ込み（合成積・畳み込み積分）
+        - たたみ込み定理
+      slide2:
+        title: 公式・性質
+        content:
+        - "たたみ込みの定義：$(f*g)(t) = \\int_0^t f(\\tau)g(t-\\tau)\\,d\\tau$"
+        - "たたみ込み定理：$\\mathcal{L}[f*g] = F(s)\\cdot G(s)$"
+        - "交換法則：$f*g = g*f$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - たたみ込みの視覚的イメージ
+      slide4:
+        title: 例題→問
+        example: 例11) p.33
+        exercise: 問11) p.34
+      slide5:
+        title: 例題→問
+        example: 例12) p.35
+        exercise: 問12) p.36
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 7
+    quarter: 1stQ
+    topic: 線形システムの伝達関数とデルタ関数
+    goal: 伝達関数とデルタ関数の概念を理解できる
+    summary:
+    - 線形システムと伝達関数
+    - "デルタ関数 δ(t) の性質"
+    - "$\\mathcal{L}[\\delta(t)] = 1$"
+    - インパルス応答と伝達関数の関係
+    textbook_pages: 36-42
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 線形システム
+        - 伝達関数
+        - デルタ関数 δ(t)
+        - インパルス応答
+      slide2:
+        title: 公式・性質
+        content:
+        - "伝達関数：$H(s) = \\frac{Y(s)}{X(s)}$"
+        - "デルタ関数の性質：$\\int_{-\\infty}^{\\infty} f(t)\\delta(t-a)\\,dt = f(a)$"
+        - "$\\mathcal{L}[\\delta(t)] = 1$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 線形システムのブロック図（入力→システム→出力）
+        - デルタ関数のイメージ
+      slide4:
+        title: 例題→問
+        example: 例13) p.37
+        exercise: 問13) p.38
+      slide5:
+        title: 例題→問
+        example: 例14) p.39
+        exercise: 問14) p.40
+      slide6:
+        title: まとめ
+        summary: true
+
+  # ===== 第2章 フーリエ解析（第8〜14週）=====
+  - week: 8
+    quarter: 2ndQ
+    topic: 周期2πの周期関数のフーリエ級数
+    goal: 周期2πの関数のフーリエ級数を求めることができる
+    summary:
+    - "フーリエ級数の定義：$f(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty}(a_n\\cos nx + b_n\\sin nx)$"
+    - "フーリエ係数：$a_n = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\cos nx\\,dx$"
+    - "$b_n = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\sin nx\\,dx$"
+    - 偶関数・奇関数とフーリエ級数
+    textbook_pages: 43-52
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 周期関数
+        - フーリエ級数
+        - フーリエ係数 (a_n, b_n)
+        - 偶関数・奇関数
+      slide2:
+        title: 公式・性質
+        content:
+        - "フーリエ級数：$f(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty}(a_n\\cos nx + b_n\\sin nx)$"
+        - "$a_n = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\cos nx\\,dx$"
+        - "$b_n = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi}f(x)\\sin nx\\,dx$"
+        - "偶関数 → b_n=0（余弦級数）、奇関数 → a_n=0（正弦級数）"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 周期関数のグラフ例
+        - フーリエ級数の部分和による近似
+      slide4:
+        title: 例題→問
+        example: 例15) p.45
+        exercise: 問15) p.46
+      slide5:
+        title: 例題→問
+        example: 例16) p.48
+        exercise: 問16) p.49
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 9
+    quarter: 2ndQ
+    topic: 一般の周期関数のフーリエ級数（１）
+    goal: 一般の周期2Lの関数のフーリエ級数を求めることができる
+    summary:
+    - "周期2Lのフーリエ級数：$f(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty}\\left(a_n\\cos\\frac{n\\pi x}{L} + b_n\\sin\\frac{n\\pi x}{L}\\right)$"
+    - "$a_n = \\frac{1}{L}\\int_{-L}^{L}f(x)\\cos\\frac{n\\pi x}{L}\\,dx$"
+    - "$b_n = \\frac{1}{L}\\int_{-L}^{L}f(x)\\sin\\frac{n\\pi x}{L}\\,dx$"
+    textbook_pages: 52-58
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 周期2Lの関数
+        - 一般のフーリエ係数
+      slide2:
+        title: 公式・性質
+        content:
+        - "周期2Lのフーリエ級数"
+        - "$a_n = \\frac{1}{L}\\int_{-L}^{L}f(x)\\cos\\frac{n\\pi x}{L}\\,dx$"
+        - "$b_n = \\frac{1}{L}\\int_{-L}^{L}f(x)\\sin\\frac{n\\pi x}{L}\\,dx$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 周期2Lの関数のグラフ
+      slide4:
+        title: 例題→問
+        example: 例17) p.53
+        exercise: 問17) p.54
+      slide5:
+        title: 例題→問
+        example: 例18) p.55
+        exercise: 問18) p.56
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 10
+    quarter: 2ndQ
+    topic: 一般の周期関数のフーリエ級数（２）
+    goal: 半区間展開（偶数展開・奇数展開）を理解し適用できる
+    summary:
+    - 半区間のフーリエ余弦展開
+    - 半区間のフーリエ正弦展開
+    - 区間 [0, L] で定義された関数の偶数展開・奇数展開
+    textbook_pages: 58-64
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 半区間展開
+        - フーリエ余弦展開
+        - フーリエ正弦展開
+      slide2:
+        title: 公式・性質
+        content:
+        - "余弦展開：$f(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty}a_n\\cos\\frac{n\\pi x}{L}$"
+        - "正弦展開：$f(x) = \\sum_{n=1}^{\\infty}b_n\\sin\\frac{n\\pi x}{L}$"
+        - 偶数展開と奇数展開の使い分け
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 半区間展開の視覚的イメージ（偶数展開 vs 奇数展開）
+      slide4:
+        title: 例題→問
+        example: 例19) p.59
+        exercise: 問19) p.60
+      slide5:
+        title: 例題→問
+        example: 例20) p.61
+        exercise: 問20) p.62
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 11
+    quarter: 2ndQ
+    topic: 複素フーリエ級数
+    goal: 複素フーリエ級数の定義を理解し求めることができる
+    summary:
+    - "複素フーリエ級数：$f(x) = \\sum_{n=-\\infty}^{\\infty}c_n e^{inx}$"
+    - "複素フーリエ係数：$c_n = \\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}f(x)e^{-inx}\\,dx$"
+    - "実フーリエ係数との関係：$c_n = \\frac{a_n - ib_n}{2}$"
+    textbook_pages: 64-70
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 複素フーリエ級数
+        - 複素フーリエ係数 c_n
+        - オイラーの公式
+      slide2:
+        title: 公式・性質
+        content:
+        - "オイラーの公式：$e^{i\\theta} = \\cos\\theta + i\\sin\\theta$"
+        - "複素フーリエ級数：$f(x) = \\sum_{n=-\\infty}^{\\infty}c_n e^{inx}$"
+        - "$c_n = \\frac{1}{2\\pi}\\int_{-\\pi}^{\\pi}f(x)e^{-inx}\\,dx$"
+        - "実係数との関係：$c_0 = \\frac{a_0}{2}$、$c_n = \\frac{a_n - ib_n}{2}$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 複素平面上でのフーリエ係数の表現
+      slide4:
+        title: 例題→問
+        example: 例21) p.65
+        exercise: 問21) p.66
+      slide5:
+        title: 例題→問
+        example: 例22) p.67
+        exercise: 問22) p.68
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 12
+    quarter: 2ndQ
+    topic: フーリエ変換と積分定理
+    goal: フーリエ変換の定義と積分定理を理解できる
+    summary:
+    - フーリエ積分定理
+    - "フーリエ変換：$\\hat{f}(\\omega) = \\int_{-\\infty}^{\\infty}f(t)e^{-i\\omega t}\\,dt$"
+    - "逆フーリエ変換：$f(t) = \\frac{1}{2\\pi}\\int_{-\\infty}^{\\infty}\\hat{f}(\\omega)e^{i\\omega t}\\,d\\omega$"
+    textbook_pages: 70-76
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - フーリエ積分定理
+        - フーリエ変換
+        - 逆フーリエ変換
+      slide2:
+        title: 公式・性質
+        content:
+        - "フーリエ変換：$\\hat{f}(\\omega) = \\int_{-\\infty}^{\\infty}f(t)e^{-i\\omega t}\\,dt$"
+        - "逆フーリエ変換：$f(t) = \\frac{1}{2\\pi}\\int_{-\\infty}^{\\infty}\\hat{f}(\\omega)e^{i\\omega t}\\,d\\omega$"
+        - フーリエ積分定理（周期→非周期への拡張）
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - フーリエ級数からフーリエ変換への移行イメージ
+        - 時間領域と周波数領域の対応
+      slide4:
+        title: 例題→問
+        example: 例23) p.71
+        exercise: 問23) p.72
+      slide5:
+        title: 例題→問
+        example: 例24) p.73
+        exercise: 問24) p.74
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 13
+    quarter: 2ndQ
+    topic: フーリエ変換の性質と公式
+    goal: フーリエ変換の基本的な性質と公式を活用できる
+    summary:
+    - フーリエ変換の線形性
+    - 微分のフーリエ変換
+    - たたみ込み定理（フーリエ版）
+    - パーセバルの等式
+    textbook_pages: 76-82
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - 線形性
+        - 微分のフーリエ変換
+        - たたみ込み定理
+        - パーセバルの等式
+      slide2:
+        title: 公式・性質
+        content:
+        - "線形性：$\\mathcal{F}[af+bg] = a\\hat{f}+b\\hat{g}$"
+        - "微分：$\\mathcal{F}[f'(t)] = i\\omega\\hat{f}(\\omega)$"
+        - "たたみ込み定理：$\\mathcal{F}[f*g] = \\hat{f}\\cdot\\hat{g}$"
+        - "パーセバルの等式：$\\int|f(t)|^2dt = \\frac{1}{2\\pi}\\int|\\hat{f}(\\omega)|^2d\\omega$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - フーリエ変換の性質まとめ表
+      slide4:
+        title: 例題→問
+        example: 例25) p.77
+        exercise: 問25) p.78
+      slide5:
+        title: 例題→問
+        example: 例26) p.79
+        exercise: 問26) p.80
+      slide6:
+        title: まとめ
+        summary: true
+
+  - week: 14
+    quarter: 2ndQ
+    topic: スペクトル
+    goal: スペクトルの概念を理解し、フーリエ変換との関連を説明できる
+    summary:
+    - 振幅スペクトルと位相スペクトル
+    - パワースペクトル
+    - 工学的応用（信号解析への導入）
+    textbook_pages: 82-88
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - スペクトル
+        - 振幅スペクトル
+        - 位相スペクトル
+        - パワースペクトル
+      slide2:
+        title: 公式・性質
+        content:
+        - "振幅スペクトル：$|c_n|$ または $|\\hat{f}(\\omega)|$"
+        - "位相スペクトル：$\\arg(c_n)$"
+        - "パワースペクトル：$|\\hat{f}(\\omega)|^2$"
+      slide3:
+        title: 図・グラフ
+        placeholder: true
+        content:
+        - 振幅スペクトルのグラフ例（離散・連続）
+        - 信号の時間領域と周波数領域の対比
+      slide4:
+        title: 例題→問
+        example: 例27) p.83
+        exercise: 問27) p.84
+      slide5:
+        title: 例題→問
+        example: 例28) p.85
+        exercise: 問28) p.86
+      slide6:
+        title: まとめ
+        summary: true
+
+  # ===== 第15週 復習 =====
+  - week: 15
+    quarter: 2ndQ
+    topic: 前期復習
+    goal: ラプラス変換とフーリエ解析の全範囲を復習し、試験に備える
+    summary:
+    - ラプラス変換の公式と計算（第1〜7週）
+    - フーリエ級数の計算（第8〜11週）
+    - フーリエ変換の計算と性質（第12〜14週）
+    textbook_pages: 1-88
+    slides:
+      slide1:
+        title: 表紙
+        goal: true
+        terms:
+        - ラプラス変換
+        - フーリエ級数
+        - フーリエ変換
+      slide2:
+        title: ラプラス変換の総まとめ
+        content:
+        - ラプラス変換の主要公式一覧
+        - 逆ラプラス変換の解法
+        - 微分方程式への応用手順
+      slide3:
+        title: フーリエ解析の総まとめ
+        content:
+        - フーリエ級数（周期2π、周期2L）
+        - 複素フーリエ級数
+        - フーリエ変換と逆変換
+        - スペクトル
+      slide4:
+        title: 重要例題の確認
+        example: ラプラス変換の重要問題
+        exercise: 各自復習
+      slide5:
+        title: 重要例題の確認
+        example: フーリエ解析の重要問題
+        exercise: 各自復習
+      slide6:
+        title: まとめ
+        summary: true

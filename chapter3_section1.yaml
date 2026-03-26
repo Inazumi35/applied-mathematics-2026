@@ -1,0 +1,244 @@
+chapter: 3
+chapter_title: フーリエ解析
+section: 1
+section_title: フーリエ展開
+pages: "74-90"
+
+subsections:
+
+  - id: 1
+    title: フーリエ級数
+    pages: "74-79"
+
+    definition:
+      name: フーリエ展開（周期 2π）
+      condition: |
+        f(t) が周期 2π の区分的に滑らかな関数であるとき、
+        次の無限級数に展開できる（フーリエ展開という）
+      formula: "f(t) = a₀/2 + Σ_{n=1}^∞ (aₙcos(nt) + bₙsin(nt))"
+
+    fourier_coefficients:
+      name: フーリエ係数
+      formulas:
+        - "a₀ = (1/π) ∫_{-π}^{π} f(t) dt"
+        - "aₙ = (1/π) ∫_{-π}^{π} f(t)cos(nt) dt  (n = 1, 2, 3, ...)"
+        - "bₙ = (1/π) ∫_{-π}^{π} f(t)sin(nt) dt  (n = 1, 2, 3, ...)"
+      derivation: "三角関数の直交性を利用して導出"
+
+    orthogonality:
+      title: 三角関数の直交性
+      formulas:
+        - "∫_{-π}^{π} cos(mt)cos(nt) dt = { 0 (m ≠ n), π (m = n ≠ 0), 2π (m = n = 0) }"
+        - "∫_{-π}^{π} sin(mt)sin(nt) dt = { 0 (m ≠ n), π (m = n) }"
+        - "∫_{-π}^{π} cos(mt)sin(nt) dt = 0  （任意の m, n）"
+
+    convergence_theorem:
+      title: フーリエ展開の収束定理
+      conditions:
+        - "f(t) は任意の有限区間で区分的に滑らか"
+        - "1周期内で区分的に連続"
+      results:
+        - "連続点 t₀ では: フーリエ級数 → f(t₀)"
+        - "不連続点 t₀ では: フーリエ級数 → (1/2)[f(t₀+0) + f(t₀-0)]"
+      note: "グラフの N = 10, 20, 50 での収束の様子（p.79）参照"
+
+    examples:
+
+      - id: 例題1
+        page: "78"
+        problem: |
+          f(x) = { 0  (-π ≤ x < 0),  x  (0 ≤ x < π) },  f(x+2π) = f(x) のフーリエ展開を求めよ
+        solution:
+          steps:
+            - "c₀ = (1/2π)∫_{-π}^{π} f(x)dx = (1/2π)∫₀^π x dx = π/4"
+            - "aₙ = (1/π)∫₀^π x cos(nx) dx = -(1/n²π)(1-(-1)^n)"
+            - "bₙ = (1/π)∫₀^π x sin(nx) dx = (-1)^{n+1}/n"
+        result: "f(x) = π/4 + Σ_{n=1}^∞ [-(1/n²π)(1-(-1)^n)cos(nx) + (-1)^{n+1}/n · sin(nx)] = π/4 + (-2/π · cos x + sin x) - (1/2)sin 2x + …"
+
+      - id: 例題2
+        page: "80-81"
+        problem: |
+          f(x) = { 0  (-1 ≤ x < 0),  1  (0 ≤ x < 1) },  f(x+2) = f(x) のフーリエ展開を求めよ
+        solution:
+          steps:
+            - "c₀ = (1/2)∫_{-1}^{1} f(x)dx = (1/2)∫₀^{1} 1 dx = 1/2"
+            - "aₙ = ∫_{-1}^{1} f(x)cos(nπx) dx = ∫₀^1 cos(nπx) dx = 0"
+            - "bₙ = ∫_{-1}^{1} f(x)sin(nπx) dx = ∫₀^1 sin(nπx) dx = (1/nπ)(1 - (-1)^n)"
+        result: "f(x) = 1/2 + Σ_{n=1}^∞ (1/nπ)(1-(-1)^n) sin(nπx) = 1/2 + (2/π)(sin πx + sin(3πx)/3 + sin(5πx)/5 + …)"
+        note: "N=20, N=50 での部分和グラフ（ギブス現象）を p.81 に掲載"
+
+      - id: 例題3
+        page: "80"
+        problem: |
+          f(t) = |t|  (-π ≤ t ≤ π),  f(t+2π) = f(t) のフーリエ展開を求めよ
+        solution:
+          steps:
+            - "f(t) は偶関数なので bₙ = 0"
+            - "a₀ = (2/π) ∫₀^{π} t dt = π"
+            - "aₙ = (2/π) ∫₀^{π} t cos(nt) dt"
+            - "部分積分: = (2/π){[t sin(nt)/n]₀^π - (1/n)∫₀^π sin(nt) dt}"
+            - "= (2/π) · (1/n²)[cos(nπ) - 1] = (2/n²π)[(-1)^n - 1]"
+            - "n が奇数のとき aₙ = -4/n²π,  n が偶数のとき aₙ = 0"
+        result: "f(t) = π/2 - (4/π)(cos t + cos(3t)/9 + cos(5t)/25 + …)"
+
+
+  - id: 2
+    title: 一般の周期関数のフーリエ展開
+    pages: "80-85"
+
+    definition:
+      name: フーリエ展開（周期 T = 2l）
+      formula: "f(t) = a₀/2 + Σ_{n=1}^∞ (aₙcos(nπt/l) + bₙsin(nπt/l))"
+      fourier_coefficients:
+        - "a₀ = (1/l) ∫_{-l}^{l} f(t) dt"
+        - "aₙ = (1/l) ∫_{-l}^{l} f(t)cos(nπt/l) dt  (n = 1, 2, ...)"
+        - "bₙ = (1/l) ∫_{-l}^{l} f(t)sin(nπt/l) dt  (n = 1, 2, ...)"
+
+    even_odd:
+      cosine_expansion:
+        name: フーリエ余弦展開（偶関数）
+        condition: "f(-t) = f(t)"
+        result: "bₙ = 0,  aₙ = (2/l) ∫₀^{l} f(t)cos(nπt/l) dt"
+        formula: "f(t) = a₀/2 + Σ_{n=1}^∞ aₙcos(nπt/l)"
+      sine_expansion:
+        name: フーリエサイン展開（奇関数）
+        condition: "f(-t) = -f(t)"
+        result: "aₙ = 0,  bₙ = (2/l) ∫₀^{l} f(t)sin(nπt/l) dt"
+        formula: "f(t) = Σ_{n=1}^∞ bₙsin(nπt/l)"
+
+    examples:
+
+      - id: 例題3
+        page: "83"
+        problem: |
+          f(x) = |x|  (-1 ≤ x < 1),  f(x+2) = f(x) のフーリエ展開を求めよ
+        solution:
+          steps:
+            - "f(x) は偶関数なので bₙ = 0, フーリエ余弦展開を求めればよい"
+            - "c₀ = ∫_{-1}^{1} |x| dx = 1"
+            - "aₙ = 2∫₀^{1} x cos(nπx) dx = -2(1-(-1)^n)/(n²π²)"
+        result: "f(x) = 1/2 - (4/π²)(cos πx + cos(3πx)/9 + cos(5πx)/25 + …)"
+        note: "N=2, N=5での収束グラフあり（p.83）"
+
+      - id: 例題4
+        page: "84"
+        problem: |
+          f(x) = x(1-x)  (0 ≤ x ≤ 1),  f(-x) = -f(x),  f(x+2) = f(x) のフーリエ展開を求めよ
+        solution:
+          steps:
+            - "f(x) は奇関数なので c₀ = 0,  aₙ = 0,  フーリエ正弦展開を求めればよい"
+            - "bₙ = 2∫₀^{1} x(1-x) sin(nπx) dx = 4(1-(-1)^n)/(n³π³)"
+        result: "f(x) = (8/π³)(sin πx + sin(3πx)/27 + sin(5πx)/125 + …) = (8/π³)Σ_{k=0}^∞ sin((2k+1)πx)/(2k+1)³"
+
+      - id: 例題5
+        page: "84-86"
+        problem: "次の等式が成り立つことを証明せよ: 1 - 1/3 + 1/5 - … = π/4"
+        solution:
+          steps:
+            - "例題2(1)の関数は x = 1/2 で連続だから"
+            - "f(1/2) = 1/2 + (2/π)(sin(π/2) + sin(3π/2)/3 + sin(5π/2)/5 + …)"
+            - "= 1/2 + (2/π)(1 - 1/3 + 1/5 - …)"
+            - "f(1/2) = 1 なので: 1 = 1/2 + (2/π)(1 - 1/3 + 1/5 - …)"
+        result: "1 - 1/3 + 1/5 - … = π/4"
+
+    exercises:
+      - id: 問1
+        content: |
+          次の等式 (IV) が成り立つことを証明せよ
+          ∫_{-π}^{π} cos(mx) cos(nx) dx = { 0  (m ≠ n),  π  (m = n ≠ 0) }
+      - id: 問2
+        content: |
+          次の周期 2π の関数 f(x) のフーリエ級数を求めよ
+          f(x) = x  (-π ≤ x < π),  f(x+2π) = f(x)
+      - id: 問3
+        content: |
+          次の関数のフーリエ級数を求めよ
+          (1) f(x) = { 1  (-1 ≤ x < 0),  0  (0 ≤ x < 1) },  f(x+2) = f(x)
+          (2) g(x) = { 2  (-2 ≤ x < 0),  4  (0 ≤ x < 2) },  g(x+4) = g(x)
+          (3) h(x) = { 2x+1  (-1/2 ≤ x < 0),  0  (0 ≤ x < 1/2) },  h(x+1) = h(x)
+      - id: 問4
+        content: |
+          次の関数のフーリエ級数を求めよ
+          (1) f(x) = { -1  (-1 ≤ x < 0),  1  (0 ≤ x < 1) },  f(x+2) = f(x)
+          (2) g(x) = 1 - |x|  (-1 ≤ x < 1),  g(x+2) = g(x)
+          (3) h(x) = cos(πx/4)  (-2 ≤ x < 2),  h(x+4) = h(x)
+      - id: 問5
+        content: |
+          次の問いに答えよ
+          (1) 例題3の関数のフーリエ級数を用いて、次の公式を導け
+              1/1² + 1/3² + 1/5² + … = π²/8
+          (2) 例題4の関数のフーリエ級数を用いて、次の公式を導け
+              1/1³ - 1/3³ + 1/5³ - … = π³/32
+
+
+  - id: 3
+    title: 複素フーリエ級数
+    pages: "86-89"
+
+    definition:
+      name: 複素フーリエ展開
+      formula: "f(t) = Σ_{n=-∞}^{∞} cₙ e^{int}"
+      coefficients:
+        formula: "cₙ = (1/2π) ∫_{-π}^{π} f(t) e^{-int} dt"
+        relation_to_real:
+          - "c₀ = a₀/2"
+          - "cₙ = (aₙ - ibₙ)/2  (n ≥ 1)"
+          - "c_{-n} = (aₙ + ibₙ)/2  (n ≥ 1)"
+      note: "オイラーの公式 e^{int} = cos(nt) + i sin(nt) を利用"
+
+    general_period:
+      formula: "f(t) = Σ_{n=-∞}^{∞} cₙ e^{inπt/l}"
+      coefficients: "cₙ = (1/2l) ∫_{-l}^{l} f(t) e^{-inπt/l} dt"
+
+    examples:
+      - id: 例題6
+        page: "88"
+        problem: |
+          次の周期 4 の関数 f(x) の複素フーリエ級数を求めよ
+          f(x) = x + 1  (-2 ≤ x < 2),  f(x+4) = f(x)
+        solution:
+          steps:
+            - "cₙ = (1/4) ∫_{-2}^{2} (x+1) e^{-inπx/2} dx"
+            - "n ≠ 0 のとき: e^{inπ} = (-1)^n を用いて計算"
+            - "cₙ = 2(-1)^n / (inπ)"
+            - "n = 0 のとき: c₀ = (1/4)∫_{-2}^{2}(x+1)dx = 1"
+        result: "f(x) = 1 + Σ_{n≠0} 2(-1)^n/(inπ) · e^{inπx/2}"
+
+    exercises:
+      - id: 問6
+        content: |
+          次の周期 2 の関数 f(x), g(x) の複素フーリエ級数を求めよ
+          (1) f(x) = { 0  (-1 ≤ x < 0),  1  (0 ≤ x < 1) },  f(x+2) = f(x)
+          (2) g(x) = { 0  (-1 ≤ x < 0),  x  (0 ≤ x < 1) },  g(x+2) = g(x)
+      - id: 問7
+        content: |
+          次の周期 4 の関数 f(x), g(x) の複素フーリエ級数を求めよ
+          (1) f(x) = { 2  (-2 ≤ x < 0),  0  (0 ≤ x < 2) },  f(x+4) = f(x)
+          (2) g(x) = { 0  (-2 ≤ x < 0),  2-x  (0 ≤ x < 2) },  g(x+4) = g(x)
+
+
+practice_problems:
+  id: 練習問題1
+  page: "90"
+  problems:
+    - id: 1
+      content: |
+        次の周期 2 の関数 f(x) のフーリエ級数を求めよ
+        f(x) = { 1  (-1 ≤ x < 0),  1-x  (0 ≤ x < 1) },  f(x+2) = f(x)
+    - id: 2
+      content: |
+        グラフが次の図で示されている周期 4 の関数のフーリエ級数を求めよ
+        (1) 三角波: f(x) = 2 - |x|  (-2 ≤ x < 2),  f(x+4) = f(x)  （頂点 y=2, 周期 4）
+        (2) のこぎり波: f(x) = x  (-1 ≤ x < 1),  f(x+2) = f(x)  （周期 2）
+    - id: 3
+      content: |
+        次の関数について、以下の問いに答えよ
+        f(x) = x²  (-1 ≤ x < 1),  f(x+2) = f(x)
+        (1) フーリエ級数を求めよ
+        (2) x=0 および x=1 とおくことにより、次の公式を導け
+            1 - 1/2² + 1/3² - … = π²/12
+            1 + 1/2² + 1/3² + … = π²/6
+    - id: 4
+      content: |
+        次の関数 f(x) の複素フーリエ級数を求めよ
+        f(x) = e^x  (-π/2 ≤ x < π/2),  f(x+π) = f(x)

@@ -1,0 +1,16 @@
+*.log
+*.aux
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+texput.*
+__pycache__/
+*.pyc
+# 生成物・中間ファイル
+lecture/*.pdf
+*.nav
+*.snm
+# スキャン画像（大容量）
+scan_pages/

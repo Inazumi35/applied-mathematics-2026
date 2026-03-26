@@ -1,0 +1,67 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=43,professionalfonts,handout]{beamer}
+\usepackage{beamer_template}
+
+\newcommand{\LectureNum}{7}
+\newcommand{\LectureTitle}{線形システムの伝達関数とデルタ関数}
+\newcommand{\TextPages}{p.\,68-71}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{\CourseName\quad 第\LectureNum 回「\LectureTitle」}
+  {\small \TermName\quad \TeacherName\quad ／\quad 教科書 \TextPages}
+
+  \textbf{目標}：線形システムの伝達関数とデルタ関数の概念を理解できる
+
+\end{frame}
+
+\begin{frame}{線形システム}
+  \begin{block}{}
+  \begin{itemize}
+    \item 入力 $x(t) \to $ システム $ \to $ 出力 $y(t)$
+    \item 伝達関数 $H(s) = Y(s)/X(s)$
+    \item $y(t) = h(t)*x(t)$
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{伝達関数}
+  \begin{block}{}
+  \begin{itemize}
+    \item 微分方程式 $ \to $ ラプラス変換 $ \to H(s)$
+    \item $H(s) = 1/(s^{2}+as+b)$
+    \item $h(t) = \mathcal{L}^{-1}[H(s)]$（インパルス応答）
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{デルタ関数}
+  \begin{block}{}
+  \begin{itemize}
+    \item $\varphi_\varepsilon(t)$ の極限としてのデルタ関数
+    \item $\mathcal{L}[\delta(t)] = 1$
+    \item $\int\delta(t)dt = 1$
+    \item $f*\delta = f$（たたみ込みとの関係）
+  \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{演習（練習問題2）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{itemize}
+    \item p.72 問1〜5より選題
+  \end{itemize}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{ラプラス変換まとめ}
+  \begin{itemize}
+    \item 第1〜7週の総括
+    \item 前期中間試験に向けて
+    \item 次回：フーリエ級数
+  \end{itemize}
+\end{frame}
+
+\end{document}
