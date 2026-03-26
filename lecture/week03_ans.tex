@@ -110,7 +110,7 @@
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問13] $L[t \cos(\alpha t)]$ を求めよ
-    \item[問14] $f(t)$ が $f'(t)+2f(t)=f(0)$ を満たすとき、 $L[f(t)]$ を求めよ
+    \item[問14] $f'(t)+2f(t)=t, f(0)=0$ を満たすとき、 $L[f(t)]$ を求めよ
     \item[問15] $L[t^n]$ を求めよ（ n は正の整数）（像関数の高次微分を使用）
     \item[問16] $L[(e^{2t} - e^t)/t]$ を求めよ
   \end{description}
@@ -136,19 +136,19 @@
 \begin{frame}{問14　解答}
   \begin{block}{}
   \begin{itemize}\setlength{\itemsep}{2pt}
-    \item 両辺をラプラス変換 $: (sF(s)-f(0)) + 2F(s) = f(0)/s$
-    \item $(s+2)F(s) = f(0) + f(0)/s = f(0)(s+1)/s$
-    \item $F(s) = f(0)(s+1)/(s(s+2))$
-    \item 部分分数 $: (s+1)/(s(s+2)) = A/s + B/(s+2)$
-    \item $A = 1/2, B = 1/2$
+    \item 両辺をラプラス変換 $: (sF(s)-f(0)) + 2F(s) = 1/s^{2}$
+    \item $f(0)=0$ なので $(s+2)F(s) = 1/s^{2}$
+    \item $F(s) = 1/(s^{2}(s+2))$
+    \item 部分分数 $: 1/(s^{2}(s+2)) = A/s + B/s^{2} + C/(s+2)$
+    \item $A = -1/4,  B = 1/2,  C = 1/4$
+    \item $F(s) = -1/(4s) + 1/(2s^{2}) + 1/(4(s+2))$
   \end{itemize}
   \end{block}
   \begin{exampleblock}{答え}
     \[
-    F(s) = (f(0)/2)(1/s + 1/(s+2))   \to   f(t) = (f(0)/2)(1 + e^{-2t})
+    f(t) = -1/4 + t/2 + (1/4)e^{-2t}
   \]
   \end{exampleblock}
-  {\footnotesize \textcolor{gray}{\textit{問題文は $f'(t)+2f(t)-f(0)=0 \to f'(t)+2f(t)=f(0)$ と同値}}}
 \end{frame}
 
 \begin{frame}{問15　解答}
