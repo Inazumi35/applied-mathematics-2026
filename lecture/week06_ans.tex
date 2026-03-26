@@ -145,7 +145,7 @@
     $(1) \int_{0}^t e^\tau \sin(t-\tau) d\tau$\\
     $(2) \int_{0}^t \tau\cdot \cos(t-\tau) d\tau$\\
     \item[問6] 分配法則 $f*(g_{1}+g_{2}) = f*g_{1} + f*g_{2}$ を証明せよ
-    \item[問7] たたみこみ定理を使い、 $L^{-1}[F(s)\cdot s/(s^{2}+\alpha^{2})]$ をたたみこみで表せ
+    \item[問7] $L[t^{2}*t]$ を求めよ。また、問 5 の結果から直接 $L[t^{2}*t]$ を求めよ
     \item[問8] $L[f(t)] = F(s)$ のとき、次の関数の逆ラプラス変換を求めよ。
     ただし $\alpha, \beta$ は定数で、 (2) では $\alpha \neq \beta$ 、 (3) では $\beta \neq 0$ とする。\\
     $(1) F(s)/(s-\alpha)^{2}$\\
@@ -190,17 +190,18 @@
 \begin{frame}{問7　解答}
   \begin{block}{}
   \begin{itemize}\setlength{\itemsep}{2pt}
-    \item $L[\cos(\alpha t)] = s/(s^{2}+\alpha^{2})$
-    \item たたみこみ定理 $: L^{-1}[F(s)\cdot G(s)] = f(t)*g(t)$
-    \item $G(s) = s/(s^{2}+\alpha^{2})  \to  g(t) = \cos(\alpha t)$
+    \item 【方法1：たたみこみを直接計算】
+    \item $t^{2}*t = \int_{0}^t \tau^{2}(t-\tau) d\tau = t\cdot[\tau^{3}/3]_{0}^t - [\tau⁴/4]_{0}^t = t⁴/3 - t⁴/4 = t⁴/12$
+    \item $L[t⁴/12] = (1/12)\cdot4!/s⁵ = (1/12)\cdot24/s⁵$
+    \item 【方法2：問5（たたみこみ定理）を使う】
+    \item $L[t^{2}*t] = L[t^{2}]\cdot L[t] = (2/s^{3})\cdot(1/s^{2})$
   \end{itemize}
   \end{block}
   \begin{exampleblock}{答え}
     \[
-    L^{-1}[F(s)\cdot s/(s^{2}+\alpha^{2})] = f(t)*\cos(\alpha t) = \int_{0}^t f(t-\tau)\cos(\alpha\tau)d\tau
+    L[t^{2}*t] = 2/s⁵
   \]
   \end{exampleblock}
-  {\footnotesize \textcolor{gray}{\textit{元 YAML の問題文「 $L^{-1}[\cos(\alpha t)]$ のたたみこみ表現」は教科書で要確認}}}
 \end{frame}
 
 \begin{frame}{問8　解答}
