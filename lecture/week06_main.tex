@@ -1,0 +1,160 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\newcommand{\slidemode}{1}  % カラー投影モード
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{6}
+\newcommand{\LectureTitle}{たたみ込み}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第6回　たたみ込み}
+  \begin{block}{本回の内容}
+  たたみ込み
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{第2章 ラプラス変換　§2}}
+\end{frame}
+
+\begin{frame}{定義：たたみこみ（合成積）}
+  \begin{block}{}
+  \[
+    (f * g)(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
+  \]
+  {\footnotesize \textcolor{gray}{$f(t), g(t)$ はいずれも $t \geq 0$ で定義された関数}}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定理：交換法則}
+  \begin{block}{}
+  \[
+    f(t) * g(t) = g(t) * f(t)
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定理：分配法則}
+  \begin{block}{}
+  \[
+    f * (g_{1} + g_{2}) = f*g_{1} + f*g_{2}
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{定理：たたみこみのラプラス変換（たたみこみ定理）}
+  \begin{block}{}
+  \[
+    L[f(t) * g(t)] = L[f(t)] \cdot L[g(t)] = F(s) \cdot G(s)
+  \]
+  \[
+    L^{-1}[F(s) \cdot G(s)] = f(t) * g(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
+\end{frame}
+
+\begin{frame}{例題5}
+  \begin{exampleblock}{問題}
+    $\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau$ を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題5　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] これは sin t * cos t のたたみこみ
+    \item[] 積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$
+    \item[] $= (1/2)[\sin t + \sin(2\tau-t)]$
+    \item[] $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$
+    \item[] $= (1/2)\begin{cases} [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \end{cases}$
+    \item[] $= (1/2)\begin{cases} t \sin t + & (-\cos t/2 - (-\cos(-t)/2)) \end{cases}$
+    \item[] $= (1/2){t \sin t + 0}$（$\cos(-t) = \cos t$ より）
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題6}
+  \begin{exampleblock}{問題}
+    $f(t) * g(t) = g(t) * f(t)$ を証明せよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題6　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$
+    \item[] $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$
+    \item[] $= \int_{t}^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$
+    \item[] $= g(t)*f(t)$
+  \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題7}
+  \begin{exampleblock}{問題}
+    $L[f(t)] = F(s)$ のとき、関数 $F(s)/(s-\alpha)$ の逆ラプラス変換を求めよ。ただし $\alpha$ は定数とする。\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題7　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $L^{-1}[F(s)/(s-\alpha)] = L^{-1}[F(s) \cdot 1/(s-\alpha)]$
+    \item[] $L^{-1}[1/(s-\alpha)] = e^{\alpha t}$ より、たたみこみ定理を適用
+    \item[] $= L^{-1}[F(s)] * e^{\alpha t} = f(t) * e^{\alpha t}$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $L^{-1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題8}
+  \begin{exampleblock}{問題}
+    $\int_{0}^t x(\tau) \sin(t-\tau) d\tau = t^{2}$ を満たす関数 $x(t)$ を求めよ（積分方程式）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題8　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] 左辺は $x(t) * \sin t$ のたたみこみ
+    \item[] 両辺をラプラス変換 $: X(s) \cdot L[\sin t] = L[t^{2}]$
+    \item[] $X(s) \cdot 1/(s^{2}+1) = 2/s^{3}$
+    \item[] $X(s) = 2(s^{2}+1)/s^{3} = 2/s + 2/s^{3}$
+    \item[] 逆ラプラス変換 $: x(t) = 2 + t^{2}$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = t^{2} + 2$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,64--67）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問5] 次のたたみこみを求めよ
+    $(1) \int_{0}^t e^\tau \sin(t-\tau) d\tau$\\
+    $(2) \int_{0}^t \tau\cdot \cos(t-\tau) d\tau$\\
+    \item[問6] 分配法則 $f*(g_{1}+g_{2}) = f*g_{1} + f*g_{2}$ を証明せよ
+    \item[問7] たたみこみ定理を使い、 $L^{-1}[F(s)\cdot s/(s^{2}+\alpha^{2})]$ をたたみこみで表せ
+    \item[問8] $L[f(t)] = F(s)$ のとき、次の関数の逆ラプラス変換を求めよ。
+    ただし $\alpha, \beta$ は定数で、 (2) では $\alpha \neq \beta$ 、 (3) では $\beta \neq 0$ とする。\\
+    $(1) F(s)/(s-\alpha)^{2}$\\
+    $(2) F(s)/((s-\alpha)(s-\beta))$\\
+    $(3) F(s)/((s-\alpha)^{2}+\beta^{2})$\\
+    \item[問9] 次の積分方程式を満たす関数 $x(t)$ を求めよ。
+    $x(t) + \int_{0}^t x(t-\tau)e^\tau d\tau = \cos 3t$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\end{document}

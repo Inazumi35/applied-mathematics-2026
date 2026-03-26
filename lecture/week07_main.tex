@@ -1,0 +1,75 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\newcommand{\slidemode}{1}  % カラー投影モード
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{7}
+\newcommand{\LectureTitle}{線形システムの伝達関数とデルタ関数}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第7回　線形システムの伝達関数とデルタ関数}
+  \begin{block}{本回の内容}
+  線形システムの伝達関数とデルタ関数
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{第2章 ラプラス変換　§2}}
+\end{frame}
+
+\begin{frame}{例題9}
+  \begin{exampleblock}{問題}
+    微分方程式 $x'' + ax' + bx = y(t)$ （ a, b は定数 $, x(0)=0, x'(0)=0$ ）に対して\\[2pt]
+    線形システムの伝達関数 $H(s)$ を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題9　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] 初期値ゼロで両辺をラプラス変換:
+    \item[] $(s^{2}+as+b)X(s) = Y(s)$
+    \item[] $H(s) = X(s)/Y(s) = 1/(s^{2}+as+b)$
+  \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,68--72）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問10] 微分方程式 $x'' + ax' + bx = y(t), x(0)=0, x'(0)=0$ の
+    伝達関数 $H(s)$ を求めよ\\
+    \item[問11] $f(t)*\delta(t) = \delta(t)*f(t) = f(t)$ を、たたみこみの性質を用いて証明せよ
+    \item[問12] 次の微分方程式の解を求めよ。ただし $\omega$ は正の定数とする。
+    $y'' + \omega^{2}y = \delta(t),  y(0) = 0,  y'(0) = 0$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{練習問題2　（p.\,72）}
+  \begin{block}{}
+  \begin{description}
+    \item[問1] 次の微分方程式を解け
+    $(1) d^{2}x/dt^{2} + 25x = 25t$（$t=0$ のとき $x=0, dx/dt=0$）\\
+    $(2) d^{3}x/dt^{3} + 3d^{2}x/dt^{2} + 3dx/dt + x = 0$（$t=0$ のとき $x=0, dx/dt=1, d^{2}x/dt^{2}=-2$）\\
+    $(3) d^{2}x/dt^{2} + 4x = 1,  x(0) = 0,  x(\pi/4) = 0$（境界値問題）\\
+    $(4) d^{2}x/dt^{2} + x = 2\sin 2t$\\
+    \item[問2] 次の関係を同時に満たす関数 $x(t), y(t)$ を求めよ
+    $dx/dt = 3x - y,  dy/dt = x + y,  x(0) = 0,  y(0) = 1$\\
+    \item[問3] たたみこみのラプラス変換の性質を用いて、次の関数の逆ラプラス変換を求めよ
+    $(1) 1/(s^{2}(s-1))$\\
+    $(2) s^{2}/(s^{2}+4)^{2}$\\
+    \item[問4] 次の積分方程式を満たす関数 $x(t)$ を求めよ
+    $x(t) = 4\int_{0}^t x(\tau) \cos 2(t-\tau) d\tau + 1$\\
+    \item[問5] 微分方程式 $y'' - 5y' + 6y = x(t), y(0) = 0, y'(0) = 0$ で表される
+    線形システムについて、次の問いに答えよ\\
+    (1) この線形システムの伝達関数 $H(s)$ を求めよ\\
+    (2) 入力 $x(t) = \delta(t)$ のとき、出力 $y(t)$ を求めよ\\
+    (3) 入力 $x(t) = U(t)$ のとき、出力 $y(t)$ を求めよ\\
+    (4) 入力 $x(t) = e^{-t} (t>0)$ のとき、出力 $y(t)$ を求めよ\\
+  \end{description}
+  \end{block}
+\end{frame}
+
+\end{document}

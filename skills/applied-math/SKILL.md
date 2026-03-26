@@ -123,16 +123,33 @@ exercises:
 ## 現在のステータス（2026-03-26）
 
 - ✅ 全14週コンパイル成功（lualatex exit:0）
-- ✅ week01〜07 の answer フィールド追記済み（chapter2_section1.yaml, chapter2_section2.yaml）
-- ⚠ week08〜14 の answer フィールド未追記（chapter3_section1.yaml, chapter3_section2.yaml）
-- ⚠ PDF の見た目確認未実施
+- ✅ 全14週 answer フィールド追記済み（chapter2_section1/2.yaml + chapter3_section1/2.yaml）
+- ✅ カラー2バージョン生成：`--color` フラグで `weekXX_main.tex`（解説なし）・`weekXX_ans.tex`（解説あり）を生成
+- ✅ サブセクション区切りフレーム：複数サブセクション時のみ表示（week01 冗長スライド解消）
+- ⚠ 全14週 PDF 見た目確認（_main / _ans 両バージョン）未実施
+
+## カラーバージョン生成コマンド
+
+```bash
+# 全14週カラー版生成（_main + _ans）
+cd C:\Users\inazumi\workspace\応用数学
+python yaml2beamer_week.py --color
+
+# 特定週のみ
+python yaml2beamer_week.py --color --week 8
+
+# コンパイル（_main / _ans 両バージョン）
+cd lecture
+for w in week01 week02 week03 week04 week05 week06 week07 week08 week09 week10 week11 week12 week13 week14; do
+  lualatex -interaction=nonstopmode ${w}_main.tex
+  lualatex -interaction=nonstopmode ${w}_ans.tex
+done
+```
 
 ## 次のステップ
 
-1. `chapter3_section1.yaml` に answer フィールドを追記（week08〜11）
-2. `chapter3_section2.yaml` に answer フィールドを追記（week12〜14）
-3. 全14週 PDF で見た目確認
-4. （別タスク）kaken2026: `rd_pilot_2axis.pdf` を tex に挿入 → 最終コンパイル
+1. 全14週 PDF で見た目確認（_main / _ans 両バージョン）
+2. （別タスク）kaken2026: `rd_pilot_2axis.pdf` を tex に挿入 → 最終コンパイル
 
 ## Git 管理
 

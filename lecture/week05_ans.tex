@@ -1,0 +1,209 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\newcommand{\slidemode}{1}  % カラー投影モード
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{5}
+\newcommand{\LectureTitle}{微分方程式への応用}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第5回　微分方程式への応用}
+  \begin{block}{本回の内容}
+  微分方程式への応用
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{第2章 ラプラス変換　§2}}
+\end{frame}
+
+\begin{frame}{ラプラス変換による微分方程式の解法}
+  \begin{block}{}
+  \begin{enumerate}[Step 1.]
+    \item 微分方程式と初期条件をラプラス変換
+    $\Rightarrow$ $X(s)$ に関する代数方程式\\
+    \item 代数方程式を $X(s)$ について解く
+    $\Rightarrow$ $X(s)$ の有理式（部分分数分解）\\
+    \item $X(s)$ を逆ラプラス変換
+    $\Rightarrow$ 解 $x(t)$\\
+  \end{enumerate}
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題1}
+  \begin{exampleblock}{問題}
+    $dx/dt + x = e^t, x(0) = 1$ を解け\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題1　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $L[x(t)] = X(s)$ とする
+    \item[] 原関数の微分法則より $L[dx/dt] = sX(s) - x(0) = sX(s) - 1$
+    \item[] 方程式の両辺をラプラス変換 $: (sX(s) - 1) + X(s) = 1/(s-1)$
+    \item[] $(s+1)X(s) = 1 + 1/(s-1) = s/(s-1)$
+    \item[] $X(s) = s/((s+1)(s-1))$ 部分分数分解 :
+    \item[] $s = A(s+1) + B(s-1)$ より $A = 1/2, B = 1/2$
+    \item[] $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$
+    \item[] 逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = \cosh t$
+  \end{alertblock}
+  {\footnotesize \textcolor{gray}{\textit{$\sinh t + \cosh t = e^t$ より確認可能}}}
+\end{frame}
+
+\begin{frame}{例題2}
+  \begin{exampleblock}{問題}
+    $d^{2}x/dt^{2} + 4x = e^{-t}, x(0) = 0, x'(0) = 0$ を解け\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題2　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $L[x(t)] = X(s)$ とする
+    \item[] $(s^{2}+4)X(s) - s\cdot x(0) - x'(0) = 1/(s+1)$
+    \item[] $(s^{2}+4)X(s) = 1/(s+1)$
+    \item[] $X(s) = 1/((s+1)(s^{2}+4))$
+    \item[] 部分分数分解 $: A/(s+1) + (Bs+C)/(s^{2}+4)$
+    \item[] $1 = A(s^{2}+4) + (Bs+C)(s+1)$
+    \item[] $s=-1: A = 1/5; s^{2}$ の係数 $: B = -1/5;$ 定数項 $: C = 1/5$
+    \item[] $X(s) = (1/5)/(s+1) - (1/5)\cdot s/(s^{2}+4) + (1/10)\cdot2/(s^{2}+4)$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題3}
+  \begin{exampleblock}{問題}
+    $d^{2}x/dt^{2} - x = 0, x(0) = 0, x(1) = 1$ を解け（境界値問題）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題3　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $x'(0) = a$ とおき、 $L[x(t)] = X(s)$ とする
+    \item[] $(s^{2}-1)X(s) - s\cdot x(0) - x'(0) = 0$
+    \item[] $(s^{2}-1)X(s) = a$
+    \item[] $X(s) = a/(s^{2}-1)$
+    \item[] 逆変換 $: x(t) = a\cdot \sinh(t)$
+    \item[] 境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $x(t) = \sinh(t)/\sinh(1)$
+  \end{alertblock}
+  {\footnotesize \textcolor{gray}{\textit{境界値問題では未知の初期値 a を置き、もう一方の境界条件で決定する}}}
+\end{frame}
+
+\begin{frame}{例題4}
+  \begin{exampleblock}{問題}
+    次の微分方程式の一般解を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題4　解答}
+  \begin{exampleblock}{解答}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,62--65）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問1] 次の微分方程式を解け
+    $(1) dx/dt - 2x = 0,  x(0) = 1$\\
+    $(2) dx/dt - x = e^{-t},  x(0) = 0$\\
+    \item[問2] 次の微分方程式を解け（ $t = 0$ のとき $x = 0, dx/dt = 0$ ）
+    $(1) d^{2}x/dt^{2} - 2x = e^t$\\
+    $(2) d^{2}x/dt^{2} + 4x = e^{-t}$\\
+    \item[問3] 次の微分方程式を解け（境界値問題）
+    $d^{2}x/dt^{2} - x = 1,  x(0) = 0,  x(\pi/2) = 0$\\
+    \item[問4] 次の微分方程式の一般解を求めよ
+    $(1) dx/dt - 2x = e^{3t}$\\
+    $(2) d^{2}x/dt^{2} + 4x = \cos 2t$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問1　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item $(1) L: (sX-1) - 2X = 0   \to   (s-2)X = 1   \to   X = 1/(s-2)$
+    \item $    x(t) = e^{2t}$
+    \item $(2) L: (sX-0) - X = 1/(s+1)   \to   (s-1)X = 1/(s+1)$
+    \item $    X = 1/((s-1)(s+1)) = (1/2)(1/(s-1) - 1/(s+1))$
+    \item $    x(t) = (1/2)(e^t - e^{-t}) = \sinh t$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) x(t) = e^{2t}$\\
+  $(2) x(t) = \sinh t$\\
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問2　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item $(1) L: (s^{2}-2)X = 1/(s-1)   \to   X = 1/((s-1)(s^{2}-2))$
+    \item 部分分数 $: A/(s-1) + (Bs+C)/(s^{2}-2)$
+    \item $    A = 1/(1-2) = -1;  Bs+C = (s^{2}-1)/(s-1) = s+1   \to   B=1, C=1$
+    \item $    X = -1/(s-1) + s/(s^{2}-2) + 1/(s^{2}-2)$
+    \item $    x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$
+    \item $(2) (s^{2}+4)X = 1/(s+1)   \to   X = 1/((s+1)(s^{2}+4))$（例題 2 と同じ）
+    \item $    A=1/5, B=-1/5, C=1/5$
+    \item $    x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\
+  $(2) x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$\\
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問3　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item $x'(0) = a$ （未知）とおく
+    \item $L: (s^{2}-1)X = 1/s + a   \to   X = 1/(s(s^{2}-1)) + a/(s^{2}-1)$
+    \item 部分分数 $: 1/(s(s^{2}-1)) = -1/s + (1/2)/(s-1) + (1/2)/(s+1)$
+    \item $L^{-1} = -1 + \cosh t$（逆変換）
+    \item $x(t) = -1 + \cosh t + a\cdot \sinh t$
+    \item 境界条件 $x(\pi/2) = 0: a = (1 - \cosh(\pi/2))/\sinh(\pi/2)$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+    \[
+    x(t) = -1 + \cosh t + ((1-\cosh(\pi/2))/\sinh(\pi/2))\cdot \sinh t
+  \]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問4　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item $(1) x(0) = \alpha$ （未知）とおく
+    \item $    (s-2)X = \alpha + 1/(s-3)   \to   X = \alpha/(s-2) + 1/((s-2)(s-3))$
+    \item 部分分数 $: 1/((s-2)(s-3)) = -1/(s-2) + 1/(s-3)$
+    \item $X = (\alpha-1)/(s-2) + 1/(s-3)$（$C = \alpha-1$ を任意定数とする）
+    \item $    x(t) = Ce^{2t} + e^{3t}$
+    \item $(2) x(0)=\alpha, x'(0)=\beta$ （未知）とおく
+    \item $    (s^{2}+4)X = \alpha s + \beta + s/(s^{2}+4)$
+    \item $    X = \alpha s/(s^{2}+4) + \beta/(s^{2}+4) + s/(s^{2}+4)^{2}$
+    \item $L^{-1}[s/(s^{2}+4)^{2}] = (t/4)\sin(2t)$（像関数の高次微分から導出）
+    \item $C_{1} = \alpha, C_{2} = \beta/2$ を任意定数とする
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) x(t) = Ce^{2t} + e^{3t}$（C は任意定数）\\
+  $(2) x(t) = C_{1}\cos(2t) + C_{2}\sin(2t) + (t/4)\sin(2t)$\\
+  \end{exampleblock}
+\end{frame}
+
+\end{document}

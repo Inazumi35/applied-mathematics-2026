@@ -1,0 +1,83 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\newcommand{\slidemode}{1}  % カラー投影モード
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{9}
+\newcommand{\LectureTitle}{一般の周期関数のフーリエ級数（１）}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第9回　一般の周期関数のフーリエ級数（１）}
+  \begin{block}{本回の内容}
+  一般の周期関数のフーリエ級数（１）
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{第3章 フーリエ解析　§1}}
+\end{frame}
+
+\begin{frame}{定義：フーリエ展開（周期 T = 2l）}
+  \begin{block}{}
+  \[
+    f(t) = a_{0}/2 + \sum_{n=1}^\infty (a_{n}\cos(n\pi t/l) + b_{n}\sin(n\pi t/l))
+  \]
+  \medskip\textbf{フーリエ係数}：
+  \begin{align*}
+    a_{0} &= (1/l) \int_{-l}^{l} f(t) dt \\
+    a_{n} &= (1/l) \int_{-l}^{l} f(t)\cos(n\pi t/l) dt  (n = 1, 2, ...) \\
+    b_{n} &= (1/l) \int_{-l}^{l} f(t)\sin(n\pi t/l) dt  (n = 1, 2, ...)
+  \end{align*}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,80--85}}
+\end{frame}
+
+\begin{frame}{例題3　（p.\,83）}
+  \begin{exampleblock}{問題}
+    $f(x) = |x| (-1 \leq x < 1), f(x+2) = f(x)$ のフーリエ展開を求めよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題3　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $f(x)$ は偶関数なので $b_{n} = 0,$ フーリエ余弦展開を求めればよい
+    \item[] $c_{0} = \int_{-1}^{1} |x| dx = 1$
+    \item[] $a_{n} = 2\int_{0}^{1} x \cos(n\pi x) dx = -2(1-(-1)^n)/(n^{2}\pi^{2})$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $f(x) = 1/2 - (4/\pi^{2})(\cos \pi x + \cos(3\pi x)/9 + \cos(5\pi x)/25 + \ldots)$
+  \end{alertblock}
+  {\footnotesize \textcolor{gray}{\textit{$N=2, N=5$ での収束グラフあり（ p.83 ）}}}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,80--85）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問3] 次の関数のフーリエ級数を求めよ
+    $(1) f(x) = { 1  (-1 \leq x < 0),  0  (0 \leq x < 1) },  f(x+2) = f(x)$\\
+    $(2) g(x) = { 2  (-2 \leq x < 0),  4  (0 \leq x < 2) },  g(x+4) = g(x)$\\
+    $(3) h(x) = { 2x+1  (-1/2 \leq x < 0),  0  (0 \leq x < 1/2) },  h(x+1) = h(x)$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問3　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item $(1) l=1: a_{0}=1, a_{n}=\int_{-1}^{0}\cos(n\pi x)dx=0, b_{n}=\int_{-1}^{0}\sin(n\pi x)dx=((-1)^n-1)/(n\pi)$
+    \item $(2) l=2:$ 平均 $= 3, a_{n}=0, b_{n}=(1/2)[2\int_{-2}^{0}\sin(n\pi x/2)dx + 4\int_{0}^{2}\sin(n\pi x/2)dx]$
+    \item $    b_{n} = 2(1-(-1)^n)/(n\pi)$
+    \item $(3) l=1/2: a_{0}=(1/2), a_{n}=(1-(-1)^n)/(n^{2}\pi^{2}), b_{n}=-1/(n\pi)$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) f(x) = 1/2 - (2/\pi)(\sin \pi x + \sin(3\pi x)/3 + \sin(5\pi x)/5 + ...)$\\
+  $(2) g(x) = 3 + (4/\pi)(\sin(\pi x/2) + \sin(3\pi x/2)/3 + \sin(5\pi x/2)/5 + ...)$\\
+  $(3) h(x) = 1/4 + \sum_{n=1}^\infty[(1-(-1)^n)/(n^{2}\pi^{2})\cos(2n\pi x) - (1/(n\pi))\sin(2n\pi x)]$\\
+  \end{exampleblock}
+\end{frame}
+
+\end{document}

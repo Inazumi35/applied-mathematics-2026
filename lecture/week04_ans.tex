@@ -1,0 +1,164 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\newcommand{\slidemode}{1}  % カラー投影モード
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{4}
+\newcommand{\LectureTitle}{逆ラプラス変換}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第4回　逆ラプラス変換}
+  \begin{block}{本回の内容}
+  逆ラプラス変換
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{第2章 ラプラス変換　§1}}
+\end{frame}
+
+\begin{frame}{定義：逆ラプラス変換}
+  \begin{block}{}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,56--61}}
+\end{frame}
+
+\begin{frame}{部分分数分解による逆ラプラス変換}
+  \begin{block}{}
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題12}
+  \begin{exampleblock}{問題}
+    次の逆ラプラス変換を求めよ（ $\alpha, \beta$ は定数）\\[2pt]
+    $(1) 1/(s-\alpha)$\\[2pt]
+    $(2) 1/(s-\alpha)^{2}$\\[2pt]
+    $(3) 1/((s-\alpha)(s-\beta))  \alpha \neq \beta$\\[2pt]
+    $(4) 1/((s-\alpha)^{2}+\beta^{2})  \beta \neq 0$\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題12　解答}
+  \begin{exampleblock}{解答}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題13}
+  \begin{exampleblock}{問題}
+    次の関数の逆ラプラス変換を求めよ\\[2pt]
+    $(1) 1/((s-1)^{2}+4)$\\[2pt]
+    $(2) (s+2)/((s+2)^{2}+9)$\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題13　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] 分母を $(s-\alpha)^{2}+\beta^{2}$ の形に整理 $: \alpha=1, \beta=2$
+    \item[] $L^{-1}[1/((s-1)^{2}+4)] = L^{-1}[(1/2)\cdot2/((s-1)^{2}+2^{2})]$
+    \item[] 基本公式 $L^{-1}[\beta/((s-\alpha)^{2}+\beta^{2})] = e^{\alpha t}\sin(\beta t)$ を適用
+    \item[] 分母を $(s-\alpha)^{2}+\beta^{2}$ の形に整理 $: \alpha=-2, \beta=3$
+    \item[] 分子 $s+2 = (s-\alpha)|_{\alpha=-2}$ に一致
+    \item[] 基本公式 $L^{-1}[(s-\alpha)/((s-\alpha)^{2}+\beta^{2})] = e^{\alpha t}\cos(\beta t)$ を適用
+  \end{enumerate}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題14}
+  \begin{exampleblock}{問題}
+    次の逆ラプラス変換を求めよ\\[2pt]
+    (1) 1/((s+2)(s+3)(s+4))\\[2pt]
+    $(2) (3s^{2}+5) / (s(s+1)^{2}(s-3))$\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題14　解答}
+  \begin{exampleblock}{解答}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,56--61）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問17] 次の逆ラプラス変換を求めよ $: (1) 1/(s^{2}-2s+5) (2) 1/(s^{2}-4s+8)$
+    \item[問13\_演習] 次の関数の逆ラプラス変換を求めよ
+    $(1) 1/(s-4)^{2}$\\
+    $(2) 1/((s-1)^{2}+4)$\\
+    \item[問18] 次の逆ラプラス変換を求めよ
+    $(1) (s-1)/(s^{2}-4s+5)$\\
+    $(2) (s-2)/(s^{2}-6s+10)$\\
+    \item[問19] 次の逆ラプラス変換を求めよ
+    (1) 1/(s(s-1)(s-2))\\
+    (2) (5s+1)/(s(s-1)(s+2))\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問17　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item (1) 平方完成 $: s^{2}-2s+5 = (s-1)^{2}+4 = (s-1)^{2}+2^{2}$
+    \item $    L^{-1}[1/((s-1)^{2}+4)] = (1/2)\cdot L^{-1}[2/((s-1)^{2}+2^{2})] = (1/2)e^t \sin(2t)$
+    \item (2) 平方完成 $: s^{2}-4s+8 = (s-2)^{2}+4 = (s-2)^{2}+2^{2}$
+    \item $    L^{-1}[1/((s-2)^{2}+4)] = (1/2)e^{2t}\sin(2t)$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) (1/2)e^t \sin(2t)$\\
+  $(2) (1/2)e^{2t}\sin(2t)$\\
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問13\_演習　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item (1) 基本公式 $L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$ に $\alpha=4$ を代入
+    \item $(2) L^{-1}[1/((s-1)^{2}+4)] = (1/2)e^t \sin(2t)$（問 17(1) と同じ）
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) te^{4t}$\\
+  $(2) (1/2)e^t \sin(2t)$\\
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問18　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item (1) 平方完成 $: s^{2}-4s+5 = (s-2)^{2}+1$ 分子 $s-1 = (s-2)+1$
+    \item $    (s-1)/((s-2)^{2}+1) = (s-2)/((s-2)^{2}+1) + 1/((s-2)^{2}+1)$
+    \item $    L^{-1} = e^{2t}\cos t + e^{2t}\sin t = e^{2t}(\cos t + \sin t)$
+    \item (2) 平方完成 $: s^{2}-6s+10 = (s-3)^{2}+1$ 分子 $s-2 = (s-3)+1$
+    \item $    (s-2)/((s-3)^{2}+1) = (s-3)/((s-3)^{2}+1) + 1/((s-3)^{2}+1)$
+    \item $    L^{-1} = e^{3t}\cos t + e^{3t}\sin t = e^{3t}(\cos t + \sin t)$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) e^{2t}(\cos t + \sin t)$\\
+  $(2) e^{3t}(\cos t + \sin t)$\\
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問19　解答}
+  \begin{block}{}
+  \begin{itemize}\setlength{\itemsep}{2pt}
+    \item (1) 部分分数: A/s + B/(s-1) + C/(s-2)
+    \item $    A = 1/((0-1)(0-2)) = 1/2$
+    \item $    B = 1/(1\cdot(1-2)) = -1$
+    \item $    C = 1/(2\cdot(2-1)) = 1/2$
+    \item $    L^{-1} = 1/2 - e^t + (1/2)e^{2t}$
+    \item (2) 部分分数: A/s + B/(s-1) + C/(s+2)
+    \item $    A = 1/((0-1)(0+2)) = -1/2$
+    \item $    B = (5+1)/(1\cdot(1+2)) = 2$
+    \item $    C = (-10+1)/((-2)(-3)) = -9/6 = -3/2$
+    \item $    L^{-1} = -1/2 + 2e^t - (3/2)e^{-2t}$
+  \end{itemize}
+  \end{block}
+  \begin{exampleblock}{答え}
+  $(1) 1/2 - e^t + (1/2)e^{2t}$\\
+  $(2) -1/2 + 2e^t - (3/2)e^{-2t}$\\
+  \end{exampleblock}
+\end{frame}
+
+\end{document}

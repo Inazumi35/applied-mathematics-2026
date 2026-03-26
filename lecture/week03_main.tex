@@ -1,0 +1,120 @@
+% !TEX program = lualatex
+\documentclass[aspectratio=169,professionalfonts]{beamer}
+\newcommand{\slidemode}{1}  % カラー投影モード
+\usepackage{beamer_template}
+\usepackage{enumerate}
+
+\newcommand{\LectureNum}{3}
+\newcommand{\LectureTitle}{微分法則と積分法則}
+\newcommand{\CourseName}{応用数学}
+\renewcommand{\TermName}{前期}
+
+\begin{document}
+
+\begin{frame}{第3回　微分法則と積分法則}
+  \begin{block}{本回の内容}
+  微分法則と積分法則
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{第2章 ラプラス変換　§1}}
+\end{frame}
+
+\begin{frame}{定理：原関数の微分法則}
+  \begin{block}{}
+  \begin{align*}
+    L[f'(t)]    &= sF(s) - f(0) \\
+    L[f''(t)]   &= s^{2}F(s) - sf(0) - f'(0) \\
+    L[f^{(n)}(t)] &= s^n F(s) - s^{n-1}f(0) - s^{n-2}f'(0) - \ldots - f^{(n-1)}(0)
+  \end{align*}
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,52--57}}
+\end{frame}
+
+\begin{frame}{定理：像関数の高次微分}
+  \begin{block}{}
+  \[
+    L[t^n f(t)] = (-1)^n F^{(n)}(s)
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,52--57}}
+\end{frame}
+
+\begin{frame}{定理：原関数の積分法則}
+  \begin{block}{}
+  \[
+    L[\int_{0}^t f(\tau)d\tau] = F(s)/s
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,52--57}}
+\end{frame}
+
+\begin{frame}{定理：像関数の積分}
+  \begin{block}{}
+  \[
+    L[f(t)/t] = \int_{s}^\infty F(u)du
+  \]
+  \end{block}
+  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,52--57}}
+\end{frame}
+
+\begin{frame}{例題9}
+  \begin{exampleblock}{問題}
+    微分法則を用いて次の問いに答えよ\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題9　解答}
+  \begin{exampleblock}{解答}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題10}
+  \begin{exampleblock}{問題}
+    $L[t^n]$ を求めよ（ n は正の整数）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題10　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] $f(t) = t^n$ とおくと
+    \item[] $f^{(n)}(t) = n!, f(0) = f'(0) = \ldots = f^{(n-1)}(0) = 0$
+    \item[] 微分法則を n 回適用 $: s^n F(s) - 0 = L[n!] = n!/s$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $L[t^n] = n!/s^{n+1}  (s > 0)$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{例題11}
+  \begin{exampleblock}{問題}
+    $L[\sin(\alpha t)/t]$ を求めよ（ $\alpha$ は正の定数）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題11　解答}
+  \begin{exampleblock}{解答}
+  \begin{enumerate}[1.]
+    \item[] 像関数の積分 $: L[f(t)/t] = \int_{s}^\infty F(u)du$ を利用
+    \item[] $L[\sin(\alpha t)] = \alpha/(u^{2}+\alpha^{2})$ なので
+    \item[] $L[\sin(\alpha t)/t] = \int_{s}^\infty \alpha/(u^{2}+\alpha^{2}) du = [\arctan(u/\alpha)]_{s}^\infty$
+    \item[] $= \pi/2 - \arctan(s/\alpha)$
+  \end{enumerate}
+  \end{exampleblock}
+  \begin{alertblock}{答}
+    $L[\sin(\alpha t)/t] = \pi/2 - \arctan(s/\alpha) = \arctan(\alpha/s)  (s > 0)$
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{演習問題（p.\,52--57）}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問13] $L[t \cos(\alpha t)]$ を求めよ
+    \item[問14] $f(t)$ が $f'(t)+2f(t)=f(0)$ を満たすとき、 $L[f(t)]$ を求めよ
+    \item[問15] $L[t^n]$ を求めよ（ n は正の整数）（像関数の高次微分を使用）
+    \item[問16] $L[(e^{2t} - e^t)/t]$ を求めよ
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\end{document}
