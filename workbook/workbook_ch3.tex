@@ -37,11 +37,11 @@ $f(x) = \begin{cases} x & (-\pi \leq x < 0) \\ 0 & (0 \leq x < \pi) \end{cases}$
 \kotae{
 $a_0 = \dfrac{1}{2\pi}\displaystyle\int_{-\pi}^{0} x\,dx = -\dfrac{\pi}{4}$
 
-$a_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\cos nx\,dx = \dfrac{(-1)^n - 1}{n^2\pi}$
+$a_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\cos nx\,dx = \dfrac{1-(-1)^n}{n^2\pi}$
 
 $b_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\sin nx\,dx = \dfrac{(-1)^{n+1}}{n}$
 
-$f(x) = -\dfrac{\pi}{4} + \displaystyle\sum_{n=1}^{\infty}\left[\dfrac{(-1)^n-1}{n^2\pi}\cos nx + \dfrac{(-1)^{n+1}}{n}\sin nx\right]$
+$f(x) = -\dfrac{\pi}{4} + \displaystyle\sum_{n=1}^{\infty}\left[\dfrac{1-(-1)^n}{n^2\pi}\cos nx + \dfrac{(-1)^{n+1}}{n}\sin nx\right]$
 }
 
 \mondai{142}{
@@ -56,11 +56,11 @@ $f(x) = -\dfrac{\pi}{4} + \displaystyle\sum_{n=1}^{\infty}\left[\dfrac{(-1)^n-1}
 
 $a_n = \displaystyle\int_{-1}^{0}2\cos n\pi x\,dx + \int_0^1 \cos n\pi x\,dx = \dfrac{\sin n\pi}{n\pi} = 0$
 
-$b_n = \displaystyle\int_{-1}^{0}2\sin n\pi x\,dx + \int_0^1 \sin n\pi x\,dx = -\dfrac{1+(-1)^n}{n\pi}+\dfrac{2(1-(-1)^n)}{n\pi}$
+$b_n = \displaystyle\int_{-1}^{0}2\sin n\pi x\,dx + \int_0^1 \sin n\pi x\,dx = \dfrac{2((-1)^n-1)}{n\pi}+\dfrac{1-(-1)^n}{n\pi}$
 
-$= \dfrac{1-3(-1)^n}{n\pi}$
+$= \dfrac{(-1)^n-1}{n\pi}$
 
-$f(x) = \dfrac{3}{4} + \displaystyle\sum_{n=1}^{\infty}\dfrac{1-3(-1)^n}{2n\pi}\sin n\pi x$
+$f(x) = \dfrac{3}{4} + \displaystyle\sum_{n=1}^{\infty}\dfrac{(-1)^n-1}{n\pi}\sin n\pi x$
 
 (2) 周期 $2l=6$，$l=3$ として
 $a_0 = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\,dx + \dfrac{1}{3}\int_0^3 x\,dx = 3+\dfrac{3}{2} = \dfrac{9}{2}$
@@ -114,10 +114,10 @@ $f(x) = \begin{cases} 2 & (-1 \leq x < 0) \\ 0 & (0 \leq x < 1) \end{cases}$，\
 \kotae{
 $c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}f(x)e^{-in\pi x}\,dx = \dfrac{1}{2}\int_{-1}^{0}2e^{-in\pi x}\,dx$
 
-$n \neq 0$：$c_n = \dfrac{1}{2}\!\left[\dfrac{2e^{-in\pi x}}{-in\pi}\right]_{-1}^{0} = \dfrac{1-(-1)^n}{in\pi}$
+$n \neq 0$：$c_n = \dfrac{1}{2}\!\left[\dfrac{2e^{-in\pi x}}{-in\pi}\right]_{-1}^{0} = \dfrac{(-1)^n-1}{in\pi}$
 $n=0$：$c_0 = 1$
 
-$f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty\\n\neq 0}}^{\infty}\dfrac{1-(-1)^n}{in\pi}e^{in\pi x}$
+$f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty\\n\neq 0}}^{\infty}\dfrac{(-1)^n-1}{in\pi}e^{in\pi x}$
 }
 
 \mondai{146}{
@@ -156,7 +156,7 @@ $= \dfrac{1}{1+iu}$
 }
 
 \kotae{
-(1) $\mathcal{F}[f] = \displaystyle\int_{-3}^{0}2e^{-iux}\,dx = \dfrac{2}{iu}(1-e^{3iu})$
+(1) $\mathcal{F}[f] = \displaystyle\int_{-3}^{0}2e^{-iux}\,dx = \dfrac{2(e^{3iu}-1)}{iu}$
 
 (2) $\mathcal{F}[g] = \displaystyle\int_0^1 xe^{-iux}\,dx$
 
@@ -218,9 +218,9 @@ $= \dfrac{1}{|a|}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfr
 \kotae{
 $\mathcal{F}[f*g] = \mathcal{F}[f]\cdot\mathcal{F}[g]$
 
-$\mathcal{F}[f] = \dfrac{2}{iu}(1-e^{3iu})$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
+$\mathcal{F}[f] = \dfrac{2(e^{3iu}-1)}{iu}$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
 
-$\mathcal{F}[f*g] = \dfrac{2}{iu}\cdot(1-e^{3iu})\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2}$
+$\mathcal{F}[f*g] = \dfrac{2(e^{3iu}-1)}{iu}\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2}$
 }
 
 \mondai{158}{
@@ -314,9 +314,9 @@ $F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx = 2\int_0^1 x\cos ux\,dx = \df
 \kotae{
 (1) $a_0 = \dfrac{1}{2\pi}\displaystyle\int_{-\pi}^{\pi}f(x)\,dx = -\dfrac{1}{2}$
 
-$a_n = 0$（$f(x)+\dfrac{1}{2}$ が奇関数），$b_n = \dfrac{3((-1)^n-1)}{n\pi}$
+$a_n = 0$（$f(x)+\dfrac{1}{2}$ が奇関数），$b_n = \dfrac{3(1-(-1)^n)}{n\pi}$
 
-$f(x) = -\dfrac{1}{2}-\dfrac{6}{\pi}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{2k+1}\sin(2k+1)x$
+$f(x) = -\dfrac{1}{2}+\dfrac{6}{\pi}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{2k+1}\sin(2k+1)x$
 
 (2) $a_0 = \dfrac{1}{4}\displaystyle\int_{-2}^{0}(x+2)\,dx = \dfrac{1}{2}$
 
@@ -338,7 +338,7 @@ $h(x) = \dfrac{2}{\pi}-\dfrac{4}{\pi}\displaystyle\sum_{n=1}^{\infty}\dfrac{\cos
 \kotae{
 問題147(1)で $x=\pi/2$ を代入すると $f(\pi/2)=1$ に収束する．
 
-$1 = -\dfrac{1}{2}-\dfrac{6}{\pi}\!\left(-\dfrac{1}{1}+\dfrac{1}{3}-\dfrac{1}{5}+\cdots\right)$
+$1 = -\dfrac{1}{2}+\dfrac{6}{\pi}\!\left(1-\dfrac{1}{3}+\dfrac{1}{5}-\cdots\right)$
 
 整理して $1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\cdots = \dfrac{\pi}{4}$
 }
@@ -371,9 +371,9 @@ $c_0 = 0$，$c_n = \dfrac{(-1)^n-1}{in\pi}$（$n\neq 0$）
 
 (2) $\mathcal{F}[g] = \displaystyle\int_0^2 (2-x)e^{-iux}\,dx$
 
-部分積分して $= \dfrac{2}{iu}-\dfrac{e^{-2iu}-1}{u^2}+\dfrac{2e^{-2iu}}{iu}$
+部分積分して $= \dfrac{2}{iu}+\dfrac{e^{-2iu}-1}{u^2}$
 
-整理して $= \dfrac{1-e^{-2iu}(1+2iu)}{u^2}$
+整理して $= \dfrac{e^{-2iu}-1-2iu}{u^2}$
 
 (3) $\mathcal{F}[h] = \displaystyle\int_{-\infty}^{0} e^{3x}e^{-iux}\,dx = \dfrac{1}{3-iu}$
 }
@@ -467,7 +467,7 @@ $F(u) = \displaystyle\int_{-2}^{2}(1-|x|)e^{-iux}\,dx$
 
 偶関数なので $F(u) = 2\displaystyle\int_0^2(1-x)\cos ux\,dx$
 
-$= \dfrac{2(\cos 2u + 2u\sin 2u - 1)}{u^2}$
+$= \dfrac{2(1-\cos 2u - u\sin 2u)}{u^2}$
 
 スペクトル $|F(u)|$
 }
