@@ -1,0 +1,60 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kaitoushu}[2026/02/15 Math Solutions Style]
+
+% --- 日本語対応（lualatex）---
+\usepackage{luatexja}
+\usepackage[yu-win10]{luatexja-preset}
+
+% --- 数学パッケージ ---
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+% --- レイアウト ---
+\usepackage[top=25mm,bottom=25mm,left=20mm,right=20mm,headheight=15pt]{geometry}
+\usepackage{fancyhdr}
+
+% --- グラフ描画 ---
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% --- その他 ---
+\usepackage{enumerate}
+
+% --- 2段組みの間に縦線 ---
+\setlength{\columnseprule}{0.4pt}
+
+% --- ヘッダー・フッター ---
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{解答集}
+\cfoot{\thepage}
+
+% --- セクションスタイル（「問題 N」+ 区切り線）---
+\renewcommand{\thesection}{問題 \arabic{section}}
+\let\origsection\section
+\renewcommand{\section}{\par\vspace{0.5em}\noindent\rule{\columnwidth}{0.4pt}\origsection}
+
+% --- ユーザコマンド ---
+% \problemrange{Basic問題 143-150} → 右ヘッダーに設定
+\newcommand{\problemrange}[1]{\rhead{#1}}
+
+% \startproblem{142} → セクションカウンタを設定（最初の問題番号 - 1）
+\newcommand{\startproblem}[1]{\setcounter{section}{#1}}
+
+% --- 問題・解答コマンド（明示的番号指定方式）---
+% \mondai{143}{問題文} → 「問題 143」+ 区切り線 + 問題文
+\newcommand{\mondai}[2]{%
+  \par\vspace{1em}%
+  \noindent\rule{\linewidth}{0.4pt}%
+  \par\vspace{0.3em}%
+  \noindent\textbf{問題 #1}\par\nopagebreak
+  #2%
+}
+
+% \kotae{解答内容} → 「解答:」+ 解答内容
+\newcommand{\kotae}[1]{%
+  \par\vspace{0.5em}%
+  \noindent\textbf{解答:}\par\nopagebreak
+  #1%
+}
