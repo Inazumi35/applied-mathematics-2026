@@ -25,7 +25,6 @@
   \]
   {\footnotesize \textcolor{gray}{オイラーの公式 $e^{int} = \cos(nt) + i \sin(nt)$ を利用}}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,86--89}}
 \end{frame}
 
 \begin{frame}{一般周期関数のフーリエ展開}
@@ -44,20 +43,14 @@
 \end{frame}
 
 \begin{frame}{例題6　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $c_{n} = (1/4) \int_{-2}^{2} (x+1) e^{-in\pi x/2} dx$
-    \item[] n \neq 0 のとき $: e^{in\pi} = (-1)^n$ を用いて計算
-    \item[] $c_{n} = 2(-1)^n / (in\pi)$
-    \item[] $n = 0$ のとき $: c_{0} = (1/4)\int_{-2}^{2}(x+1)dx = 1$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $f(x) = 1 + \sum_{n\neq0} 2(-1)^n/(in\pi) \cdot e^{in\pi x/2}$
-  \end{alertblock}
+  $c_{n} = (1/4) \int_{-2}^{2} (x+1) e^{-in\pi x/2} dx$\\[4pt]
+  n \neq 0 のとき $: e^{in\pi} = (-1)^n$ を用いて計算\\[4pt]
+  $c_{n} = 2(-1)^n / (in\pi)$\\[4pt]
+  $n = 0$ のとき $: c_{0} = (1/4)\int_{-2}^{2}(x+1)dx = 1$
+  \medskip\textbf{答}：$f(x) = 1 + \sum_{n\neq0} 2(-1)^n/(in\pi) \cdot e^{in\pi x/2}$
 \end{frame}
 
-\begin{frame}{演習問題（p.\,86--89）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問6] 次の周期 2 の関数 $f(x), g(x)$ の複素フーリエ級数を求めよ
@@ -68,6 +61,31 @@
     $(2) g(x) = { 0  (-2 \leq x < 0),  2-x  (0 \leq x < 2) },  g(x+4) = g(x)$\\
   \end{description}
   \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問6　解答}
+  $(1) l=1: c_{n} = (1/2)\int_{0}^1 e^{-in\pi x} dx = (1/2)[e^{-in\pi x}/(-in\pi)]_{0}^1$\\[4pt]
+  $    n \neq 0: c_{n} = (1-e^{-in\pi})/(2in\pi) = (1-(-1)^n)/(2in\pi)$\\[4pt]
+  $    n = 0: c_{0} = (1/2)\int_{0}^1 dx = 1/2$\\[4pt]
+  $(2) l=1: c_{n} = (1/2)\int_{0}^1 x e^{-in\pi x} dx$\\[4pt]
+  n \neq 0: 分部積分 $ \to c_{n} = i(-1)^n/(2n\pi) + ((-1)^n - 1)/(2n^{2}\pi^{2})$\\[4pt]
+  $    n = 0: c_{0} = (1/2)\int_{0}^1 x dx = 1/4$
+  \medskip\textbf{答}：
+  $(1) f(x) = 1/2 + \sum_{n\neq0} (1-(-1)^n)/(2in\pi) \cdot e^{in\pi x}$\\
+  $(2) g(x) = 1/4 + \sum_{n\neq0} [i(-1)^n/(2n\pi) + ((-1)^n-1)/(2n^{2}\pi^{2})] \cdot e^{in\pi x}$\\
+\end{frame}
+
+\begin{frame}{問7　解答}
+  $(1) l=2: c_{n} = (1/4)\int_{-2}^{0} 2 e^{-in\pi x/2} dx$\\[4pt]
+  $    n \neq 0: c_{n} = (1/2)[e^{-in\pi x/2}/(-in\pi/2)]_{-2}^{0} = (1-e^{in\pi})/(in\pi) = (1-(-1)^n)/(in\pi)$\\[4pt]
+  $    n = 0: c_{0} = (1/4)\int_{-2}^{0}2dx = 1$\\[4pt]
+  $(2) l=2: c_{n} = (1/4)\int_{0}^2 (2-x)e^{-in\pi x/2}dx$\\[4pt]
+  n \neq 0: 分部積分 $ \to c_{n} = (1-e^{-in\pi})/(in\pi) + (e^{-in\pi}-1)/(n^{2}\pi^{2}/2)$\\[4pt]
+  $    = (1-(-1)^n)/(in\pi) + 2((-1)^n-1)/(n^{2}\pi^{2})$\\[4pt]
+  $    n = 0: c_{0} = (1/4)\int_{0}^2(2-x)dx = (1/4)[2x-x^{2}/2]_{0}^2 = 1/2$
+  \medskip\textbf{答}：
+  $(1) f(x) = 1 + \sum_{n\neq0} (1-(-1)^n)/(in\pi) \cdot e^{in\pi x/2}$\\
+  $(2) g(x) = 1/2 + \sum_{n\neq0} [(1-(-1)^n)/(in\pi) + 2((-1)^n-1)/(n^{2}\pi^{2})] \cdot e^{in\pi x/2}$\\
 \end{frame}
 
 \begin{frame}{練習問題1　（p.\,90）}
@@ -88,41 +106,6 @@
     $f(x) = e^x  (-\pi/2 \leq x < \pi/2),  f(x+\pi) = f(x)$\\
   \end{description}
   \end{block}
-\end{frame}
-
-\begin{frame}{問6　解答}
-  \begin{block}{}
-  \begin{itemize}\setlength{\itemsep}{2pt}
-    \item $(1) l=1: c_{n} = (1/2)\int_{0}^1 e^{-in\pi x} dx = (1/2)[e^{-in\pi x}/(-in\pi)]_{0}^1$
-    \item $    n \neq 0: c_{n} = (1-e^{-in\pi})/(2in\pi) = (1-(-1)^n)/(2in\pi)$
-    \item $    n = 0: c_{0} = (1/2)\int_{0}^1 dx = 1/2$
-    \item $(2) l=1: c_{n} = (1/2)\int_{0}^1 x e^{-in\pi x} dx$
-    \item n \neq 0: 分部積分 $ \to c_{n} = i(-1)^n/(2n\pi) + ((-1)^n - 1)/(2n^{2}\pi^{2})$
-    \item $    n = 0: c_{0} = (1/2)\int_{0}^1 x dx = 1/4$
-  \end{itemize}
-  \end{block}
-  \begin{exampleblock}{答え}
-  $(1) f(x) = 1/2 + \sum_{n\neq0} (1-(-1)^n)/(2in\pi) \cdot e^{in\pi x}$\\
-  $(2) g(x) = 1/4 + \sum_{n\neq0} [i(-1)^n/(2n\pi) + ((-1)^n-1)/(2n^{2}\pi^{2})] \cdot e^{in\pi x}$\\
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}{問7　解答}
-  \begin{block}{}
-  \begin{itemize}\setlength{\itemsep}{2pt}
-    \item $(1) l=2: c_{n} = (1/4)\int_{-2}^{0} 2 e^{-in\pi x/2} dx$
-    \item $    n \neq 0: c_{n} = (1/2)[e^{-in\pi x/2}/(-in\pi/2)]_{-2}^{0} = (1-e^{in\pi})/(in\pi) = (1-(-1)^n)/(in\pi)$
-    \item $    n = 0: c_{0} = (1/4)\int_{-2}^{0}2dx = 1$
-    \item $(2) l=2: c_{n} = (1/4)\int_{0}^2 (2-x)e^{-in\pi x/2}dx$
-    \item n \neq 0: 分部積分 $ \to c_{n} = (1-e^{-in\pi})/(in\pi) + (e^{-in\pi}-1)/(n^{2}\pi^{2}/2)$
-    \item $    = (1-(-1)^n)/(in\pi) + 2((-1)^n-1)/(n^{2}\pi^{2})$
-    \item $    n = 0: c_{0} = (1/4)\int_{0}^2(2-x)dx = (1/4)[2x-x^{2}/2]_{0}^2 = 1/2$
-  \end{itemize}
-  \end{block}
-  \begin{exampleblock}{答え}
-  $(1) f(x) = 1 + \sum_{n\neq0} (1-(-1)^n)/(in\pi) \cdot e^{in\pi x/2}$\\
-  $(2) g(x) = 1/2 + \sum_{n\neq0} [(1-(-1)^n)/(in\pi) + 2((-1)^n-1)/(n^{2}\pi^{2})] \cdot e^{in\pi x/2}$\\
-  \end{exampleblock}
 \end{frame}
 
 \end{document}

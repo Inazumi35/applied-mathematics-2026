@@ -108,24 +108,26 @@ def assemble_week(week_spec: dict, data_map: dict, skip_todo: bool = True,
         # サブセクション区切りフレーム（複数サブセクションがある週のみ）
         if show_divider:
             sub_title = sub.get('title', '')
-            sub_pages = sub.get('pages', '')
             divider_body = [
                 r'  \begin{block}{}',
                 f'  {{\\large {sub_title}}}',
                 r'  \end{block}',
             ]
-            if sub_pages:
-                divider_body.append(
-                    f'  \\vfill\\hfill{{\\scriptsize \\textcolor{{gray}}{{{page_ref(sub_pages)}}}}}'
-                )
             main_frames += frame_lines(sub_title, divider_body)
 
-        main_frames += assemble_subsection(sub, skip_todo=skip_todo)
+        # color_ans はインライン解答（use_separator=False）、handout は末尾（use_separator=True）
+        inline_ex_answers = include_answers and not use_separator
+        main_frames += assemble_subsection(sub, skip_todo=skip_todo,
+                                           include_exercise_answers=inline_ex_answers)
 
-        # 演習解説フレームを収集（answer フィールドがある問のみ）
-        if include_answers:
+        # handout 用：演習解説を末尾にまとめる
+        if include_answers and use_separator:
             exercises = sub.get('exercises', [])
             answer_frames += build_exercise_answer_frames(exercises, skip_todo=skip_todo)
+
+        # 手動フレームファイルの参照（include_after）
+        if 'include_after' in sub_spec:
+            main_frames.append(f'\n\\input{{{sub_spec["include_after"]}}}\n')
 
     # 練習問題（問題文）
     if week_spec.get('include_practice'):

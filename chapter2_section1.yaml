@@ -12,7 +12,7 @@ subsections:
 
     definition:
       name: ラプラス変換
-      formula: "F(s) = ∫₀^∞ e^{-st} f(t) dt = lim_{T→∞} ∫₀^T e^{-st} f(t) dt"
+      formula: "F(s) = \\int_{+0}^{\\infty} e^{-st} f(t)\\,dt = \\lim_{\\substack{\\varepsilon \\to +0 \\\\ T \\to \\infty}} \\int_{\\varepsilon}^{T} e^{-st} f(t)\\,dt"
       notation:
         - "F(s) = L[f(t)]"
         - "f(t) → F(s)"
@@ -22,11 +22,13 @@ subsections:
 
     properties:
       - name: 線形性
+        position: after_definition
         formula: "L[c₁f₁(t) + c₂f₂(t)] = c₁L[f₁(t)] + c₂L[f₂(t)]"
-        note: "c₁, c₂ は定数"
+        note: "$c_1,\\, c_2$ は定数"
 
     mathematical_tools:
       - name: 部分積分法
+        before_example: "例題2"
         formula: "∫_a^b f(t)g'(t) dt = [f(t)g(t)]_a^b - ∫_a^b f'(t)g(t) dt"
         note: "u = f(t), dv = g'(t)dt とおくと ∫u dv = [uv] - ∫v du の形"
         used_in:
@@ -35,13 +37,13 @@ subsections:
           - "例題11: 像関数の積分の導出"
 
       - name: ロピタルの定理
+        before_example: "例題2"
         statement: |
-          lim_{x→a} f(x) = lim_{x→a} g(x) = 0（または ±∞）のとき
-          lim_{x→a} f(x)/g(x) = lim_{x→a} f'(x)/g'(x)
+          $\lim_{x\to a} f(x) = \lim_{x\to a} g(x) = 0$（または $\pm\infty$）のとき
+          $\lim_{x\to a} \dfrac{f(x)}{g(x)} = \lim_{x\to a} \dfrac{f'(x)}{g'(x)}$
         application: |
-          ラプラス変換では t → ∞ における極限の評価に使用する
-          例: lim_{t→∞} t·e^{-st} = lim_{t→∞} t/e^{st}
-                                    = lim_{t→∞} 1/(s·e^{st}) = 0  (s > 0)
+          ラプラス変換では $t \to \infty$ における極限の評価に使用する
+          例: $\lim_{t\to\infty} t \cdot e^{-st} = \lim_{t\to\infty} \dfrac{t}{e^{st}} = \lim_{t\to\infty} \dfrac{1}{s e^{st}} = 0 \quad (s > 0)$
         used_in:
           - "例題2: lim_{t→∞} t·e^{-st} = 0 の確認"
           - "例題4: lim_{t→∞} e^{-st}·sin t = 0 および lim_{t→∞} e^{-st}·cos t = 0 の確認"
@@ -112,6 +114,7 @@ subsections:
 
     special_functions:
       - name: 双曲線関数
+        after_example: "例題4"
         definitions:
           sinh: "sinh t = (e^t - e^{-t}) / 2"
           cosh: "cosh t = (e^t + e^{-t}) / 2"
@@ -120,6 +123,7 @@ subsections:
           - "L[cosh t] = s/(s²-1)  (s > 1)"
 
       - name: 単位ステップ関数
+        after_example: "例題4"
         definition: "U(t-a) = { 1  (t ≥ a),  0  (t < a) }"
         graph_note: "t = a で 0 から 1 に跳躍"
         example:
@@ -133,7 +137,8 @@ subsections:
 
     exercises:
       - id: 問1
-        content: "L[t^{2}] を線形性を用いて求めよ"
+        after_example: "例題2"
+        content: "$L[t^2]$ を線形性を用いて求めよ"
         answer:
           steps:
             - "L[t^{n}] = n!/s^{n+1} において n = 2 とすると"
@@ -141,7 +146,8 @@ subsections:
           result: "L[t^{2}] = 2/s^{3}  (s > 0)"
 
       - id: 問2
-        content: "L[t + 2t^{2}] を求めよ"
+        after_example: "例題2"
+        content: "$L[t + 2t^2]$ を求めよ"
         answer:
           steps:
             - "線形性より L[t + 2t^{2}] = L[t] + 2·L[t^{2}]"
@@ -150,7 +156,8 @@ subsections:
           result: "L[t + 2t^{2}] = 1/s^{2} + 4/s^{3}  (s > 0)"
 
       - id: 問3
-        content: "L[e^{-t} + e^{-2t}] を求めよ"
+        after_example: "例題3"
+        content: "$L[e^{-t} + e^{-2t}]$ を求めよ"
         answer:
           steps:
             - "例題3より L[e^{at}] = 1/(s-a) なので"
@@ -160,7 +167,8 @@ subsections:
           result: "L[e^{-t} + e^{-2t}] = 1/(s+1) + 1/(s+2)  (s > -1)"
 
       - id: 問4
-        content: "次の公式を証明せよ: L[cos t] = s/(s²+1)  (s > 0)"
+        after_example: "例題4"
+        content: "次の公式を証明せよ：$L[\\cos t] = s/(s^2+1) \\quad (s > 0)$"
         answer:
           steps:
             - "F(s) = ∫₀^∞ e^{-st} cos t dt に部分積分を適用する"
@@ -175,7 +183,8 @@ subsections:
           result: "L[cos t] = s/(s²+1)  (s > 0)"
 
       - id: 問5
-        content: "双曲線関数 sinh t, cosh t のラプラス変換を求めよ"
+        after_example: "例題4"
+        content: "双曲線関数 $\\sinh t,\\, \\cosh t$ のラプラス変換を求めよ"
         answer:
           steps:
             - "定義より sinh t = (e^t - e^{-t})/2,  cosh t = (e^t + e^{-t})/2"
@@ -189,7 +198,8 @@ subsections:
             - "L[cosh t] = s/(s²-1)  (s > 1)"
 
       - id: 問6
-        content: "関数 g(t) = U(t-2) のグラフをかけ。また L[U(t-2)] を求めよ"
+        after_example: "例題5"
+        content: "関数 $g(t) = U(t-2)$ のグラフをかけ。また $L[U(t-2)]$ を求めよ"
         answer:
           graph_note: "t < 2 では g(t) = 0，t ≥ 2 では g(t) = 1 の階段形"
           steps:
@@ -197,11 +207,13 @@ subsections:
           result: "L[U(t-2)] = e^{-2s}/s  (s > 0)"
 
       - id: 問7
+        after_example: "例題6"
         content: |
-          正の実数 a, b, c（ただし a < b < c）について，関数 f(t) を
-            f(t) = { 1  (0 < t < a, b ≤ t < c)
-                   { 0  (a ≤ t < b, t ≥ c)
-          で定めるとき，f(t) を単位ステップ関数を用いて表せ。また，L[f(t)] を求めよ。
+          正の実数 $a, b, c$（ただし $a < b < c$）について，関数 $f(t)$ を
+          \[
+            f(t) = \begin{cases} 1 & (0 < t < a,\ b \leq t < c) \\ 0 & (a \leq t < b,\ t \geq c) \end{cases}
+          \]
+          で定めるとき，$f(t)$ を単位ステップ関数を用いて表せ。また，$L[f(t)]$ を求めよ。
         answer:
           graph_note: "t=0〜a と t=b〜c の2区間だけ 1 になる矩形2つ型"
           steps:

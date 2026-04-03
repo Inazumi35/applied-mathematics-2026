@@ -25,7 +25,6 @@
   \]
   {\footnotesize \textcolor{gray}{$f(t), g(t)$ はいずれも $t \geq 0$ で定義された関数}}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
 \end{frame}
 
 \begin{frame}{定理：交換法則}
@@ -34,7 +33,6 @@
     f(t) * g(t) = g(t) * f(t)
   \]
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
 \end{frame}
 
 \begin{frame}{定理：分配法則}
@@ -43,7 +41,6 @@
     f * (g_{1} + g_{2}) = f*g_{1} + f*g_{2}
   \]
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
 \end{frame}
 
 \begin{frame}{定理：たたみこみのラプラス変換（たたみこみ定理）}
@@ -55,7 +52,6 @@
     L^{-1}[F(s) \cdot G(s)] = f(t) * g(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
   \]
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,64--67}}
 \end{frame}
 
 \begin{frame}{例題5}
@@ -65,20 +61,14 @@
 \end{frame}
 
 \begin{frame}{例題5　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] これは sin t * cos t のたたみこみ
-    \item[] 積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$
-    \item[] $= (1/2)[\sin t + \sin(2\tau-t)]$
-    \item[] $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$
-    \item[] $= (1/2)\begin{cases} [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \end{cases}$
-    \item[] $= (1/2)\begin{cases} t \sin t + & (-\cos t/2 - (-\cos(-t)/2)) \end{cases}$
-    \item[] $= (1/2){t \sin t + 0}$（$\cos(-t) = \cos t$ より）
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
-  \end{alertblock}
+  これは sin t * cos t のたたみこみ\\[4pt]
+  積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$\\[4pt]
+  $= (1/2)[\sin t + \sin(2\tau-t)]$\\[4pt]
+  $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$\\[4pt]
+  $= (1/2)\begin{cases} [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \end{cases}$\\[4pt]
+  $= (1/2)\begin{cases} t \sin t + & (-\cos t/2 - (-\cos(-t)/2)) \end{cases}$\\[4pt]
+  $= (1/2){t \sin t + 0}$（$\cos(-t) = \cos t$ より）
+  \medskip\textbf{答}：$\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
 \end{frame}
 
 \begin{frame}{例題6}
@@ -88,14 +78,10 @@
 \end{frame}
 
 \begin{frame}{例題6　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$
-    \item[] $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$
-    \item[] $= \int_{t}^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$
-    \item[] $= g(t)*f(t)$
-  \end{enumerate}
-  \end{exampleblock}
+  $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$\\[4pt]
+  $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$\\[4pt]
+  $= \int_{t}^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$\\[4pt]
+  $= g(t)*f(t)$
 \end{frame}
 
 \begin{frame}{例題7}
@@ -105,16 +91,10 @@
 \end{frame}
 
 \begin{frame}{例題7　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $L^{-1}[F(s)/(s-\alpha)] = L^{-1}[F(s) \cdot 1/(s-\alpha)]$
-    \item[] $L^{-1}[1/(s-\alpha)] = e^{\alpha t}$ より、たたみこみ定理を適用
-    \item[] $= L^{-1}[F(s)] * e^{\alpha t} = f(t) * e^{\alpha t}$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $L^{-1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
-  \end{alertblock}
+  $L^{-1}[F(s)/(s-\alpha)] = L^{-1}[F(s) \cdot 1/(s-\alpha)]$\\[4pt]
+  $L^{-1}[1/(s-\alpha)] = e^{\alpha t}$ より、たたみこみ定理を適用\\[4pt]
+  $= L^{-1}[F(s)] * e^{\alpha t} = f(t) * e^{\alpha t}$
+  \medskip\textbf{答}：$L^{-1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
 \end{frame}
 
 \begin{frame}{例題8}
@@ -124,21 +104,15 @@
 \end{frame}
 
 \begin{frame}{例題8　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] 左辺は $x(t) * \sin t$ のたたみこみ
-    \item[] 両辺をラプラス変換 $: X(s) \cdot L[\sin t] = L[t^{2}]$
-    \item[] $X(s) \cdot 1/(s^{2}+1) = 2/s^{3}$
-    \item[] $X(s) = 2(s^{2}+1)/s^{3} = 2/s + 2/s^{3}$
-    \item[] 逆ラプラス変換 $: x(t) = 2 + t^{2}$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $x(t) = t^{2} + 2$
-  \end{alertblock}
+  左辺は $x(t) * \sin t$ のたたみこみ\\[4pt]
+  両辺をラプラス変換 $: X(s) \cdot L[\sin t] = L[t^{2}]$\\[4pt]
+  $X(s) \cdot 1/(s^{2}+1) = 2/s^{3}$\\[4pt]
+  $X(s) = 2(s^{2}+1)/s^{3} = 2/s + 2/s^{3}$\\[4pt]
+  逆ラプラス変換 $: x(t) = 2 + t^{2}$
+  \medskip\textbf{答}：$x(t) = t^{2} + 2$
 \end{frame}
 
-\begin{frame}{演習問題（p.\,64--67）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問5] 次のたたみこみを求めよ

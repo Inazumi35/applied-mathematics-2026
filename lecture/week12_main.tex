@@ -30,7 +30,6 @@
   \]
   {\footnotesize \textcolor{gray}{$F(\omega)$ を $f(t)$ のフーリエ変換、 $f(t)$ を $F(\omega)$ の逆フーリエ変換という}}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,91--95}}
 \end{frame}
 
 \begin{frame}{定理：フーリエ積分定理}
@@ -44,7 +43,6 @@
     f(t) = (1/\pi) \int_{0}^\infty [\int_{-\infty}^{\infty} f(\tau)\cos(\omega(t-\tau)) d\tau] d\omega
   \]
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,91--95}}
 \end{frame}
 
 \begin{frame}{フーリエ余弦変換}
@@ -78,16 +76,10 @@
 \end{frame}
 
 \begin{frame}{例題1　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $F(u) = \int_{-\infty}^{\infty} e^{-|x|} e^{-iux} dx$
-    \item[] $= \int_{-\infty}^{0} e^{x} e^{-iux} dx + \int_{0}^{\infty} e^{-x} e^{-iux} dx$
-    \item[] $= 1/(1-iu) + 1/(1+iu)$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $F(u) = 2/(1+u^{2})$
-  \end{alertblock}
+  $F(u) = \int_{-\infty}^{\infty} e^{-|x|} e^{-iux} dx$\\[4pt]
+  $= \int_{-\infty}^{0} e^{x} e^{-iux} dx + \int_{0}^{\infty} e^{-x} e^{-iux} dx$\\[4pt]
+  $= 1/(1-iu) + 1/(1+iu)$
+  \medskip\textbf{答}：$F(u) = 2/(1+u^{2})$
   {\footnotesize \textcolor{gray}{\textit{$\lim_{x \to ±\infty} e^{(1-iu)x} = 0$ を用いる}}}
 \end{frame}
 
@@ -98,15 +90,9 @@
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $F(u) = \int_{-1}^{1} e^{-iux} dx = [-e^{-iux}/(iu)]_{-1}^{1}$
-    \item[] $= (e^{iu} - e^{-iu})/(iu) = 2\sin u / u$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $F(u) = 2\sin u / u$
-  \end{alertblock}
+  $F(u) = \int_{-1}^{1} e^{-iux} dx = [-e^{-iux}/(iu)]_{-1}^{1}$\\[4pt]
+  $= (e^{iu} - e^{-iu})/(iu) = 2\sin u / u$
+  \medskip\textbf{答}：$F(u) = 2\sin u / u$
 \end{frame}
 
 \begin{frame}{例題3　（p.\,95）}
@@ -116,20 +102,14 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $f(x)$ は偶関数なのでフーリエ余弦変換を用いる
-    \item[] $F(u) = 2\int_{0}^{1} (1-x) \cos(ux) dx$
-    \item[] $= 2\begin{cases} [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx \end{cases}$
-    \item[] $= 2\begin{cases} 0 + (1/u)[-\cos(ux)/u]_{0}^1 \end{cases} = 2(1-\cos u)/u^{2}$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $F(u) = 2(1-\cos u)/u^{2}$
-  \end{alertblock}
+  $f(x)$ は偶関数なのでフーリエ余弦変換を用いる\\[4pt]
+  $F(u) = 2\int_{0}^{1} (1-x) \cos(ux) dx$\\[4pt]
+  $= 2\begin{cases} [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx \end{cases}$\\[4pt]
+  $= 2\begin{cases} 0 + (1/u)[-\cos(ux)/u]_{0}^1 \end{cases} = 2(1-\cos u)/u^{2}$
+  \medskip\textbf{答}：$F(u) = 2(1-\cos u)/u^{2}$
 \end{frame}
 
-\begin{frame}{演習問題（p.\,91--95）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問1] 次の関数のフーリエ変換を求めよ

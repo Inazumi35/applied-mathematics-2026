@@ -26,7 +26,6 @@
     f(t) = a_{0}/2 + \sum_{n=1}^\infty (a_{n}\cos(nt) + b_{n}\sin(nt))
   \]
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,74--79}}
 \end{frame}
 
 \begin{frame}{定理：三角関数の直交性}
@@ -37,7 +36,6 @@
     \int_{-\pi}^{\pi} \cos(mt)\sin(nt) dt &= 0  （任意の m, n）
   \end{align*}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,74--79}}
 \end{frame}
 
 \begin{frame}{定理：フーリエ展開の収束定理}
@@ -53,7 +51,6 @@
     \item 不連続点 $t_{0}$ では : フーリエ級数 $ \to (1/2)[f(t_{0}+0) + f(t_{0}-0)]$
   \end{itemize}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,74--79}}
 \end{frame}
 
 \begin{frame}{例題1　（p.\,78）}
@@ -63,16 +60,10 @@
 \end{frame}
 
 \begin{frame}{例題1　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $c_{0} = (1/2\pi)\int_{-\pi}^{\pi} f(x)dx = (1/2\pi)\int_{0}^\pi x dx = \pi/4$
-    \item[] $a_{n} = (1/\pi)\int_{0}^\pi x \cos(nx) dx = -(1/n^{2}\pi)(1-(-1)^n)$
-    \item[] $b_{n} = (1/\pi)\int_{0}^\pi x \sin(nx) dx = (-1)^{n+1}/n$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $f(x) = \pi/4 + \sum_{n=1}^\infty [-(1/n^{2}\pi)(1-(-1)^n)\cos(nx) + (-1)^{n+1}/n \cdot \sin(nx)] = \pi/4 + (-2/\pi \cdot \cos x + \sin x) - (1/2)\sin 2x + \ldots$
-  \end{alertblock}
+  $c_{0} = (1/2\pi)\int_{-\pi}^{\pi} f(x)dx = (1/2\pi)\int_{0}^\pi x dx = \pi/4$\\[4pt]
+  $a_{n} = (1/\pi)\int_{0}^\pi x \cos(nx) dx = -(1/n^{2}\pi)(1-(-1)^n)$\\[4pt]
+  $b_{n} = (1/\pi)\int_{0}^\pi x \sin(nx) dx = (-1)^{n+1}/n$
+  \medskip\textbf{答}：$f(x) = \pi/4 + \sum_{n=1}^\infty [-(1/n^{2}\pi)(1-(-1)^n)\cos(nx) + (-1)^{n+1}/n \cdot \sin(nx)] = \pi/4 + (-2/\pi \cdot \cos x + \sin x) - (1/2)\sin 2x + \ldots$
 \end{frame}
 
 \begin{frame}{例題2　（p.\,80--81）}
@@ -82,16 +73,10 @@
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $c_{0} = (1/2)\int_{-1}^{1} f(x)dx = (1/2)\int_{0}^{1} 1 dx = 1/2$
-    \item[] $a_{n} = \int_{-1}^{1} f(x)\cos(n\pi x) dx = \int_{0}^1 \cos(n\pi x) dx = 0$
-    \item[] $b_{n} = \int_{-1}^{1} f(x)\sin(n\pi x) dx = \int_{0}^1 \sin(n\pi x) dx = (1/n\pi)(1 - (-1)^n)$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $f(x) = 1/2 + \sum_{n=1}^\infty (1/n\pi)(1-(-1)^n) \sin(n\pi x) = 1/2 + (2/\pi)(\sin \pi x + \sin(3\pi x)/3 + \sin(5\pi x)/5 + \ldots)$
-  \end{alertblock}
+  $c_{0} = (1/2)\int_{-1}^{1} f(x)dx = (1/2)\int_{0}^{1} 1 dx = 1/2$\\[4pt]
+  $a_{n} = \int_{-1}^{1} f(x)\cos(n\pi x) dx = \int_{0}^1 \cos(n\pi x) dx = 0$\\[4pt]
+  $b_{n} = \int_{-1}^{1} f(x)\sin(n\pi x) dx = \int_{0}^1 \sin(n\pi x) dx = (1/n\pi)(1 - (-1)^n)$
+  \medskip\textbf{答}：$f(x) = 1/2 + \sum_{n=1}^\infty (1/n\pi)(1-(-1)^n) \sin(n\pi x) = 1/2 + (2/\pi)(\sin \pi x + \sin(3\pi x)/3 + \sin(5\pi x)/5 + \ldots)$
   {\footnotesize \textcolor{gray}{\textit{$N=20, N=50$ での部分和グラフ（ギブス現象）を p.81 に掲載}}}
 \end{frame}
 
@@ -102,19 +87,13 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $f(t)$ は偶関数なので $b_{n} = 0$
-    \item[] $a_{0} = (2/\pi) \int_{0}^{\pi} t dt = \pi$
-    \item[] $a_{n} = (2/\pi) \int_{0}^{\pi} t \cos(nt) dt$
-    \item[] 部分積分 $: = (2/\pi)\begin{cases} [t \sin(nt)/n]_{0}^\pi - (1/n)\int_{0}^\pi \sin(nt) dt \end{cases}$
-    \item[] $= (2/\pi) \cdot (1/n^{2})[\cos(n\pi) - 1] = (2/n^{2}\pi)[(-1)^n - 1]$
-    \item[] n が奇数のとき $a_{n} = -4/n^{2}\pi, n$ が偶数のとき $a_{n} = 0$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $f(t) = \pi/2 - (4/\pi)(\cos t + \cos(3t)/9 + \cos(5t)/25 + \ldots)$
-  \end{alertblock}
+  $f(t)$ は偶関数なので $b_{n} = 0$\\[4pt]
+  $a_{0} = (2/\pi) \int_{0}^{\pi} t dt = \pi$\\[4pt]
+  $a_{n} = (2/\pi) \int_{0}^{\pi} t \cos(nt) dt$\\[4pt]
+  部分積分 $: = (2/\pi)\begin{cases} [t \sin(nt)/n]_{0}^\pi - (1/n)\int_{0}^\pi \sin(nt) dt \end{cases}$\\[4pt]
+  $= (2/\pi) \cdot (1/n^{2})[\cos(n\pi) - 1] = (2/n^{2}\pi)[(-1)^n - 1]$\\[4pt]
+  n が奇数のとき $a_{n} = -4/n^{2}\pi, n$ が偶数のとき $a_{n} = 0$
+  \medskip\textbf{答}：$f(t) = \pi/2 - (4/\pi)(\cos t + \cos(3t)/9 + \cos(5t)/25 + \ldots)$
 \end{frame}
 
 \end{document}

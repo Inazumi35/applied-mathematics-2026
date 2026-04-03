@@ -38,21 +38,15 @@
 \end{frame}
 
 \begin{frame}{例題1　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $L[x(t)] = X(s)$ とする
-    \item[] 原関数の微分法則より $L[dx/dt] = sX(s) - x(0) = sX(s) - 1$
-    \item[] 方程式の両辺をラプラス変換 $: (sX(s) - 1) + X(s) = 1/(s-1)$
-    \item[] $(s+1)X(s) = 1 + 1/(s-1) = s/(s-1)$
-    \item[] $X(s) = s/((s+1)(s-1))$ 部分分数分解 :
-    \item[] $s = A(s+1) + B(s-1)$ より $A = 1/2, B = 1/2$
-    \item[] $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$
-    \item[] 逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $x(t) = \cosh t$
-  \end{alertblock}
+  $L[x(t)] = X(s)$ とする\\[4pt]
+  原関数の微分法則より $L[dx/dt] = sX(s) - x(0) = sX(s) - 1$\\[4pt]
+  方程式の両辺をラプラス変換 $: (sX(s) - 1) + X(s) = 1/(s-1)$\\[4pt]
+  $(s+1)X(s) = 1 + 1/(s-1) = s/(s-1)$\\[4pt]
+  $X(s) = s/((s+1)(s-1))$ 部分分数分解 :\\[4pt]
+  $s = A(s+1) + B(s-1)$ より $A = 1/2, B = 1/2$\\[4pt]
+  $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$\\[4pt]
+  逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
+  \medskip\textbf{答}：$x(t) = \cosh t$
   {\footnotesize \textcolor{gray}{\textit{$\sinh t + \cosh t = e^t$ より確認可能}}}
 \end{frame}
 
@@ -63,21 +57,15 @@
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $L[x(t)] = X(s)$ とする
-    \item[] $(s^{2}+4)X(s) - s\cdot x(0) - x'(0) = 1/(s+1)$
-    \item[] $(s^{2}+4)X(s) = 1/(s+1)$
-    \item[] $X(s) = 1/((s+1)(s^{2}+4))$
-    \item[] 部分分数分解 $: A/(s+1) + (Bs+C)/(s^{2}+4)$
-    \item[] $1 = A(s^{2}+4) + (Bs+C)(s+1)$
-    \item[] $s=-1: A = 1/5; s^{2}$ の係数 $: B = -1/5;$ 定数項 $: C = 1/5$
-    \item[] $X(s) = (1/5)/(s+1) - (1/5)\cdot s/(s^{2}+4) + (1/10)\cdot2/(s^{2}+4)$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
-  \end{alertblock}
+  $L[x(t)] = X(s)$ とする\\[4pt]
+  $(s^{2}+4)X(s) - s\cdot x(0) - x'(0) = 1/(s+1)$\\[4pt]
+  $(s^{2}+4)X(s) = 1/(s+1)$\\[4pt]
+  $X(s) = 1/((s+1)(s^{2}+4))$\\[4pt]
+  部分分数分解 $: A/(s+1) + (Bs+C)/(s^{2}+4)$\\[4pt]
+  $1 = A(s^{2}+4) + (Bs+C)(s+1)$\\[4pt]
+  $s=-1: A = 1/5; s^{2}$ の係数 $: B = -1/5;$ 定数項 $: C = 1/5$\\[4pt]
+  $X(s) = (1/5)/(s+1) - (1/5)\cdot s/(s^{2}+4) + (1/10)\cdot2/(s^{2}+4)$
+  \medskip\textbf{答}：$x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
 \end{frame}
 
 \begin{frame}{例題3}
@@ -87,19 +75,13 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $x'(0) = a$ とおき、 $L[x(t)] = X(s)$ とする
-    \item[] $(s^{2}-1)X(s) - s\cdot x(0) - x'(0) = 0$
-    \item[] $(s^{2}-1)X(s) = a$
-    \item[] $X(s) = a/(s^{2}-1)$
-    \item[] 逆変換 $: x(t) = a\cdot \sinh(t)$
-    \item[] 境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $x(t) = \sinh(t)/\sinh(1)$
-  \end{alertblock}
+  $x'(0) = a$ とおき、 $L[x(t)] = X(s)$ とする\\[4pt]
+  $(s^{2}-1)X(s) - s\cdot x(0) - x'(0) = 0$\\[4pt]
+  $(s^{2}-1)X(s) = a$\\[4pt]
+  $X(s) = a/(s^{2}-1)$\\[4pt]
+  逆変換 $: x(t) = a\cdot \sinh(t)$\\[4pt]
+  境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
+  \medskip\textbf{答}：$x(t) = \sinh(t)/\sinh(1)$
   {\footnotesize \textcolor{gray}{\textit{境界値問題では未知の初期値 a を置き、もう一方の境界条件で決定する}}}
 \end{frame}
 
@@ -110,11 +92,9 @@
 \end{frame}
 
 \begin{frame}{例題4　解答}
-  \begin{exampleblock}{解答}
-  \end{exampleblock}
 \end{frame}
 
-\begin{frame}{演習問題（p.\,62--65）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問1] 次の微分方程式を解け

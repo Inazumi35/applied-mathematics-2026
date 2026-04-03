@@ -26,16 +26,12 @@
 \end{frame}
 
 \begin{frame}{例題9　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] 初期値ゼロで両辺をラプラス変換:
-    \item[] $(s^{2}+as+b)X(s) = Y(s)$
-    \item[] $H(s) = X(s)/Y(s) = 1/(s^{2}+as+b)$
-  \end{enumerate}
-  \end{exampleblock}
+  初期値ゼロで両辺をラプラス変換:\\[4pt]
+  $(s^{2}+as+b)X(s) = Y(s)$\\[4pt]
+  $H(s) = X(s)/Y(s) = 1/(s^{2}+as+b)$
 \end{frame}
 
-\begin{frame}{演習問題（p.\,68--72）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問10] 微分方程式 $x'' + ax' + bx = y(t), x(0)=0, x'(0)=0$ の
@@ -45,6 +41,30 @@
     $y'' + \omega^{2}y = \delta(t),  y(0) = 0,  y'(0) = 0$\\
   \end{description}
   \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問10　解答}
+  初期値ゼロで両辺をラプラス変換:\\[4pt]
+  $(s^{2}+as+b)X(s) = Y(s)$\\[4pt]
+  $H(s) = X(s)/Y(s) = 1/(s^{2}+as+b)$
+  \medskip\textbf{答}：$H(s) = 1/(s^{2}+as+b)$
+\end{frame}
+
+\begin{frame}{問11　解答}
+  ラプラス変換を使った証明:\\[4pt]
+  $L[f(t)*\delta(t)] = F(s)\cdot L[\delta(t)] = F(s)\cdot1 = F(s) = L[f(t)]$\\[4pt]
+  $\therefore f(t)*\delta(t) = f(t)$\\[4pt]
+  交換法則より $\delta(t)*f(t) = f(t)*\delta(t) = f(t)$ （証明終）\\[4pt]
+  （直接証明） $f(t)*\delta(t) = \int_{0}^t f(t-\tau)\delta(\tau)d\tau = f(t-0) = f(t)$
+\end{frame}
+
+\begin{frame}{問12　解答}
+  両辺をラプラス変換（初期値ゼロ）:\\[4pt]
+  $(s^{2} + \omega^{2})Y(s) = L[\delta(t)] = 1$\\[4pt]
+  $Y(s) = 1/(s^{2}+\omega^{2}) = (1/\omega)\cdot\omega/(s^{2}+\omega^{2})$\\[4pt]
+  逆ラプラス変換 $: y(t) = (1/\omega)\sin(\omega t)$
+  \medskip\textbf{答}：$y(t) = (1/\omega)\sin(\omega t)$（デルタ入力に対するインパルス応答）
+  {\footnotesize \textcolor{gray}{\textit{p.70 スキャンで確認（元YAMLの問題文は誤記）}}}
 \end{frame}
 
 \begin{frame}{練習問題2　（p.\,72）}
@@ -70,50 +90,6 @@
     (4) 入力 $x(t) = e^{-t} (t>0)$ のとき、出力 $y(t)$ を求めよ\\
   \end{description}
   \end{block}
-\end{frame}
-
-\begin{frame}{問10　解答}
-  \begin{block}{}
-  \begin{itemize}\setlength{\itemsep}{2pt}
-    \item 初期値ゼロで両辺をラプラス変換:
-    \item $(s^{2}+as+b)X(s) = Y(s)$
-    \item $H(s) = X(s)/Y(s) = 1/(s^{2}+as+b)$
-  \end{itemize}
-  \end{block}
-  \begin{exampleblock}{答え}
-    \[
-    H(s) = 1/(s^{2}+as+b)
-  \]
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}{問11　解答}
-  \begin{block}{}
-  \begin{itemize}\setlength{\itemsep}{2pt}
-    \item ラプラス変換を使った証明:
-    \item $L[f(t)*\delta(t)] = F(s)\cdot L[\delta(t)] = F(s)\cdot1 = F(s) = L[f(t)]$
-    \item $\therefore f(t)*\delta(t) = f(t)$
-    \item 交換法則より $\delta(t)*f(t) = f(t)*\delta(t) = f(t)$ （証明終）
-    \item （直接証明） $f(t)*\delta(t) = \int_{0}^t f(t-\tau)\delta(\tau)d\tau = f(t-0) = f(t)$
-  \end{itemize}
-  \end{block}
-\end{frame}
-
-\begin{frame}{問12　解答}
-  \begin{block}{}
-  \begin{itemize}\setlength{\itemsep}{2pt}
-    \item 両辺をラプラス変換（初期値ゼロ）:
-    \item $(s^{2} + \omega^{2})Y(s) = L[\delta(t)] = 1$
-    \item $Y(s) = 1/(s^{2}+\omega^{2}) = (1/\omega)\cdot\omega/(s^{2}+\omega^{2})$
-    \item 逆ラプラス変換 $: y(t) = (1/\omega)\sin(\omega t)$
-  \end{itemize}
-  \end{block}
-  \begin{exampleblock}{答え}
-    \[
-    y(t) = (1/\omega)\sin(\omega t)  （デルタ入力に対するインパルス応答）
-  \]
-  \end{exampleblock}
-  {\footnotesize \textcolor{gray}{\textit{p.70 スキャンで確認（元YAMLの問題文は誤記）}}}
 \end{frame}
 
 \end{document}

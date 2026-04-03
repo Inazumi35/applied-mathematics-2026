@@ -30,7 +30,6 @@
     b_{n} &= (1/l) \int_{-l}^{l} f(t)\sin(n\pi t/l) dt  (n = 1, 2, ...)
   \end{align*}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,80--85}}
 \end{frame}
 
 \begin{frame}{例題3　（p.\,83）}
@@ -40,20 +39,14 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $f(x)$ は偶関数なので $b_{n} = 0,$ フーリエ余弦展開を求めればよい
-    \item[] $c_{0} = \int_{-1}^{1} |x| dx = 1$
-    \item[] $a_{n} = 2\int_{0}^{1} x \cos(n\pi x) dx = -2(1-(-1)^n)/(n^{2}\pi^{2})$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $f(x) = 1/2 - (4/\pi^{2})(\cos \pi x + \cos(3\pi x)/9 + \cos(5\pi x)/25 + \ldots)$
-  \end{alertblock}
+  $f(x)$ は偶関数なので $b_{n} = 0,$ フーリエ余弦展開を求めればよい\\[4pt]
+  $c_{0} = \int_{-1}^{1} |x| dx = 1$\\[4pt]
+  $a_{n} = 2\int_{0}^{1} x \cos(n\pi x) dx = -2(1-(-1)^n)/(n^{2}\pi^{2})$
+  \medskip\textbf{答}：$f(x) = 1/2 - (4/\pi^{2})(\cos \pi x + \cos(3\pi x)/9 + \cos(5\pi x)/25 + \ldots)$
   {\footnotesize \textcolor{gray}{\textit{$N=2, N=5$ での収束グラフあり（ p.83 ）}}}
 \end{frame}
 
-\begin{frame}{演習問題（p.\,80--85）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問3] 次の関数のフーリエ級数を求めよ

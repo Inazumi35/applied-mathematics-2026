@@ -136,6 +136,9 @@ def fmt(raw) -> str:
     if raw is None:
         return ''
     text = u2l(str(raw))
+    # 既に $...$ を含む場合は二重ラップせず mfunc のみ適用
+    if '$' in text:
+        return mfunc(text)
 
     # Pattern A: ラベル：数式
     if '：' in text:
@@ -305,13 +308,10 @@ def build_section_title_frame(data: dict) -> list:
     ]
     for sub in data.get('subsections', []):
         sub_title = sub.get('title', '')
-        sub_pages = sub.get('pages', '')
-        pr = page_ref(sub_pages)
-        body.append(f'    \\item {sub_title}　（{pr}）' if pr else f'    \\item {sub_title}')
+        body.append(f'    \\item {sub_title}')
     body += [
         r'  \end{itemize}',
         r'  \end{block}',
-        f'  \\vfill\\hfill{{\\scriptsize \\textcolor{{gray}}{{教科書 {page_ref(pages)}}}}}',
     ]
     return frame_lines(title, body)
 
@@ -484,23 +484,19 @@ def build_example_frame(ex: dict, skip_todo: bool = True) -> list:
         prob_body.append('    （問題文は原本で確認）')
     prob_body.append(r'  \end{exampleblock}')
 
-    # ── 解答フレーム ──
+    # ── 解答フレーム（枠なし） ──
     steps = normalize_solution(solution)
-    sol_body = [r'  \begin{exampleblock}{解答}']
-    if steps:
-        sol_body.append(r'  \begin{enumerate}[1.]')
-        for step in steps:
-            step_tex = fmt(convert_cases(str(step).strip()))
-            sol_body.append(f'    \\item[] {step_tex}')
-        sol_body.append(r'  \end{enumerate}')
-    sol_body.append(r'  \end{exampleblock}')
+    sol_body = []
+    for step in steps:
+        step_tex = fmt(convert_cases(str(step).strip()))
+        sol_body.append(f'  {step_tex}\\\\[4pt]')
+    # 末尾の改行余白を除去
+    if sol_body:
+        sol_body[-1] = sol_body[-1].replace('\\\\[4pt]', '')
 
     if result and not is_todo(result):
-        sol_body += [
-            r'  \begin{alertblock}{答}',
-            f'    {fmt(convert_cases(str(result)))}',
-            r'  \end{alertblock}',
-        ]
+        res_tex = fmt(convert_cases(str(result)))
+        sol_body.append(f'  \\medskip\\textbf{{答}}：{res_tex}')
 
     if note and not is_todo(note):
         sol_body.append(
@@ -587,6 +583,96 @@ def build_separator_frame(label: str = '解説（試験前配布）') -> list:
     return frame_lines(label, body)
 
 
+def build_exercise_frame_group(exercises: list, skip_todo: bool = True) -> list:
+    """例題直後に挿入する演習グループフレーム（問N・問M 形式のタイトル）"""
+    valid = [ex for ex in exercises
+             if not (skip_todo and is_todo(str(ex.get('content', ''))))]
+    if not valid:
+        return []
+    title = '・'.join(str(ex.get('id', '')) for ex in valid)
+    return build_exercise_frame(valid, title=title, skip_todo=skip_todo)
+
+
+def build_property_frame_single(prop: dict) -> list:
+    """単一性質（線形性等）のフレーム"""
+    name = prop.get('name', '性質')
+    formula = prop.get('formula', '')
+    note = prop.get('note', '')
+    body = []
+    if formula:
+        body.append(fmt_display(formula))
+    if note:
+        body.append(f'  {{\\small （{fmt(str(note))}）}}')
+    return frame_lines(name, body)
+
+
+def build_tool_frame_single(tool: dict) -> list:
+    """数学的ツール（部分積分・ロピタル等）のフレーム"""
+    name = tool.get('name', '')
+    formula = tool.get('formula', '')
+    note = tool.get('note', '')
+    statement = tool.get('statement', '')
+    application = tool.get('application', '')
+    body = []
+    if formula:
+        body.append(fmt_display(formula))
+        if note:
+            body.append(f'  {{\\small {fmt(str(note))}}}')
+    if statement:
+        for line in statement.strip().split('\n'):
+            line = line.strip()
+            if line:
+                body.append(f'  {fmt(line)}\\\\[2pt]')
+    if application:
+        body.append(r'  \medskip{\small \textbf{ラプラス変換での使用：}}\\[2pt]')
+        for line in application.strip().split('\n'):
+            line = line.strip()
+            if line:
+                body.append(f'  {{\\small {fmt(line)}}}\\\\[1pt]')
+    return frame_lines(name, body)
+
+
+def build_special_function_def_frame(sf: dict) -> list:
+    """特殊関数（双曲線関数・単位ステップ関数等）の定義フレーム"""
+    name = sf.get('name', '')
+    body = []
+    def math_line(text: str) -> str:
+        """align* 内用：$...$を付けずに LaTeX 変換"""
+        return mfunc(u2l(str(text)).replace('→', r' \to '))
+
+    # 複数定義（dict形式: sinh/cosh 等）
+    definitions = sf.get('definitions', {})
+    if definitions:
+        body.append(r'  \begin{align*}')
+        items = list(definitions.values())
+        for i, val in enumerate(items):
+            sep = r' \\' if i < len(items) - 1 else ''
+            body.append(f'    {math_line(val)}{sep}')
+        body.append(r'  \end{align*}')
+    # 単一定義（文字列形式）
+    definition = sf.get('definition', '')
+    if definition:
+        defn_tex = math_line(definition)
+        defn_tex = convert_cases(defn_tex)
+        body.append(f'  \\[\n    {defn_tex}\n  \\]')
+    graph_note = sf.get('graph_note', '')
+    if graph_note:
+        body.append(f'  $t = a$ で $0$ から $1$ に跳躍する階段状の関数')
+    # ラプラス変換の結果（双曲線関数等）
+    transforms = sf.get('transforms', [])
+    if transforms:
+        body.append(r'  \begin{block}{ラプラス変換}')
+        body.append(r'  \begin{align*}')
+        for i, t in enumerate(transforms):
+            # 最初の = を &= に変換
+            line = re.sub(r'(?<![<>!&])=(?!=)', '&=', math_line(t), count=1)
+            sep = r' \\' if i < len(transforms) - 1 else ''
+            body.append(f'    {line}{sep}')
+        body.append(r'  \end{align*}')
+        body.append(r'  \end{block}')
+    return frame_lines(name, body)
+
+
 def build_exercise_answer_frames(exercises: list, skip_todo: bool = True) -> list:
     """演習問題の解答スライド群を生成（answer フィールドが存在する問のみ）"""
     all_frames = []
@@ -599,35 +685,29 @@ def build_exercise_answer_frames(exercises: list, skip_todo: bool = True) -> lis
         if skip_todo and is_todo(content):
             continue
 
-        body = [r'  \begin{block}{}']
+        body = []
 
         # グラフの注記
         graph_note = answer.get('graph_note', '')
         if graph_note:
             body.append(f'  \\textbf{{グラフ：}}{fmt(graph_note)}\\\\[0.3em]')
 
-        # 解法ステップ
+        # 解法ステップ（枠なし）
         steps = answer.get('steps', [])
+        for step in steps:
+            body.append(f'  {fmt(str(step))}\\\\[4pt]')
         if steps:
-            body.append(r'  \begin{itemize}\setlength{\itemsep}{2pt}')
-            for step in steps:
-                body.append(f'    \\item {fmt(str(step))}')
-            body.append(r'  \end{itemize}')
-
-        body.append(r'  \end{block}')
+            body[-1] = body[-1].replace('\\\\[4pt]', '')
 
         # 答え（単一 or 複数）
         result = answer.get('result', '')
         results = answer.get('results', [])
         if result:
-            body.append(r'  \begin{exampleblock}{答え}')
-            body.append(f'  {fmt_display(str(result).strip())}')
-            body.append(r'  \end{exampleblock}')
+            body.append(f'  \\medskip\\textbf{{答}}：{fmt(str(result).strip())}')
         elif results:
-            body.append(r'  \begin{exampleblock}{答え}')
+            body.append(r'  \medskip\textbf{答}：')
             for r_item in results:
                 body.append(f'  {fmt(str(r_item))}\\\\')
-            body.append(r'  \end{exampleblock}')
 
         # 注記
         note = answer.get('note', '')
@@ -643,9 +723,10 @@ def build_exercise_answer_frames(exercises: list, skip_todo: bool = True) -> lis
 
 # ── セクションアセンブラ ─────────────────────────────────────────
 
-def assemble_subsection(sub: dict, skip_todo: bool = True) -> list:
+def assemble_subsection(sub: dict, skip_todo: bool = True,
+                        include_exercise_answers: bool = False) -> list:
     frames = []
-    page = sub.get('pages', '')
+    page = ''
 
     # 定義
     defn = sub.get('definition')
@@ -721,7 +802,7 @@ def assemble_subsection(sub: dict, skip_todo: bool = True) -> list:
     for thm in sub.get('theorems', []):
         frames += build_theorem_frame(thm, page)
 
-    # 性質リスト
+    # 性質リスト（dict形式：既存）
     props = sub.get('properties')
     if isinstance(props, dict) and props.get('items'):
         frames += build_properties_frame(props, page)
@@ -756,18 +837,71 @@ def assemble_subsection(sub: dict, skip_todo: bool = True) -> list:
         body.append(r'  \end{block}')
         frames += frame_lines(name, body)
 
-    # 例題
-    for ex in sub.get('examples', []):
-        frames += build_example_frame(ex, skip_todo=skip_todo)
-
-    # 演習（問）
+    # ── 順序制御付き例題・演習 ──────────────────────────────────────
+    examples  = sub.get('examples', [])
     exercises = sub.get('exercises', [])
-    if exercises:
-        frames += build_exercise_frame(
-            exercises,
-            title=f'演習問題（{page_ref(page)}）',
-            skip_todo=skip_todo,
-        )
+    tools     = sub.get('mathematical_tools', [])
+    sfs       = sub.get('special_functions', [])
+
+    # list 形式の properties（position: after_definition）
+    if isinstance(props, list):
+        for prop in props:
+            if prop.get('position') == 'after_definition':
+                frames += build_property_frame_single(prop)
+
+    # インデックス構築
+    ex_by_target = {}     # after_example → [exercise, ...]
+    for ex in exercises:
+        key = ex.get('after_example')
+        ex_by_target.setdefault(key, []).append(ex)
+
+    tools_before = {}     # before_example → [tool, ...]
+    for tool in tools:
+        key = tool.get('before_example')
+        tools_before.setdefault(key, []).append(tool)
+
+    sf_after = {}         # after_example → [sf, ...]
+    for sf in sfs:
+        key = sf.get('after_example')
+        sf_after.setdefault(key, []).append(sf)
+
+    # 例題ループ
+    for ex_item in examples:
+        ex_id = str(ex_item.get('id', ''))
+
+        # before ツール
+        for tool in tools_before.get(ex_id, []):
+            frames += build_tool_frame_single(tool)
+
+        # 例題（問題＋解答）
+        frames += build_example_frame(ex_item, skip_todo=skip_todo)
+
+        # 例題直後の演習問題グループ
+        group = ex_by_target.get(ex_id, [])
+        if group:
+            frames += build_exercise_frame_group(group, skip_todo)
+            if include_exercise_answers:
+                frames += build_exercise_answer_frames(group, skip_todo)
+
+        # 例題直後の特殊関数（定義＋埋め込み例題）
+        for sf in sf_after.get(ex_id, []):
+            frames += build_special_function_def_frame(sf)
+            sf_ex = sf.get('example')
+            if sf_ex:
+                frames += build_example_frame(sf_ex, skip_todo=skip_todo)
+                sf_ex_id = str(sf_ex.get('id', ''))
+                sf_group = ex_by_target.get(sf_ex_id, [])
+                if sf_group:
+                    frames += build_exercise_frame_group(sf_group, skip_todo)
+                    if include_exercise_answers:
+                        frames += build_exercise_answer_frames(sf_group, skip_todo)
+
+    # after_example 未指定の演習（他の章との後方互換）
+    ungrouped = ex_by_target.get(None, [])
+    if ungrouped:
+        frames += build_exercise_frame(ungrouped, title='演習問題', skip_todo=skip_todo)
+        if include_exercise_answers:
+            frames += build_exercise_answer_frames(ungrouped, skip_todo)
 
     return frames
 
@@ -785,10 +919,6 @@ def assemble_section(data: dict, skip_todo: bool = True) -> list:
             f'  {{\\large {sub_title}}}',
             r'  \end{block}',
         ]
-        if sub_pages:
-            divider_body.append(
-                f'  \\vfill\\hfill{{\\scriptsize \\textcolor{{gray}}{{{page_ref(sub_pages)}}}}}'
-            )
         all_frames += frame_lines(sub_title, divider_body)
         all_frames += assemble_subsection(sub, skip_todo=skip_todo)
 

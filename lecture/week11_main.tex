@@ -25,7 +25,6 @@
   \]
   {\footnotesize \textcolor{gray}{オイラーの公式 $e^{int} = \cos(nt) + i \sin(nt)$ を利用}}
   \end{block}
-  \vfill\hfill{\scriptsize \textcolor{gray}{p.\,86--89}}
 \end{frame}
 
 \begin{frame}{一般周期関数のフーリエ展開}
@@ -44,20 +43,14 @@
 \end{frame}
 
 \begin{frame}{例題6　解答}
-  \begin{exampleblock}{解答}
-  \begin{enumerate}[1.]
-    \item[] $c_{n} = (1/4) \int_{-2}^{2} (x+1) e^{-in\pi x/2} dx$
-    \item[] n \neq 0 のとき $: e^{in\pi} = (-1)^n$ を用いて計算
-    \item[] $c_{n} = 2(-1)^n / (in\pi)$
-    \item[] $n = 0$ のとき $: c_{0} = (1/4)\int_{-2}^{2}(x+1)dx = 1$
-  \end{enumerate}
-  \end{exampleblock}
-  \begin{alertblock}{答}
-    $f(x) = 1 + \sum_{n\neq0} 2(-1)^n/(in\pi) \cdot e^{in\pi x/2}$
-  \end{alertblock}
+  $c_{n} = (1/4) \int_{-2}^{2} (x+1) e^{-in\pi x/2} dx$\\[4pt]
+  n \neq 0 のとき $: e^{in\pi} = (-1)^n$ を用いて計算\\[4pt]
+  $c_{n} = 2(-1)^n / (in\pi)$\\[4pt]
+  $n = 0$ のとき $: c_{0} = (1/4)\int_{-2}^{2}(x+1)dx = 1$
+  \medskip\textbf{答}：$f(x) = 1 + \sum_{n\neq0} 2(-1)^n/(in\pi) \cdot e^{in\pi x/2}$
 \end{frame}
 
-\begin{frame}{演習問題（p.\,86--89）}
+\begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問6] 次の周期 2 の関数 $f(x), g(x)$ の複素フーリエ級数を求めよ

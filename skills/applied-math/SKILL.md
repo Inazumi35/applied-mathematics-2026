@@ -1,7 +1,7 @@
 ---
 name: applied-math
-description: 石川高専・応用数学スライド作成スキル。「応用数学」「スライド」「week」「beamer」「yaml2beamer」「コンパイル」「lualatex」「解答追記」などのキーワードが出たら必ずこのスキルを参照する。YAML→Beamer変換パイプラインの操作・デバッグ・解答スライド追記に必要な情報をすべて含む。
-version: 2.0.0
+description: 石川高専・応用数学スライド作成スキル。「応用数学」「スライド」「week」「beamer」「yaml2beamer」「コンパイル」「lualatex」「解答追記」「例題」「演習」「YAML」などのキーワードが出たら必ずこのスキルを参照する。YAML→Beamer変換パイプラインの操作・デバッグ・スライド生成・YAML編集に必要な情報をすべて含む。
+version: 3.0.0
 ---
 
 # 応用数学スライド作成スキル（oapmath）
@@ -12,189 +12,263 @@ version: 2.0.0
 C:\Users\inazumi\workspace\応用数学\
 ```
 
-## 主要ファイル
+## ファイル構成
 
-| ファイル | 役割 |
-|---------|------|
-| `yaml2beamer_chapter.py` | YAML → Beamer フレーム変換コア |
-| `yaml2beamer_week.py` | 週次スライド生成（chapter YAML を読み込み） |
-| `chapter2_section1.yaml` | ラプラス変換（week01〜07） |
-| `chapter2_section2.yaml` | たたみこみ・伝達関数（week05〜07） |
-| `chapter3_section1.yaml` | フーリエ級数（week08〜11） |
-| `chapter3_section2.yaml` | フーリエ変換（week12〜14） |
-| `lecture/weekXX.tex` | 生成済み Beamer TeX |
-| `lecture/weekXX.pdf` | コンパイル済み PDF |
+```
+応用数学/
+├── schedule.yaml              # 週→YAML→サブセクション マッピング（重要）
+├── yaml2beamer_week.py        # 週次スライド生成（メイン入口）
+├── yaml2beamer_chapter.py     # YAML→Beamer フレーム変換コア
+├── gen_manual_frames.py       # 手動フレームファイル生成（manual/用）
+├── chapter2_section1.yaml     # ラプラス変換（week01〜04）
+├── chapter2_section2.yaml     # たたみこみ・伝達関数（week05〜07）
+├── chapter3_section1.yaml     # フーリエ級数（week08〜11）
+├── chapter3_section2.yaml     # フーリエ変換（week12〜14）
+└── lecture/
+    ├── weekXX_main.tex/pdf    # カラー版・問題のみ（解答なし）
+    ├── weekXX_ans.tex/pdf     # カラー版・問題＋解答インライン
+    ├── beamer_template.sty    # Beamer スタイル
+    ├── math_macros.sty        # 数学マクロ
+    └── manual/                # 手動管理フレームファイル
+        └── week01_s1_*.tex    # 参照用手動フレーム（gen_manual_frames.py で生成）
+```
+
+> **注意**: `weekXX.tex`（handout版）・`lecture_XX.tex`（旧版）は廃止済み。
+
+---
 
 ## よく使うコマンド
 
 ```bash
-# 全14週 tex 再生成
 cd C:\Users\inazumi\workspace\応用数学
-python yaml2beamer_week.py
 
-# 特定週だけ再生成
-python yaml2beamer_week.py --week 4,7,12
+# 全14週カラー版生成（_main + _ans）
+for w in $(seq 1 14); do python yaml2beamer_week.py --week $w --color; done
 
-# コンパイル（1週）
+# 特定週のみ
+python yaml2beamer_week.py --week 1 --color
+
+# コンパイル（全14週 _main）
 cd lecture
-lualatex -interaction=nonstopmode week07.tex
+for w in 01 02 03 04 05 06 07 08 09 10 11 12 13 14; do
+  lualatex -interaction=nonstopmode week${w}_main.tex
+done
 
-# 全14週コンパイル（Bash ループ）
-cd C:\Users\inazumi\workspace\応用数学\lecture
-for w in week01 week02 week03 week04 week05 week06 week07 week08 week09 week10 week11 week12 week13 week14; do
-  lualatex -interaction=nonstopmode ${w}.tex > ${w}.log 2>&1
-  echo "${w}: $?"
+# コンパイル（全14週 _ans）
+for w in 01 02 03 04 05 06 07 08 09 10 11 12 13 14; do
+  lualatex -interaction=nonstopmode week${w}_ans.tex
 done
 
 # エラー確認
-grep "^!" lecture/week07.log | head -10
+grep "^!" lecture/week01_main.log | head -10
+
+# 手動フレームファイル生成（week01 subsection1）
+python gen_manual_frames.py chapter2_section1.yaml --subsection 1 --week 1
 ```
 
-## スライド構成ルール
+---
 
-- **形式**：16:9 Beamer（handout オプションなし）
-- **pause 不使用**
-- **解答は別スライド**：演習問題フレームの後に区切りスライド（`build_separator_frame()`）→ 解答フレーム群（`build_exercise_answer_frames()`）
-- 解答フレームのタイトル形式：`問1　解答`、`問13_演習　解答` など
+## _main と _ans の違い
 
-## 14週スケジュール
+| ファイル | 内容 |
+|---------|------|
+| `weekXX_main.tex` | 例題（問題＋解答）＋演習問題（問題文のみ） |
+| `weekXX_ans.tex`  | 例題（問題＋解答）＋演習問題（問題＋解答インライン） |
 
-| week | 章・節 | 内容 |
-|------|-------|------|
-| 01 | ch2-s1 sub1 | ラプラス変換の定義・基本公式 |
-| 02 | ch2-s1 sub2 | ラプラス変換の性質 |
-| 03 | ch2-s1 sub3 | 微分方程式への応用 |
-| 04 | ch2-s1 sub4 + ch2-s2 sub1 | 逆ラプラス変換・伝達関数導入 |
-| 05 | ch2-s2 sub1 | たたみこみ定理 |
-| 06 | ch2-s2 sub2 | たたみこみ応用 |
-| 07 | ch2-s2 sub2-3 | インパルス応答・伝達関数まとめ |
-| 08 | ch3-s1 sub1 | フーリエ級数展開 |
-| 09 | ch3-s1 sub2 | 奇関数・偶関数展開 |
-| 10 | ch3-s1 sub3 | 複素フーリエ級数 |
-| 11 | ch3-s1 sub4 | フーリエ級数まとめ・演習 |
-| 12 | ch3-s2 sub1 | フーリエ変換の定義 |
-| 13 | ch3-s2 sub2 | フーリエ変換の性質 |
-| 14 | ch3-s2 sub3 | フーリエ変換まとめ・演習 |
+演習解答は `_ans` では各演習フレームの直後に挿入される（末尾まとめではない）。
 
-## yaml2beamer_chapter.py — 重要な関数
+---
 
-```python
-UMAP        # Unicode → LaTeX 変換テーブル（∴ → \therefore 含む）
-MATH_IND    # 数式自動判定インジケータリスト
-fmt(raw)    # YAML テキスト → LaTeX インライン変換
-fmt_display(formula)  # \[ \] ディスプレイ数式
-build_exercise_frame(exercises, title, skip_todo)   # 演習問題フレーム
-build_exercise_answer_frames(exercises, skip_todo)  # 解答フレーム群
-build_separator_frame(label)  # 「解説（試験前配布）」区切り
-build_definition_frame(...)   # 定義フレーム
-build_example_frame(ex, ...)  # 例題フレーム
-assemble_subsection(sub, ...) # サブセクション全フレーム
-```
+## YAML フィールド：フレーム順序制御
 
-## YAML の answer フィールド形式
+week01 の subsection 1 で実装済み。他の週への適用は今後。
 
+### exercises（演習問題）
 ```yaml
 exercises:
   - id: 問1
-    content: "問題文"
+    after_example: "例題2"    # この例題の直後に挿入
+    content: "$L[t^2]$ を求めよ"
     answer:
       steps:
-        - "ラプラス変換を取る: L[f'(t)] = sF(s) - f(0)"
-        - "F(s) = 1/(s(s+1))"
-      result: "f(t) = 1 - e^{-t}"
-      # または複数答え:
-      results:
-        - "(1) f(t) = ..."
-        - "(2) f(t) = ..."
-      note: "注記（省略可）"
-      graph_note: "グラフの説明（省略可）"
+        - "L[t^{n}] = n!/s^{n+1} において n=2 とすると"
+      result: "L[t^{2}] = 2/s^{3}  (s > 0)"
 ```
 
-## 修正済みバグ一覧（2026-03-26）
-
-| 症状 | 原因 | 修正箇所 |
-|------|------|---------|
-| `Missing $`（`∴`） | UMAP に `∴` 未登録 | UMAP に `'∴': r'\therefore'` 追加 |
-| `Missing $`（`$\bigl($...`） | `fmt(sym)` が `$...$` を返し `$\bigl(...)$\bigr)$` で二重 `$` | `build_definition_frame` を `mfunc(u2l(sym))` に変更 |
-| empty enumerate（week04） | `flow` が空でも `\begin{enumerate}` を生成 | `if flow:` ガードを追加 |
-| `\\` 二重エスケープ（week04） | `tex_title()` を `build_exercise_answer_frames` と `frame_lines` で二重呼び出し | `frame_title = f'{ex_id}　解答'`（`tex_title` を除去） |
-| `Missing $`（初期条件の `^{2}`） | Pattern B が注釈部分 `（...d^{2}x...）` を math 外に出す | Pattern B の注釈に `process_mixed(np_)` を適用 |
-
-## 現在のステータス（2026-03-26）
-
-- ✅ 全14週コンパイル成功（lualatex exit:0）
-- ✅ 全14週 answer フィールド追記済み（chapter2_section1/2.yaml + chapter3_section1/2.yaml）
-- ✅ カラー2バージョン生成：`--color` フラグで `weekXX_main.tex`（解説なし）・`weekXX_ans.tex`（解説あり）を生成
-- ✅ サブセクション区切りフレーム：複数サブセクション時のみ表示（week01 冗長スライド解消）
-- ✅ スキャン照合完了（2026-03-26）：全14週の演習問題を教科書スキャンと比較・修正済み
-  - week01 問1→L[t²]、問2→L[t+2t²]、問4解説を部分積分に修正
-  - week03 問14→f'(t)+2f(t)=t, f(0)=0 に全面修正
-  - week05-07 問7→L[t²*t] に修正
-- ⚠ 全14週 PDF 見た目確認（_main / _ans 両バージョン）未実施
-- ⚠ 要目視確認：week08-09 問3(3)・問4(3)、week11 練習問題2(1)(2)・問4
-
-## カラーバージョン生成コマンド
-
-```bash
-# 全14週カラー版生成（_main + _ans）
-cd C:\Users\inazumi\workspace\応用数学
-python yaml2beamer_week.py --color
-
-# 特定週のみ
-python yaml2beamer_week.py --color --week 8
-
-# コンパイル（_main / _ans 両バージョン）
-cd lecture
-for w in week01 week02 week03 week04 week05 week06 week07 week08 week09 week10 week11 week12 week13 week14; do
-  lualatex -interaction=nonstopmode ${w}_main.tex
-  lualatex -interaction=nonstopmode ${w}_ans.tex
-done
+### mathematical_tools（数学的ツール）
+```yaml
+mathematical_tools:
+  - name: 部分積分法
+    before_example: "例題2"   # この例題の直前に挿入
+    formula: "∫_a^b f(t)g'(t) dt = ..."
+    note: "u = f(t), dv = g'(t)dt とおくと..."
 ```
 
-## 次のステップ
+### properties（性質）
+```yaml
+properties:
+  - name: 線形性
+    position: after_definition   # 定義フレームの直後に挿入
+    formula: "L[c₁f₁(t) + c₂f₂(t)] = ..."
+    note: "$c_1,\\, c_2$ は定数"
+```
 
-1. 全14週 PDF で見た目確認（_main / _ans 両バージョン）
-2. （別タスク）kaken2026: `rd_pilot_2axis.pdf` を tex に挿入 → 最終コンパイル
+### special_functions（特殊関数）
+```yaml
+special_functions:
+  - name: 双曲線関数
+    after_example: "例題4"    # この例題の演習問題グループの後に挿入
+    definitions:
+      sinh: "sinh t = (e^t - e^{-t}) / 2"
+      cosh: "cosh t = (e^t + e^{-t}) / 2"
+    transforms:
+      - "L[sinh t] = 1/(s²-1)  (s > 1)"
+
+  - name: 単位ステップ関数
+    after_example: "例題4"    # 双曲線関数の後（YAML 順）
+    definition: "U(t-a) = { 1  (t ≥ a),  0  (t < a) }"
+    graph_note: "t = a で 0 から 1 に跳躍"
+    example:                  # 埋め込み例題（例題5）
+      id: 例題5
+      problem: "a ≥ 0 のとき U(t-a) のラプラス変換を求めよ"
+      solution:
+        - "F(s) = ∫ₐ^∞ e^{-st}dt = e^{-as}/s"
+      result: "L[U(t-a)] = e^{-as}/s  (s > 0)"
+```
+
+> **ポイント**: `after_example` 未指定の演習問題は従来通り末尾に「演習問題」フレームとしてまとめられる（後方互換）。
+
+---
+
+## YAML の数式記法ルール
+
+### すでに `$...$` が含まれる場合
+`fmt()` は `$` を検出したら `mfunc()` のみ適用し、二重ラップしない。
+
+```yaml
+# OK: content に $...$ を書けば fmt() がそのまま通す
+content: "$L[t^2]$ を線形性を用いて求めよ"
+
+# OK: math 環境内フィールドは u2l+mfunc のみ（$なし）
+definition: "U(t-a) = { 1  (t ≥ a),  0  (t < a) }"
+```
+
+### align* 環境内（definitions/transforms）
+`$...$` を書かない。`build_special_function_def_frame` が `math_line()` で変換する。
+
+```yaml
+# OK（$なし）
+definitions:
+  sinh: "sinh t = (e^t - e^{-t}) / 2"
+# NG（$あり → 二重になる）
+# definitions:
+#   sinh: "$\\sinh t = ...$"
+```
+
+---
+
+## フレームスタイルルール
+
+### 例題（build_example_frame）
+- **問題フレーム**: `\begin{exampleblock}{問題}` あり
+- **解答フレーム**: **枠なし**。ステップは `\\[4pt]` 区切りの plain テキスト。答えは `\medskip\textbf{答}：...`
+
+```latex
+\begin{frame}{例題2　解答}
+  分部積分を用いると\\[4pt]
+  $F(s) = \int_0^\infty e^{-st} t\,dt = \cdots$\\[4pt]
+  よって $F(s) = 1/s^2$
+  \medskip\textbf{答}：$L[t] = 1/s^2 \quad (s > 0)$
+\end{frame}
+```
+
+### 演習問題（build_exercise_frame_group）
+- `\begin{exampleblock}{自分で解いてみよう}` + `description` 環境
+- タイトル：`問1・問2` など `・` 区切り
+
+### 演習解答（build_exercise_answer_frames）
+- **枠なし**。ステップは `\\[4pt]` 区切り。答えは `\medskip\textbf{答}：...`
+
+---
+
+## yaml2beamer_chapter.py — 重要な関数（最新）
+
+```python
+# テキスト変換
+fmt(raw)                      # YAML テキスト→LaTeX。$があればmfuncのみ
+fmt_display(formula)          # \[ \] display math
+u2l(text)                     # Unicode数学記号→LaTeX
+mfunc(text)                   # sin/cos等に\を付加
+convert_cases(text)           # { val (cond) } → \begin{cases}
+
+# フレーム生成
+build_example_frame(ex, skip_todo)             # 例題（問題+解答、解答は枠なし）
+build_exercise_frame(exercises, title, ...)    # 演習問題フレーム
+build_exercise_frame_group(exercises, ...)     # 例題直後挿入用グループ
+build_exercise_answer_frames(exercises, ...)   # 演習解答フレーム（枠なし）
+build_property_frame_single(prop)              # 単一性質フレーム（線形性等）
+build_tool_frame_single(tool)                  # 数学ツールフレーム
+build_special_function_def_frame(sf)           # 特殊関数定義フレーム
+build_separator_frame(label)                   # 区切りスライド
+
+# アセンブラ
+assemble_subsection(sub, skip_todo, include_exercise_answers)
+# include_exercise_answers=True → 演習解答をインラインに挿入（color_ans用）
+```
+
+---
+
+## schedule.yaml の構造
+
+```yaml
+weeks:
+  - week: 1
+    title: ラプラス変換の定義
+    source: chapter2_section1.yaml
+    subsections:
+      - id: 1
+        # include_after: manual/week01_extra.tex  # 手動フレーム追加（オプション）
+```
+
+---
+
+## 現在のステータス（2026-04-04）
+
+- ✅ 全14週 `_main` / `_ans` コンパイル成功
+- ✅ week01 subsection1：`after_example` / `before_example` / `position` による順序制御実装済み
+- ✅ 例題・演習解答フレーム：枠なしスタイルに統一
+- ✅ `fmt()` の二重 `$` バグ修正済み
+- ✅ `build_special_function_def_frame` の align* 内 `$` バグ修正済み
+- ✅ 不要ファイル削除済み（旧 lecture_*.tex、week*.tex handout版、中間ファイル）
+- ⚠ week02〜14 の exercises に `after_example` 未設定（現在は演習まとめて末尾）
+- ⚠ 全14週 PDF 見た目確認未実施
+- ⚠ 要目視：week08-09 問3(3)・問4(3)、week11 練習問題2(1)(2)・問4
+
+---
 
 ## Git 管理
 
-### リポジトリ
-- ローカル：`C:\Users\inazumi\workspace\応用数学\`
-- GitHub：`Inazumi35/applied-mathematics-2026`（**プライベート**）
-- ブランチ：`master`
-
-### .gitignore（除外ルール）
-```
-*.pdf          # 生成物
-*.nav *.snm    # LaTeX 中間ファイル
-*.log *.aux 等 # LaTeX ログ類
-scan_pages/    # スキャン画像（大容量）
-```
-
-### よく使うコマンド
 ```bash
 cd C:\Users\inazumi\workspace\応用数学
 
-# 状態確認
-git status
-
-# YAML・スクリプト変更後にコミット
-git add chapter2_section1.yaml yaml2beamer_chapter.py  # など変更ファイル
+# 変更をコミット
+git add chapter2_section1.yaml yaml2beamer_chapter.py yaml2beamer_week.py
+git add schedule.yaml gen_manual_frames.py skills/applied-math/SKILL.md
 git commit -m "変更内容の説明"
 
-# GitHub に push（GH_TOKEN は MEMORY.md 参照）
-GH_TOKEN=<token> git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GH_TOKEN; };f' push origin master
+# GitHub に push
+GH_TOKEN=<MEMORY.md参照> git -c credential.helper='!f(){ echo username=x-access-token; echo password=$GH_TOKEN; };f' push origin master
 ```
 
-### ノート
-- `skills/applied-math/SKILL.md` もこのリポジトリで管理（コミット対象）
-- スキルを更新したら `git add skills/applied-math/SKILL.md && git commit` を忘れずに
+- リポジトリ：`Inazumi35/applied-mathematics-2026`（プライベート）
+- `.gitignore`：`*.pdf` / `*.nav` / `*.snm` / `*.log` / `*.aux` / `scan_pages/` を除外
 
-## iCloud 写真スキャンのパス
+---
+
+## スキャン画像パス
 
 ```
-C:\Users\inazumi\OneDrive\iCloud Photos\Photos\
+C:\Users\inazumi\workspace\応用数学\scan_pages\
 ```
 
-HEIC → JPG 変換は `pillow-heif` を使用済み（111枚変換済み）。
-教科書ページとファイル名の対応は写真を順に開いて確認する。
+教科書ページとファイル名の対応は画像を順に開いて確認する。
