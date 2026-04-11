@@ -1,0 +1,72 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問147〜149, 163〜169}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　Check}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Check】}
+\vspace{0.3em}
+
+\mondai{147}{
+次の周期関数のフーリエ級数を求めよ．
+(1) $f(x) = \begin{cases} -2 & (-\pi \leq x < 0) \\ 1 & (0 \leq x < \pi) \end{cases}$，\quad $f(x+2\pi)=f(x)$
+(2) $g(x) = \begin{cases} x+2 & (-2 \leq x < 0) \\ 0 & (0 \leq x < 2) \end{cases}$，\quad $g(x+4)=g(x)$
+(3) $h(x) = |\sin x| \quad \left(-\dfrac{\pi}{2} \leq x < \dfrac{\pi}{2}\right)$，\quad $h(x+\pi)=h(x)$
+}
+
+\mondai{148}{
+問題147(1)の結果を用いて，次の公式を導け．$1 - \dfrac{1}{3} + \dfrac{1}{5} - \dfrac{1}{7} + \cdots = \dfrac{\pi}{4}$
+}
+
+\mondai{149}{
+次の周期関数の複素フーリエ級数を求めよ．
+(1) $f(x) = 2x+1 \quad (-1 \leq x < 1)$，\quad $f(x+2)=f(x)$
+(2) $g(x) = \begin{cases} -1 & (-3 \leq x < 0) \\ 1 & (0 \leq x < 3) \end{cases}$，\quad $g(x+6)=g(x)$
+}
+
+\mondai{163}{
+次の関数のフーリエ変換を求めよ．
+(1) $f(x) = \begin{cases} 1 & (1 \leq x \leq 2) \\ 0 & (x < 1,\ x > 2) \end{cases}$
+(2) $g(x) = \begin{cases} 2-x & (0 \leq x < 2) \\ 0 & (x < 0,\ x \geq 2) \end{cases}$
+(3) $h(x) = \begin{cases} e^{3x} & (x \leq 0) \\ 0 & (x > 0) \end{cases}$
+}
+
+\mondai{164}{
+問題163(1)の関数にフーリエの積分定理を適用して，次の等式を証明せよ．$\displaystyle\int_{-\infty}^{\infty} \dfrac{\sin u}{u}\,du = \pi$
+}
+
+\mondai{165}{
+次の関数のフーリエ正弦変換を求めよ．
+$f(x) = \begin{cases} -\dfrac{x}{3} & (|x| \leq 2) \\ 0 & (|x| > 2) \end{cases}$
+}
+
+\mondai{166}{
+$\mathcal{F}[e^{-|x|}] = \dfrac{2}{1+u^2}$ とフーリエ変換の性質を用いて，$\mathcal{F}[e^{-a|x|}]$ を求めよ．ただし，$a > 0$ とする．
+}
+
+\mondai{167}{
+問題166の結果を用いて，$\mathcal{F}[e^{-|x|} * e^{-2|x|}]$ を求めよ．
+}
+
+\mondai{168}{
+次の等式を証明せよ．ただし，$a$，$b$ は正の定数とする．
+(1) $\mathcal{F}\!\left[e^{-\frac{x^2}{a}} * xe^{-\frac{x^2}{b}}\right] = -\dfrac{\pi b\sqrt{ab}}{2}\,iu\,e^{-\frac{a+b}{4}u^2}$
+(2) $e^{-\frac{x^2}{a}} * xe^{-\frac{x^2}{b}} = \dfrac{b\sqrt{ab\pi}}{(a+b)\sqrt{a+b}}\,xe^{-\frac{x^2}{a+b}}$
+}
+
+\mondai{169}{
+次の関数のスペクトルを求めよ．
+(1) $f(x) = 1-|x| \quad (|x| \leq 2)$，\quad $f(x+4)=f(x)$
+(2) $g(x) = \begin{cases} 1-|x| & (|x| \leq 2) \\ 0 & (|x| > 2) \end{cases}$
+}
+
+\end{document}

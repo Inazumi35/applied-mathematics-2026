@@ -1,0 +1,84 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問110〜114}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第6回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{110}{
+関数 $t^3$，$t$ のたたみ込み $t^3 * t$ を求めよ．
+}
+
+\kotae{
+$t^3 * t = \displaystyle\int_0^t \tau^3(t-\tau)\,d\tau = \int_0^t (t\tau^3-\tau^4)\,d\tau = \dfrac{t^5}{4}-\dfrac{t^5}{5} = \dfrac{t^5}{20}$
+}
+
+\mondai{111}{
+たたみ込み $t * (t^3 + t^4)$ を求めよ．
+}
+
+\kotae{
+$t*(t^3+t^4) = t*t^3 + t*t^4 = \dfrac{t^5}{20} + \displaystyle\int_0^t \tau(t-\tau)^4\,d\tau$
+
+$t*t^4 = \displaystyle\int_0^t \tau^4(t-\tau)\,d\tau = \dfrac{t^6}{5}-\dfrac{t^6}{6} = \dfrac{t^6}{30}$
+
+よって $t*(t^3+t^4) = \dfrac{t^5}{20}+\dfrac{t^6}{30}$
+}
+
+\mondai{112}{
+$\mathcal{L}[t^3 * t]$ を求めよ．また，問題110の結果から直接 $\mathcal{L}[t^3 * t]$ を求めよ．
+}
+
+\kotae{
+$\mathcal{L}[t^3*t] = \mathcal{L}[t^3]\cdot\mathcal{L}[t] = \dfrac{6}{s^4}\cdot\dfrac{1}{s^2} = \dfrac{6}{s^6} \quad (s>0)$
+
+直接計算：$\mathcal{L}\!\left[\dfrac{t^5}{20}\right] = \dfrac{1}{20}\cdot\dfrac{5!}{s^6} = \dfrac{6}{s^6}$（一致）
+}
+
+\mondai{113}{
+$\mathcal{L}[f(t)] = F(s)$ のとき，次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{F(s)}{s^2+4s+4}$ \quad
+(2) $\dfrac{F(s)}{s^2-7s+12}$ \quad
+(3) $\dfrac{F(s)}{s^2-4s+13}$
+}
+
+\kotae{
+(1) $\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{(s+2)^2}\right] = f(t) * te^{-2t}$
+
+(2) $\dfrac{1}{s^2-7s+12} = \dfrac{1}{(s-3)(s-4)} = \dfrac{1}{s-4}-\dfrac{1}{s-3}$
+
+$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-7s+12}\right] = f(t) * (e^{4t}-e^{3t})$
+
+(3) $\dfrac{1}{(s-2)^2+9}$ の逆変換は $\dfrac{1}{3}e^{2t}\sin 3t$
+
+$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-4s+13}\right] = f(t) * \dfrac{1}{3}e^{2t}\sin 3t$
+}
+
+\mondai{114}{
+次の積分方程式を満たす関数 $x(t)$ を求めよ．
+(1) $\int_0^t x(\tau)\cos(t-\tau)\,d\tau = t^2$
+(2) $\int_0^t x(\tau)e^{2(t-\tau)}\,d\tau = \sin 3t$
+}
+
+\kotae{
+(1) $X(s)\cdot\dfrac{s}{s^2+1} = \dfrac{2}{s^3}$ より $X(s) = \dfrac{2(s^2+1)}{s^4}$
+
+$= \dfrac{2}{s^2}+\dfrac{2}{s^4}$ より $x(t) = 2t+\dfrac{t^3}{3}$
+
+(2) $X(s)\cdot\dfrac{1}{s-2} = \dfrac{3}{s^2+9}$ より $X(s) = \dfrac{3(s-2)}{s^2+9}$
+
+$= \dfrac{3s}{s^2+9}-\dfrac{6}{s^2+9}$ より $x(t) = 3\cos 3t-2\sin 3t$
+}
+
+\end{document}

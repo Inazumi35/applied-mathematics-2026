@@ -1,0 +1,95 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問106〜109}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第5回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{106}{
+次の微分方程式を解け．
+(1) $\dfrac{dx}{dt} - x = e^{2t}$，$x(0) = 1$
+(2) $\dfrac{dx}{dt} + x = 1$，$x(0) = 0$
+}
+
+\kotae{
+(1) $sX-1-X = \dfrac{1}{s-2}$ より $(s-1)X = 1+\dfrac{1}{s-2} = \dfrac{s-1}{s-2}$
+
+$X = \dfrac{1}{s-2}$ より $x(t) = e^{2t}$
+
+(2) $sX+X = \dfrac{1}{s}$ より $X = \dfrac{1}{s(s+1)} = \dfrac{1}{s}-\dfrac{1}{s+1}$
+
+$x(t) = 1-e^{-t}$
+}
+
+\mondai{107}{
+次の微分方程式を解け．
+(1) $\dfrac{d^2x}{dt^2} - \dfrac{dx}{dt} - 2x = e^t \quad (t=0 \text{ のとき } x=0,\ \dfrac{dx}{dt}=0)$
+(2) $\dfrac{d^2x}{dt^2} - 2\dfrac{dx}{dt} + 5x = 0 \quad (t=0 \text{ のとき } x=0,\ \dfrac{dx}{dt}=1)$
+}
+
+\kotae{
+(1) $s^2X-sX-2X = \dfrac{1}{s-1}$，$(s^2-s-2)X = \dfrac{1}{s-1}$
+
+$X = \dfrac{1}{(s-1)(s-2)(s+1)} = -\dfrac{1}{2}\cdot\dfrac{1}{s-1}+\dfrac{1}{3}\cdot\dfrac{1}{s-2}+\dfrac{1}{6}\cdot\dfrac{1}{s+1}$
+
+$x(t) = \dfrac{1}{6}e^{-t}-\dfrac{1}{2}e^t+\dfrac{1}{3}e^{2t}$
+
+(2) $(s^2-2s+5)X = 1$，$X = \dfrac{1}{(s-1)^2+4}$
+
+$x(t) = \dfrac{1}{2}e^t\sin 2t$
+}
+
+\mondai{108}{
+次の微分方程式を解け．
+(1) $\dfrac{d^2x}{dt^2} - 2\dfrac{dx}{dt} = 0$，$x(0) = 1$，$x(1) = e^2$
+(2) $\dfrac{d^2x}{dt^2} + 9x = 3$，$x(0) = 1$，$x\!\left(\dfrac{\pi}{6}\right) = 0$
+}
+
+\kotae{
+(1) $(s^2-2s)X = s-2$（$x(0)=1$，$x'(0)=c$ とする）
+$x(1)=e^2$ の条件から $c=2$．$X = \dfrac{s+c-2}{s(s-2)}$
+
+$c=2$ のとき $X = \dfrac{1}{s-2}$ より $x(t) = e^{2t}$
+
+(2) $x(0)=1$，$x(\pi/6)=0$ の条件で解くと
+$(s^2+9)X = s+c+\dfrac{3}{s}$
+
+$x(t) = \cos 3t + \dfrac{c}{3}\sin 3t + \dfrac{1}{3}(1-\cos 3t)$
+$x(\pi/6)=0$ より $c=-1$．$x(t) = \dfrac{1}{3}+\dfrac{2}{3}\cos 3t-\dfrac{1}{3}\sin 3t$
+}
+
+\mondai{109}{
+次の微分方程式の一般解を求めよ．
+(1) $\dfrac{dx}{dt} + 4x = 1$ \quad
+(2) $\dfrac{d^2x}{dt^2} - 9x = 0$ \quad
+(3) $\dfrac{d^2x}{dt^2} + 16x = t$
+}
+
+\kotae{
+(1) $x(0)=c_1$ として $(s+4)X = c_1+\dfrac{1}{s}$
+
+$X = \dfrac{c_1}{s+4}+\dfrac{1}{s(s+4)}$ より $x(t) = c_1 e^{-4t}+\dfrac{1}{4}(1-e^{-4t})$
+
+一般解：$x(t) = Ce^{-4t}+\dfrac{1}{4}$
+
+(2) $(s^2-9)X = sc_1+c_2$
+
+一般解：$x(t) = C_1 e^{3t}+C_2 e^{-3t}$
+
+(3) $(s^2+16)X = sc_1+c_2+\dfrac{1}{s^2}$
+
+一般解：$x(t) = C_1\cos 4t+C_2\sin 4t+\dfrac{t}{16}$
+}
+
+\end{document}

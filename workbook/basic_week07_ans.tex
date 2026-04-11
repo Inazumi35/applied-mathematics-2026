@@ -1,0 +1,53 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問115〜117}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第7回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{115}{
+微分方程式 $y'' - 4y' + 3y = x(t)$，$y(0) = 0$，$y'(0) = 0$ で表される線形システムの伝達関数を求めよ．また，出力 $y(t)$ を入力 $x(t)$ で表せ．
+}
+
+\kotae{
+$Y(s)(s^2-4s+3) = X(s)$ より伝達関数 $G(s) = \dfrac{Y(s)}{X(s)} = \dfrac{1}{s^2-4s+3} = \dfrac{1}{(s-1)(s-3)}$
+
+$g(t) = \mathcal{L}^{-1}[G(s)] = \dfrac{1}{2}(e^{3t}-e^t)$
+
+$y(t) = g(t)*x(t) = \dfrac{1}{2}\displaystyle\int_0^t (e^{3(t-\tau)}-e^{t-\tau})x(\tau)\,d\tau$
+}
+
+\mondai{116}{
+$\mathcal{L}[e^{2t} * \delta(t)]$ を求めよ．
+}
+
+\kotae{
+たたみ込み $e^{2t}*\delta(t) = e^{2t}$ より
+$\mathcal{L}[e^{2t}*\delta(t)] = \mathcal{L}[e^{2t}] = \dfrac{1}{s-2} \quad (s>2)$
+
+（別解）$\mathcal{L}[e^{2t}]\cdot\mathcal{L}[\delta(t)] = \dfrac{1}{s-2}\cdot 1 = \dfrac{1}{s-2}$
+}
+
+\mondai{117}{
+次の微分方程式の解を求めよ．
+$y'' + 2y' + y = \delta(t)$，$y(0) = 0$，$y'(0) = 0$
+}
+
+\kotae{
+$(s^2+2s+1)Y = 1$ より $Y = \dfrac{1}{(s+1)^2}$
+
+$y(t) = te^{-t}$
+}
+
+\end{document}

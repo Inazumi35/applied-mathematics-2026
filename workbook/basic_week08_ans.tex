@@ -1,0 +1,48 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問140〜141}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　第8回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{140}{
+積分 $\displaystyle\int_{-1}^{1} \cos m\pi x \cos n\pi x\,dx$ の値を求めよ．ただし，$m$，$n$ は自然数とする．
+\hfill {\scriptsize [教p.76(問1)]}
+}
+
+\kotae{
+$m \neq n$ のとき：積和公式より $\displaystyle\int_{-1}^{1}\cos m\pi x\cos n\pi x\,dx = 0$
+
+$m = n$ のとき：$\displaystyle\int_{-1}^{1}\cos^2 n\pi x\,dx = 1$
+}
+
+\mondai{141}{
+次の周期 $2\pi$ の関数 $f(x)$ のフーリエ級数を求めよ．
+$f(x) = \begin{cases} x & (-\pi \leq x < 0) \\ 0 & (0 \leq x < \pi) \end{cases}$，\quad $f(x+2\pi)=f(x)$
+\hfill {\scriptsize [教p.79(問2)]}
+}
+
+\kotae{
+$a_0 = \dfrac{1}{2\pi}\displaystyle\int_{-\pi}^{0} x\,dx = -\dfrac{\pi}{4}$
+
+$a_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\cos nx\,dx = \dfrac{1-(-1)^n}{n^2\pi}$
+
+$b_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\sin nx\,dx = \dfrac{(-1)^{n+1}}{n}$
+
+$f(x) = -\dfrac{\pi}{4} + \displaystyle\sum_{n=1}^{\infty}\biggl[\dfrac{1-(-1)^n}{n^2\pi}\cos nx$
+
+$\qquad + \dfrac{(-1)^{n+1}}{n}\sin nx\biggr]$
+}
+
+\end{document}

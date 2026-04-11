@@ -1,0 +1,45 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問152〜155}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　第12回　Basic}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{152}{
+次の関数のフーリエ変換を求めよ．
+$f(x) = \begin{cases} e^{-x} & (x \geq 0) \\ 0 & (x < 0) \end{cases}$
+\hfill {\scriptsize [教p.92(問1)]}
+}
+
+\mondai{153}{
+次の関数のフーリエ変換を求めよ．
+(1) $f(x) = \begin{cases} 2 & (-3 \leq x \leq 0) \\ 0 & (x < -3,\ x > 0) \end{cases}$
+(2) $g(x) = \begin{cases} x & (0 \leq x \leq 1) \\ 0 & (x < 0,\ x > 1) \end{cases}$
+\hfill {\scriptsize [教p.92(問2)]}
+}
+
+\mondai{154}{
+問題152の関数にフーリエの積分定理を適用して，次の等式を証明せよ．
+(1) $\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} \dfrac{1-iu}{1+u^2}\,e^{iux}\,du = \begin{cases} e^{-x} & (x>0) \\ \frac{1}{2} & (x=0) \\ 0 & (x<0) \end{cases}$
+(2) $\displaystyle\int_{-\infty}^{\infty} \dfrac{1}{1+u^2}\,du = \pi$
+\hfill {\scriptsize [教p.94(問3)]}
+}
+
+\mondai{155}{
+次の関数のフーリエ正弦変換を求めよ．
+$f(x) = \begin{cases} -x-1 & (-1 \leq x < 0) \\ -x+1 & (0 < x \leq 1) \\ 0 & (x < -1,\ x = 0,\ x > 1) \end{cases}$
+\hfill {\scriptsize [教p.95(問4)]}
+}
+
+\end{document}

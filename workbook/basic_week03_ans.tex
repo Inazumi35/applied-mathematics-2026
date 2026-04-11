@@ -1,0 +1,67 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問86〜89}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第3回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{86}{
+$\mathcal{L}[t\sinh t]$，$\mathcal{L}[t\cosh t]$ を求めよ．
+\hfill {\scriptsize [教p.54(問13)]}
+}
+
+\kotae{
+像関数の微分法則 $\mathcal{L}[tf(t)] = -F'(s)$ を用いる．
+
+$\mathcal{L}[\sinh t] = \dfrac{1}{s^2-1}$ より $\mathcal{L}[t\sinh t] = -\dfrac{d}{ds}\dfrac{1}{s^2-1} = \dfrac{2s}{(s^2-1)^2} \quad (s>1)$
+
+$\mathcal{L}[\cosh t] = \dfrac{s}{s^2-1}$ より $\mathcal{L}[t\cosh t] = -\dfrac{d}{ds}\dfrac{s}{s^2-1} = \dfrac{s^2+1}{(s^2-1)^2} \quad (s>1)$
+}
+
+\mondai{87}{
+関数 $f(t)$ が $f'(t) + 4f(t) = t^2$，$f(0) = 0$ を満たすとき，原関数の微分法則を用いて，$\mathcal{L}[f(t)]$ を求めよ．
+\hfill {\scriptsize [教p.54(問14)]}
+}
+
+\kotae{
+両辺をラプラス変換し，$f(0)=0$ を用いると
+$sF(s) + 4F(s) = \dfrac{2}{s^3}$
+
+よって $F(s) = \mathcal{L}[f(t)] = \dfrac{2}{s^3(s+4)} \quad (s>0)$
+}
+
+\mondai{88}{
+像関数の高次微分法則を用いて，$\mathcal{L}[t^n e^{3t}]$ を求めよ．ただし，$n$ は正の整数とする．
+\hfill {\scriptsize [教p.55(問15)]}
+}
+
+\kotae{
+$\mathcal{L}[e^{3t}] = \dfrac{1}{s-3}$ の $n$ 階微分法則より
+
+$\mathcal{L}[t^n e^{3t}] = (-1)^n \dfrac{d^n}{ds^n}\dfrac{1}{s-3} = \dfrac{n!}{(s-3)^{n+1}} \quad (s>3)$
+}
+
+\mondai{89}{
+$\mathcal{L}\left[\dfrac{e^{3t} - e^{-t}}{t}\right]$ を求めよ．
+\hfill {\scriptsize [教p.56(問16)]}
+}
+
+\kotae{
+像関数の積分法則 $\mathcal{L}\!\left[\dfrac{f(t)}{t}\right] = \displaystyle\int_s^\infty F(u)\,du$ を用いる．
+
+$F(s) = \dfrac{1}{s-3} - \dfrac{1}{s+1}$ より
+$\displaystyle\int_s^\infty \!\left(\dfrac{1}{u-3}-\dfrac{1}{u+1}\right)du = \left[\ln\dfrac{u-3}{u+1}\right]_s^\infty = -\ln\dfrac{s-3}{s+1} = \ln\dfrac{s+1}{s-3} \quad (s>3)$
+}
+
+\end{document}

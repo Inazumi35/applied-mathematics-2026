@@ -17,28 +17,28 @@ ANSWERS = {
     # ============================
     # 2章 ラプラス変換 — Basic
     # ============================
-    74: r"$\mathcal{L}[t^3] = \dfrac{3!}{s^4} = \dfrac{6}{s^4}$",
+    74: r"$\mathcal{L}[t^3] = \dfrac{3!}{s^4} = \dfrac{6}{s^4} \quad (s>0)$",
 
-    75: r"$\mathcal{L}[3t^2+2] = 3\cdot\dfrac{2!}{s^3} + \dfrac{2}{s} = \dfrac{6}{s^3} + \dfrac{2}{s}$",
+    75: r"$\mathcal{L}[3t^2+2] = 3\cdot\dfrac{2!}{s^3} + \dfrac{2}{s} = \dfrac{6}{s^3} + \dfrac{2s^2}{s^3} = \dfrac{2(s^2+3)}{s^3} \quad (s>0)$",
 
-    76: r"$\mathcal{L}[e^t - e^{-2t}] = \dfrac{1}{s-1} - \dfrac{1}{s+2}$",
+    76: r"$\mathcal{L}[e^t - e^{-2t}] = \dfrac{1}{s-1} - \dfrac{1}{s+2} = \dfrac{(s+2)-(s-1)}{(s-1)(s+2)} = \dfrac{3}{(s-1)(s+2)} \quad (s>1)$",
 
     77: (
         r"$\mathcal{L}[\sin 3t] = \displaystyle\int_0^\infty e^{-st}\sin 3t\,dt$"
         "\n\n"
-        r"部分積分を2回行うと，$\mathcal{L}[\sin 3t] = \dfrac{3}{s^2+9}$"
+        r"部分積分を2回行うと，$\mathcal{L}[\sin 3t] = \dfrac{3}{s^2+9} \quad (s>0)$"
     ),
 
-    78: r"$\mathcal{L}[\cosh 2t] = \mathcal{L}\!\left[\dfrac{e^{2t}+e^{-2t}}{2}\right] = \dfrac{1}{2}\!\left(\dfrac{1}{s-2}+\dfrac{1}{s+2}\right) = \dfrac{s}{s^2-4}$",
+    78: r"$\mathcal{L}[\cosh 2t] = \mathcal{L}\!\left[\dfrac{e^{2t}+e^{-2t}}{2}\right] = \dfrac{1}{2}\!\left(\dfrac{1}{s-2}+\dfrac{1}{s+2}\right) = \dfrac{s}{s^2-4} \quad (s>2)$",
 
     79: [
-        r"グラフ：$t=3$ で 0 から 1 に跳ぶステップ関数．$\mathcal{L}[U(t-3)] = \dfrac{e^{-3s}}{s}$",
-        r"グラフ：$t=2$ で 0 から 3 に跳ぶ．$\mathcal{L}[3U(t-2)] = \dfrac{3e^{-2s}}{s}$",
+        r"グラフ：$t=3$ で 0 から 1 に跳ぶステップ関数．$\mathcal{L}[U(t-3)] = \dfrac{e^{-3s}}{s} \quad (s>0)$",
+        r"グラフ：$t=2$ で 0 から 3 に跳ぶ．$\mathcal{L}[3U(t-2)] = \dfrac{3e^{-2s}}{s} \quad (s>0)$",
     ],
 
     80: [
-        r"$f(t) = U(t-1) - U(t-3)$．$\mathcal{L}[f(t)] = \dfrac{e^{-s} - e^{-3s}}{s}$",
-        r"$f(t) = 2U(t-1)$．$\mathcal{L}[f(t)] = \dfrac{2e^{-s}}{s}$",
+        r"$f(t) = U(t-1) - U(t-3)$．$\mathcal{L}[f(t)] = \dfrac{e^{-s} - e^{-3s}}{s} \quad (s>0)$",
+        r"$f(t) = 2U(t-1)$．$\mathcal{L}[f(t)] = \dfrac{2e^{-s}}{s} \quad (s>0)$",
     ],
 
     81: (
@@ -120,9 +120,9 @@ ANSWERS = {
         (
             r"部分分数分解：$\dfrac{2s^2-5s-6}{(s+2)(s-1)(s-2)} = \dfrac{A}{s+2}+\dfrac{B}{s-1}+\dfrac{C}{s-2}$"
             "\n\n"
-            r"$A=\dfrac{8+10-6}{(-3)(-4)}=1$，$B=\dfrac{2+5-6}{(3)(-1)}=\dfrac{1}{3}$，$C=\dfrac{8-10-6}{(4)(1)}=-2$"
+            r"$A=\dfrac{8+10-6}{(-3)(-4)}=1$，$B=\dfrac{2-5-6}{(3)(-1)}=3$，$C=\dfrac{8-10-6}{(4)(1)}=-2$"
             "\n\n"
-            r"$\mathcal{L}^{-1} = e^{-2t}+\dfrac{1}{3}e^t-2e^{2t}$"
+            r"$\mathcal{L}^{-1} = e^{-2t}+3e^t-2e^{2t}$"
         ),
         (
             r"$\dfrac{1}{s^2(s+1)} = \dfrac{A}{s}+\dfrac{B}{s^2}+\dfrac{C}{s+1}$"
@@ -257,9 +257,9 @@ ANSWERS = {
         (
             r"$s^2X-sX-2X = \dfrac{1}{s-1}$，$(s^2-s-2)X = \dfrac{1}{s-1}$"
             "\n\n"
-            r"$X = \dfrac{1}{(s-1)(s-2)(s+1)} = -\dfrac{1}{2}\cdot\dfrac{1}{s+1}+\dfrac{1}{2}\cdot\dfrac{1}{s-2}-\dfrac{1}{(s-1)}$"
+            r"$X = \dfrac{1}{(s-1)(s-2)(s+1)} = -\dfrac{1}{2}\cdot\dfrac{1}{s-1}+\dfrac{1}{3}\cdot\dfrac{1}{s-2}+\dfrac{1}{6}\cdot\dfrac{1}{s+1}$"
             "\n\n"
-            r"部分分数分解を整理して $x(t) = \dfrac{1}{6}e^{-t}-\dfrac{1}{2}e^t+\dfrac{1}{3}e^{2t}$"
+            r"$x(t) = \dfrac{1}{6}e^{-t}-\dfrac{1}{2}e^t+\dfrac{1}{3}e^{2t}$"
         ),
         (
             r"$(s^2-2s+5)X = 1$，$X = \dfrac{1}{(s-1)^2+4}$"
@@ -415,9 +415,13 @@ ANSWERS = {
             r"$= \dfrac{7}{8}\cos 3t+\dfrac{1}{3}\sin 3t+\dfrac{1}{8}\cos t$"
         ),
         (
-            r"$x(0)=1$，$x(\pi/4)=0$ の境界条件で $x'(0)=c$ として解き，"
-            "\n"
-            r"$x(\pi/4)=0$ から $c$ を決定する．"
+            r"一般解 $x(t) = C_1\cos 3t + C_2\sin 3t + \dfrac{1}{8}\cos t$ に $x(0)=1$ を代入すると $C_1 = \dfrac{7}{8}$"
+            "\n\n"
+            r"$x\!\left(\dfrac{\pi}{4}\right) = \dfrac{7}{8}\cos\dfrac{3\pi}{4}+C_2\sin\dfrac{3\pi}{4}+\dfrac{1}{8}\cos\dfrac{\pi}{4} = 0$"
+            "\n\n"
+            r"$-\dfrac{7\sqrt{2}}{16}+\dfrac{\sqrt{2}}{2}C_2+\dfrac{\sqrt{2}}{16} = 0$ より $C_2 = \dfrac{3}{4}$"
+            "\n\n"
+            r"$x(t) = \dfrac{7}{8}\cos 3t+\dfrac{3}{4}\sin 3t+\dfrac{1}{8}\cos t$"
         ),
         (
             r"一般解：$x(t) = C_1\cos 3t + C_2\sin 3t + \dfrac{1}{8}\cos t$"
@@ -431,7 +435,11 @@ ANSWERS = {
             r"$x(t) = e^{-t}\cos 2t + \dfrac{3}{2}e^{-t}\sin 2t$"
         ),
         (
-            r"$x(0)=1$，$x(\pi/4)=0$ の境界条件で $x'(0)=c$ として解き $c$ を決定する．"
+            r"一般解 $x(t) = e^{-t}(C_1\cos 2t + C_2\sin 2t)$ に $x(0)=1$ を代入すると $C_1 = 1$"
+            "\n\n"
+            r"$x\!\left(\dfrac{\pi}{4}\right) = e^{-\pi/4}(1\cdot\cos\dfrac{\pi}{2}+C_2\sin\dfrac{\pi}{2}) = e^{-\pi/4}C_2 = 0$ より $C_2 = 0$"
+            "\n\n"
+            r"$x(t) = e^{-t}\cos 2t$"
         ),
         (
             r"一般解：$x(t) = e^{-t}(C_1\cos 2t + C_2\sin 2t)$"
@@ -452,19 +460,21 @@ ANSWERS = {
             r"$= \dfrac{1}{4}(e^{2t}-2t-1)$"
         ),
         (
-            r"$\mathcal{L}[t^2*\sin t] = \dfrac{2}{s^3}\cdot\dfrac{1}{s^2+1}$ の逆変換を求める．"
+            r"$\mathcal{L}[t^2*\sin t] = \dfrac{2}{s^3}\cdot\dfrac{1}{s^2+1} = \dfrac{2}{s^3(s^2+1)}$"
             "\n\n"
-            r"$t^2 * \sin t = 2t - 2\sin t$"
+            r"部分分数分解：$\dfrac{2}{s^3(s^2+1)} = -\dfrac{2}{s}+\dfrac{2}{s^3}+\dfrac{2s}{s^2+1}$"
+            "\n\n"
+            r"$t^2 * \sin t = -2 + t^2 + 2\cos t$"
         ),
     ],
 
     122: [
         (
-            r"$X(s)\cdot\dfrac{2}{s^2+4} = \dfrac{d}{ds}\!\left(-\dfrac{2}{s^2+4}\right) \cdot(-1)$ を利用して"
-            "\n"
-            r"たたみ込み方程式をラプラス変換し $x(t)$ を求める．"
+            r"たたみ込みのラプラス変換：$X(s)\cdot\dfrac{2}{s^2+4} = \mathcal{L}[t\sin 2t] = \dfrac{4s}{(s^2+4)^2}$"
             "\n\n"
-            r"$X(s)\cdot\dfrac{2}{s^2+4} = \dfrac{s^2+4-4}{(s^2+4)^2}\cdot 2 = \dfrac{2s^2}{(s^2+4)^2}$"
+            r"$X(s) = \dfrac{4s}{(s^2+4)^2}\cdot\dfrac{s^2+4}{2} = \dfrac{2s}{s^2+4}$"
+            "\n\n"
+            r"$x(t) = 2\cos 2t$"
         ),
         (
             r"$X(s) - 2X(s)\cdot\dfrac{s}{s^2+1} = \dfrac{1}{s^2+1}$"
@@ -478,7 +488,9 @@ ANSWERS = {
             "\n\n"
             r"$X\!\left(s+2+\dfrac{4}{s-2}\right) = \dfrac{2}{s^3}$，$X\cdot\dfrac{s^2}{s-2} = \dfrac{2}{s^3}$"
             "\n\n"
-            r"$X = \dfrac{2(s-2)}{s^5}$ より $x(t) = t^2-\dfrac{t^4}{12}+\cdots$"
+            r"$X = \dfrac{2(s-2)}{s^5} = \dfrac{2}{s^4}-\dfrac{4}{s^5}$"
+            "\n\n"
+            r"$x(t) = \dfrac{t^3}{3}-\dfrac{t^4}{6}$"
         ),
     ],
 
@@ -508,11 +520,13 @@ ANSWERS = {
     141: (
         r"$a_0 = \dfrac{1}{2\pi}\displaystyle\int_{-\pi}^{0} x\,dx = -\dfrac{\pi}{4}$"
         "\n\n"
-        r"$a_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\cos nx\,dx = \dfrac{(-1)^n - 1}{n^2\pi}$"
+        r"$a_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\cos nx\,dx = \dfrac{1-(-1)^n}{n^2\pi}$"
         "\n\n"
         r"$b_n = \dfrac{1}{\pi}\displaystyle\int_{-\pi}^{0} x\sin nx\,dx = \dfrac{(-1)^{n+1}}{n}$"
         "\n\n"
-        r"$f(x) = -\dfrac{\pi}{4} + \displaystyle\sum_{n=1}^{\infty}\left[\dfrac{(-1)^n-1}{n^2\pi}\cos nx + \dfrac{(-1)^{n+1}}{n}\sin nx\right]$"
+        r"$f(x) = -\dfrac{\pi}{4} + \displaystyle\sum_{n=1}^{\infty}\biggl[\dfrac{1-(-1)^n}{n^2\pi}\cos nx$"
+        "\n\n"
+        r"$\qquad + \dfrac{(-1)^{n+1}}{n}\sin nx\biggr]$"
     ),
 
     142: [
@@ -532,7 +546,11 @@ ANSWERS = {
             "\n"
             r"$a_0 = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\,dx + \dfrac{1}{3}\int_0^3 x\,dx = 3+\dfrac{3}{2} = \dfrac{9}{2}$"
             "\n\n"
-            r"$a_n$，$b_n$ を計算してフーリエ級数を求める．"
+            r"$a_n = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\cos\dfrac{n\pi x}{3}\,dx + \dfrac{1}{3}\int_0^3 x\cos\dfrac{n\pi x}{3}\,dx = \dfrac{3((-1)^n-1)}{n^2\pi^2}$"
+            "\n\n"
+            r"$b_n = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\sin\dfrac{n\pi x}{3}\,dx + \dfrac{1}{3}\int_0^3 x\sin\dfrac{n\pi x}{3}\,dx = -\dfrac{3}{n\pi}$"
+            "\n\n"
+            r"$g(x) = \dfrac{9}{4}-\dfrac{6}{\pi^2}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{(2k+1)^2}\cos\dfrac{(2k+1)\pi x}{3}-\dfrac{3}{\pi}\sum_{n=1}^{\infty}\dfrac{1}{n}\sin\dfrac{n\pi x}{3}$"
         ),
     ],
 
@@ -695,7 +713,7 @@ ANSWERS = {
         "\n\n"
         r"$F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx = 2\int_0^1 x\cos ux\,dx = \dfrac{2(\cos u + u\sin u - 1)}{u^2}$"
         "\n\n"
-        r"スペクトル $|F(u)|$"
+        r"スペクトル $|F(u)| = \dfrac{2|\cos u + u\sin u - 1|}{u^2}$"
     ),
 
     # ============================
@@ -710,9 +728,15 @@ ANSWERS = {
             r"$f(x) = -\dfrac{1}{2}-\dfrac{6}{\pi}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{2k+1}\sin(2k+1)x$"
         ),
         (
-            r"$a_0 = \dfrac{1}{4}\displaystyle\int_{-2}^{0}(x+2)\,dx = \dfrac{1}{2}$"
+            r"周期 $2l=4$，$l=2$ として"
+            "\n"
+            r"$a_0 = \dfrac{1}{2}\displaystyle\int_{-2}^{0}(x+2)\,dx = 1$"
             "\n\n"
-            r"$a_n$，$b_n$ を計算してフーリエ級数を求める．"
+            r"$a_n = \dfrac{1}{2}\displaystyle\int_{-2}^{0}(x+2)\cos\dfrac{n\pi x}{2}\,dx = \dfrac{2(1-(-1)^n)}{n^2\pi^2}$"
+            "\n\n"
+            r"$b_n = \dfrac{1}{2}\displaystyle\int_{-2}^{0}(x+2)\sin\dfrac{n\pi x}{2}\,dx = -\dfrac{2}{n\pi}$"
+            "\n\n"
+            r"$g(x) = \dfrac{1}{2}+\dfrac{4}{\pi^2}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{(2k+1)^2}\cos\dfrac{(2k+1)\pi x}{2}-\dfrac{2}{\pi}\sum_{n=1}^{\infty}\dfrac{1}{n}\sin\dfrac{n\pi x}{2}$"
         ),
         (
             r"$h(x) = |\sin x|$ は偶関数（周期 $\pi$）なので $b_n=0$．"
@@ -737,7 +761,11 @@ ANSWERS = {
         (
             r"$c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}(2x+1)e^{-in\pi x}\,dx$"
             "\n\n"
-            r"$c_0 = 1$，$c_n = \dfrac{2(-1)^n}{in\pi}+\dfrac{(-1)^n-1}{(in\pi)^2}\cdot\text{（部分積分計算）}$"
+            r"$c_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{1}(2x+1)\,dx = 1$"
+            "\n\n"
+            r"$n\neq 0$：部分積分より $c_n = \dfrac{2(-1)^{n+1}}{in\pi}$"
+            "\n\n"
+            r"$f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty}\dfrac{2(-1)^{n+1}}{in\pi}\,e^{in\pi x}$"
         ),
         (
             r"$c_n = \dfrac{1}{6}\displaystyle\int_{-3}^{3}g(x)e^{-in\pi x/3}\,dx$"
@@ -819,22 +847,18 @@ ANSWERS = {
             "\n\n"
             r"$c_0 = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(1-|x|)\,dx = 0$"
             "\n\n"
-            r"$c_n = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(1-|x|)e^{-in\pi x/2}\,dx$"
+            r"偶関数なので $c_n = \dfrac{1}{2}\displaystyle\int_0^2(1-x)\cos\dfrac{n\pi x}{2}\,dx = \dfrac{2(1-(-1)^n)}{n^2\pi^2}$"
             "\n\n"
-            r"偶関数部分のみ残り，$c_n = \dfrac{2(1-\cos n\pi)}{n^2\pi^2}-\dfrac{\sin(n\pi/2)\cdot 2}{n\pi}+\cdots$"
-            "\n\n"
-            r"スペクトル $|c_n|$ を求める．"
+            r"スペクトル：$|c_n| = \dfrac{4}{n^2\pi^2}$（$n$ が奇数），$|c_n|=0$（$n$ が偶数）"
         ),
         (
             r"非周期関数のフーリエ変換"
             "\n"
             r"$F(u) = \displaystyle\int_{-2}^{2}(1-|x|)e^{-iux}\,dx$"
             "\n\n"
-            r"偶関数なので $F(u) = 2\displaystyle\int_0^2(1-x)\cos ux\,dx$"
+            r"偶関数なので $F(u) = 2\displaystyle\int_0^2(1-x)\cos ux\,dx = \dfrac{2(1-\cos 2u - u\sin 2u)}{u^2}$"
             "\n\n"
-            r"$= \dfrac{2(\cos 2u + 2u\sin 2u - 1)}{u^2}$"
-            "\n\n"
-            r"スペクトル $|F(u)|$"
+            r"スペクトル $|F(u)| = \dfrac{2|1-\cos 2u - u\sin 2u|}{u^2}$"
         ),
     ],
 }
@@ -842,9 +866,7 @@ ANSWERS = {
 
 def main():
     yaml_path = os.path.join(
-        os.path.expanduser("~"),
-        "OneDrive - 独立行政法人 国立高等専門学校機構",
-        "デスクトップ",
+        os.path.dirname(os.path.abspath(__file__)),
         "applied_math_problems.yaml",
     )
 

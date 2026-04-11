@@ -1,0 +1,49 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問161〜162}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　第14回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{161}{
+次の関数のスペクトルを求めよ．
+$f(x) = |x| \quad (|x| \leq 1)$，\quad $f(x+2)=f(x)$
+\hfill {\scriptsize [教p.101(問10)]}
+}
+
+\kotae{
+$f(x) = |x|$（$|x|\leq 1$），周期 2 のフーリエ係数
+
+$c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|e^{-in\pi x}\,dx$
+
+$c_0 = \dfrac{1}{2}$，$c_n = \dfrac{(-1)^n - 1}{n^2\pi^2}$（$n \neq 0$）
+
+スペクトル $|c_n|$：$|c_0|=\dfrac{1}{2}$，$|c_n|=\dfrac{|(-1)^n-1|}{n^2\pi^2}$
+}
+
+\mondai{162}{
+次の関数のスペクトルを求めよ．
+$f(x) = \begin{cases} |x| & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$
+\hfill {\scriptsize [教p.102(問11)]}
+}
+
+\kotae{
+非周期関数なのでフーリエ変換を用いる．
+
+$F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx = 2\int_0^1 x\cos ux\,dx = \dfrac{2(\cos u + u\sin u - 1)}{u^2}$
+
+スペクトル $|F(u)| = \dfrac{2|\cos u + u\sin u - 1|}{u^2}$
+}
+
+\end{document}

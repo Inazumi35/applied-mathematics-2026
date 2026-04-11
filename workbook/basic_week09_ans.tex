@@ -1,0 +1,47 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問142}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　第9回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{142}{
+次の関数のフーリエ級数を求めよ．
+(1) $f(x) = \begin{cases} 2 & (-1 \leq x < 0) \\ 1 & (0 \leq x < 1) \end{cases}$，\quad $f(x+2)=f(x)$
+(2) $g(x) = \begin{cases} 3 & (-3 \leq x < 0) \\ x & (0 \leq x < 3) \end{cases}$，\quad $g(x+6)=g(x)$
+\hfill {\scriptsize [教p.82(問3)]}
+}
+
+\kotae{
+(1) $a_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{0}2\,dx + \dfrac{1}{2}\int_0^1 1\,dx = \dfrac{3}{2}$
+
+$a_n = \displaystyle\int_{-1}^{0}2\cos n\pi x\,dx + \int_0^1 \cos n\pi x\,dx = 0$
+
+$b_n = \displaystyle\int_{-1}^{0}2\sin n\pi x\,dx + \int_0^1 \sin n\pi x\,dx = \dfrac{2((-1)^n-1)}{n\pi}+\dfrac{1-(-1)^n}{n\pi}$
+
+$= \dfrac{(-1)^n-1}{n\pi}$
+
+$f(x) = \dfrac{3}{2} - \dfrac{2}{\pi}\displaystyle\sum_{k=0}^{\infty}\dfrac{\sin(2k+1)\pi x}{2k+1}$
+
+(2) 周期 $2l=6$，$l=3$ として
+$a_0 = \dfrac{1}{6}\displaystyle\int_{-3}^{0}3\,dx + \dfrac{1}{6}\int_0^3 x\,dx = \dfrac{3}{2}+\dfrac{3}{4} = \dfrac{9}{4}$
+
+$a_n = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\cos\dfrac{n\pi x}{3}\,dx + \dfrac{1}{3}\int_0^3 x\cos\dfrac{n\pi x}{3}\,dx = \dfrac{3((-1)^n-1)}{n^2\pi^2}$
+
+$b_n = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\sin\dfrac{n\pi x}{3}\,dx + \dfrac{1}{3}\int_0^3 x\sin\dfrac{n\pi x}{3}\,dx = -\dfrac{3}{n\pi}$
+
+$g(x) = \dfrac{9}{4}-\dfrac{6}{\pi^2}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{(2k+1)^2}\cos\dfrac{(2k+1)\pi x}{3}-\dfrac{3}{\pi}\sum_{n=1}^{\infty}\dfrac{1}{n}\sin\dfrac{n\pi x}{3}$
+}
+
+\end{document}

@@ -1,0 +1,194 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問147〜149, 163〜169}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　Check　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Check】}
+\vspace{0.3em}
+
+\mondai{147}{
+次の周期関数のフーリエ級数を求めよ．
+(1) $f(x) = \begin{cases} -2 & (-\pi \leq x < 0) \\ 1 & (0 \leq x < \pi) \end{cases}$，\quad $f(x+2\pi)=f(x)$
+(2) $g(x) = \begin{cases} x+2 & (-2 \leq x < 0) \\ 0 & (0 \leq x < 2) \end{cases}$，\quad $g(x+4)=g(x)$
+(3) $h(x) = |\sin x| \quad \left(-\dfrac{\pi}{2} \leq x < \dfrac{\pi}{2}\right)$，\quad $h(x+\pi)=h(x)$
+}
+
+\kotae{
+(1) $a_0 = \dfrac{1}{2\pi}\displaystyle\int_{-\pi}^{\pi}f(x)\,dx = -\dfrac{1}{2}$
+
+$a_n = 0$（$f(x)+\dfrac{1}{2}$ が奇関数），$b_n = \dfrac{3(1-(-1)^n)}{n\pi}$
+
+$f(x) = -\dfrac{1}{2}+\dfrac{6}{\pi}\displaystyle\sum_{k=0}^{\infty}\dfrac{\sin(2k+1)x}{2k+1}$
+
+(2) 周期 $2l=4$，$l=2$ として
+$a_0 = \dfrac{1}{2}\displaystyle\int_{-2}^{0}(x+2)\,dx = 1$
+
+$a_n = \dfrac{1}{2}\displaystyle\int_{-2}^{0}(x+2)\cos\dfrac{n\pi x}{2}\,dx = \dfrac{2(1-(-1)^n)}{n^2\pi^2}$
+
+$b_n = \dfrac{1}{2}\displaystyle\int_{-2}^{0}(x+2)\sin\dfrac{n\pi x}{2}\,dx = -\dfrac{2}{n\pi}$
+
+$g(x) = \dfrac{1}{2}+\dfrac{4}{\pi^2}\displaystyle\sum_{k=0}^{\infty}\dfrac{1}{(2k+1)^2}\cos\dfrac{(2k+1)\pi x}{2}-\dfrac{2}{\pi}\sum_{n=1}^{\infty}\dfrac{1}{n}\sin\dfrac{n\pi x}{2}$
+
+(3) $h(x) = |\sin x|$ は偶関数（周期 $\pi$）なので $b_n=0$．
+
+$a_0 = \dfrac{2}{\pi}\displaystyle\int_0^{\pi/2}\sin x\,dx = \dfrac{2}{\pi}$
+
+$a_n = \dfrac{4}{\pi}\displaystyle\int_0^{\pi/2}\sin x\cos 2nx\,dx = -\dfrac{4}{\pi(4n^2-1)}$
+
+$h(x) = \dfrac{2}{\pi}-\dfrac{4}{\pi}\displaystyle\sum_{n=1}^{\infty}\dfrac{\cos 2nx}{4n^2-1}$
+}
+
+\mondai{148}{
+問題147(1)の結果を用いて，次の公式を導け．$1 - \dfrac{1}{3} + \dfrac{1}{5} - \dfrac{1}{7} + \cdots = \dfrac{\pi}{4}$
+}
+
+\kotae{
+問題147(1)で $x=\pi/2$ を代入すると $f(\pi/2)=1$ に収束する．$\sin((2k+1)\pi/2)=(-1)^k$ より
+
+$1 = -\dfrac{1}{2}+\dfrac{6}{\pi}\!\left(\dfrac{1}{1}-\dfrac{1}{3}+\dfrac{1}{5}-\cdots\right)$
+
+$\dfrac{3}{2} = \dfrac{6}{\pi}\!\left(1-\dfrac{1}{3}+\dfrac{1}{5}-\cdots\right)$
+
+よって $1-\dfrac{1}{3}+\dfrac{1}{5}-\dfrac{1}{7}+\cdots = \dfrac{\pi}{4}$
+}
+
+\mondai{149}{
+次の周期関数の複素フーリエ級数を求めよ．
+(1) $f(x) = 2x+1 \quad (-1 \leq x < 1)$，\quad $f(x+2)=f(x)$
+(2) $g(x) = \begin{cases} -1 & (-3 \leq x < 0) \\ 1 & (0 \leq x < 3) \end{cases}$，\quad $g(x+6)=g(x)$
+}
+
+\kotae{
+(1) $c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}(2x+1)e^{-in\pi x}\,dx$
+
+$c_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{1}(2x+1)\,dx = 1$
+
+$n\neq 0$：部分積分より $c_n = \dfrac{2(-1)^{n+1}}{in\pi}$
+
+$f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty}\dfrac{2(-1)^{n+1}}{in\pi}\,e^{in\pi x}$
+
+(2) $c_n = \dfrac{1}{6}\displaystyle\int_{-3}^{3}g(x)e^{-in\pi x/3}\,dx$
+
+$c_0 = 0$，$c_n = \dfrac{1-(-1)^n}{in\pi}$（$n\neq 0$）
+}
+
+\mondai{163}{
+次の関数のフーリエ変換を求めよ．
+(1) $f(x) = \begin{cases} 1 & (1 \leq x \leq 2) \\ 0 & (x < 1,\ x > 2) \end{cases}$
+(2) $g(x) = \begin{cases} 2-x & (0 \leq x < 2) \\ 0 & (x < 0,\ x \geq 2) \end{cases}$
+(3) $h(x) = \begin{cases} e^{3x} & (x \leq 0) \\ 0 & (x > 0) \end{cases}$
+}
+
+\kotae{
+(1) $\mathcal{F}[f] = \displaystyle\int_1^2 e^{-iux}\,dx = \dfrac{e^{-iu}-e^{-2iu}}{iu}$
+
+(2) $\mathcal{F}[g] = \displaystyle\int_0^2 (2-x)e^{-iux}\,dx = \dfrac{2(1-e^{-2iu})}{iu} - \displaystyle\int_0^2 xe^{-iux}\,dx$
+
+部分積分より $\displaystyle\int_0^2 xe^{-iux}\,dx = -\dfrac{2e^{-2iu}}{iu} + \dfrac{e^{-2iu}-1}{u^2}$
+
+整理して $\mathcal{F}[g] = \dfrac{2}{iu} + \dfrac{1-e^{-2iu}}{u^2} = \dfrac{1-2iu-e^{-2iu}}{u^2}$
+
+(3) $\mathcal{F}[h] = \displaystyle\int_{-\infty}^{0} e^{3x}e^{-iux}\,dx = \dfrac{1}{3-iu}$
+}
+
+\mondai{164}{
+問題163(1)の関数にフーリエの積分定理を適用して，次の等式を証明せよ．$\displaystyle\int_{-\infty}^{\infty} \dfrac{\sin u}{u}\,du = \pi$
+}
+
+\kotae{
+問題163(1)の $f(x)$ にフーリエの積分定理を適用し，$x=1$（不連続点）で
+$\dfrac{f(1^+)+f(1^-)}{2} = \dfrac{1}{2}$ に収束することを利用する．
+
+$\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{e^{-iu}-e^{-2iu}}{iu}e^{iu}\,du = \dfrac{1}{2}$
+
+$\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{1-e^{-iu}}{iu}\,du = \dfrac{1}{2}$
+
+実部を取り出して $\displaystyle\int_{-\infty}^{\infty}\dfrac{\sin u}{u}\,du = \pi$
+}
+
+\mondai{165}{
+次の関数のフーリエ正弦変換を求めよ．
+$f(x) = \begin{cases} -\dfrac{x}{3} & (|x| \leq 2) \\ 0 & (|x| > 2) \end{cases}$
+}
+
+\kotae{
+$f(x)$ は奇関数なので
+$\mathcal{F}_s[f] = 2\displaystyle\int_0^2 \!\left(-\dfrac{x}{3}\right)\sin ux\,dx = -\dfrac{2}{3}\int_0^2 x\sin ux\,dx$
+
+部分積分して $= -\dfrac{2}{3}\!\left[\dfrac{\sin 2u - 2u\cos 2u}{u^2}\right]$
+}
+
+\mondai{166}{
+$\mathcal{F}[e^{-|x|}] = \dfrac{2}{1+u^2}$ とフーリエ変換の性質を用いて，$\mathcal{F}[e^{-a|x|}]$ を求めよ．ただし，$a > 0$ とする．
+}
+
+\kotae{
+$\mathcal{F}[e^{-|x|}] = \dfrac{2}{1+u^2}$ と相似性 $\mathcal{F}[f(ax)] = \dfrac{1}{|a|}F(u/a)$ より
+
+$\mathcal{F}[e^{-a|x|}] = \dfrac{1}{a}\cdot\dfrac{2}{1+(u/a)^2} = \dfrac{2a}{a^2+u^2}$
+}
+
+\mondai{167}{
+問題166の結果を用いて，$\mathcal{F}[e^{-|x|} * e^{-2|x|}]$ を求めよ．
+}
+
+\kotae{
+$\mathcal{F}[e^{-|x|}*e^{-2|x|}] = \mathcal{F}[e^{-|x|}]\cdot\mathcal{F}[e^{-2|x|}]$
+
+$= \dfrac{2}{1+u^2}\cdot\dfrac{4}{4+u^2} = \dfrac{8}{(1+u^2)(4+u^2)}$
+}
+
+\mondai{168}{
+次の等式を証明せよ．ただし，$a$，$b$ は正の定数とする．
+(1) $\mathcal{F}\!\left[e^{-\frac{x^2}{a}} * xe^{-\frac{x^2}{b}}\right] = -\dfrac{\pi b\sqrt{ab}}{2}\,iu\,e^{-\frac{a+b}{4}u^2}$
+(2) $e^{-\frac{x^2}{a}} * xe^{-\frac{x^2}{b}} = \dfrac{b\sqrt{ab\pi}}{(a+b)\sqrt{a+b}}\,xe^{-\frac{x^2}{a+b}}$
+}
+
+\kotae{
+(1) $\mathcal{F}[e^{-x^2/a}] = \sqrt{a\pi}\,e^{-au^2/4}$，$\mathcal{F}[xe^{-x^2/b}] = -ib\sqrt{b\pi}\,\dfrac{u}{2}\,e^{-bu^2/4}$
+
+たたみ込み定理より
+$\mathcal{F}[e^{-x^2/a}*xe^{-x^2/b}] = \sqrt{a\pi}\,e^{-au^2/4}\cdot\!\left(-\dfrac{ib\sqrt{b\pi}\,u}{2}\,e^{-bu^2/4}\right)$
+
+$= -\dfrac{\pi b\sqrt{ab}}{2}\,iu\,e^{-(a+b)u^2/4}$
+
+(2) (1)の逆フーリエ変換を計算する．
+$iu\,e^{-cu^2}$ の逆変換（$c=(a+b)/4$）は $\dfrac{x}{2c}\cdot\dfrac{1}{2\sqrt{\pi c}}\,e^{-x^2/(4c)}$ に比例する．
+
+整理して $e^{-x^2/a}*xe^{-x^2/b} = \dfrac{b\sqrt{ab\pi}}{(a+b)\sqrt{a+b}}\,xe^{-x^2/(a+b)}$
+}
+
+\mondai{169}{
+次の関数のスペクトルを求めよ．
+(1) $f(x) = 1-|x| \quad (|x| \leq 2)$，\quad $f(x+4)=f(x)$
+(2) $g(x) = \begin{cases} 1-|x| & (|x| \leq 2) \\ 0 & (|x| > 2) \end{cases}$
+}
+
+\kotae{
+(1) $f(x) = 1-|x|$（$|x|\leq 2$），周期 4 のフーリエ係数
+
+$c_0 = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(1-|x|)\,dx = 0$
+
+偶関数なので $c_n = \dfrac{1}{2}\displaystyle\int_0^2(1-x)\cos\dfrac{n\pi x}{2}\,dx = \dfrac{2(1-(-1)^n)}{n^2\pi^2}$
+
+スペクトル：$|c_n| = \dfrac{4}{n^2\pi^2}$（$n$ が奇数），$|c_n|=0$（$n$ が偶数）
+
+(2) 非周期関数のフーリエ変換
+$F(u) = \displaystyle\int_{-2}^{2}(1-|x|)e^{-iux}\,dx$
+
+偶関数なので $F(u) = 2\displaystyle\int_0^2(1-x)\cos ux\,dx = \dfrac{2(1-\cos 2u - u\sin 2u)}{u^2}$
+
+スペクトル $|F(u)| = \dfrac{2|1-\cos 2u - u\sin 2u|}{u^2}$
+}
+
+\end{document}

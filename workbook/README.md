@@ -7,34 +7,23 @@
 ## ファイル構成
 
 ```
-workspace/応用数学/workbook/       ← 作業場所（git管理）
+workspace/応用数学/workbook/       ← すべてここで管理（git管理）
+  applied_math_problems.yaml       元データ（77問）
   generate_workbook.py             YAML→LaTeX 変換スクリプト
   fill_answers.py                  解答データ＋YAML更新スクリプト
+  kaitoushu.sty                    LaTeX スタイルファイル
   workbook_ch2.tex                 生成物: 2章 ラプラス変換（問74〜124）
   workbook_ch3.tex                 生成物: 3章 フーリエ解析（問140〜169）
-  README.md                       このファイル
-
-OneDrive/応用数学/2026/            ← コンパイル・配布用コピー
-  （上記ファイル + kaitoushu.sty）
-
-OneDrive/デスクトップ/
-  applied_math_problems.yaml       元データ（82問）
+  README.md                        このファイル
 ```
 
 ## 作業フロー
 
 ```
-workspace で編集 → OneDrive にコピー → git コミット
+workspace で編集 → git コミット
 ```
 
-### 1. スクリプト・解答の編集（workspace）
-
-`~/workspace/応用数学/workbook/` 内のファイルを直接編集する。
-
-- `fill_answers.py` の `ANSWERS` 辞書に解答を追加・修正
-- `generate_workbook.py` の出力形式を変更
-
-### 2. 解答を YAML に反映（fill_answers.py）
+### 1. 解答を YAML に反映（fill_answers.py）
 
 ```bash
 cd ~/workspace/応用数学/workbook
@@ -46,29 +35,22 @@ python fill_answers.py
 - バックアップ: 元ファイルを `.bak` として保存
 - LaTeX の `\` を含むため、必ず `|` ブロックスカラーで書き出す
 
-### 3. LaTeX 問題集の生成（generate_workbook.py）
+### 2. LaTeX 問題集の生成（generate_workbook.py）
 
 ```bash
 cd ~/workspace/応用数学/workbook
 python generate_workbook.py [yaml_path]
 ```
 
-- 引数なしの場合、デフォルトパス（OneDrive/デスクトップ/applied_math_problems.yaml）を使用
+- 引数なしの場合、スクリプトと同じディレクトリの `applied_math_problems.yaml` を使用
 - 出力: `workbook_ch2.tex`（2章）、`workbook_ch3.tex`（3章）
 - 形式: A4・2段組み・`\mondai{番号}{問題文}` + `\kotae{解答}`
-- Basic 問題には教科書参照 `\hfill {\scriptsize [教p.XX]}` 付き
+- Basic は授業回ごとに細分化（第1〜14回）、Check は章単位
 
-### 4. OneDrive にコピー
-
-```bash
-cp ~/workspace/応用数学/workbook/{generate_workbook.py,fill_answers.py,workbook_ch2.tex,workbook_ch3.tex} \
-   "$HOME/OneDrive - 独立行政法人 国立高等専門学校機構/応用数学/2026/"
-```
-
-### 5. PDF コンパイル（OneDrive 側）
+### 3. PDF コンパイル
 
 ```bash
-cd "$HOME/OneDrive - 独立行政法人 国立高等専門学校機構/応用数学/2026"
+cd ~/workspace/応用数学/workbook
 lualatex workbook_ch2.tex
 lualatex workbook_ch3.tex
 ```
@@ -76,7 +58,7 @@ lualatex workbook_ch3.tex
 - エンジン: LuaLaTeX（luatexja）
 - `kaitoushu.sty` が同じディレクトリに必要
 
-### 6. git コミット
+### 4. git コミット
 
 ```bash
 cd ~/workspace
@@ -93,10 +75,27 @@ git commit -m "update workbook files"
 
 | 章 | セクション | 問題番号 | 問数 |
 |----|-----------|---------|------|
-| 2章 ラプラス変換 | Basic | 問74〜92 | 19問 |
-| 2章 ラプラス変換 | Check | 問93〜124 | 28問（104,105欠番） |
-| 3章 フーリエ解析 | Basic | 問140〜162 | 16問 |
-| 3章 フーリエ解析 | Check | 問147〜169 | 19問 |
-| **合計** | | | **82問** |
+| 2章 ラプラス変換 | Basic | 問74〜92, 106〜117 | 31問 |
+| 2章 ラプラス変換 | Check | 問93〜103, 118〜124 | 18問（104,105欠番） |
+| 3章 フーリエ解析 | Basic | 問140〜146, 152〜162 | 18問（150,151欠番） |
+| 3章 フーリエ解析 | Check | 問147〜149, 163〜169 | 10問 |
+| **合計** | | | **77問** |
 
-解答入力済み: 77問 / 82問
+## Basic 授業回対応表
+
+| 授業回 | 問題番号 | 章 |
+|--------|---------|-----|
+| 第1回  | 74〜80  | 2章 |
+| 第2回  | 81〜85  | 2章 |
+| 第3回  | 86〜89  | 2章 |
+| 第4回  | 90〜92  | 2章 |
+| 第5回  | 106〜109 | 2章 |
+| 第6回  | 110〜114 | 2章 |
+| 第7回  | 115〜117 | 2章 |
+| 第8回  | 140〜141 | 3章 |
+| 第9回  | 142      | 3章 |
+| 第10回 | 143〜144 | 3章 |
+| 第11回 | 145〜146 | 3章 |
+| 第12回 | 152〜155 | 3章 |
+| 第13回 | 156〜160 | 3章 |
+| 第14回 | 161〜162 | 3章 |

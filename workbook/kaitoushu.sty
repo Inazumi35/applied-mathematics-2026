@@ -30,17 +30,9 @@
 \lhead{解答集}
 \cfoot{\thepage}
 
-% --- セクションスタイル（「問題 N」+ 区切り線）---
-\renewcommand{\thesection}{問題 \arabic{section}}
-\let\origsection\section
-\renewcommand{\section}{\par\vspace{0.5em}\noindent\rule{\columnwidth}{0.4pt}\origsection}
-
 % --- ユーザコマンド ---
 % \problemrange{Basic問題 143-150} → 右ヘッダーに設定
 \newcommand{\problemrange}[1]{\rhead{#1}}
-
-% \startproblem{142} → セクションカウンタを設定（最初の問題番号 - 1）
-\newcommand{\startproblem}[1]{\setcounter{section}{#1}}
 
 % --- 問題・解答コマンド（明示的番号指定方式）---
 % \mondai{143}{問題文} → 「問題 143」+ 区切り線 + 問題文

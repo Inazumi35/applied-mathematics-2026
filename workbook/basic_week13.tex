@@ -1,0 +1,47 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問156〜160}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　第13回　Basic}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{156}{
+次の公式を証明せよ．ただし，$a$ は $0$ でない実数とする．$\mathcal{F}[f(ax)] = \dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
+\hfill {\scriptsize [教p.97(問5)]}
+}
+
+\mondai{157}{
+問題153の $f(x)$ と $g(x)$ について，$\mathcal{F}[f(x) * g(x)]$ を求めよ．
+\hfill {\scriptsize [教p.98(問6)]}
+}
+
+\mondai{158}{
+公式 $\mathcal{F}[e^{-ax^2}] = \sqrt{\dfrac{\pi}{a}}\,e^{-\frac{u^2}{4a}}$ を用いて，次の関数のフーリエ変換を求めよ．
+(1) $e^{-\frac{x^2}{4}}$ \quad (2) $xe^{-\frac{x^2}{4}}$ \quad (3) $x^2 e^{-\frac{x^2}{4}}$
+\hfill {\scriptsize [教p.98(問7)]}
+}
+
+\mondai{159}{
+$\mathcal{F}^{-1}[e^{-3u^2}]$ を求めよ．
+\hfill {\scriptsize [教p.98(問8)]}
+}
+
+\mondai{160}{
+次の等式を証明せよ．
+(1) $\mathcal{F}\!\left[e^{-\frac{x^2}{4}} * xe^{-\frac{x^2}{4}}\right] = -8\pi iu\,e^{-2u^2}$
+(2) $e^{-\frac{x^2}{4}} * xe^{-\frac{x^2}{4}} = \sqrt{\dfrac{\pi}{2}}\,xe^{-\frac{x^2}{8}}$
+\hfill {\scriptsize [教p.99(問9)]}
+}
+
+\end{document}

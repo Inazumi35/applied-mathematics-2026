@@ -1,0 +1,91 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問74〜80}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第1回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{74}{
+$f(t) = t^3$ のラプラス変換を求めよ．
+\hfill {\scriptsize [教p.47(問1)]}
+}
+
+\kotae{
+$\mathcal{L}[t^3] = \dfrac{3!}{s^4} = \dfrac{6}{s^4} \quad (s>0)$
+}
+
+\mondai{75}{
+ラプラス変換の線形性を用いて，$\mathcal{L}[3t^2 + 2]$ を求めよ．
+\hfill {\scriptsize [教p.48(問2)]}
+}
+
+\kotae{
+$\mathcal{L}[3t^2+2] = 3\cdot\dfrac{2!}{s^3} + \dfrac{2}{s} = \dfrac{6}{s^3} + \dfrac{2s^2}{s^3} = \dfrac{2(s^2+3)}{s^3} \quad (s>0)$
+}
+
+\mondai{76}{
+$\mathcal{L}[e^t - e^{-2t}]$ を求めよ．
+\hfill {\scriptsize [教p.48(問3)]}
+}
+
+\kotae{
+$\mathcal{L}[e^t - e^{-2t}] = \dfrac{1}{s-1} - \dfrac{1}{s+2} = \dfrac{(s+2)-(s-1)}{(s-1)(s+2)} = \dfrac{3}{(s-1)(s+2)} \quad (s>1)$
+}
+
+\mondai{77}{
+定義に従って，$f(t) = \sin 3t$ のラプラス変換を求めよ．
+\hfill {\scriptsize [教p.49(問4)]}
+}
+
+\kotae{
+$\mathcal{L}[\sin 3t] = \displaystyle\int_0^\infty e^{-st}\sin 3t\,dt$
+
+部分積分を2回行うと，$\mathcal{L}[\sin 3t] = \dfrac{3}{s^2+9} \quad (s>0)$
+}
+
+\mondai{78}{
+$f(t) = \cosh 2t$ のラプラス変換を求めよ．
+\hfill {\scriptsize [教p.49(問5)]}
+}
+
+\kotae{
+$\mathcal{L}[\cosh 2t] = \mathcal{L}\!\left[\dfrac{e^{2t}+e^{-2t}}{2}\right] = \dfrac{1}{2}\!\left(\dfrac{1}{s-2}+\dfrac{1}{s+2}\right) = \dfrac{s}{s^2-4} \quad (s>2)$
+}
+
+\mondai{79}{
+次の関数のグラフをかけ．また，そのラプラス変換を求めよ．
+(1) $y = U(t-3)$ \quad (2) $y = 3U(t-2)$
+\hfill {\scriptsize [教p.49(問6)]}
+}
+
+\kotae{
+(1) グラフ：$t=3$ で 0 から 1 に跳ぶステップ関数．$\mathcal{L}[U(t-3)] = \dfrac{e^{-3s}}{s} \quad (s>0)$
+
+(2) グラフ：$t=2$ で 0 から 3 に跳ぶ．$\mathcal{L}[3U(t-2)] = \dfrac{3e^{-2s}}{s} \quad (s>0)$
+}
+
+\mondai{80}{
+次の関数 $f(t)$ を単位ステップ関数を用いて表せ．また，$\mathcal{L}[f(t)]$ を求めよ．
+(1) $f(t) = \begin{cases} 1 & (1 \leq t < 3) \\ 0 & (0 < t < 1,\ t \geq 3) \end{cases}$
+(2) $f(t) = \begin{cases} 2 & (t \geq 1) \\ 0 & (0 < t < 1) \end{cases}$
+\hfill {\scriptsize [教p.50(問7)]}
+}
+
+\kotae{
+(1) $f(t) = U(t-1) - U(t-3)$．$\mathcal{L}[f(t)] = \dfrac{e^{-s} - e^{-3s}}{s} \quad (s>0)$
+
+(2) $f(t) = 2U(t-1)$．$\mathcal{L}[f(t)] = \dfrac{2e^{-s}}{s} \quad (s>0)$
+}
+
+\end{document}

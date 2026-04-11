@@ -1,0 +1,91 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問156〜160}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　3章　第13回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{156}{
+次の公式を証明せよ．ただし，$a$ は $0$ でない実数とする．$\mathcal{F}[f(ax)] = \dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
+\hfill {\scriptsize [教p.97(問5)]}
+}
+
+\kotae{
+$\mathcal{F}[f(ax)] = \displaystyle\int_{-\infty}^{\infty}f(ax)e^{-iux}\,dx$
+
+$ax=t$ と置換すると $dx = dt/a$（$a>0$），$dx = dt/a$（$a<0$）
+
+$= \dfrac{1}{|a|}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
+}
+
+\mondai{157}{
+問題153の $f(x)$ と $g(x)$ について，$\mathcal{F}[f(x) * g(x)]$ を求めよ．
+\hfill {\scriptsize [教p.98(問6)]}
+}
+
+\kotae{
+$\mathcal{F}[f*g] = \mathcal{F}[f]\cdot\mathcal{F}[g]$
+
+$\mathcal{F}[f] = \dfrac{2(e^{3iu}-1)}{iu}$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
+
+$\mathcal{F}[f*g] = \dfrac{2(e^{3iu}-1)}{iu}\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2}$
+}
+
+\mondai{158}{
+公式 $\mathcal{F}[e^{-ax^2}] = \sqrt{\dfrac{\pi}{a}}\,e^{-\frac{u^2}{4a}}$ を用いて，次の関数のフーリエ変換を求めよ．
+(1) $e^{-\frac{x^2}{4}}$ \quad (2) $xe^{-\frac{x^2}{4}}$ \quad (3) $x^2 e^{-\frac{x^2}{4}}$
+\hfill {\scriptsize [教p.98(問7)]}
+}
+
+\kotae{
+(1) $a=1/4$ として $\mathcal{F}[e^{-x^2/4}] = \sqrt{4\pi}\,e^{-u^2} = 2\sqrt{\pi}\,e^{-u^2}$
+
+(2) 微分法則 $\mathcal{F}[xf(x)] = i\dfrac{d}{du}F(u)$ より
+$\mathcal{F}[xe^{-x^2/4}] = i\cdot(-2u)\cdot 2\sqrt{\pi}\,e^{-u^2} = -4i\sqrt{\pi}\,ue^{-u^2}$
+
+(3) $\mathcal{F}[x^2 e^{-x^2/4}] = (i)^2\dfrac{d^2}{du^2}(2\sqrt{\pi}\,e^{-u^2})$
+
+$= -2\sqrt{\pi}(4u^2-2)e^{-u^2} = 2\sqrt{\pi}(2-4u^2)e^{-u^2}$
+}
+
+\mondai{159}{
+$\mathcal{F}^{-1}[e^{-3u^2}]$ を求めよ．
+\hfill {\scriptsize [教p.98(問8)]}
+}
+
+\kotae{
+$\mathcal{F}[e^{-ax^2}] = \sqrt{\dfrac{\pi}{a}}\,e^{-u^2/(4a)}$ で $a=3$，$u$ と $x$ の役割を入れ替えて
+
+$\mathcal{F}^{-1}[e^{-3u^2}] = \dfrac{1}{2\sqrt{3\pi}}\,e^{-x^2/12}$
+}
+
+\mondai{160}{
+次の等式を証明せよ．
+(1) $\mathcal{F}\!\left[e^{-\frac{x^2}{4}} * xe^{-\frac{x^2}{4}}\right] = -8\pi iu\,e^{-2u^2}$
+(2) $e^{-\frac{x^2}{4}} * xe^{-\frac{x^2}{4}} = \sqrt{\dfrac{\pi}{2}}\,xe^{-\frac{x^2}{8}}$
+\hfill {\scriptsize [教p.99(問9)]}
+}
+
+\kotae{
+(1) $\mathcal{F}[e^{-x^2/4}] = 2\sqrt{\pi}\,e^{-u^2}$，$\mathcal{F}[xe^{-x^2/4}] = -4i\sqrt{\pi}\,ue^{-u^2}$
+
+$\mathcal{F}[e^{-x^2/4}*xe^{-x^2/4}] = 2\sqrt{\pi}\,e^{-u^2}\cdot(-4i\sqrt{\pi}\,ue^{-u^2}) = -8\pi iu\,e^{-2u^2}$
+
+(2) $\mathcal{F}^{-1}[-8\pi iu\,e^{-2u^2}]$ を計算する．
+
+$e^{-2u^2}$ の逆変換と微分法則を用いて
+$e^{-x^2/4}*xe^{-x^2/4} = \sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}$
+}
+
+\end{document}

@@ -1,0 +1,44 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問110〜114}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第6回　Basic}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{110}{
+関数 $t^3$，$t$ のたたみ込み $t^3 * t$ を求めよ．
+}
+
+\mondai{111}{
+たたみ込み $t * (t^3 + t^4)$ を求めよ．
+}
+
+\mondai{112}{
+$\mathcal{L}[t^3 * t]$ を求めよ．また，問題110の結果から直接 $\mathcal{L}[t^3 * t]$ を求めよ．
+}
+
+\mondai{113}{
+$\mathcal{L}[f(t)] = F(s)$ のとき，次の関数の逆ラプラス変換を求めよ．
+(1) $\dfrac{F(s)}{s^2+4s+4}$ \quad
+(2) $\dfrac{F(s)}{s^2-7s+12}$ \quad
+(3) $\dfrac{F(s)}{s^2-4s+13}$
+}
+
+\mondai{114}{
+次の積分方程式を満たす関数 $x(t)$ を求めよ．
+(1) $\int_0^t x(\tau)\cos(t-\tau)\,d\tau = t^2$
+(2) $\int_0^t x(\tau)e^{2(t-\tau)}\,d\tau = \sin 3t$
+}
+
+\end{document}

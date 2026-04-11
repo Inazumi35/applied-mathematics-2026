@@ -1,0 +1,66 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学 問題集}
+\problemrange{問81〜85}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　2章　第2回　Basic　解答}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【Basic】}
+\vspace{0.3em}
+
+\mondai{81}{
+$\mathcal{L}[\cosh t] = \dfrac{s}{s^2-1}$ を用いて，$\mathcal{L}[\cosh \omega t]$ を求めよ．ただし，$\omega$ は $0$ でない定数とする．
+\hfill {\scriptsize [教p.51(問8)]}
+}
+
+\kotae{
+$\mathcal{L}[\cosh t] = \dfrac{s}{s^2-1}$ において $t$ を $\omega t$ に置き換え，相似性より $\mathcal{L}[\cosh \omega t] = \dfrac{1}{\omega}\cdot\dfrac{s/\omega}{(s/\omega)^2-1} = \dfrac{s}{s^2-\omega^2} \quad (s>|\omega|)$
+}
+
+\mondai{82}{
+2倍角の公式 $\sin 2t = 2\sin t \cos t$ を用いて，$\mathcal{L}[\sin t \cos t]$ を求めよ．
+\hfill {\scriptsize [教p.51(問9)]}
+}
+
+\kotae{
+$\sin t\cos t = \dfrac{1}{2}\sin 2t$ より，$\mathcal{L}[\sin t\cos t] = \dfrac{1}{2}\cdot\dfrac{2}{s^2+4} = \dfrac{1}{s^2+4} \quad (s>0)$
+}
+
+\mondai{83}{
+$\mathcal{L}[t^3 e^{2t}]$ を求めよ．
+\hfill {\scriptsize [教p.52(問10)]}
+}
+
+\kotae{
+第1移動法則 $\mathcal{L}[t^n e^{at}] = \dfrac{n!}{(s-a)^{n+1}}$ より，$\mathcal{L}[t^3 e^{2t}] = \dfrac{3!}{(s-2)^4} = \dfrac{6}{(s-2)^4} \quad (s>2)$
+}
+
+\mondai{84}{
+$\mathcal{L}\left[\cos\left(t - \dfrac{\pi}{6}\right)U\left(t - \dfrac{\pi}{6}\right)\right]$ を求めよ．
+\hfill {\scriptsize [教p.52(問11)]}
+}
+
+\kotae{
+第2移動法則 $\mathcal{L}[f(t-a)U(t-a)] = e^{-as}F(s)$ より，$\mathcal{L}\!\left[\cos\!\left(t-\dfrac{\pi}{6}\right)U\!\left(t-\dfrac{\pi}{6}\right)\right] = \dfrac{se^{-\pi s/6}}{s^2+1} \quad (s>0)$
+}
+
+\mondai{85}{
+関数 $f(t) = (t-1)U(t-1)$ のグラフをかけ．また，$\mathcal{L}[f(t)]$ を求めよ．
+\hfill {\scriptsize [教p.52(問12)]}
+}
+
+\kotae{
+グラフ：$t \geq 1$ で傾き 1 の直線（$t<1$ で $0$）．
+
+$\mathcal{L}[(t-1)U(t-1)] = \dfrac{e^{-s}}{s^2} \quad (s>0)$
+}
+
+\end{document}
