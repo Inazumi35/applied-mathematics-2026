@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -20,18 +20,28 @@
 
 \begin{frame}{定理：フーリエ余弦展開（偶関数）}
   \begin{block}{}
+  $f(t)$ が周期 $2l$ の偶関数のとき
   \[
-    f(t) = a_{0}/2 + \sum_{n=1}^\infty a_{n}\cos(n\pi t/l)
+    f(t) = c_{0} + \sum_{n=1}^\infty a_{n}\cos(n\pi t/l)
+  \]
+  \[
+    c_{0} = (1/l)\int_{0}^{l} f(t) dt,\quad a_{n} = (2/l)\int_{0}^{l} f(t)\cos(n\pi t/l) dt
   \]
   \end{block}
+  {\footnotesize \textcolor{gray}{偶関数なので $b_{n}=0$、$[0,l]$ 上の積分のみで決まる}}
 \end{frame}
 
 \begin{frame}{定理：フーリエサイン展開（奇関数）}
   \begin{block}{}
+  $f(t)$ が周期 $2l$ の奇関数のとき
   \[
     f(t) = \sum_{n=1}^\infty b_{n}\sin(n\pi t/l)
   \]
+  \[
+    b_{n} = (2/l)\int_{0}^{l} f(t)\sin(n\pi t/l) dt
+  \]
   \end{block}
+  {\footnotesize \textcolor{gray}{奇関数なので $c_{0}=0, a_{n}=0$、$[0,l]$ 上の積分のみで決まる}}
 \end{frame}
 
 \begin{frame}{例題4　（p.\,84）}
@@ -53,7 +63,7 @@
 \end{frame}
 
 \begin{frame}{例題5　解答}
-  例題 2(1) の関数は $x = 1/2$ で連続だから\\[4pt]
+  第8回 例題2 の関数（周期2の矩形波）$f(x)=1\,(0\leq x<1), 0\,(-1\leq x<0)$ は $x=1/2$ で連続だから\\[4pt]
   $f(1/2) = 1/2 + (2/\pi)(\sin(\pi/2) + \sin(3\pi/2)/3 + \sin(5\pi/2)/5 + \ldots)$\\[4pt]
   $= 1/2 + (2/\pi)(1 - 1/3 + 1/5 - \ldots)$\\[4pt]
   $f(1/2) = 1$ なので $: 1 = 1/2 + (2/\pi)(1 - 1/3 + 1/5 - \ldots)$
@@ -64,9 +74,9 @@
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問4] 次の関数のフーリエ級数を求めよ
-    $(1) f(x) = { -1  (-1 \leq x < 0),  1  (0 \leq x < 1) },  f(x+2) = f(x)$\\
+    $(1) f(x) = \begin{cases} -1 & (-1 \leq x < 0) \\ 1 & (0 \leq x < 1) \end{cases},  f(x+2) = f(x)$\\
     $(2) g(x) = 1 - |x|  (-1 \leq x < 1),  g(x+2) = g(x)$\\
-    $(3) h(x) = \cos(\pi x/4)  (-2 \leq x < 2),  h(x+4) = h(x)$\\
+    $(3) h(x) = \cos(\pi x/4) \ (-2 \leq x < 2),  h(x+4) = h(x)$\\
     \item[問5] 次の問いに答えよ
     (1) 例題3の関数のフーリエ級数を用いて、次の公式を導け\\
     $1/1^{2} + 1/3^{2} + 1/5^{2} + \ldots = \pi^{2}/8$\\

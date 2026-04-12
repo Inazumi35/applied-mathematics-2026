@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -47,7 +47,6 @@
   $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$\\[4pt]
   逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
   \medskip\textbf{答}：$x(t) = \cosh t$
-  {\footnotesize \textcolor{gray}{\textit{$\sinh t + \cosh t = e^t$ より確認可能}}}
 \end{frame}
 
 \begin{frame}{例題2}
@@ -88,10 +87,19 @@
 \begin{frame}{例題4}
   \begin{exampleblock}{問題}
     次の微分方程式の一般解を求めよ\\[2pt]
+    $dx/dt + 2x = e^{-t}$
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題4　解答}
+  $x(0) = \alpha$ （未知）とおき、 $L[x(t)] = X(s)$ とする\\[4pt]
+  $L: (sX(s) - \alpha) + 2X(s) = 1/(s+1)$\\[4pt]
+  $(s+2)X(s) = \alpha + 1/(s+1)$\\[4pt]
+  $X(s) = \alpha/(s+2) + 1/((s+1)(s+2))$\\[4pt]
+  部分分数 $: 1/((s+1)(s+2)) = 1/(s+1) - 1/(s+2)$\\[4pt]
+  $X(s) = (\alpha-1)/(s+2) + 1/(s+1)$\\[4pt]
+  逆変換 $: x(t) = (\alpha-1)e^{-2t} + e^{-t}$\ ；$C = \alpha-1$ を任意定数とする
+  \medskip\textbf{答}：$x(t) = Ce^{-2t} + e^{-t}$（C は任意定数）
 \end{frame}
 
 \begin{frame}{演習問題}

@@ -1,0 +1,67 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学　練習問題（採点用）}
+\problemrange{第3章 §2 練習問題2（p.\,104）}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　第3章 §2　練習問題2（p.\,104）}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【フーリエ変換と積分定理】}
+\vspace{0.3em}
+
+\mondai{1}{
+次の関数のフーリエ変換を求めよ．\\
+(1) $f(x) = \begin{cases} 2 & (0 \leq x < 2) \\ 1 & (2 \leq x < 3) \\ 0 & (x<0,\ x \geq 3) \end{cases}$\\[2pt]
+(2) $g(x) = \begin{cases} 1 - x/2 & (0 \leq x < 2) \\ 0 & (x<0,\ x \geq 2) \end{cases}$
+}
+\kotae{
+(1) $F(u) = \displaystyle\int_0^2 2 e^{-iux}\,dx + \int_2^3 e^{-iux}\,dx$
+\[
+  = \dfrac{2(1-e^{-2iu})}{iu} + \dfrac{e^{-2iu}-e^{-3iu}}{iu} = \dfrac{2 - e^{-2iu} - e^{-3iu}}{iu}
+\]
+(2) $G(u) = \displaystyle\int_0^2 e^{-iux}\,dx - \dfrac{1}{2}\int_0^2 x e^{-iux}\,dx$．\\
+第1項 $= \dfrac{1-e^{-2iu}}{iu}$．\\
+第2項は部分積分で $\displaystyle\int_0^2 x e^{-iux}\,dx = -\dfrac{2 e^{-2iu}}{iu} - \dfrac{1-e^{-2iu}}{u^2}$．
+\[
+  G(u) = \dfrac{1}{iu} + \dfrac{1 - e^{-2iu}}{2u^2}
+\]
+}
+
+\mondai{2}{
+次の関数について，(1) はフーリエ正弦変換，(2) はフーリエ余弦変換を求めよ．\\
+(1) $f(x) = \begin{cases} \sin x & (|x| \leq \pi) \\ 0 & (|x| > \pi) \end{cases}$\\[2pt]
+(2) $g(x) = \begin{cases} \cos x & (|x| \leq \pi/2) \\ 0 & (|x| > \pi/2) \end{cases}$
+}
+\kotae{
+(1) $f$ は奇関数．$F_s(u) = \displaystyle\int_0^\pi \sin x \sin ux\,dx$
+\[
+  = \dfrac{1}{2}\int_0^\pi [\cos(1-u)x - \cos(1+u)x]\,dx
+\]
+\[
+  = \dfrac{1}{2}\left[\dfrac{\sin(1-u)\pi}{1-u} - \dfrac{\sin(1+u)\pi}{1+u}\right]
+\]
+$\sin(1\mp u)\pi = \pm\sin u\pi$ より
+\[
+  F_s(u) = \dfrac{\sin u\pi}{1-u^2} \quad (u\neq 1),\quad F_s(1) = \dfrac{\pi}{2}
+\]
+(2) $g$ は偶関数．$G_c(u) = \displaystyle\int_0^{\pi/2} \cos x \cos ux\,dx$
+\[
+  = \dfrac{1}{2}\int_0^{\pi/2} [\cos(1-u)x + \cos(1+u)x]\,dx
+\]
+\[
+  = \dfrac{1}{2}\left[\dfrac{\sin(1-u)\pi/2}{1-u} + \dfrac{\sin(1+u)\pi/2}{1+u}\right]
+\]
+$\sin(1\mp u)\pi/2 = \cos(u\pi/2)$ より
+\[
+  G_c(u) = \dfrac{\cos(u\pi/2)}{1-u^2} \quad (u\neq 1)
+\]
+}
+
+\end{document}

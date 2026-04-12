@@ -1,19 +1,19 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
 
 \newcommand{\LectureNum}{8}
-\newcommand{\LectureTitle}{周期 2π の周期関数のフーリエ級数}
+\newcommand{\LectureTitle}{周期 $2\pi$ の周期関数のフーリエ級数}
 \newcommand{\CourseName}{応用数学}
 \renewcommand{\TermName}{前期}
 
 \begin{document}
 
-\begin{frame}{第8回　周期 2π の周期関数のフーリエ級数}
+\begin{frame}{第8回　周期 $2\pi$ の周期関数のフーリエ級数}
   \begin{block}{本回の内容}
-  周期 2π の周期関数のフーリエ級数
+  周期 $2\pi$ の周期関数のフーリエ級数
   \end{block}
   \vfill\hfill{\scriptsize \textcolor{gray}{第3章 フーリエ解析　§1}}
 \end{frame}
@@ -23,7 +23,7 @@
   $f(t)$ が周期 $2\pi$ の区分的に滑らかな関数であるとき、\\[2pt]
   次の無限級数に展開できる（フーリエ展開という）\\[2pt]
   \[
-    f(t) = a_{0}/2 + \sum_{n=1}^\infty (a_{n}\cos(nt) + b_{n}\sin(nt))
+    f(t) = c_{0} + \sum_{n=1}^\infty (a_{n}\cos(nt) + b_{n}\sin(nt))
   \]
   \end{block}
 \end{frame}
@@ -31,20 +31,16 @@
 \begin{frame}{定理：三角関数の直交性}
   \begin{block}{}
   \begin{align*}
-    \int_{-\pi}^{\pi} \cos(mt)\cos(nt) dt &= { 0 (m \neq n), \pi (m = n \neq 0), 2\pi (m = n = 0) } \\
-    \int_{-\pi}^{\pi} \sin(mt)\sin(nt) dt &= { 0 (m \neq n), \pi (m = n) } \\
-    \int_{-\pi}^{\pi} \cos(mt)\sin(nt) dt &= 0  （任意の m, n）
+    \int_{-\pi}^{\pi} \cos(mt)\cos(nt) dt &= \begin{cases} 0 & (m \neq n) \\ \pi & (m = n \neq 0) \\ 2\pi & (m = n = 0) \end{cases} \\
+    \int_{-\pi}^{\pi} \sin(mt)\sin(nt) dt &= \begin{cases} 0 & (m \neq n) \\ \pi & (m = n) \end{cases} \\
+    \int_{-\pi}^{\pi} \cos(mt)\sin(nt) dt &= 0 \quad \text{（任意の $m, n$）}
   \end{align*}
   \end{block}
 \end{frame}
 
 \begin{frame}{定理：フーリエ展開の収束定理}
   \begin{block}{}
-  \textbf{条件}：
-  \begin{itemize}
-    \item $f(t)$ は任意の有限区間で区分的に滑らか
-    \item 1周期内で区分的に連続
-  \end{itemize}
+  \textbf{条件}：$f(t)$ は周期 $2\pi$ で 1 周期内において区分的に滑らか
   \textbf{結論}：
   \begin{itemize}
     \item 連続点 $t_{0}$ では : フーリエ級数 $ \to f(t_{0})$
@@ -88,9 +84,9 @@
 
 \begin{frame}{例題3　解答}
   $f(t)$ は偶関数なので $b_{n} = 0$\\[4pt]
-  $a_{0} = (2/\pi) \int_{0}^{\pi} t dt = \pi$\\[4pt]
+  $c_{0} = (1/\pi) \int_{0}^{\pi} t dt = \pi/2$\\[4pt]
   $a_{n} = (2/\pi) \int_{0}^{\pi} t \cos(nt) dt$\\[4pt]
-  部分積分 $: = (2/\pi)\begin{cases} [t \sin(nt)/n]_{0}^\pi - (1/n)\int_{0}^\pi \sin(nt) dt \end{cases}$\\[4pt]
+  部分積分 $: = (2/\pi)\left\{ [t \sin(nt)/n]_{0}^\pi - (1/n)\int_{0}^\pi \sin(nt) dt \right\}$\\[4pt]
   $= (2/\pi) \cdot (1/n^{2})[\cos(n\pi) - 1] = (2/n^{2}\pi)[(-1)^n - 1]$\\[4pt]
   n が奇数のとき $a_{n} = -4/n^{2}\pi, n$ が偶数のとき $a_{n} = 0$
   \medskip\textbf{答}：$f(t) = \pi/2 - (4/\pi)(\cos t + \cos(3t)/9 + \cos(5t)/25 + \ldots)$

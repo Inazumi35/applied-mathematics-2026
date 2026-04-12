@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -21,11 +21,11 @@
 \begin{frame}{定義：フーリエ展開（周期 T = 2l）}
   \begin{block}{}
   \[
-    f(t) = a_{0}/2 + \sum_{n=1}^\infty (a_{n}\cos(n\pi t/l) + b_{n}\sin(n\pi t/l))
+    f(t) = c_{0} + \sum_{n=1}^\infty (a_{n}\cos(n\pi t/l) + b_{n}\sin(n\pi t/l))
   \]
   \medskip\textbf{フーリエ係数}：
   \begin{align*}
-    a_{0} &= (1/l) \int_{-l}^{l} f(t) dt \\
+    c_{0} &= (1/2l) \int_{-l}^{l} f(t) dt \\
     a_{n} &= (1/l) \int_{-l}^{l} f(t)\cos(n\pi t/l) dt  (n = 1, 2, ...) \\
     b_{n} &= (1/l) \int_{-l}^{l} f(t)\sin(n\pi t/l) dt  (n = 1, 2, ...)
   \end{align*}
@@ -40,9 +40,9 @@
 
 \begin{frame}{例題3　解答}
   $f(x)$ は偶関数なので $b_{n} = 0,$ フーリエ余弦展開を求めればよい\\[4pt]
-  $c_{0} = \int_{-1}^{1} |x| dx = 1$\\[4pt]
+  $c_{0} = (1/2)\int_{-1}^{1} |x| dx = 1/2$\\[4pt]
   $a_{n} = 2\int_{0}^{1} x \cos(n\pi x) dx = -2(1-(-1)^n)/(n^{2}\pi^{2})$
-  \medskip\textbf{答}：$f(x) = 1/2 - (4/\pi^{2})(\cos \pi x + \cos(3\pi x)/9 + \cos(5\pi x)/25 + \ldots)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = 1/2 - (4/\pi^{2})(\cos \pi x + \cos(3\pi x)/9 + \cos(5\pi x)/25 + \ldots)$
   {\footnotesize \textcolor{gray}{\textit{$N=2, N=5$ での収束グラフあり（ p.83 ）}}}
 \end{frame}
 
@@ -50,19 +50,19 @@
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問3] 次の関数のフーリエ級数を求めよ
-    $(1) f(x) = { 1  (-1 \leq x < 0),  0  (0 \leq x < 1) },  f(x+2) = f(x)$\\
-    $(2) g(x) = { 2  (-2 \leq x < 0),  4  (0 \leq x < 2) },  g(x+4) = g(x)$\\
-    $(3) h(x) = { 2x+1  (-1/2 \leq x < 0),  0  (0 \leq x < 1/2) },  h(x+1) = h(x)$\\
+    $(1) f(x) = \begin{cases} 1 & (-1 \leq x < 0) \\ 0 & (0 \leq x < 1) \end{cases},  f(x+2) = f(x)$\\
+    $(2) g(x) = \begin{cases} 2 & (-2 \leq x < 0) \\ 4 & (0 \leq x < 2) \end{cases},  g(x+4) = g(x)$\\
+    $(3) h(x) = \begin{cases} 2x+1 & (-1/2 \leq x < 0) \\ 0 & (0 \leq x < 1/2) \end{cases},  h(x+1) = h(x)$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問3　解答}
-  $(1) l=1: a_{0}=1, a_{n}=\int_{-1}^{0}\cos(n\pi x)dx=0, b_{n}=\int_{-1}^{0}\sin(n\pi x)dx=((-1)^n-1)/(n\pi)$\\[4pt]
-  $(2) l=2:$ 平均 $= 3, a_{n}=0, b_{n}=(1/2)[2\int_{-2}^{0}\sin(n\pi x/2)dx + 4\int_{0}^{2}\sin(n\pi x/2)dx]$\\[4pt]
+  $(1) l=1: c_{0}=1/2, a_{n}=\int_{-1}^{0}\cos(n\pi x)dx=0, b_{n}=\int_{-1}^{0}\sin(n\pi x)dx=((-1)^n-1)/(n\pi)$\\[4pt]
+  $(2) l=2: c_{0}=3, a_{n}=0, b_{n}=(1/2)[2\int_{-2}^{0}\sin(n\pi x/2)dx + 4\int_{0}^{2}\sin(n\pi x/2)dx]$\\[4pt]
   $    b_{n} = 2(1-(-1)^n)/(n\pi)$\\[4pt]
-  $(3) l=1/2: a_{0}=(1/2), a_{n}=(1-(-1)^n)/(n^{2}\pi^{2}), b_{n}=-1/(n\pi)$
-  \medskip\textbf{答}：
+  $(3) l=1/2: c_{0}=1/4, a_{n}=(1-(-1)^n)/(n^{2}\pi^{2}), b_{n}=-1/(n\pi)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) f(x) = 1/2 - (2/\pi)(\sin \pi x + \sin(3\pi x)/3 + \sin(5\pi x)/5 + ...)$\\
   $(2) g(x) = 3 + (4/\pi)(\sin(\pi x/2) + \sin(3\pi x/2)/3 + \sin(5\pi x/2)/5 + ...)$\\
   $(3) h(x) = 1/4 + \sum_{n=1}^\infty[(1-(-1)^n)/(n^{2}\pi^{2})\cos(2n\pi x) - (1/(n\pi))\sin(2n\pi x)]$\\

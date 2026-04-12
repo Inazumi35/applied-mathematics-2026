@@ -586,15 +586,19 @@ practice_problems:
         - id: "(1)"
           content: "f(t) = 1"
           hint: "例題1"
+          result: "1/s  (s>0)"
         - id: "(2)"
           content: "sin 2t"
           hint: "例題4 + 相似性"
+          result: "2/(s²+4)  (s>0)"
         - id: "(3)"
           content: "(2^t + 3^t)sin 4t"
           hint: "線形性 + 像関数の移動法則（e^{at} = e^{t·ln a}）"
+          result: "4/((s-ln 2)²+16) + 4/((s-ln 3)²+16)  (s>ln 3)"
         - id: "(4)"
           content: "t^n cos t"
           hint: "像関数の高次微分: L[t^n f(t)] = (-1)^n F^{(n)}(s)"
+          result: "(-1)^n d^n/ds^n [s/(s²+1)]  (s>0)"
 
     - id: 2
       title: |
@@ -607,10 +611,12 @@ practice_problems:
                    { k  (a ≤ t < b)
                    { 0  (b ≤ t)
           hint: "f(t) = k[U(t-a) - U(t-b)]"
+          result: "k(e^{-as} - e^{-bs})/s  (s>0)"
         - id: "(2)"
           content: |
             g(t) = 階段状の関数（グラフ参照）
           hint: "複数のステップ関数の和"
+          result: "各 U(t-c_i) に対応する e^{-c_i s}/s の和"
 
     - id: 3
       title: "次の関数の逆ラプラス変換を求めよ"
@@ -634,8 +640,9 @@ practice_problems:
           note: "スキャン Scan2026-03-24_122253.jpg p.61 より確認"
         - id: "(4)"
           content: "s/(2s-1)²"
-          hint: "部分分数: A/(2s-1) + B/(2s-1)²"
-          result: "(1/4)e^{t/2}(1+t)"
+          hint: "s = (1/2)(2s-1) + 1/2 と分解 → (1/2)/(2s-1) + (1/2)/(2s-1)²"
+          result: "(2+t)e^{t/2}/8"
+          note: "L[(2+t)e^{t/2}/8] = s/(2s-1)² で検算済（旧 result (1/4)e^{t/2}(1+t) は誤り）"
 
     - id: 4
       title: "関数 F(s) = s/((s+2)(s²+4)) について、次の問いに答えよ"

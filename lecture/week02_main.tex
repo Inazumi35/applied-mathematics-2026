@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -21,7 +21,7 @@
 \begin{frame}{定理：相似性}
   \begin{block}{}
   \[
-    L[f(at)] = (1/a) F(s/a)  (a は正の定数)
+    L[f(at)] = (1/a) F(s/a) \ (a は正の定数)
   \]
   \end{block}
 \end{frame}
@@ -29,7 +29,7 @@
 \begin{frame}{定理：像関数の移動法則}
   \begin{block}{}
   \[
-    L[e^{at}f(t)] = F(s-a)  (a は定数)
+    L[e^{at}f(t)] = F(s-a) \ (a は定数)
   \]
   \end{block}
 \end{frame}
@@ -37,7 +37,7 @@
 \begin{frame}{定理：原関数の移動法則（ヘビサイドの移動定理）}
   \begin{block}{}
   \[
-    L[f(t-\mu)U(t-\mu)] = e^{-\mu s}F(s)  (\mu \geq 0)
+    L[f(t-\mu)U(t-\mu)] = e^{-\mu s}F(s) \ (\mu \geq 0)
   \]
   \[
     L^{-1}[e^{-\mu s}F(s)] = f(t-\mu)U(t-\mu)
@@ -56,7 +56,7 @@
   $L[\sin(\omega t)] = (1/\omega) \cdot 1/((s/\omega)^{2}+1) = \omega/(s^{2}+\omega^{2})$\\[4pt]
   $\omega < 0$ のとき $: \sin(-\omega t) = -\sin(\omega t)$ を利用\\[4pt]
   $L[\sin(\omega t)] = -L[\sin(-\omega t)] = -(-\omega)/(s^{2}+\omega^{2}) = \omega/(s^{2}+\omega^{2})$
-  \medskip\textbf{答}：$L[\sin(\omega t)] = \omega/(s^{2}+\omega^{2})$（$\omega$ の正負に関係なく）
+  \medskip\textbf{答}：$L[\sin(\omega t)] = \omega/(s^{2}+\omega^{2}) \ (s > 0)$（$\omega$ の正負に関係なく）
 \end{frame}
 
 \begin{frame}{例題8}
@@ -70,7 +70,7 @@
   像関数の移動法則 $L[e^{\alpha t}f(t)] = F(s-\alpha)$ を適用すると\\[4pt]
   s を $s-\alpha$ に置き換えて\\[4pt]
   $L[e^{\alpha t}\sin(\mu t)] = \mu/((s-\alpha)^{2}+\mu^{2})$
-  \medskip\textbf{答}：$L[e^{\alpha t}\sin(\mu t)] = \mu/((s-\alpha)^{2}+\mu^{2})$
+  \medskip\textbf{答}：$L[e^{\alpha t}\sin(\mu t)] = \mu/((s-\alpha)^{2}+\mu^{2}) \ (s > \alpha)$
 \end{frame}
 
 \begin{frame}{演習問題}

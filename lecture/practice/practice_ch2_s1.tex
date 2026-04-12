@@ -1,0 +1,127 @@
+% !TEX program = lualatex
+\documentclass[a4paper,10pt,twocolumn]{article}
+\usepackage{kaitoushu}
+\renewcommand{\baselinestretch}{1.2}
+\lhead{応用数学　練習問題（採点用）}
+\problemrange{第2章 §1 練習問題1（p.\,61）}
+
+\begin{document}
+\thispagestyle{fancy}
+
+\begin{center}
+  {\Large \textbf{応用数学　第2章 §1　練習問題1（p.\,61）}}
+\end{center}
+\vspace{0.5em}
+
+\noindent\textbf{\large【ラプラス変換の定義と性質】}
+\vspace{0.3em}
+
+\mondai{1}{
+次の関数のラプラス変換を求めよ．\\
+(1) $f(t) = 1$ \quad
+(2) $\sin 2t$ \quad
+(3) $(2^t + 3^t)\sin 4t$ \quad
+(4) $t^n \cos t$
+}
+\kotae{
+(1) $\mathcal{L}[1] = \dfrac{1}{s} \quad (s>0)$\\[2pt]
+(2) $\mathcal{L}[\sin 2t] = \dfrac{2}{s^2+4} \quad (s>0)$\\[2pt]
+(3) $2^t = e^{t\ln 2}$, $3^t = e^{t\ln 3}$ より像関数の移動法則を用いて
+\begin{align*}
+  \mathcal{L}[(2^t+3^t)\sin 4t] &= \dfrac{4}{(s-\ln 2)^2+16} \\
+  &\quad + \dfrac{4}{(s-\ln 3)^2+16} \quad (s>\ln 3)
+\end{align*}
+(4) 像関数の高次微分 $\mathcal{L}[t^n f(t)] = (-1)^n F^{(n)}(s)$ を $F(s)=\dfrac{s}{s^2+1}$ に適用して
+\[
+  \mathcal{L}[t^n \cos t] = (-1)^n \dfrac{d^n}{ds^n}\!\left(\dfrac{s}{s^2+1}\right) \quad (s>0)
+\]
+}
+
+\mondai{2}{
+正の実数 $a, b, k$（ただし $a < b \leq c$）について，次の関数を単位ステップ関数で表し，
+そのラプラス変換を求めよ．\\
+(1) $f(t) = \begin{cases} 0 & (0 \leq t < a) \\ k & (a \leq t < b) \\ 0 & (b \leq t) \end{cases}$
+\quad
+(2) $g(t)$：階段状の関数（グラフ参照）
+}
+\kotae{
+(1) $f(t) = k\bigl[U(t-a) - U(t-b)\bigr]$ より
+\[
+  \mathcal{L}[f(t)] = \dfrac{k(e^{-as} - e^{-bs})}{s} \quad (s>0)
+\]
+(2) 教科書 p.\,61 のグラフを参照．階段状関数 $g(t)$ は複数の単位ステップ関数の和で表され，
+ラプラス変換は各 $U(t-c_i)$ に対応する $e^{-c_i s}/s$ の和となる．
+}
+
+\mondai{3}{
+次の関数の逆ラプラス変換を求めよ．\\
+(1) $\dfrac{s+1}{s^2+2s+5}$ \quad
+(2) $\dfrac{1}{s^2-2s+5}$ \quad
+(3) $\dfrac{s+3}{(s+1)(s^2+4)}$ \quad
+(4) $\dfrac{s}{(2s-1)^2}$
+}
+\kotae{
+(1) 平方完成 $s^2+2s+5 = (s+1)^2+4$ より $\dfrac{s+1}{(s+1)^2+2^2}$．
+\[
+  \mathcal{L}^{-1}\!\left[\dfrac{s+1}{(s+1)^2+2^2}\right] = e^{-t}\cos 2t
+\]
+(2) 平方完成 $s^2-2s+5 = (s-1)^2+4$ より
+\[
+  \mathcal{L}^{-1}\!\left[\dfrac{1}{(s-1)^2+2^2}\right] = \dfrac{1}{2}e^{t}\sin 2t
+\]
+(3) 部分分数分解 $\dfrac{s+3}{(s+1)(s^2+4)} = \dfrac{A}{s+1} + \dfrac{Bs+C}{s^2+4}$．\\
+$s=-1$ で $A = \dfrac{2}{5}$．係数比較で $B = -\dfrac{2}{5},\ C = \dfrac{7}{5}$．
+\[
+  \mathcal{L}^{-1} = \dfrac{2}{5}e^{-t} - \dfrac{2}{5}\cos 2t + \dfrac{7}{10}\sin 2t
+\]
+(4) $s = \dfrac{1}{2}(2s-1) + \dfrac{1}{2}$ より
+$\dfrac{s}{(2s-1)^2} = \dfrac{1/2}{2s-1} + \dfrac{1/2}{(2s-1)^2}$．
+$\dfrac{1}{2s-1} = \dfrac{1/2}{s-1/2}$，$\dfrac{1}{(2s-1)^2} = \dfrac{1/4}{(s-1/2)^2}$ を用いて
+\[
+  \mathcal{L}^{-1}\!\left[\dfrac{s}{(2s-1)^2}\right] = \dfrac{1}{4}e^{t/2} + \dfrac{1}{8}t e^{t/2} = \dfrac{(2+t)e^{t/2}}{8}
+\]
+}
+
+\mondai{4}{
+関数 $F(s) = \dfrac{s}{(s+2)(s^2+4)}$ について，次の問いに答えよ．\\
+(1) 次の形式が成り立つように $A, B, C$ の値を定めよ：
+$F(s) = \dfrac{A}{s+2} + \dfrac{Bs+C}{s^2+4}$\\
+(2) 関数 $F(s)$ の逆ラプラス変換を求めよ．
+}
+\kotae{
+(1) 両辺に $(s+2)(s^2+4)$ を掛けて
+$s = A(s^2+4) + (Bs+C)(s+2)$．\\
+$s=-2$ で $-2 = 8A \Rightarrow A = -\dfrac{1}{4}$．\\
+$s^2$ の係数: $0 = A + B \Rightarrow B = \dfrac{1}{4}$．\\
+定数項: $0 = 4A + 2C \Rightarrow C = -2A = \dfrac{1}{2}$．
+\[
+  A = -\dfrac{1}{4},\quad B = \dfrac{1}{4},\quad C = \dfrac{1}{2}
+\]
+(2) 各項を逆変換して
+\[
+  \mathcal{L}^{-1}[F(s)] = -\dfrac{1}{4}e^{-2t} + \dfrac{1}{4}\cos 2t + \dfrac{1}{4}\sin 2t
+\]
+}
+
+\mondai{5}{
+像関数の微分法則を用いて，次の関数の逆ラプラス変換を求めよ．\\
+(1) $\dfrac{s}{(s^2+4)^2}$ \quad
+(2) $\dfrac{1}{(s^2+4)^2}$
+}
+\kotae{
+(1) $F(s) = \dfrac{1}{s^2+4}$ とおくと $F'(s) = -\dfrac{2s}{(s^2+4)^2}$．\\
+$\mathcal{L}^{-1}[F(s)] = \dfrac{1}{2}\sin 2t$ で，$\mathcal{L}[t f(t)] = -F'(s)$ より
+\[
+  \mathcal{L}^{-1}\!\left[\dfrac{s}{(s^2+4)^2}\right] = \dfrac{t \sin 2t}{4}
+\]
+(2) $G(s) = \dfrac{s}{s^2+4}$ とおくと
+$G'(s) = \dfrac{(s^2+4) - s\cdot 2s}{(s^2+4)^2} = \dfrac{4 - s^2}{(s^2+4)^2}$．\\
+$\mathcal{L}^{-1}[G(s)] = \cos 2t$，$\mathcal{L}[t\cos 2t] = -G'(s) = \dfrac{s^2-4}{(s^2+4)^2}$．\\
+さらに (1) より $\mathcal{L}[t\sin 2t/4] = \dfrac{s}{(s^2+4)^2}$．
+これらを組み合わせて
+\[
+  \mathcal{L}^{-1}\!\left[\dfrac{1}{(s^2+4)^2}\right] = \dfrac{\sin 2t - 2t\cos 2t}{16}
+\]
+}
+
+\end{document}

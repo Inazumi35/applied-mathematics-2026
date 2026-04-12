@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -80,7 +80,7 @@
   $= \int_{-\infty}^{0} e^{x} e^{-iux} dx + \int_{0}^{\infty} e^{-x} e^{-iux} dx$\\[4pt]
   $= 1/(1-iu) + 1/(1+iu)$
   \medskip\textbf{答}：$F(u) = 2/(1+u^{2})$
-  {\footnotesize \textcolor{gray}{\textit{$\lim_{x \to ±\infty} e^{(1-iu)x} = 0$ を用いる}}}
+  {\footnotesize \textcolor{gray}{\textit{$x\to-\infty$ で $e^{(1-iu)x}\to 0$、$x\to+\infty$ で $e^{-(1+iu)x}\to 0$（実部 $e^x, e^{-x}$ より）}}}
 \end{frame}
 
 \begin{frame}{例題2　（p.\,92）}
@@ -103,26 +103,27 @@
 
 \begin{frame}{例題3　解答}
   $f(x)$ は偶関数なのでフーリエ余弦変換を用いる\\[4pt]
-  $F(u) = 2\int_{0}^{1} (1-x) \cos(ux) dx$\\[4pt]
-  $= 2\begin{cases} [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx \end{cases}$\\[4pt]
-  $= 2\begin{cases} 0 + (1/u)[-\cos(ux)/u]_{0}^1 \end{cases} = 2(1-\cos u)/u^{2}$
-  \medskip\textbf{答}：$F(u) = 2(1-\cos u)/u^{2}$
+  $Fc(u) = \int_{0}^{1} (1-x) \cos(ux) dx$\\[4pt]
+  $= [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx$\\[4pt]
+  $= 0 + (1/u)[-\cos(ux)/u]_{0}^1 = (1-\cos u)/u^{2}$
+  \medskip\textbf{答}：$Fc(u) = (1-\cos u)/u^{2}$
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
+  \scriptsize
   \begin{description}
     \item[問1] 次の関数のフーリエ変換を求めよ
-    $(1) f(x) = { 0  (x > 0),  e^x  (x \leq 0) }$\\
-    $(2) g(x) = { xe^{-x}  (x > 0),  0  (x \leq 0) }$\\
+    $(1) f(x) = \begin{cases} 0 & (x > 0) \\ e^x & (x \leq 0) \end{cases}$\\
+    $(2) g(x) = \begin{cases} xe^{-x} & (x > 0) \\ 0 & (x \leq 0) \end{cases}$\\
     \item[問2] 次の関数のフーリエ変換を求めよ
-    $(1) f(x) = { 1  (0 \leq x \leq 1),  0  (x < 0, x > 1) }$\\
-    $(2) g(x) = { x  (|x| \leq 1),  0  (|x| > 1) }$\\
+    $(1) f(x) = \begin{cases} 1 & (0 \leq x \leq 1) \\ 0 & (x < 0, x > 1) \end{cases}$\\
+    $(2) g(x) = \begin{cases} x & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\
     \item[問3] 問2(1)の関数に積分定理を適用して、次の等式を証明せよ
-    $(1) (1/2\pi)\int_{-\infty}^{\infty} (1-e^{-iu})/iu \cdot e^{iux} du = { 1  (0<x<1),  1/2  (x=0,1),  0  (x<0, x>1) }$\\
+    $(1) (1/2\pi)\int_{-\infty}^{\infty} (1-e^{-iu})/iu \cdot e^{iux} du = \begin{cases} 1 & (0<x<1) \\ 1/2 & (x=0,1) \\ 0 & (x<0, x>1) \end{cases}$\\
     $(2) \int_{-\infty}^{\infty} \sin u / u  du = \pi$\\
     \item[問4] 次の関数のフーリエサイン変換を求めよ
-    $f(x) = { -1  (-1 \leq x < 0),  1  (0 \leq x \leq 1),  0  (|x| > 1) }$\\
+    $f(x) = \begin{cases} -1 & (-1 \leq x < 0) \\ 1 & (0 \leq x \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\
   \end{description}
   \end{exampleblock}
 \end{frame}

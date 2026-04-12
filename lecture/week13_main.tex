@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -21,12 +21,12 @@
 \begin{frame}{フーリエ変換の性質}
   \begin{block}{}
   \begin{description}
-    \item[I. 線形性]\mbox{}\\$F[c_{1}f_{1}(x) + c_{2}f_{2}(x)] = c_{1}F_{1}(u) + c_{2}F_{2}(u)  (c_{1}, c_{2} は定数)$
-    \item[II. 移動則（時間シフト）]\mbox{}\\$F[f(x-a)] = e^{-iau} F(u)  (a は実数)$
-    \item[III. 移動則（周波数シフト）]\mbox{}\\$F[e^{iax}f(x)] = F(u-a)  (a は実数)$
-    \item[IV. 相似性（スケーリング）]\mbox{}\\$F[f(ax)] = (1/|a|) F(u/a)  (a は 0 でない実数)$
-    \item[V. 微分則]\mbox{}\\$F[f^{(n)}(x)] = (iu)^n F(u)  (n は自然数)$
-    \item[VI. 双対微分則]\mbox{}\\$F[(-ix)^n f(x)] = F^{(n)}(u)  (n は自然数)$
+    \item[I. 線形性]\mbox{}\\$F[c_{1}f_{1}(x) + c_{2}f_{2}(x)] = c_{1}F_{1}(u) + c_{2}F_{2}(u) \ (c_{1}, c_{2} は定数)$
+    \item[II. 移動則（時間シフト）]\mbox{}\\$F[f(x-a)] = e^{-iau} F(u) \ (a は実数)$
+    \item[III. 移動則（周波数シフト）]\mbox{}\\$F[e^{iax}f(x)] = F(u-a) \ (a は実数)$
+    \item[IV. 相似性（スケーリング）]\mbox{}\\$F[f(ax)] = (1/|a|) F(u/a) \ (a は 0 でない実数)$
+    \item[V. 微分則]\mbox{}\\$F[f^{(n)}(x)] = (iu)^n F(u) \ (n は自然数)$
+    \item[VI. 双対微分則]\mbox{}\\$F[(-ix)^n f(x)] = F^{(n)}(u) \ (n は自然数)$
   \end{description}
   \end{block}
 \end{frame}
@@ -48,7 +48,13 @@
 \end{frame}
 
 \begin{frame}{例題4　解答}
-  {\footnotesize \textcolor{gray}{\textit{たたみこみ定理 $: F[f*g] = F(u)G(u)$ を適用}}}
+  $(1)$ p.\,98 公式 $: F[e^{-cx^{2}}] = \sqrt{\pi/c}\cdot e^{-u^{2}/(4c)}$ より\\[4pt]
+  $\hphantom{(1)\ }F[e^{-a^{2}x^{2}}] = (\sqrt{\pi}/a)e^{-u^{2}/(4a^{2})},\ F[e^{-b^{2}x^{2}}] = (\sqrt{\pi}/b)e^{-u^{2}/(4b^{2})}$\\[4pt]
+  たたみこみ定理 $: F[f*g] = F(u)G(u)$ を適用\\[4pt]
+  $F[e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}] = (\pi/(ab))\cdot e^{-u^{2}(1/(4a^{2})+1/(4b^{2}))} = (\pi/(ab))e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[4pt]
+  $(2)$ 結果を $\sqrt{\pi/c}\cdot e^{-u^{2}/(4c)}$ の形と比較 $: c = a^{2}b^{2}/(a^{2}+b^{2})$\\[4pt]
+  係数を合わせて $e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}} = (\sqrt{\pi}/\sqrt{a^{2}+b^{2}})\cdot e^{-(a^{2}b^{2}/(a^{2}+b^{2}))x^{2}}$
+  \medskip\textbf{答}：証明終
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -61,10 +67,10 @@
     $(1) xe^{-x^{2}/2}$\\
     $(2) x^{2}e^{-x^{2}/2}$\\
     \item[問8] 次の等式を証明せよ
-    $F^{-1}[e^{-bu^{2}}] = 1/(2\sqrt\pi b) \cdot e^{-x^{2}/(4b)}$（b は正の定数）\\
+    $F^{-1}[e^{-bu^{2}}] = 1/(2\sqrt{\pi b}) \cdot e^{-x^{2}/(4b)}$（b は正の定数）\\
     \item[問9] 次の等式を証明せよ
     $(1) F[e^{-x^{2}/2} * xe^{-x^{2}/2}] = -2\pi iu\cdot e^{-u^{2}}$\\
-    $(2) e^{-x^{2}/2} * xe^{-x^{2}/2} = (\sqrt\pi/2)\cdot xe^{-x^{2}/4}$\\
+    $(2) e^{-x^{2}/2} * xe^{-x^{2}/2} = (\sqrt{\pi}/2)\cdot xe^{-x^{2}/4}$\\
   \end{description}
   \end{exampleblock}
 \end{frame}

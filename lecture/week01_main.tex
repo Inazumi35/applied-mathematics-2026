@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -42,7 +42,7 @@
 \begin{frame}{例題1　解答}
   $\lim_{t \to \infty} e^{-st} = 0$ だから\\[4pt]
   $F(s) = \int_{0}^\infty e^{-st} dt = [-1/s \cdot e^{-st}]_{0}^\infty = 1/s$\\[4pt]
-  $\int_{0}^\infty dt$ は存在しない
+  （$s \leq 0$ では $L[1]$ は存在しない）
   \medskip\textbf{答}：$L[1] = 1/s  (s > 0)$
 \end{frame}
 
@@ -68,11 +68,11 @@
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  分部積分を用いると\\[4pt]
+  部分積分を用いると\\[4pt]
   $F(s) = \int_{0}^\infty e^{-st}\cdot t dt = [-1/s \cdot e^{-st} \cdot t]_{0}^\infty + 1/s \int_{0}^\infty e^{-st} dt$\\[4pt]
   ロピタルの定理より $\lim_{t \to \infty} t\cdot e^{-st} = \lim_{t \to \infty} t/e^{st} = \lim_{t \to \infty} 1/(s\cdot e^{st}) = 0$\\[4pt]
   よって $F(s) = 0 + (1/s)\cdot L[1] = (1/s)\cdot(1/s) = 1/s^{2}$\\[4pt]
-  $\int_{0}^\infty t dt$ は存在しない
+  （$s \leq 0$ では $L[t]$ は存在しない）
   \medskip\textbf{答}：$L[t] = 1/s^{2}  (s > 0)$
 \end{frame}
 
@@ -93,10 +93,10 @@
 
 \begin{frame}{例題3　解答}
   $F(s) = \int_{0}^\infty e^{-st} \cdot e^{at} dt = \int_{0}^\infty e^{-(s-a)t} dt$\\[4pt]
-  例題1 と同様に、s-a > 0 すなわち s > a のとき\\[4pt]
+  例題1 と同様に、$s-a > 0$ すなわち $s > a$ のとき\\[4pt]
   $F(s) = [-1/(s-a) \cdot e^{-(s-a)t}]_{0}^\infty = 1/(s-a)$\\[4pt]
-  $e^{-(s-a)t}$ は存在しない
-  \medskip\textbf{答}：$L[e^{at}] = 1/(s-a)  (s > a)$
+  （$s \leq a$ では $L[e^{at}]$ は存在しない）
+  \medskip\textbf{答}：$L[e^{at}] = 1/(s-a) \ (s > a)$
 \end{frame}
 
 \begin{frame}{問3}
@@ -116,11 +116,11 @@
 \begin{frame}{例題4　解答}
   s > 0 のとき $\lim_{t \to \infty} e^{-st}\sin t = 0, \lim_{t \to \infty} e^{-st}\cos t = 0$\\[4pt]
   部分積分を2回繰り返すと\\[4pt]
-  $F(s) = [-e^{-st}(-\cos t)]_{0}^\infty - s\int_{0}^\infty e^{-st}(-\cos t)dt$\\[4pt]
+  $F(s) = [-e^{-st}\cos t]_{0}^\infty - s\int_{0}^\infty e^{-st}\cos t\, dt$\\[4pt]
   $= 1 - s\cdot L[\cos t]$\\[4pt]
   同様に $L[\cos t] = s\cdot F(s)$ から代入すると\\[4pt]
   $F(s) = 1 - s^{2}F(s)   \to   (1 + s^{2})F(s) = 1$
-  \medskip\textbf{答}：$L[\sin t] = 1/(s^{2}+1)  (s > 0)$
+  \medskip\textbf{答}：$L[\sin t] = 1/(s^{2}+1) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{問4・問5}
@@ -139,8 +139,8 @@
   \end{align*}
   \begin{block}{ラプラス変換}
   \begin{align*}
-    L[\sinh t] &= 1/(s^{2}-1)  (s > 1) \\
-    L[\cosh t] &= s/(s^{2}-1)  (s > 1)
+    L[\sinh t] &= 1/(s^{2}-1) \ (s > 1) \\
+    L[\cosh t] &= s/(s^{2}-1) \ (s > 1)
   \end{align*}
   \end{block}
 \end{frame}
@@ -194,9 +194,9 @@
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問7] 正の実数 $a, b, c$（ただし $a < b < c$）について，関数 $f(t)$ を
-    \[\\
-    $f(t) = \begin{cases} 1 & (0 < t < a,\ b \leq t < c) \\ 0 & (a \leq t < b,\ t \geq c) \end{cases}$\\
-    \]\\
+    \[
+    f(t) = \begin{cases} 1 & (0 < t < a,\ b \leq t < c) \\ 0 & (a \leq t < b,\ t \geq c) \end{cases}
+    \]
     で定めるとき，$f(t)$ を単位ステップ関数を用いて表せ。また，$L[f(t)]$ を求めよ。\\
   \end{description}
   \end{exampleblock}

@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -54,11 +54,15 @@
 
 \begin{frame}{例題9}
   \begin{exampleblock}{問題}
-    微分法則を用いて次の問いに答えよ\\[2pt]
+    微分法則を用いて $L[\cos t]$ を求めよ\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題9　解答}
+  $f(t) = \sin t$ とおくと $f'(t) = \cos t,\ f(0) = 0$\\[4pt]
+  原関数の微分法則 $L[f'(t)] = sF(s) - f(0)$ を適用\\[4pt]
+  $L[\cos t] = s\cdot L[\sin t] - 0 = s\cdot 1/(s^{2}+1)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\cos t] = s/(s^{2}+1) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{例題10}
@@ -71,7 +75,7 @@
   $f(t) = t^n$ とおくと\\[4pt]
   $f^{(n)}(t) = n!, f(0) = f'(0) = \ldots = f^{(n-1)}(0) = 0$\\[4pt]
   微分法則を n 回適用 $: s^n F(s) - 0 = L[n!] = n!/s$
-  \medskip\textbf{答}：$L[t^n] = n!/s^{n+1}  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^n] = n!/s^{n+1}  (s > 0)$
 \end{frame}
 
 \begin{frame}{例題11}
@@ -85,7 +89,7 @@
   $L[\sin(\alpha t)] = \alpha/(u^{2}+\alpha^{2})$ なので\\[4pt]
   $L[\sin(\alpha t)/t] = \int_{s}^\infty \alpha/(u^{2}+\alpha^{2}) du = [\arctan(u/\alpha)]_{s}^\infty$\\[4pt]
   $= \pi/2 - \arctan(s/\alpha)$
-  \medskip\textbf{答}：$L[\sin(\alpha t)/t] = \pi/2 - \arctan(s/\alpha) = \arctan(\alpha/s)  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin(\alpha t)/t] = \pi/2 - \arctan(s/\alpha) = \arctan(\alpha/s) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -104,7 +108,7 @@
   $F(s) = L[\cos(\alpha t)] = s/(s^{2}+\alpha^{2})$\\[4pt]
   $F'(s) = d/ds [s/(s^{2}+\alpha^{2})] = (s^{2}+\alpha^{2}-2s^{2})/(s^{2}+\alpha^{2})^{2} = (\alpha^{2}-s^{2})/(s^{2}+\alpha^{2})^{2}$\\[4pt]
   $L[t \cos(\alpha t)] = (-1)^{1}\cdot F'(s) = -F'(s)$
-  \medskip\textbf{答}：$L[t \cos(\alpha t)] = (s^{2}-\alpha^{2})/(s^{2}+\alpha^{2})^{2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t \cos(\alpha t)] = (s^{2}-\alpha^{2})/(s^{2}+\alpha^{2})^{2}$
 \end{frame}
 
 \begin{frame}{問14　解答}
@@ -114,14 +118,14 @@
   部分分数 $: 1/(s^{2}(s+2)) = A/s + B/s^{2} + C/(s+2)$\\[4pt]
   $A = -1/4,  B = 1/2,  C = 1/4$\\[4pt]
   $F(s) = -1/(4s) + 1/(2s^{2}) + 1/(4(s+2))$
-  \medskip\textbf{答}：$f(t) = -1/4 + t/2 + (1/4)e^{-2t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$f(t) = -1/4 + t/2 + (1/4)e^{-2t}$
 \end{frame}
 
 \begin{frame}{問15　解答}
   $f(t) = 1$ とおくと $F(s) = L[1] = 1/s$\\[4pt]
   $F^{(n)}(s) = d^n/ds^n [1/s] = (-1)^n n!/s^{n+1}$\\[4pt]
   $L[t^n\cdot1] = (-1)^n F^{(n)}(s) = (-1)^n\cdot(-1)^n n!/s^{n+1}$
-  \medskip\textbf{答}：$L[t^n] = n!/s^{n+1}  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^n] = n!/s^{n+1}  (s > 0)$
 \end{frame}
 
 \begin{frame}{問16　解答}
@@ -131,8 +135,7 @@
   $= [\ln(u-2) - \ln(u-1)]_{s}^\infty$\\[4pt]
   $= \lim_{u \to \infty} \ln((u-2)/(u-1)) - \ln((s-2)/(s-1))$\\[4pt]
   $= 0 - \ln((s-2)/(s-1)) = \ln((s-1)/(s-2))$
-  \medskip\textbf{答}：$L[(e^{2t}-e^t)/t] = \ln((s-1)/(s-2))  (s > 2)$
-  {\footnotesize \textcolor{gray}{\textit{p.56 スキャンで確認（元 YAML の $e^{-\tau}/\tau$ は誤記）}}}
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[(e^{2t}-e^t)/t] = \ln((s-1)/(s-2)) \ (s > 2)$
 \end{frame}
 
 \end{document}

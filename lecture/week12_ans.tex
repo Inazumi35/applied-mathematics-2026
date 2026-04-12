@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -79,8 +79,8 @@
   $F(u) = \int_{-\infty}^{\infty} e^{-|x|} e^{-iux} dx$\\[4pt]
   $= \int_{-\infty}^{0} e^{x} e^{-iux} dx + \int_{0}^{\infty} e^{-x} e^{-iux} dx$\\[4pt]
   $= 1/(1-iu) + 1/(1+iu)$
-  \medskip\textbf{答}：$F(u) = 2/(1+u^{2})$
-  {\footnotesize \textcolor{gray}{\textit{$\lim_{x \to ±\infty} e^{(1-iu)x} = 0$ を用いる}}}
+  \\[8pt]\textcolor{red}{\textbf{答}}：$F(u) = 2/(1+u^{2})$
+  {\footnotesize \textcolor{gray}{\textit{$x\to-\infty$ で $e^{(1-iu)x}\to 0$、$x\to+\infty$ で $e^{-(1+iu)x}\to 0$（実部 $e^x, e^{-x}$ より）}}}
 \end{frame}
 
 \begin{frame}{例題2　（p.\,92）}
@@ -92,7 +92,7 @@
 \begin{frame}{例題2　解答}
   $F(u) = \int_{-1}^{1} e^{-iux} dx = [-e^{-iux}/(iu)]_{-1}^{1}$\\[4pt]
   $= (e^{iu} - e^{-iu})/(iu) = 2\sin u / u$
-  \medskip\textbf{答}：$F(u) = 2\sin u / u$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$F(u) = 2\sin u / u$
 \end{frame}
 
 \begin{frame}{例題3　（p.\,95）}
@@ -103,36 +103,37 @@
 
 \begin{frame}{例題3　解答}
   $f(x)$ は偶関数なのでフーリエ余弦変換を用いる\\[4pt]
-  $F(u) = 2\int_{0}^{1} (1-x) \cos(ux) dx$\\[4pt]
-  $= 2\begin{cases} [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx \end{cases}$\\[4pt]
-  $= 2\begin{cases} 0 + (1/u)[-\cos(ux)/u]_{0}^1 \end{cases} = 2(1-\cos u)/u^{2}$
-  \medskip\textbf{答}：$F(u) = 2(1-\cos u)/u^{2}$
+  $Fc(u) = \int_{0}^{1} (1-x) \cos(ux) dx$\\[4pt]
+  $= [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx$\\[4pt]
+  $= 0 + (1/u)[-\cos(ux)/u]_{0}^1 = (1-\cos u)/u^{2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$Fc(u) = (1-\cos u)/u^{2}$
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
+  \scriptsize
   \begin{description}
     \item[問1] 次の関数のフーリエ変換を求めよ
-    $(1) f(x) = { 0  (x > 0),  e^x  (x \leq 0) }$\\
-    $(2) g(x) = { xe^{-x}  (x > 0),  0  (x \leq 0) }$\\
+    $(1) f(x) = \begin{cases} 0 & (x > 0) \\ e^x & (x \leq 0) \end{cases}$\\
+    $(2) g(x) = \begin{cases} xe^{-x} & (x > 0) \\ 0 & (x \leq 0) \end{cases}$\\
     \item[問2] 次の関数のフーリエ変換を求めよ
-    $(1) f(x) = { 1  (0 \leq x \leq 1),  0  (x < 0, x > 1) }$\\
-    $(2) g(x) = { x  (|x| \leq 1),  0  (|x| > 1) }$\\
+    $(1) f(x) = \begin{cases} 1 & (0 \leq x \leq 1) \\ 0 & (x < 0, x > 1) \end{cases}$\\
+    $(2) g(x) = \begin{cases} x & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\
     \item[問3] 問2(1)の関数に積分定理を適用して、次の等式を証明せよ
-    $(1) (1/2\pi)\int_{-\infty}^{\infty} (1-e^{-iu})/iu \cdot e^{iux} du = { 1  (0<x<1),  1/2  (x=0,1),  0  (x<0, x>1) }$\\
+    $(1) (1/2\pi)\int_{-\infty}^{\infty} (1-e^{-iu})/iu \cdot e^{iux} du = \begin{cases} 1 & (0<x<1) \\ 1/2 & (x=0,1) \\ 0 & (x<0, x>1) \end{cases}$\\
     $(2) \int_{-\infty}^{\infty} \sin u / u  du = \pi$\\
     \item[問4] 次の関数のフーリエサイン変換を求めよ
-    $f(x) = { -1  (-1 \leq x < 0),  1  (0 \leq x \leq 1),  0  (|x| > 1) }$\\
+    $f(x) = \begin{cases} -1 & (-1 \leq x < 0) \\ 1 & (0 \leq x \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問1　解答}
   $(1) F(u) = \int_{-\infty}^{0} e^x e^{-iux} dx = \int_{-\infty}^{0} e^{(1-iu)x} dx$\\[4pt]
-  $    = [e^{(1-iu)x}/(1-iu)]_{-\infty}^{0} = 1/(1-iu)  (\Re(1-iu)=1>0)$\\[4pt]
+  $    = [e^{(1-iu)x}/(1-iu)]_{-\infty}^{0} = 1/(1-iu) \ (\Re(1-iu)=1>0)$\\[4pt]
   $(2) G(u) = \int_{0}^{\infty} x e^{-x} e^{-iux} dx = \int_{0}^{\infty} x e^{-(1+iu)x} dx$\\[4pt]
   $\int_{0}^\infty x e^{-ax} dx = 1/a^{2}$ より $G(u) = 1/(1+iu)^{2}$
-  \medskip\textbf{答}：
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) F(u) = 1/(1-iu)$\\
   $(2) G(u) = 1/(1+iu)^{2}$\\
 \end{frame}
@@ -143,24 +144,25 @@
   $    \int_{0}^1 x \sin(ux) dx = [-x \cos(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \cos(ux)dx$\\[4pt]
   $    = -\cos u/u + \sin u/u^{2}$\\[4pt]
   $    G(u) = -2i(-\cos u/u + \sin u/u^{2}) = 2i(\cos u/u - \sin u/u^{2})$
-  \medskip\textbf{答}：
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) F(u) = (1-e^{-iu})/(iu)$\\
   $(2) G(u) = 2i(\cos u)/u - 2i(\sin u)/u^{2}$\\
 \end{frame}
 
 \begin{frame}{問3　解答}
   (1) フーリエ積分定理 $: f(x) = (1/2\pi)\int F(u)e^{iux}du$\\[4pt]
-  連続点では $f(x)$ 、不連続点 $x=0,1$ では $(f(x+0)+f(x-0))/2 = 1/2 ✓$\\[4pt]
-  $(2) x=1/2$ （連続点）を代入 $: f(1/2) = 1 = (1/2\pi)\int(1-e^{-iu})/(iu)\cdot e^{iu/2}du$\\[4pt]
-  実部を取ると $: 1 = (1/\pi)\int_{0}^\infty \sin u/u du$\\[4pt]
-  $     \to  \int_{-\infty}^{\infty} \sin u/u du = \pi ✓$
-  \medskip\textbf{答}：証明終
+  連続点では $f(x)$ 、不連続点 $x=0,1$ では $(f(x+0)+f(x-0))/2 = 1/2$\\[4pt]
+  $(2) x=1$ （不連続点）を代入 $: (f(1+0)+f(1-0))/2 = 1/2 = (1/2\pi)\int(1-e^{-iu})/(iu)\cdot e^{iu}du$\\[4pt]
+  $(1-e^{-iu})e^{iu}/(iu) = (e^{iu}-1)/(iu) = \sin u/u + i(1-\cos u)/u$\\[4pt]
+  実部（偶関数）のみ寄与 $: 1/2 = (1/2\pi)\int_{-\infty}^{\infty} \sin u/u du$\\[4pt]
+  $     \to  \int_{-\infty}^{\infty} \sin u/u du = \pi$
+  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
 \begin{frame}{問4　解答}
   $f(x)$ は奇関数なのでフーリエサイン変換を用いる\\[4pt]
-  $Fs(u) = 2\int_{0}^1 \sin(ux) dx = 2[-\cos(ux)/u]_{0}^1 = 2(1-\cos u)/u$
-  \medskip\textbf{答}：$Fs(u) = 2(1-\cos u)/u$
+  $Fs(u) = \int_{0}^1 \sin(ux) dx = [-\cos(ux)/u]_{0}^1 = (1-\cos u)/u$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$Fs(u) = (1-\cos u)/u$
 \end{frame}
 
 \end{document}

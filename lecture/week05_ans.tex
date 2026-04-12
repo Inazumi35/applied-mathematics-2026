@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -46,8 +46,7 @@
   $s = A(s+1) + B(s-1)$ より $A = 1/2, B = 1/2$\\[4pt]
   $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$\\[4pt]
   逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
-  \medskip\textbf{答}：$x(t) = \cosh t$
-  {\footnotesize \textcolor{gray}{\textit{$\sinh t + \cosh t = e^t$ より確認可能}}}
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \cosh t$
 \end{frame}
 
 \begin{frame}{例題2}
@@ -65,7 +64,7 @@
   $1 = A(s^{2}+4) + (Bs+C)(s+1)$\\[4pt]
   $s=-1: A = 1/5; s^{2}$ の係数 $: B = -1/5;$ 定数項 $: C = 1/5$\\[4pt]
   $X(s) = (1/5)/(s+1) - (1/5)\cdot s/(s^{2}+4) + (1/10)\cdot2/(s^{2}+4)$
-  \medskip\textbf{答}：$x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
 \end{frame}
 
 \begin{frame}{例題3}
@@ -81,17 +80,26 @@
   $X(s) = a/(s^{2}-1)$\\[4pt]
   逆変換 $: x(t) = a\cdot \sinh(t)$\\[4pt]
   境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
-  \medskip\textbf{答}：$x(t) = \sinh(t)/\sinh(1)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \sinh(t)/\sinh(1)$
   {\footnotesize \textcolor{gray}{\textit{境界値問題では未知の初期値 a を置き、もう一方の境界条件で決定する}}}
 \end{frame}
 
 \begin{frame}{例題4}
   \begin{exampleblock}{問題}
     次の微分方程式の一般解を求めよ\\[2pt]
+    $dx/dt + 2x = e^{-t}$
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題4　解答}
+  $x(0) = \alpha$ （未知）とおき、 $L[x(t)] = X(s)$ とする\\[4pt]
+  $L: (sX(s) - \alpha) + 2X(s) = 1/(s+1)$\\[4pt]
+  $(s+2)X(s) = \alpha + 1/(s+1)$\\[4pt]
+  $X(s) = \alpha/(s+2) + 1/((s+1)(s+2))$\\[4pt]
+  部分分数 $: 1/((s+1)(s+2)) = 1/(s+1) - 1/(s+2)$\\[4pt]
+  $X(s) = (\alpha-1)/(s+2) + 1/(s+1)$\\[4pt]
+  逆変換 $: x(t) = (\alpha-1)e^{-2t} + e^{-t}$\ ；$C = \alpha-1$ を任意定数とする
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = Ce^{-2t} + e^{-t}$（C は任意定数）
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -118,7 +126,7 @@
   $(2) L: (sX-0) - X = 1/(s+1)   \to   (s-1)X = 1/(s+1)$\\[4pt]
   $    X = 1/((s-1)(s+1)) = (1/2)(1/(s-1) - 1/(s+1))$\\[4pt]
   $    x(t) = (1/2)(e^t - e^{-t}) = \sinh t$
-  \medskip\textbf{答}：
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) x(t) = e^{2t}$\\
   $(2) x(t) = \sinh t$\\
 \end{frame}
@@ -132,7 +140,7 @@
   $(2) (s^{2}+4)X = 1/(s+1)   \to   X = 1/((s+1)(s^{2}+4))$（例題 2 と同じ）\\[4pt]
   $    A=1/5, B=-1/5, C=1/5$\\[4pt]
   $    x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
-  \medskip\textbf{答}：
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\
   $(2) x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$\\
 \end{frame}
@@ -144,7 +152,7 @@
   $L^{-1} = -1 + \cosh t$（逆変換）\\[4pt]
   $x(t) = -1 + \cosh t + a\cdot \sinh t$\\[4pt]
   境界条件 $x(\pi/2) = 0: a = (1 - \cosh(\pi/2))/\sinh(\pi/2)$
-  \medskip\textbf{答}：$x(t) = -1 + \cosh t + ((1-\cosh(\pi/2))/\sinh(\pi/2))\cdot \sinh t$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = -1 + \cosh t + ((1-\cosh(\pi/2))/\sinh(\pi/2))\cdot \sinh t$
 \end{frame}
 
 \begin{frame}{問4　解答}
@@ -158,7 +166,7 @@
   $    X = \alpha s/(s^{2}+4) + \beta/(s^{2}+4) + s/(s^{2}+4)^{2}$\\[4pt]
   $L^{-1}[s/(s^{2}+4)^{2}] = (t/4)\sin(2t)$（像関数の高次微分から導出）\\[4pt]
   $C_{1} = \alpha, C_{2} = \beta/2$ を任意定数とする
-  \medskip\textbf{答}：
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) x(t) = Ce^{2t} + e^{3t}$（C は任意定数）\\
   $(2) x(t) = C_{1}\cos(2t) + C_{2}\sin(2t) + (t/4)\sin(2t)$\\
 \end{frame}

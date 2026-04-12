@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -61,13 +61,13 @@
 \end{frame}
 
 \begin{frame}{例題5　解答}
-  これは sin t * cos t のたたみこみ\\[4pt]
+  これは $\sin t * \cos t$ のたたみこみ\\[4pt]
   積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$\\[4pt]
   $= (1/2)[\sin t + \sin(2\tau-t)]$\\[4pt]
   $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$\\[4pt]
-  $= (1/2)\begin{cases} [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \end{cases}$\\[4pt]
-  $= (1/2)\begin{cases} t \sin t + & (-\cos t/2 - (-\cos(-t)/2)) \end{cases}$\\[4pt]
-  $= (1/2){t \sin t + 0}$（$\cos(-t) = \cos t$ より）
+  $= (1/2)\left\{ [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \right\}$\\[4pt]
+  $= (1/2)\left\{ t\sin t + (-\cos t/2 - (-\cos(-t)/2)) \right\}$\\[4pt]
+  $= (1/2)\left\{ t\sin t + 0 \right\}$（$\cos(-t) = \cos t$ より）
   \medskip\textbf{答}：$\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
 \end{frame}
 
@@ -81,7 +81,7 @@
   $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$\\[4pt]
   $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$\\[4pt]
   $= \int_{t}^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$\\[4pt]
-  $= g(t)*f(t)$
+  $= g(t)*f(t)$\hfill$\square$
 \end{frame}
 
 \begin{frame}{例題7}

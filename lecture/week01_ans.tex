@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -42,8 +42,8 @@
 \begin{frame}{例題1　解答}
   $\lim_{t \to \infty} e^{-st} = 0$ だから\\[4pt]
   $F(s) = \int_{0}^\infty e^{-st} dt = [-1/s \cdot e^{-st}]_{0}^\infty = 1/s$\\[4pt]
-  $\int_{0}^\infty dt$ は存在しない
-  \medskip\textbf{答}：$L[1] = 1/s  (s > 0)$
+  （$s \leq 0$ では $L[1]$ は存在しない）
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[1] = 1/s  (s > 0)$
 \end{frame}
 
 \begin{frame}{部分積分法}
@@ -68,12 +68,12 @@
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  分部積分を用いると\\[4pt]
+  部分積分を用いると\\[4pt]
   $F(s) = \int_{0}^\infty e^{-st}\cdot t dt = [-1/s \cdot e^{-st} \cdot t]_{0}^\infty + 1/s \int_{0}^\infty e^{-st} dt$\\[4pt]
   ロピタルの定理より $\lim_{t \to \infty} t\cdot e^{-st} = \lim_{t \to \infty} t/e^{st} = \lim_{t \to \infty} 1/(s\cdot e^{st}) = 0$\\[4pt]
   よって $F(s) = 0 + (1/s)\cdot L[1] = (1/s)\cdot(1/s) = 1/s^{2}$\\[4pt]
-  $\int_{0}^\infty t dt$ は存在しない
-  \medskip\textbf{答}：$L[t] = 1/s^{2}  (s > 0)$
+  （$s \leq 0$ では $L[t]$ は存在しない）
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t] = 1/s^{2}  (s > 0)$
 \end{frame}
 
 \begin{frame}{問1・問2}
@@ -88,14 +88,14 @@
 \begin{frame}{問1　解答}
   $L[t^{n}] = n!/s^{n+1}$ において $n = 2$ とすると\\[4pt]
   $L[t^{2}] = 2!/s^{3} = 2/s^{3}$
-  \medskip\textbf{答}：$L[t^{2}] = 2/s^{3}  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^{2}] = 2/s^{3}  (s > 0)$
 \end{frame}
 
 \begin{frame}{問2　解答}
   線形性より $L[t + 2t^{2}] = L[t] + 2\cdot L[t^{2}]$\\[4pt]
   例題 2 より $L[t] = 1/s^{2}$ ， $L[t^{2}] = 2!/s^{3} = 2/s^{3}$\\[4pt]
-  $= 1/s^{2} + 2\cdot(2/s^{3})$
-  \medskip\textbf{答}：$L[t + 2t^{2}] = 1/s^{2} + 4/s^{3}  (s > 0)$
+  $= 1/s^{2} + 2\cdot(2/s^{3}) = 1/s^{2} + 4/s^{3}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t + 2t^{2}] = (s+4)/s^{3} \ (s > 0)$
 \end{frame}
 
 \begin{frame}{例題3}
@@ -106,10 +106,10 @@
 
 \begin{frame}{例題3　解答}
   $F(s) = \int_{0}^\infty e^{-st} \cdot e^{at} dt = \int_{0}^\infty e^{-(s-a)t} dt$\\[4pt]
-  例題1 と同様に、s-a > 0 すなわち s > a のとき\\[4pt]
+  例題1 と同様に、$s-a > 0$ すなわち $s > a$ のとき\\[4pt]
   $F(s) = [-1/(s-a) \cdot e^{-(s-a)t}]_{0}^\infty = 1/(s-a)$\\[4pt]
-  $e^{-(s-a)t}$ は存在しない
-  \medskip\textbf{答}：$L[e^{at}] = 1/(s-a)  (s > a)$
+  （$s \leq a$ では $L[e^{at}]$ は存在しない）
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{at}] = 1/(s-a) \ (s > a)$
 \end{frame}
 
 \begin{frame}{問3}
@@ -122,10 +122,10 @@
 
 \begin{frame}{問3　解答}
   例題 3 より $L[e^{at}] = 1/(s-a)$ なので\\[4pt]
-  $L[e^{-t}] = 1/(s+1)  (s > -1)$\\[4pt]
-  $L[e^{-2t}] = 1/(s+2)  (s > -2)$\\[4pt]
+  $L[e^{-t}] = 1/(s+1) \ (s > -1)$\\[4pt]
+  $L[e^{-2t}] = 1/(s+2) \ (s > -2)$\\[4pt]
   線形性より
-  \medskip\textbf{答}：$L[e^{-t} + e^{-2t}] = 1/(s+1) + 1/(s+2)  (s > -1)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{-t} + e^{-2t}] = (2s+3)/((s+1)(s+2)) \ (s > -1)$
 \end{frame}
 
 \begin{frame}{例題4}
@@ -137,11 +137,11 @@
 \begin{frame}{例題4　解答}
   s > 0 のとき $\lim_{t \to \infty} e^{-st}\sin t = 0, \lim_{t \to \infty} e^{-st}\cos t = 0$\\[4pt]
   部分積分を2回繰り返すと\\[4pt]
-  $F(s) = [-e^{-st}(-\cos t)]_{0}^\infty - s\int_{0}^\infty e^{-st}(-\cos t)dt$\\[4pt]
+  $F(s) = [-e^{-st}\cos t]_{0}^\infty - s\int_{0}^\infty e^{-st}\cos t\, dt$\\[4pt]
   $= 1 - s\cdot L[\cos t]$\\[4pt]
   同様に $L[\cos t] = s\cdot F(s)$ から代入すると\\[4pt]
   $F(s) = 1 - s^{2}F(s)   \to   (1 + s^{2})F(s) = 1$
-  \medskip\textbf{答}：$L[\sin t] = 1/(s^{2}+1)  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin t] = 1/(s^{2}+1) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{問4・問5}
@@ -161,9 +161,9 @@
   第1項：s > 0 のとき $e^{-st} \to 0$ なので $[-1/s \cdot e^{-st} \cos t]_{0}^\infty = 0 - (-1/s) = 1/s$\\[4pt]
   第2項：$-\int_{0}^\infty (1/s) e^{-st} \sin t dt = -(1/s) L[\sin t]$\\[4pt]
   よって $F(s) = 1/s - (1/s) L[\sin t]$\\[4pt]
-  例題4の結果 L[sin t] = 1/(s^{2}+1) を代入：\\[4pt]
+  例題4の結果 $L[\sin t] = 1/(s^{2}+1)$ を代入：\\[4pt]
   $F(s) = 1/s - 1/(s(s^{2}+1)) = (1/s)\cdot(1 - 1/(s^{2}+1)) = (1/s)\cdot s^{2}/(s^{2}+1)$
-  \medskip\textbf{答}：$L[\cos t] = s/(s^{2}+1)  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\cos t] = s/(s^{2}+1) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{問5　解答}
@@ -173,9 +173,9 @@
   $        = (1/2)\cdot2/((s-1)(s+1)) = 1/(s^{2}-1)$\\[4pt]
   $L[\cosh t] = (1/2)(L[e^t] + L[e^{-t}]) = (1/2)(1/(s-1) + 1/(s+1))$\\[4pt]
   $        = (1/2)\cdot2s/((s-1)(s+1)) = s/(s^{2}-1)$
-  \medskip\textbf{答}：
-  $L[\sinh t] = 1/(s^{2}-1)  (s > 1)$\\
-  $L[\cosh t] = s/(s^{2}-1)  (s > 1)$\\
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $L[\sinh t] = 1/(s^{2}-1) \ (s > 1)$\\
+  $L[\cosh t] = s/(s^{2}-1) \ (s > 1)$\\
 \end{frame}
 
 \begin{frame}{双曲線関数}
@@ -185,8 +185,8 @@
   \end{align*}
   \begin{block}{ラプラス変換}
   \begin{align*}
-    L[\sinh t] &= 1/(s^{2}-1)  (s > 1) \\
-    L[\cosh t] &= s/(s^{2}-1)  (s > 1)
+    L[\sinh t] &= 1/(s^{2}-1) \ (s > 1) \\
+    L[\cosh t] &= s/(s^{2}-1) \ (s > 1)
   \end{align*}
   \end{block}
 \end{frame}
@@ -207,7 +207,7 @@
 \begin{frame}{例題5　解答}
   $F(s) = \int_{0}^\infty e^{-st}U(t-a)dt = \int_{a}^\infty e^{-st}dt$\\[4pt]
   $= [-1/s \cdot e^{-st}]_{a}^\infty = e^{-as}/s$
-  \medskip\textbf{答}：$L[U(t-a)] = e^{-as}/s  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[U(t-a)] = e^{-as}/s  (s > 0)$
   {\footnotesize \textcolor{gray}{\textit{$a \to 0$ とすると $L[U(t)] = 1/s$ （例題 1 と一致）}}}
 \end{frame}
 
@@ -222,7 +222,7 @@
 \begin{frame}{問6　解答}
   \textbf{グラフ：}t < 2 では $g(t) = 0$ ， $t \geq 2$ では $g(t) = 1$ の階段形\\[0.3em]
   例題 5 （ $L[U(t-a)] = e^{-as}/s$ ）に $a = 2$ を代入
-  \medskip\textbf{答}：$L[U(t-2)] = e^{-2s}/s  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[U(t-2)] = e^{-2s}/s  (s > 0)$
 \end{frame}
 
 \begin{frame}{例題6}
@@ -239,16 +239,16 @@
   線形性より\\[4pt]
   $L[f(t)] = L[U(t-a)] - L[U(t-b)]$\\[4pt]
   $= e^{-as}/s - e^{-bs}/s$
-  \medskip\textbf{答}：$L[f(t)] = (e^{-as} - e^{-bs})/s  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[f(t)] = (e^{-as} - e^{-bs})/s  (s > 0)$
 \end{frame}
 
 \begin{frame}{問7}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問7] 正の実数 $a, b, c$（ただし $a < b < c$）について，関数 $f(t)$ を
-    \[\\
-    $f(t) = \begin{cases} 1 & (0 < t < a,\ b \leq t < c) \\ 0 & (a \leq t < b,\ t \geq c) \end{cases}$\\
-    \]\\
+    \[
+    f(t) = \begin{cases} 1 & (0 < t < a,\ b \leq t < c) \\ 0 & (a \leq t < b,\ t \geq c) \end{cases}
+    \]
     で定めるとき，$f(t)$ を単位ステップ関数を用いて表せ。また，$L[f(t)]$ を求めよ。\\
   \end{description}
   \end{exampleblock}
@@ -259,10 +259,10 @@
   $f(t) = U(t) - U(t-a)$ で 0 〜 a の矩形（ただし $t=0$ で $U(t)=1$ ）\\[4pt]
   b〜c の矩形は U(t-b) - U(t-c)\\[4pt]
   合わせると\\[4pt]
-  $f(t) = U(t) - U(t-a) + U(t-b) - U(t-c)  (t > 0)$\\[4pt]
+  $f(t) = U(t) - U(t-a) + U(t-b) - U(t-c) \ (t > 0)$\\[4pt]
   $L[f(t)] = L[U(t)] - L[U(t-a)] + L[U(t-b)] - L[U(t-c)]$\\[4pt]
   $       = 1/s - e^{-as}/s + e^{-bs}/s - e^{-cs}/s$
-  \medskip\textbf{答}：$L[f(t)] = (1 - e^{-as} + e^{-bs} - e^{-cs})/s  (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[f(t)] = (1 - e^{-as} + e^{-bs} - e^{-cs})/s  (s > 0)$
 \end{frame}
 
 \end{document}

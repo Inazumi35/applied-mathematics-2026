@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -61,14 +61,14 @@
 \end{frame}
 
 \begin{frame}{例題5　解答}
-  これは sin t * cos t のたたみこみ\\[4pt]
+  これは $\sin t * \cos t$ のたたみこみ\\[4pt]
   積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$\\[4pt]
   $= (1/2)[\sin t + \sin(2\tau-t)]$\\[4pt]
   $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$\\[4pt]
-  $= (1/2)\begin{cases} [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \end{cases}$\\[4pt]
-  $= (1/2)\begin{cases} t \sin t + & (-\cos t/2 - (-\cos(-t)/2)) \end{cases}$\\[4pt]
-  $= (1/2){t \sin t + 0}$（$\cos(-t) = \cos t$ より）
-  \medskip\textbf{答}：$\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
+  $= (1/2)\left\{ [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \right\}$\\[4pt]
+  $= (1/2)\left\{ t\sin t + (-\cos t/2 - (-\cos(-t)/2)) \right\}$\\[4pt]
+  $= (1/2)\left\{ t\sin t + 0 \right\}$（$\cos(-t) = \cos t$ より）
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
 \end{frame}
 
 \begin{frame}{例題6}
@@ -81,7 +81,7 @@
   $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$\\[4pt]
   $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$\\[4pt]
   $= \int_{t}^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$\\[4pt]
-  $= g(t)*f(t)$
+  $= g(t)*f(t)$\hfill$\square$
 \end{frame}
 
 \begin{frame}{例題7}
@@ -94,7 +94,7 @@
   $L^{-1}[F(s)/(s-\alpha)] = L^{-1}[F(s) \cdot 1/(s-\alpha)]$\\[4pt]
   $L^{-1}[1/(s-\alpha)] = e^{\alpha t}$ より、たたみこみ定理を適用\\[4pt]
   $= L^{-1}[F(s)] * e^{\alpha t} = f(t) * e^{\alpha t}$
-  \medskip\textbf{答}：$L^{-1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L^{-1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
 \end{frame}
 
 \begin{frame}{例題8}
@@ -109,7 +109,7 @@
   $X(s) \cdot 1/(s^{2}+1) = 2/s^{3}$\\[4pt]
   $X(s) = 2(s^{2}+1)/s^{3} = 2/s + 2/s^{3}$\\[4pt]
   逆ラプラス変換 $: x(t) = 2 + t^{2}$
-  \medskip\textbf{答}：$x(t) = t^{2} + 2$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = t^{2} + 2$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -137,13 +137,13 @@
   部分分数 $: A/(s-1) + (Bs+C)/(s^{2}+1)$\\[4pt]
   $A = 1/2; Bs+C$ の係数 $: B = -1/2, C = -1/2$\\[4pt]
   $    L^{-1} = (e^t - \cos t - \sin t)/2$\\[4pt]
-  (2) t * cos t のたたみこみ\\[4pt]
+  $(2) t * \cos t$ のたたみこみ\\[4pt]
   $    L[t]\cdot L[\cos t] = 1/s^{2}\cdot s/(s^{2}+1) = 1/(s(s^{2}+1))$\\[4pt]
   部分分数 $: A/s + (Bs+C)/(s^{2}+1): A=1, B=-1, C=0$\\[4pt]
   $    L^{-1} = 1 - \cos t$
-  \medskip\textbf{答}：
+  \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1) (e^t - \cos t - \sin t)/2$\\
-  (2) 1 - cos t\\
+  $(2) 1 - \cos t$\\
 \end{frame}
 
 \begin{frame}{問6　解答}
@@ -154,11 +154,11 @@
 
 \begin{frame}{問7　解答}
   【方法1：たたみこみを直接計算】\\[4pt]
-  $t^{2}*t = \int_{0}^t \tau^{2}(t-\tau) d\tau = t\cdot[\tau^{3}/3]_{0}^t - [\tau⁴/4]_{0}^t = t⁴/3 - t⁴/4 = t⁴/12$\\[4pt]
-  $L[t⁴/12] = (1/12)\cdot4!/s⁵ = (1/12)\cdot24/s⁵$\\[4pt]
+  $t^{2}*t = \int_{0}^t \tau^{2}(t-\tau) d\tau = t\cdot[\tau^{3}/3]_{0}^t - [\tau^{4}/4]_{0}^t = t^{4}/3 - t^{4}/4 = t^{4}/12$\\[4pt]
+  $L[t^{4}/12] = (1/12)\cdot4!/s^{5} = (1/12)\cdot24/s^{5}$\\[4pt]
   【方法2：問5（たたみこみ定理）を使う】\\[4pt]
   $L[t^{2}*t] = L[t^{2}]\cdot L[t] = (2/s^{3})\cdot(1/s^{2})$
-  \medskip\textbf{答}：$L[t^{2}*t] = 2/s⁵$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^{2}*t] = 2/s^{5}$
 \end{frame}
 
 \begin{frame}{問8　解答}
@@ -176,7 +176,7 @@
   $X(s)(1 + 1/(s-1)) = s/(s^{2}+9)$\\[4pt]
   $X(s)\cdot s/(s-1) = s/(s^{2}+9)$\\[4pt]
   $X(s) = (s-1)/(s^{2}+9) = s/(s^{2}+9) - 1/(s^{2}+9)$
-  \medskip\textbf{答}：$x(t) = \cos(3t) - (1/3)\sin(3t)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \cos(3t) - (1/3)\sin(3t)$
 \end{frame}
 
 \end{document}

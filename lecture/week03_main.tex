@@ -1,5 +1,5 @@
 % !TEX program = lualatex
-\documentclass[aspectratio=169,professionalfonts]{beamer}
+\documentclass[professionalfonts]{beamer}
 \newcommand{\slidemode}{1}  % カラー投影モード
 \usepackage{beamer_template}
 \usepackage{enumerate}
@@ -54,11 +54,15 @@
 
 \begin{frame}{例題9}
   \begin{exampleblock}{問題}
-    微分法則を用いて次の問いに答えよ\\[2pt]
+    微分法則を用いて $L[\cos t]$ を求めよ\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題9　解答}
+  $f(t) = \sin t$ とおくと $f'(t) = \cos t,\ f(0) = 0$\\[4pt]
+  原関数の微分法則 $L[f'(t)] = sF(s) - f(0)$ を適用\\[4pt]
+  $L[\cos t] = s\cdot L[\sin t] - 0 = s\cdot 1/(s^{2}+1)$
+  \medskip\textbf{答}：$L[\cos t] = s/(s^{2}+1) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{例題10}
@@ -85,7 +89,7 @@
   $L[\sin(\alpha t)] = \alpha/(u^{2}+\alpha^{2})$ なので\\[4pt]
   $L[\sin(\alpha t)/t] = \int_{s}^\infty \alpha/(u^{2}+\alpha^{2}) du = [\arctan(u/\alpha)]_{s}^\infty$\\[4pt]
   $= \pi/2 - \arctan(s/\alpha)$
-  \medskip\textbf{答}：$L[\sin(\alpha t)/t] = \pi/2 - \arctan(s/\alpha) = \arctan(\alpha/s)  (s > 0)$
+  \medskip\textbf{答}：$L[\sin(\alpha t)/t] = \pi/2 - \arctan(s/\alpha) = \arctan(\alpha/s) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{演習問題}
