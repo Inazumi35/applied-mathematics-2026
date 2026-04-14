@@ -115,17 +115,17 @@
 \begin{frame}{問3}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問3] $L[e^{-t} + e^{-2t}]$ を求めよ
+    \item[問3] $L[e^{2t} + e^{-t}]$ を求めよ
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問3　解答}
   例題 3 より $L[e^{at}] = 1/(s-a)$ なので\\[4pt]
+  $L[e^{2t}] = 1/(s-2) \ (s > 2)$\\[4pt]
   $L[e^{-t}] = 1/(s+1) \ (s > -1)$\\[4pt]
-  $L[e^{-2t}] = 1/(s+2) \ (s > -2)$\\[4pt]
   線形性より
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{-t} + e^{-2t}] = (2s+3)/((s+1)(s+2)) \ (s > -1)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{2t} + e^{-t}] = (2s-1)/((s-2)(s+1)) \ (s > 2)$
 \end{frame}
 
 \begin{frame}{例題4}
