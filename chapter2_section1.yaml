@@ -239,12 +239,12 @@ subsections:
         note: "F(s) = L[f(t)]"
 
       - name: 原関数の移動法則（ヘビサイドの移動定理）
-        formula: "L[f(t-μ)U(t-μ)] = e^{-μs}F(s)  (μ ≥ 0)"
+        formula: "L[f(t-μ)U(t-μ)] = e^{-μs}F(s)  (μ > 0)"
         proof_sketch: |
           L[f(t-μ)U(t-μ)] = ∫₀^∞ e^{-st}f(t-μ)U(t-μ)dt
                            = ∫_μ^∞ e^{-st}f(t-μ)dt   (u = t-μ と置換)
                            = e^{-μs}∫₀^∞ e^{-su}f(u)du = e^{-μs}F(s)
-        inverse: "L⁻¹[e^{-μs}F(s)] = f(t-μ)U(t-μ)"
+        # inverse は第4回（逆ラプラス変換）で扱う
 
     examples:
       - id: 例題7
@@ -257,13 +257,13 @@ subsections:
         result: "L[sin(ωt)] = ω/(s²+ω²)  （ω の正負に関係なく）"
 
       - id: 例題8
-        problem: "L[e^{αt}sin(μt)] を求めよ（α は定数、μ ≠ 0）"
+        problem: "L[e^{αt}sin(βt)] を求めよ（α は定数、β ≠ 0）"
         solution:
-          - "例題7 より L[sin(μt)] = μ/(s²+μ²)  (s > 0)"
+          - "例題7 より L[sin(βt)] = β/(s²+β²)  (s > 0)"
           - "像関数の移動法則 L[e^{αt}f(t)] = F(s-α) を適用すると"
           - "s を s-α に置き換えて"
-          - "L[e^{αt}sin(μt)] = μ/((s-α)²+μ²)"
-        result: "L[e^{αt}sin(μt)] = μ/((s-α)²+μ²)"
+          - "L[e^{αt}sin(βt)] = β/((s-α)²+β²)"
+        result: "L[e^{αt}sin(βt)] = β/((s-α)²+β²)"
 
     exercises:
       - id: 問8
@@ -272,27 +272,28 @@ subsections:
           steps:
             - "相似性: L[f(at)] = (1/a)F(s/a), F(s) = L[cos t] = s/(s²+1) を利用"
             - "L[cos(ωt)] = (1/ω)·(s/ω)/((s/ω)²+1) = (1/ω)·(s/ω)·ω²/(s²+ω²)"
-          result: "L[cos(ωt)] = s/(s²+ω²)  (s > 0)"
+          result: "L[cos(ωt)] = s/(s²+ω²)  (s > 0)（cos は偶関数なので ω の正負に関係なく成立）"
 
       - id: 問9
-        content: "cos²t, sin²t, sin t·cos t のラプラス変換を求めよ（平方の公式を使用）"
+        content: "sin²t, cos²t のラプラス変換を求めよ（半角の公式を使用）"
         answer:
           steps:
-            - "cos²t = (1+cos 2t)/2  →  L[cos²t] = (1/2)(1/s + s/(s²+4)) = (s²+2)/(s(s²+4))"
             - "sin²t = (1-cos 2t)/2  →  L[sin²t] = (1/2)(1/s - s/(s²+4)) = 2/(s(s²+4))"
-            - "sin t cos t = (1/2)sin 2t  →  L[sin t cos t] = (1/2)·2/(s²+4)"
+            - "cos²t = (1+cos 2t)/2  →  L[cos²t] = (1/2)(1/s + s/(s²+4)) = (s²+2)/(s(s²+4))"
           results:
-            - "L[cos²t] = (s²+2)/(s(s²+4))"
             - "L[sin²t] = 2/(s(s²+4))"
-            - "L[sin t cos t] = 1/(s²+4)"
+            - "L[cos²t] = (s²+2)/(s(s²+4))"
 
       - id: 問10
-        content: "L[e^{μt}·cos(μt)] を求めよ（μ は定数）"
+        content: "L[te^{αt}], L[e^{αt}cos(βt)] を求めよ（α, β は定数、β ≠ 0）"
         answer:
           steps:
-            - "L[cos(μt)] = s/(s²+μ²)"
-            - "像関数の移動法則: L[e^{μt}f(t)] = F(s-μ) より s → s-μ に置き換える"
-          result: "L[e^{μt}cos(μt)] = (s-μ)/((s-μ)²+μ²)"
+            - "像関数の移動法則: L[e^{αt}f(t)] = F(s-α) より s → s-α に置き換える"
+            - "L[t] = 1/s² だから L[te^{αt}] = 1/(s-α)²"
+            - "L[cos(βt)] = s/(s²+β²) だから L[e^{αt}cos(βt)] = (s-α)/((s-α)²+β²)"
+          results:
+            - "L[te^{αt}] = 1/(s-α)²  (s > α)"
+            - "L[e^{αt}cos(βt)] = (s-α)/((s-α)²+β²)  (s > α)"
 
       - id: 問11
         content: "L[sin(t - π/4)·U(t - π/4)] を求めよ"
@@ -710,12 +711,12 @@ basic_laplace_table:
     - f_t: "e^{at}f(t)"
       F_s: "F(s-a)"
       condition: "像関数の移動法則"
-    - f_t: "e^{αt}sin(μt)"
-      F_s: "μ/((s-α)²+μ²)"
+    - f_t: "e^{αt}sin(βt)"
+      F_s: "β/((s-α)²+β²)"
       condition: "像関数の移動法則の応用"
     - f_t: "f(t-μ)U(t-μ)"
       F_s: "e^{-μs}F(s)"
-      condition: "μ ≥ 0（原関数の移動法則）"
+      condition: "μ > 0（原関数の移動法則）"
     - f_t: "f'(t)"
       F_s: "sF(s) - f(0)"
       condition: "原関数の微分法則"

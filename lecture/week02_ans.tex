@@ -37,10 +37,7 @@
 \begin{frame}{定理：原関数の移動法則（ヘビサイドの移動定理）}
   \begin{block}{}
   \[
-    L[f(t-\mu)U(t-\mu)] = e^{-\mu s}F(s) \ (\mu \geq 0)
-  \]
-  \[
-    L^{-1}[e^{-\mu s}F(s)] = f(t-\mu)U(t-\mu)
+    L[f(t-\mu)U(t-\mu)] = e^{-\mu s}F(s) \ (\mu > 0)
   \]
   \end{block}
 \end{frame}
@@ -61,24 +58,24 @@
 
 \begin{frame}{例題8}
   \begin{exampleblock}{問題}
-    $L[e^{\alpha t}\sin(\mu t)]$ を求めよ（ $\alpha$ は定数、 $\mu \neq 0$ ）\\[2pt]
+    $L[e^{\alpha t}\sin(\beta t)]$ を求めよ（ $\alpha$ は定数、 $\beta \neq 0$ ）\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題8　解答}
-  例題 7 より $L[\sin(\mu t)] = \mu/(s^{2}+\mu^{2}) (s > 0)$\\[4pt]
+  例題 7 より $L[\sin(\beta t)] = \beta/(s^{2}+\beta^{2}) \ (s > 0)$\\[4pt]
   像関数の移動法則 $L[e^{\alpha t}f(t)] = F(s-\alpha)$ を適用すると\\[4pt]
   s を $s-\alpha$ に置き換えて\\[4pt]
-  $L[e^{\alpha t}\sin(\mu t)] = \mu/((s-\alpha)^{2}+\mu^{2})$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{\alpha t}\sin(\mu t)] = \mu/((s-\alpha)^{2}+\mu^{2}) \ (s > \alpha)$
+  $L[e^{\alpha t}\sin(\beta t)] = \beta/((s-\alpha)^{2}+\beta^{2})$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{\alpha t}\sin(\beta t)] = \beta/((s-\alpha)^{2}+\beta^{2}) \ (s > \alpha)$
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問8] $L[\cos(\omega t)]$ を求めよ（ $\omega$ は 0 でない定数）
-    \item[問9] $\cos^{2}t, \sin^{2}t, \sin t\cdot \cos t$ のラプラス変換を求めよ（平方の公式を使用）
-    \item[問10] $L[e^{\mu t}\cdot \cos(\mu t)]$ を求めよ（ $\mu$ は定数）
+    \item[問9] $\sin^{2}t, \cos^{2}t$ のラプラス変換を求めよ（半角の公式を使用）
+    \item[問10] $L[te^{\alpha t}]$, $L[e^{\alpha t}\cos(\beta t)]$ を求めよ（ $\alpha, \beta$ は定数、$\beta \neq 0$）
     \item[問11] $L[\sin(t - \pi/4)\cdot U(t - \pi/4)]$ を求めよ
     \item[問12] 関数 $f(t) = (t-2)U(t-2)$ のグラフをかけ。また $L[f(t)]$ を求めよ
   \end{description}
@@ -88,23 +85,23 @@
 \begin{frame}{問8　解答}
   相似性 $: L[f(at)] = (1/a)F(s/a), F(s) = L[\cos t] = s/(s^{2}+1)$ を利用\\[4pt]
   $L[\cos(\omega t)] = (1/\omega)\cdot(s/\omega)/((s/\omega)^{2}+1) = (1/\omega)\cdot(s/\omega)\cdot\omega^{2}/(s^{2}+\omega^{2})$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\cos(\omega t)] = s/(s^{2}+\omega^{2}) \ (s > 0)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\cos(\omega t)] = s/(s^{2}+\omega^{2}) \ (s > 0)$（$\cos$ は偶関数なので $\omega$ の正負に関係なく成立）
 \end{frame}
 
 \begin{frame}{問9　解答}
-  $\cos^{2}t = (1+\cos 2t)/2   \to   L[\cos^{2}t] = (1/2)(1/s + s/(s^{2}+4)) = (s^{2}+2)/(s(s^{2}+4))$\\[4pt]
   $\sin^{2}t = (1-\cos 2t)/2   \to   L[\sin^{2}t] = (1/2)(1/s - s/(s^{2}+4)) = 2/(s(s^{2}+4))$\\[4pt]
-  $\sin t \cos t = (1/2)\sin 2t   \to   L[\sin t \cos t] = (1/2)\cdot2/(s^{2}+4)$
+  $\cos^{2}t = (1+\cos 2t)/2   \to   L[\cos^{2}t] = (1/2)(1/s + s/(s^{2}+4)) = (s^{2}+2)/(s(s^{2}+4))$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $L[\cos^{2}t] = (s^{2}+2)/(s(s^{2}+4))$\\
   $L[\sin^{2}t] = 2/(s(s^{2}+4))$\\
-  $L[\sin t \cos t] = 1/(s^{2}+4)$\\
+  $L[\cos^{2}t] = (s^{2}+2)/(s(s^{2}+4))$\\
 \end{frame}
 
 \begin{frame}{問10　解答}
-  $L[\cos(\mu t)] = s/(s^{2}+\mu^{2})$\\[4pt]
-  像関数の移動法則 $: L[e^{\mu t}f(t)] = F(s-\mu)$ より $s \to s-\mu$ に置き換える
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{\mu t}\cos(\mu t)] = (s-\mu)/((s-\mu)^{2}+\mu^{2})$
+  像関数の移動法則 $: L[e^{\alpha t}f(t)] = F(s-\alpha)$ より $s \to s-\alpha$ に置き換える\\[4pt]
+  $L[t] = 1/s^{2}$ だから $L[te^{\alpha t}] = 1/(s-\alpha)^{2}$\\[4pt]
+  $L[\cos(\beta t)] = s/(s^{2}+\beta^{2})$ だから $L[e^{\alpha t}\cos(\beta t)] = (s-\alpha)/((s-\alpha)^{2}+\beta^{2})$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[te^{\alpha t}] = 1/(s-\alpha)^{2} \ (s > \alpha)$\\
+  $L[e^{\alpha t}\cos(\beta t)] = (s-\alpha)/((s-\alpha)^{2}+\beta^{2}) \ (s > \alpha)$
 \end{frame}
 
 \begin{frame}{問11　解答}
