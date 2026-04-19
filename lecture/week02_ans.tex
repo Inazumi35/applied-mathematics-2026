@@ -26,22 +26,6 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{定理：像関数の移動法則}
-  \begin{block}{}
-  \[
-    L[e^{at}f(t)] = F(s-a) \ (a は定数)
-  \]
-  \end{block}
-\end{frame}
-
-\begin{frame}{定理：原関数の移動法則（ヘビサイドの移動定理）}
-  \begin{block}{}
-  \[
-    L[f(t-\mu)U(t-\mu)] = e^{-\mu s}F(s) \ (\mu > 0)
-  \]
-  \end{block}
-\end{frame}
-
 \begin{frame}{例題7}
   \begin{exampleblock}{問題}
     $L[\sin(\omega t)]$ を求めよ（ $\omega$ は 0 でない定数）\\[2pt]
@@ -56,28 +40,11 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin(\omega t)] = \omega/(s^{2}+\omega^{2}) \ (s > 0)$（$\omega$ の正負に関係なく）
 \end{frame}
 
-\begin{frame}{例題8}
-  \begin{exampleblock}{問題}
-    $L[e^{\alpha t}\sin(\beta t)]$ を求めよ（ $\alpha$ は定数、 $\beta \neq 0$ ）\\[2pt]
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}{例題8　解答}
-  例題 7 より $L[\sin(\beta t)] = \beta/(s^{2}+\beta^{2}) \ (s > 0)$\\[4pt]
-  像関数の移動法則 $L[e^{\alpha t}f(t)] = F(s-\alpha)$ を適用すると\\[4pt]
-  s を $s-\alpha$ に置き換えて\\[4pt]
-  $L[e^{\alpha t}\sin(\beta t)] = \beta/((s-\alpha)^{2}+\beta^{2})$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{\alpha t}\sin(\beta t)] = \beta/((s-\alpha)^{2}+\beta^{2}) \ (s > \alpha)$
-\end{frame}
-
-\begin{frame}{演習問題}
+\begin{frame}{問8・問9}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問8] $L[\cos(\omega t)]$ を求めよ（ $\omega$ は 0 でない定数）
     \item[問9] $\sin^{2}t, \cos^{2}t$ のラプラス変換を求めよ（半角の公式を使用）
-    \item[問10] $L[te^{\alpha t}]$, $L[e^{\alpha t}\cos(\beta t)]$ を求めよ（ $\alpha, \beta$ は定数、$\beta \neq 0$）
-    \item[問11] $L[\sin(t - \pi/4)\cdot U(t - \pi/4)]$ を求めよ
-    \item[問12] 関数 $f(t) = (t-2)U(t-2)$ のグラフをかけ。また $L[f(t)]$ を求めよ
   \end{description}
   \end{exampleblock}
 \end{frame}
@@ -96,12 +63,59 @@
   $L[\cos^{2}t] = (s^{2}+2)/(s(s^{2}+4))$\\
 \end{frame}
 
+\begin{frame}{定理：像関数の移動法則}
+  \begin{block}{}
+  \[
+    L[e^{at}f(t)] = F(s-a) \ (a は定数)
+  \]
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題8}
+  \begin{exampleblock}{問題}
+    $L[e^{\alpha t}\sin(\beta t)]$ を求めよ（ $\alpha$ は定数、 $\beta \neq 0$ ）\\[2pt]
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題8　解答}
+  例題 7 より $L[\sin(\beta t)] = \beta/(s^{2}+\beta^{2}) \ (s > 0)$\\[4pt]
+  像関数の移動法則 $L[e^{\alpha t}f(t)] = F(s-\alpha)$ を適用すると\\[4pt]
+  s を $s-\alpha$ に置き換えて\\[4pt]
+  $L[e^{\alpha t}\sin(\beta t)] = \beta/((s-\alpha)^{2}+\beta^{2})$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[e^{\alpha t}\sin(\beta t)] = \beta/((s-\alpha)^{2}+\beta^{2}) \ (s > \alpha)$
+\end{frame}
+
+\begin{frame}{問10}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問10] $L[te^{\alpha t}]$, $L[e^{\alpha t}\cos(\beta t)]$ を求めよ（ $\alpha, \beta$ は定数、$\beta \neq 0$）
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
 \begin{frame}{問10　解答}
   像関数の移動法則 $: L[e^{\alpha t}f(t)] = F(s-\alpha)$ より $s \to s-\alpha$ に置き換える\\[4pt]
   $L[t] = 1/s^{2}$ だから $L[te^{\alpha t}] = 1/(s-\alpha)^{2}$\\[4pt]
   $L[\cos(\beta t)] = s/(s^{2}+\beta^{2})$ だから $L[e^{\alpha t}\cos(\beta t)] = (s-\alpha)/((s-\alpha)^{2}+\beta^{2})$
   \\[8pt]\textcolor{red}{\textbf{答}}：$L[te^{\alpha t}] = 1/(s-\alpha)^{2} \ (s > \alpha)$\\
   $L[e^{\alpha t}\cos(\beta t)] = (s-\alpha)/((s-\alpha)^{2}+\beta^{2}) \ (s > \alpha)$
+\end{frame}
+
+\begin{frame}{定理：原関数の移動法則（ヘビサイドの移動定理）}
+  \begin{block}{}
+  \[
+    L[f(t-\mu)U(t-\mu)] = e^{-\mu s}F(s) \ (\mu > 0)
+  \]
+  \end{block}
+\end{frame}
+
+\begin{frame}{問11・問12}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問11] $L[\sin(t - \pi/4)\cdot U(t - \pi/4)]$ を求めよ
+    \item[問12] 関数 $f(t) = (t-2)U(t-2)$ のグラフをかけ。また $L[f(t)]$ を求めよ
+  \end{description}
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問11　解答}

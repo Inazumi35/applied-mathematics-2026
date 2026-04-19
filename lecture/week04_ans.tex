@@ -60,6 +60,35 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$(1) e^{\alpha t},\ (2) t e^{\alpha t},\ (3) (e^{\alpha t}-e^{\beta t})/(\alpha-\beta),\ (4) (1/\beta)e^{\alpha t}\sin(\beta t)$
 \end{frame}
 
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問17] 次の逆ラプラス変換を求めよ $: (1) 1/(s^{2}-2s+5) (2) 1/(s^{2}-4s+8)$
+    \item[問13\_演習] 次の関数の逆ラプラス変換を求めよ
+    $(1) 1/(s-4)^{2}$\\
+    $(2) 1/((s-1)^{2}+4)$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問17　解答}
+  (1) 平方完成 $: s^{2}-2s+5 = (s-1)^{2}+4 = (s-1)^{2}+2^{2}$\\[4pt]
+  $    L^{-1}[1/((s-1)^{2}+4)] = (1/2)\cdot L^{-1}[2/((s-1)^{2}+2^{2})] = (1/2)e^t \sin(2t)$\\[4pt]
+  (2) 平方完成 $: s^{2}-4s+8 = (s-2)^{2}+4 = (s-2)^{2}+2^{2}$\\[4pt]
+  $    L^{-1}[1/((s-2)^{2}+4)] = (1/2)e^{2t}\sin(2t)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1) (1/2)e^t \sin(2t)$\\
+  $(2) (1/2)e^{2t}\sin(2t)$\\
+\end{frame}
+
+\begin{frame}{問13\_演習　解答}
+  (1) 基本公式 $L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$ に $\alpha=4$ を代入\\[4pt]
+  $(2) L^{-1}[1/((s-1)^{2}+4)] = (1/2)e^t \sin(2t)$（問 17(1) と同じ）
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1) te^{4t}$\\
+  $(2) (1/2)e^t \sin(2t)$\\
+\end{frame}
+
 \begin{frame}{例題13}
   \begin{exampleblock}{問題}
     次の関数の逆ラプラス変換を求めよ\\[2pt]
@@ -73,6 +102,28 @@
   $(2)\ \alpha=-2, \beta=3$ で分子 $s+2 = s-\alpha$ に一致\\[4pt]
   $\hphantom{(2)\ }L^{-1}[(s+2)/((s+2)^{2}+9)] = e^{-2t}\cos(3t)$
   \\[8pt]\textcolor{red}{\textbf{答}}：$(1) (1/2)e^t \sin(2t),\ (2) e^{-2t}\cos(3t)$
+\end{frame}
+
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問18] 次の逆ラプラス変換を求めよ
+    $(1) (s-1)/(s^{2}-4s+5)$\\
+    $(2) (s-2)/(s^{2}-6s+10)$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問18　解答}
+  (1) 平方完成 $: s^{2}-4s+5 = (s-2)^{2}+1$ 分子 $s-1 = (s-2)+1$\\[4pt]
+  $    (s-1)/((s-2)^{2}+1) = (s-2)/((s-2)^{2}+1) + 1/((s-2)^{2}+1)$\\[4pt]
+  $    L^{-1} = e^{2t}\cos t + e^{2t}\sin t = e^{2t}(\cos t + \sin t)$\\[4pt]
+  (2) 平方完成 $: s^{2}-6s+10 = (s-3)^{2}+1$ 分子 $s-2 = (s-3)+1$\\[4pt]
+  $    (s-2)/((s-3)^{2}+1) = (s-3)/((s-3)^{2}+1) + 1/((s-3)^{2}+1)$\\[4pt]
+  $    L^{-1} = e^{3t}\cos t + e^{3t}\sin t = e^{3t}(\cos t + \sin t)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1) e^{2t}(\cos t + \sin t)$\\
+  $(2) e^{3t}(\cos t + \sin t)$\\
 \end{frame}
 
 \begin{frame}{例題14}
@@ -96,48 +147,11 @@
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問17] 次の逆ラプラス変換を求めよ $: (1) 1/(s^{2}-2s+5) (2) 1/(s^{2}-4s+8)$
-    \item[問13\_演習] 次の関数の逆ラプラス変換を求めよ
-    $(1) 1/(s-4)^{2}$\\
-    $(2) 1/((s-1)^{2}+4)$\\
-    \item[問18] 次の逆ラプラス変換を求めよ
-    $(1) (s-1)/(s^{2}-4s+5)$\\
-    $(2) (s-2)/(s^{2}-6s+10)$\\
     \item[問19] 次の逆ラプラス変換を求めよ
     $(1)$ $1/(s(s-1)(s-2))$\\
     $(2)$ $(5s+1)/(s(s-1)(s+2))$\\
   \end{description}
   \end{exampleblock}
-\end{frame}
-
-\begin{frame}{問17　解答}
-  (1) 平方完成 $: s^{2}-2s+5 = (s-1)^{2}+4 = (s-1)^{2}+2^{2}$\\[4pt]
-  $    L^{-1}[1/((s-1)^{2}+4)] = (1/2)\cdot L^{-1}[2/((s-1)^{2}+2^{2})] = (1/2)e^t \sin(2t)$\\[4pt]
-  (2) 平方完成 $: s^{2}-4s+8 = (s-2)^{2}+4 = (s-2)^{2}+2^{2}$\\[4pt]
-  $    L^{-1}[1/((s-2)^{2}+4)] = (1/2)e^{2t}\sin(2t)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) (1/2)e^t \sin(2t)$\\
-  $(2) (1/2)e^{2t}\sin(2t)$\\
-\end{frame}
-
-\begin{frame}{問13\_演習　解答}
-  (1) 基本公式 $L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$ に $\alpha=4$ を代入\\[4pt]
-  $(2) L^{-1}[1/((s-1)^{2}+4)] = (1/2)e^t \sin(2t)$（問 17(1) と同じ）
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) te^{4t}$\\
-  $(2) (1/2)e^t \sin(2t)$\\
-\end{frame}
-
-\begin{frame}{問18　解答}
-  (1) 平方完成 $: s^{2}-4s+5 = (s-2)^{2}+1$ 分子 $s-1 = (s-2)+1$\\[4pt]
-  $    (s-1)/((s-2)^{2}+1) = (s-2)/((s-2)^{2}+1) + 1/((s-2)^{2}+1)$\\[4pt]
-  $    L^{-1} = e^{2t}\cos t + e^{2t}\sin t = e^{2t}(\cos t + \sin t)$\\[4pt]
-  (2) 平方完成 $: s^{2}-6s+10 = (s-3)^{2}+1$ 分子 $s-2 = (s-3)+1$\\[4pt]
-  $    (s-2)/((s-3)^{2}+1) = (s-3)/((s-3)^{2}+1) + 1/((s-3)^{2}+1)$\\[4pt]
-  $    L^{-1} = e^{3t}\cos t + e^{3t}\sin t = e^{3t}(\cos t + \sin t)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) e^{2t}(\cos t + \sin t)$\\
-  $(2) e^{3t}(\cos t + \sin t)$\\
 \end{frame}
 
 \begin{frame}{問19　解答}

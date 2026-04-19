@@ -49,6 +49,27 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \cosh t$
 \end{frame}
 
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問1] 次の微分方程式を解け
+    $(1) dx/dt - 2x = 0,  x(0) = 1$\\
+    $(2) dx/dt - x = e^{-t},  x(0) = 0$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問1　解答}
+  $(1) L: (sX-1) - 2X = 0   \to   (s-2)X = 1   \to   X = 1/(s-2)$\\[4pt]
+  $    x(t) = e^{2t}$\\[4pt]
+  $(2) L: (sX-0) - X = 1/(s+1)   \to   (s-1)X = 1/(s+1)$\\[4pt]
+  $    X = 1/((s-1)(s+1)) = (1/2)(1/(s-1) - 1/(s+1))$\\[4pt]
+  $    x(t) = (1/2)(e^t - e^{-t}) = \sinh t$
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1) x(t) = e^{2t}$\\
+  $(2) x(t) = \sinh t$\\
+\end{frame}
+
 \begin{frame}{例題2}
   \begin{exampleblock}{問題}
     $d^{2}x/dt^{2} + 4x = e^{-t}, x(0) = 0, x'(0) = 0$ を解け\\[2pt]
@@ -67,6 +88,30 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
 \end{frame}
 
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問2] 次の微分方程式を解け（ $t = 0$ のとき $x = 0, dx/dt = 0$ ）
+    $(1) d^{2}x/dt^{2} - 2x = e^t$\\
+    $(2) d^{2}x/dt^{2} + 4x = e^{-t}$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問2　解答}
+  $(1) L: (s^{2}-2)X = 1/(s-1)   \to   X = 1/((s-1)(s^{2}-2))$\\[4pt]
+  部分分数 $: A/(s-1) + (Bs+C)/(s^{2}-2)$\\[4pt]
+  $    A = 1/(1-2) = -1;  Bs+C = (s^{2}-1)/(s-1) = s+1   \to   B=1, C=1$\\[4pt]
+  $    X = -1/(s-1) + s/(s^{2}-2) + 1/(s^{2}-2)$\\[4pt]
+  $    x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\[4pt]
+  $(2) (s^{2}+4)X = 1/(s+1)   \to   X = 1/((s+1)(s^{2}+4))$（例題 2 と同じ）\\[4pt]
+  $    A=1/5, B=-1/5, C=1/5$\\[4pt]
+  $    x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1) x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\
+  $(2) x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$\\
+\end{frame}
+
 \begin{frame}{例題3}
   \begin{exampleblock}{問題}
     $d^{2}x/dt^{2} - x = 0, x(0) = 0, x(1) = 1$ を解け（境界値問題）\\[2pt]
@@ -82,6 +127,25 @@
   境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \sinh(t)/\sinh(1)$
   {\footnotesize \textcolor{gray}{\textit{境界値問題では未知の初期値 a を置き、もう一方の境界条件で決定する}}}
+\end{frame}
+
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問3] 次の微分方程式を解け（境界値問題）
+    $d^{2}x/dt^{2} - x = 1,  x(0) = 0,  x(\pi/2) = 0$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問3　解答}
+  $x'(0) = a$ （未知）とおく\\[4pt]
+  $L: (s^{2}-1)X = 1/s + a   \to   X = 1/(s(s^{2}-1)) + a/(s^{2}-1)$\\[4pt]
+  部分分数 $: 1/(s(s^{2}-1)) = -1/s + (1/2)/(s-1) + (1/2)/(s+1)$\\[4pt]
+  $L^{-1} = -1 + \cosh t$（逆変換）\\[4pt]
+  $x(t) = -1 + \cosh t + a\cdot \sinh t$\\[4pt]
+  境界条件 $x(\pi/2) = 0: a = (1 - \cosh(\pi/2))/\sinh(\pi/2)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = -1 + \cosh t + ((1-\cosh(\pi/2))/\sinh(\pi/2))\cdot \sinh t$
 \end{frame}
 
 \begin{frame}{例題4}
@@ -105,54 +169,11 @@
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問1] 次の微分方程式を解け
-    $(1) dx/dt - 2x = 0,  x(0) = 1$\\
-    $(2) dx/dt - x = e^{-t},  x(0) = 0$\\
-    \item[問2] 次の微分方程式を解け（ $t = 0$ のとき $x = 0, dx/dt = 0$ ）
-    $(1) d^{2}x/dt^{2} - 2x = e^t$\\
-    $(2) d^{2}x/dt^{2} + 4x = e^{-t}$\\
-    \item[問3] 次の微分方程式を解け（境界値問題）
-    $d^{2}x/dt^{2} - x = 1,  x(0) = 0,  x(\pi/2) = 0$\\
     \item[問4] 次の微分方程式の一般解を求めよ
     $(1) dx/dt - 2x = e^{3t}$\\
     $(2) d^{2}x/dt^{2} + 4x = \cos 2t$\\
   \end{description}
   \end{exampleblock}
-\end{frame}
-
-\begin{frame}{問1　解答}
-  $(1) L: (sX-1) - 2X = 0   \to   (s-2)X = 1   \to   X = 1/(s-2)$\\[4pt]
-  $    x(t) = e^{2t}$\\[4pt]
-  $(2) L: (sX-0) - X = 1/(s+1)   \to   (s-1)X = 1/(s+1)$\\[4pt]
-  $    X = 1/((s-1)(s+1)) = (1/2)(1/(s-1) - 1/(s+1))$\\[4pt]
-  $    x(t) = (1/2)(e^t - e^{-t}) = \sinh t$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) x(t) = e^{2t}$\\
-  $(2) x(t) = \sinh t$\\
-\end{frame}
-
-\begin{frame}{問2　解答}
-  $(1) L: (s^{2}-2)X = 1/(s-1)   \to   X = 1/((s-1)(s^{2}-2))$\\[4pt]
-  部分分数 $: A/(s-1) + (Bs+C)/(s^{2}-2)$\\[4pt]
-  $    A = 1/(1-2) = -1;  Bs+C = (s^{2}-1)/(s-1) = s+1   \to   B=1, C=1$\\[4pt]
-  $    X = -1/(s-1) + s/(s^{2}-2) + 1/(s^{2}-2)$\\[4pt]
-  $    x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\[4pt]
-  $(2) (s^{2}+4)X = 1/(s+1)   \to   X = 1/((s+1)(s^{2}+4))$（例題 2 と同じ）\\[4pt]
-  $    A=1/5, B=-1/5, C=1/5$\\[4pt]
-  $    x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\
-  $(2) x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$\\
-\end{frame}
-
-\begin{frame}{問3　解答}
-  $x'(0) = a$ （未知）とおく\\[4pt]
-  $L: (s^{2}-1)X = 1/s + a   \to   X = 1/(s(s^{2}-1)) + a/(s^{2}-1)$\\[4pt]
-  部分分数 $: 1/(s(s^{2}-1)) = -1/s + (1/2)/(s-1) + (1/2)/(s+1)$\\[4pt]
-  $L^{-1} = -1 + \cosh t$（逆変換）\\[4pt]
-  $x(t) = -1 + \cosh t + a\cdot \sinh t$\\[4pt]
-  境界条件 $x(\pi/2) = 0: a = (1 - \cosh(\pi/2))/\sinh(\pi/2)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = -1 + \cosh t + ((1-\cosh(\pi/2))/\sinh(\pi/2))\cdot \sinh t$
 \end{frame}
 
 \begin{frame}{問4　解答}

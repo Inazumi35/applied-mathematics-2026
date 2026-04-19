@@ -71,6 +71,31 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
 \end{frame}
 
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問5] 次のたたみこみを求めよ
+    $(1) \int_{0}^t e^\tau \sin(t-\tau) d\tau$\\
+    $(2) \int_{0}^t \tau\cdot \cos(t-\tau) d\tau$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問5　解答}
+  $(1) e^t * \sin t$ のたたみこみ\\[4pt]
+  $    L[e^t]\cdot L[\sin t] = 1/(s-1)\cdot1/(s^{2}+1) = 1/((s-1)(s^{2}+1))$\\[4pt]
+  部分分数 $: A/(s-1) + (Bs+C)/(s^{2}+1)$\\[4pt]
+  $A = 1/2; Bs+C$ の係数 $: B = -1/2, C = -1/2$\\[4pt]
+  $    L^{-1} = (e^t - \cos t - \sin t)/2$\\[4pt]
+  $(2) t * \cos t$ のたたみこみ\\[4pt]
+  $    L[t]\cdot L[\cos t] = 1/s^{2}\cdot s/(s^{2}+1) = 1/(s(s^{2}+1))$\\[4pt]
+  部分分数 $: A/s + (Bs+C)/(s^{2}+1): A=1, B=-1, C=0$\\[4pt]
+  $    L^{-1} = 1 - \cos t$
+  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1) (e^t - \cos t - \sin t)/2$\\
+  $(2) 1 - \cos t$\\
+\end{frame}
+
 \begin{frame}{例題6}
   \begin{exampleblock}{問題}
     $f(t) * g(t) = g(t) * f(t)$ を証明せよ\\[2pt]
@@ -84,6 +109,20 @@
   $= g(t)*f(t)$\hfill$\square$
 \end{frame}
 
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問6] 分配法則 $f*(g_{1}+g_{2}) = f*g_{1} + f*g_{2}$ を証明せよ
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問6　解答}
+  定義 $: f*(g_{1}+g_{2}) = \int_{0}^t f(t-\tau)(g_{1}(\tau)+g_{2}(\tau))d\tau$\\[4pt]
+  積分の線形性より $= \int_{0}^t f(t-\tau)g_{1}(\tau)d\tau + \int_{0}^t f(t-\tau)g_{2}(\tau)d\tau$\\[4pt]
+  $= f*g_{1} + f*g_{2}$（証明終）
+\end{frame}
+
 \begin{frame}{例題7}
   \begin{exampleblock}{問題}
     $L[f(t)] = F(s)$ のとき、関数 $F(s)/(s-\alpha)$ の逆ラプラス変換を求めよ。ただし $\alpha$ は定数とする。\\[2pt]
@@ -95,6 +134,37 @@
   $L^{-1}[1/(s-\alpha)] = e^{\alpha t}$ より、たたみこみ定理を適用\\[4pt]
   $= L^{-1}[F(s)] * e^{\alpha t} = f(t) * e^{\alpha t}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$L^{-1}[F(s)/(s-\alpha)] = \int_{0}^t e^{\alpha(t-\tau)} f(\tau) d\tau$
+\end{frame}
+
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問7] $L[t^{2}*t]$ を求めよ。また、問 5 の結果から直接 $L[t^{2}*t]$ を求めよ
+    \item[問8] $L[f(t)] = F(s)$ のとき、次の関数の逆ラプラス変換を求めよ。
+    ただし $\alpha, \beta$ は定数で、 (2) では $\alpha \neq \beta$ 、 (3) では $\beta \neq 0$ とする。\\
+    $(1) F(s)/(s-\alpha)^{2}$\\
+    $(2) F(s)/((s-\alpha)(s-\beta))$\\
+    $(3) F(s)/((s-\alpha)^{2}+\beta^{2})$\\
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問7　解答}
+  【方法1：たたみこみを直接計算】\\[4pt]
+  $t^{2}*t = \int_{0}^t \tau^{2}(t-\tau) d\tau = t\cdot[\tau^{3}/3]_{0}^t - [\tau^{4}/4]_{0}^t = t^{4}/3 - t^{4}/4 = t^{4}/12$\\[4pt]
+  $L[t^{4}/12] = (1/12)\cdot4!/s^{5} = (1/12)\cdot24/s^{5}$\\[4pt]
+  【方法2：問5（たたみこみ定理）を使う】\\[4pt]
+  $L[t^{2}*t] = L[t^{2}]\cdot L[t] = (2/s^{3})\cdot(1/s^{2})$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^{2}*t] = 2/s^{5}$
+\end{frame}
+
+\begin{frame}{問8　解答}
+  $(1) L^{-1}[F(s)\cdot1/(s-\alpha)^{2}]:  L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$\\[4pt]
+  たたみこみ定理より $f(t)*te^{\alpha t} = \int_{0}^t f(t-\tau)\cdot\tau\cdot e^{\alpha\tau}d\tau$\\[4pt]
+  $(2) L^{-1}[F(s)\cdot1/((s-\alpha)(s-\beta))]:  L^{-1}[1/((s-\alpha)(s-\beta))] = (e^{\alpha t}-e^{\beta t})/(\alpha-\beta)$\\[4pt]
+  $    = f(t)*(e^{\alpha t}-e^{\beta t})/(\alpha-\beta) = (1/(\alpha-\beta))\int_{0}^t f(t-\tau)(e^{\alpha\tau}-e^{\beta\tau})d\tau$\\[4pt]
+  $(3) L^{-1}[F(s)\cdot1/((s-\alpha)^{2}+\beta^{2})]:  L^{-1}[1/((s-\alpha)^{2}+\beta^{2})] = (1/\beta)e^{\alpha t}\sin(\beta t)$\\[4pt]
+  $    = f(t)*(1/\beta)e^{\alpha t}\sin(\beta t) = (1/\beta)\int_{0}^t f(t-\tau)e^{\alpha\tau}\sin(\beta\tau)d\tau$
 \end{frame}
 
 \begin{frame}{例題8}
@@ -115,59 +185,10 @@
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問5] 次のたたみこみを求めよ
-    $(1) \int_{0}^t e^\tau \sin(t-\tau) d\tau$\\
-    $(2) \int_{0}^t \tau\cdot \cos(t-\tau) d\tau$\\
-    \item[問6] 分配法則 $f*(g_{1}+g_{2}) = f*g_{1} + f*g_{2}$ を証明せよ
-    \item[問7] $L[t^{2}*t]$ を求めよ。また、問 5 の結果から直接 $L[t^{2}*t]$ を求めよ
-    \item[問8] $L[f(t)] = F(s)$ のとき、次の関数の逆ラプラス変換を求めよ。
-    ただし $\alpha, \beta$ は定数で、 (2) では $\alpha \neq \beta$ 、 (3) では $\beta \neq 0$ とする。\\
-    $(1) F(s)/(s-\alpha)^{2}$\\
-    $(2) F(s)/((s-\alpha)(s-\beta))$\\
-    $(3) F(s)/((s-\alpha)^{2}+\beta^{2})$\\
     \item[問9] 次の積分方程式を満たす関数 $x(t)$ を求めよ。
     $x(t) + \int_{0}^t x(t-\tau)e^\tau d\tau = \cos 3t$\\
   \end{description}
   \end{exampleblock}
-\end{frame}
-
-\begin{frame}{問5　解答}
-  $(1) e^t * \sin t$ のたたみこみ\\[4pt]
-  $    L[e^t]\cdot L[\sin t] = 1/(s-1)\cdot1/(s^{2}+1) = 1/((s-1)(s^{2}+1))$\\[4pt]
-  部分分数 $: A/(s-1) + (Bs+C)/(s^{2}+1)$\\[4pt]
-  $A = 1/2; Bs+C$ の係数 $: B = -1/2, C = -1/2$\\[4pt]
-  $    L^{-1} = (e^t - \cos t - \sin t)/2$\\[4pt]
-  $(2) t * \cos t$ のたたみこみ\\[4pt]
-  $    L[t]\cdot L[\cos t] = 1/s^{2}\cdot s/(s^{2}+1) = 1/(s(s^{2}+1))$\\[4pt]
-  部分分数 $: A/s + (Bs+C)/(s^{2}+1): A=1, B=-1, C=0$\\[4pt]
-  $    L^{-1} = 1 - \cos t$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) (e^t - \cos t - \sin t)/2$\\
-  $(2) 1 - \cos t$\\
-\end{frame}
-
-\begin{frame}{問6　解答}
-  定義 $: f*(g_{1}+g_{2}) = \int_{0}^t f(t-\tau)(g_{1}(\tau)+g_{2}(\tau))d\tau$\\[4pt]
-  積分の線形性より $= \int_{0}^t f(t-\tau)g_{1}(\tau)d\tau + \int_{0}^t f(t-\tau)g_{2}(\tau)d\tau$\\[4pt]
-  $= f*g_{1} + f*g_{2}$（証明終）
-\end{frame}
-
-\begin{frame}{問7　解答}
-  【方法1：たたみこみを直接計算】\\[4pt]
-  $t^{2}*t = \int_{0}^t \tau^{2}(t-\tau) d\tau = t\cdot[\tau^{3}/3]_{0}^t - [\tau^{4}/4]_{0}^t = t^{4}/3 - t^{4}/4 = t^{4}/12$\\[4pt]
-  $L[t^{4}/12] = (1/12)\cdot4!/s^{5} = (1/12)\cdot24/s^{5}$\\[4pt]
-  【方法2：問5（たたみこみ定理）を使う】\\[4pt]
-  $L[t^{2}*t] = L[t^{2}]\cdot L[t] = (2/s^{3})\cdot(1/s^{2})$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^{2}*t] = 2/s^{5}$
-\end{frame}
-
-\begin{frame}{問8　解答}
-  $(1) L^{-1}[F(s)\cdot1/(s-\alpha)^{2}]:  L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$\\[4pt]
-  たたみこみ定理より $f(t)*te^{\alpha t} = \int_{0}^t f(t-\tau)\cdot\tau\cdot e^{\alpha\tau}d\tau$\\[4pt]
-  $(2) L^{-1}[F(s)\cdot1/((s-\alpha)(s-\beta))]:  L^{-1}[1/((s-\alpha)(s-\beta))] = (e^{\alpha t}-e^{\beta t})/(\alpha-\beta)$\\[4pt]
-  $    = f(t)*(e^{\alpha t}-e^{\beta t})/(\alpha-\beta) = (1/(\alpha-\beta))\int_{0}^t f(t-\tau)(e^{\alpha\tau}-e^{\beta\tau})d\tau$\\[4pt]
-  $(3) L^{-1}[F(s)\cdot1/((s-\alpha)^{2}+\beta^{2})]:  L^{-1}[1/((s-\alpha)^{2}+\beta^{2})] = (1/\beta)e^{\alpha t}\sin(\beta t)$\\[4pt]
-  $    = f(t)*(1/\beta)e^{\alpha t}\sin(\beta t) = (1/\beta)\int_{0}^t f(t-\tau)e^{\alpha\tau}\sin(\beta\tau)d\tau$
 \end{frame}
 
 \begin{frame}{問9　解答}
