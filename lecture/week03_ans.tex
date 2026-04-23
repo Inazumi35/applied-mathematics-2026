@@ -38,21 +38,34 @@
 
 \begin{frame}{例題9}
   \begin{exampleblock}{問題}
-    微分法則を用いて $L[\cos t]$ を求めよ\\[2pt]
+    像関数の高次微分を用いて次の問いに答えよ\\[2pt]
+    \begin{description}
+      \item[(1)] $L[te^{\alpha t}]$ を求めよ（$\alpha$ は定数）
+      \item[(2)] $L[t\sin(\omega t)]$ を求めよ（$\omega$ は定数）
+    \end{description}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題9　解答}
-  $f(t) = \sin t$ とおくと $f'(t) = \cos t,\ f(0) = 0$\\[4pt]
-  原関数の微分法則 $L[f'(t)] = sF(s) - f(0)$ を適用\\[4pt]
-  $L[\cos t] = s\cdot L[\sin t] - 0 = s\cdot 1/(s^{2}+1)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\cos t] = s/(s^{2}+1) \ (s > 0)$
+\begin{frame}{例題9(1)　解答}
+  $f(t) = e^{\alpha t}$ とおくと $F(s) = L[e^{\alpha t}] = 1/(s-\alpha)$\\[4pt]
+  像関数の高次微分 $L[t^n f(t)] = (-1)^n F^{(n)}(s)$ を $n=1$ で適用\\[4pt]
+  $F'(s) = d/ds[1/(s-\alpha)] = -1/(s-\alpha)^{2}$\\[4pt]
+  $L[te^{\alpha t}] = (-1)^{1}\cdot F'(s) = 1/(s-\alpha)^{2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[te^{\alpha t}] = 1/(s-\alpha)^{2} \ (s > \alpha)$
+\end{frame}
+
+\begin{frame}{例題9(2)　解答}
+  $f(t) = \sin(\omega t)$ とおくと $F(s) = L[\sin(\omega t)] = \omega/(s^{2}+\omega^{2})$\\[4pt]
+  像関数の高次微分を $n=1$ で適用\\[4pt]
+  $F'(s) = \omega\cdot\dfrac{-(s^{2}+\omega^{2})'}{(s^{2}+\omega^{2})^{2}} = \omega\cdot\dfrac{-2s}{(s^{2}+\omega^{2})^{2}} = \dfrac{-2\omega s}{(s^{2}+\omega^{2})^{2}}$\\[4pt]
+  $L[t\sin(\omega t)] = (-1)^{1}\cdot F'(s) = 2\omega s/(s^{2}+\omega^{2})^{2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t\sin(\omega t)] = 2\omega s/(s^{2}+\omega^{2})^{2} \ (s > 0)$
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問13] $L[t \cos(\alpha t)]$ を求めよ
+    \item[問13] $L[t \cos(\omega t)]$ を求めよ
     \item[問14] $f'(t)+2f(t)=t, f(0)=0$ を満たすとき、 $L[f(t)]$ を求めよ
   \end{description}
   \end{exampleblock}
@@ -60,20 +73,16 @@
 
 \begin{frame}{問13　解答}
   像関数の高次微分 $: L[t^n f(t)] = (-1)^n F^{(n)}(s)$ を $n=1$ で使用\\[4pt]
-  $F(s) = L[\cos(\alpha t)] = s/(s^{2}+\alpha^{2})$\\[4pt]
-  $F'(s) = d/ds [s/(s^{2}+\alpha^{2})] = (s^{2}+\alpha^{2}-2s^{2})/(s^{2}+\alpha^{2})^{2} = (\alpha^{2}-s^{2})/(s^{2}+\alpha^{2})^{2}$\\[4pt]
-  $L[t \cos(\alpha t)] = (-1)^{1}\cdot F'(s) = -F'(s)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t \cos(\alpha t)] = (s^{2}-\alpha^{2})/(s^{2}+\alpha^{2})^{2}$
+  $F(s) = L[\cos(\omega t)] = s/(s^{2}+\omega^{2})$\\[4pt]
+  $F'(s) = d/ds [s/(s^{2}+\omega^{2})] = (s^{2}+\omega^{2}-2s^{2})/(s^{2}+\omega^{2})^{2} = (\omega^{2}-s^{2})/(s^{2}+\omega^{2})^{2}$\\[4pt]
+  $L[t \cos(\omega t)] = (-1)^{1}\cdot F'(s) = -F'(s)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t \cos(\omega t)] = (s^{2}-\omega^{2})/(s^{2}+\omega^{2})^{2}$
 \end{frame}
 
 \begin{frame}{問14　解答}
   両辺をラプラス変換 $: (sF(s)-f(0)) + 2F(s) = 1/s^{2}$\\[4pt]
-  $f(0)=0$ なので $(s+2)F(s) = 1/s^{2}$\\[4pt]
-  $F(s) = 1/(s^{2}(s+2))$\\[4pt]
-  部分分数 $: 1/(s^{2}(s+2)) = A/s + B/s^{2} + C/(s+2)$\\[4pt]
-  $A = -1/4,  B = 1/2,  C = 1/4$\\[4pt]
-  $F(s) = -1/(4s) + 1/(2s^{2}) + 1/(4(s+2))$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$f(t) = -1/4 + t/2 + (1/4)e^{-2t}$
+  $f(0)=0$ なので $(s+2)F(s) = 1/s^{2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[f(t)] = F(s) = 1/(s^{2}(s+2))$
 \end{frame}
 
 \begin{frame}{例題10}
@@ -122,16 +131,16 @@
 
 \begin{frame}{例題11}
   \begin{exampleblock}{問題}
-    $L[\sin(\alpha t)/t]$ を求めよ（ $\alpha$ は正の定数）\\[2pt]
+    $L[\sin(\omega t)/t]$ を求めよ（ $\omega$ は正の定数）\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題11　解答}
   像関数の積分 $: L[f(t)/t] = \int_{s}^\infty F(u)du$ を利用\\[4pt]
-  $L[\sin(\alpha t)] = \alpha/(u^{2}+\alpha^{2})$ なので\\[4pt]
-  $L[\sin(\alpha t)/t] = \int_{s}^\infty \alpha/(u^{2}+\alpha^{2}) du = [\arctan(u/\alpha)]_{s}^\infty$\\[4pt]
-  $= \pi/2 - \arctan(s/\alpha)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin(\alpha t)/t] = \pi/2 - \arctan(s/\alpha) = \arctan(\alpha/s) \ (s > 0)$
+  $L[\sin(\omega t)] = \omega/(u^{2}+\omega^{2})$ なので\\[4pt]
+  $L[\sin(\omega t)/t] = \int_{s}^\infty \omega/(u^{2}+\omega^{2}) du = [\arctan(u/\omega)]_{s}^\infty$\\[4pt]
+  $= \pi/2 - \arctan(s/\omega)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin(\omega t)/t] = \pi/2 - \arctan(s/\omega) = \arctan(\omega/s) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{演習問題}

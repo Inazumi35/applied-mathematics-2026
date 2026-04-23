@@ -346,23 +346,24 @@ subsections:
 
     examples:
       - id: 例題9
-        problem: "微分法則を用いて次の問いに答えよ"
+        problem: "像関数の高次微分を用いて次の問いに答えよ"
         subproblems:
           - id: "(1)"
-            content: "L[e^{at}] を求めよ（a は定数）"
+            content: "L[te^{αt}] を求めよ（α は定数）"
             solution:
-              - "f(t) = e^{at} とおくと F(s) = L[f(t)], f'(t) = a·e^{at} = a·f(t)"
-              - "微分法則より L[f'(t)] = sF(s) - f(0) = sF(s) - 1"
-              - "一方 L[f'(t)] = L[af(t)] = aF(s)"
-              - "よって (s-a)F(s) = 1"
-              - "L[e^{at}] = 1/(s-a)"
+              - "f(t) = e^{αt} とおくと F(s) = L[e^{αt}] = 1/(s-α)"
+              - "像関数の高次微分 L[t^n f(t)] = (-1)^n F^{(n)}(s) を n=1 で適用"
+              - "F'(s) = d/ds[1/(s-α)] = -1/(s-α)²"
+              - "L[te^{αt}] = (-1)¹·F'(s) = 1/(s-α)²"
+            result: "L[te^{αt}] = 1/(s-α)²  (s > α)"
           - id: "(2)"
-            content: "L[sin(αt)] を求めよ（α は任意の定数）"
+            content: "L[tsin(ωt)] を求めよ（ω は定数）"
             solution:
-              - "f(t) = sin(αt) とおくと f''(t) = -α²f(t), f(0) = 0, f'(0) = α"
-              - "微分法則より s²F(s) - sf(0) - f'(0) = -α²F(s)"
-              - "(s²+α²)F(s) = α"
-              - "L[sin(αt)] = α/(s²+α²)"
+              - "f(t) = sin(ωt) とおくと F(s) = L[sin(ωt)] = ω/(s²+ω²)"
+              - "像関数の高次微分を n=1 で適用"
+              - "F'(s) = d/ds[ω/(s²+ω²)] = -2ωs/(s²+ω²)²"
+              - "L[tsin(ωt)] = (-1)¹·F'(s) = 2ωs/(s²+ω²)²"
+            result: "L[tsin(ωt)] = 2ωs/(s²+ω²)²  (s > 0)"
 
       - id: 例題10
         problem: "L[t^n] を求めよ（n は正の整数）"
@@ -373,24 +374,24 @@ subsections:
         result: "L[t^n] = n!/s^{n+1}  (s > 0)"
 
       - id: 例題11
-        problem: "L[sin(αt)/t] を求めよ（α は正の定数）"
+        problem: "L[sin(ωt)/t] を求めよ（ω は正の定数）"
         solution:
           - "像関数の積分: L[f(t)/t] = ∫ₛ^∞ F(u)du を利用"
-          - "L[sin(αt)] = α/(u²+α²) なので"
-          - "L[sin(αt)/t] = ∫ₛ^∞ α/(u²+α²) du = [arctan(u/α)]ₛ^∞"
-          - "= π/2 - arctan(s/α)"
-        result: "L[sin(αt)/t] = π/2 - arctan(s/α) = arctan(α/s)  (s > 0)"
+          - "L[sin(ωt)] = ω/(u²+ω²) なので"
+          - "L[sin(ωt)/t] = ∫ₛ^∞ ω/(u²+ω²) du = [arctan(u/ω)]ₛ^∞"
+          - "= π/2 - arctan(s/ω)"
+        result: "L[sin(ωt)/t] = π/2 - arctan(s/ω) = arctan(ω/s)  (s > 0)"
 
     exercises:
       - id: 問13
-        content: "L[t cos(αt)] を求めよ"
+        content: "L[t cos(ωt)] を求めよ"
         answer:
           steps:
             - "像関数の高次微分: L[t^n f(t)] = (-1)^n F^{(n)}(s)  を n=1 で使用"
-            - "F(s) = L[cos(αt)] = s/(s²+α²)"
-            - "F'(s) = d/ds [s/(s²+α²)] = (s²+α²-2s²)/(s²+α²)² = (α²-s²)/(s²+α²)²"
-            - "L[t cos(αt)] = (-1)¹·F'(s) = -F'(s)"
-          result: "L[t cos(αt)] = (s²-α²)/(s²+α²)²"
+            - "F(s) = L[cos(ωt)] = s/(s²+ω²)"
+            - "F'(s) = d/ds [s/(s²+ω²)] = (s²+ω²-2s²)/(s²+ω²)² = (ω²-s²)/(s²+ω²)²"
+            - "L[t cos(ωt)] = (-1)¹·F'(s) = -F'(s)"
+          result: "L[t cos(ωt)] = (s²-ω²)/(s²+ω²)²"
 
       - id: 問14
         content: "f'(t)+2f(t)=t, f(0)=0 を満たすとき、L[f(t)] を求めよ"
@@ -398,11 +399,7 @@ subsections:
           steps:
             - "両辺をラプラス変換: (sF(s)-f(0)) + 2F(s) = 1/s²"
             - "f(0)=0 なので (s+2)F(s) = 1/s²"
-            - "F(s) = 1/(s²(s+2))"
-            - "部分分数: 1/(s²(s+2)) = A/s + B/s² + C/(s+2)"
-            - "A = -1/4,  B = 1/2,  C = 1/4"
-            - "F(s) = -1/(4s) + 1/(2s²) + 1/(4(s+2))"
-          result: "f(t) = -1/4 + t/2 + (1/4)e^{-2t}"
+          result: "L[f(t)] = F(s) = 1/(s²(s+2))"
 
       - id: 問15
         content: "L[t^n] を求めよ（n は正の整数）（像関数の高次微分を使用）"
