@@ -318,7 +318,8 @@ subsections:
     title: 微分法則と積分法則
     pages: "52-57"
 
-    theorems:
+    # スライド順: 微分法則2定理 → 例題9,10,問13-15 → 積分法則2定理 → 例題11,問16
+    theorems_group_1:  # 例題9,10の前に提示
       - name: 原関数の微分法則
         formulas:
           - "L[f'(t)]    = sF(s) - f(0)"
@@ -332,6 +333,7 @@ subsections:
       - name: 像関数の高次微分
         formula: "L[t^n f(t)] = (-1)^n F^{(n)}(s)"
 
+    theorems_group_2:  # 例題11の前に提示
       - name: 原関数の積分法則
         formula: "L[∫₀^t f(τ)dτ] = F(s)/s"
         proof_sketch: |

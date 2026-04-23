@@ -36,22 +36,6 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{定理：原関数の積分法則}
-  \begin{block}{}
-  \[
-    L[\int_{0}^t f(\tau)d\tau] = F(s)/s
-  \]
-  \end{block}
-\end{frame}
-
-\begin{frame}{定理：像関数の積分}
-  \begin{block}{}
-  \[
-    L[f(t)/t] = \int_{s}^\infty F(u)du
-  \]
-  \end{block}
-\end{frame}
-
 \begin{frame}{例題9}
   \begin{exampleblock}{問題}
     微分法則を用いて $L[\cos t]$ を求めよ\\[2pt]
@@ -118,6 +102,22 @@
   $F^{(n)}(s) = d^n/ds^n [1/s] = (-1)^n n!/s^{n+1}$\\[4pt]
   $L[t^n\cdot1] = (-1)^n F^{(n)}(s) = (-1)^n\cdot(-1)^n n!/s^{n+1}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^n] = n!/s^{n+1}  (s > 0)$
+\end{frame}
+
+\begin{frame}{定理：原関数の積分法則}
+  \begin{block}{}
+  \[
+    L[\int_{0}^t f(\tau)d\tau] = F(s)/s
+  \]
+  \end{block}
+\end{frame}
+
+\begin{frame}{定理：像関数の積分}
+  \begin{block}{}
+  \[
+    L[f(t)/t] = \int_{s}^\infty F(u)du
+  \]
+  \end{block}
 \end{frame}
 
 \begin{frame}{例題11}
