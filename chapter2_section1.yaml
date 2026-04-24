@@ -366,12 +366,13 @@ subsections:
             result: "L[tsin(ωt)] = 2ωs/(s²+ω²)²  (s > 0)"
 
       - id: 例題10
-        problem: "L[t^n] を求めよ（n は正の整数）"
+        problem: "L[t^n e^t] を求めよ（n は正の整数）"
         solution:
-          - "f(t) = t^n とおくと"
-          - "f^{(n)}(t) = n!, f(0) = f'(0) = … = f^{(n-1)}(0) = 0"
-          - "微分法則を n 回適用: s^n F(s) - 0 = L[n!] = n!/s"
-        result: "L[t^n] = n!/s^{n+1}  (s > 0)"
+          - "f(t) = e^t とおくと F(s) = L[e^t] = 1/(s-1)"
+          - "像関数の高次微分 L[t^n f(t)] = (-1)^n F^{(n)}(s) を適用"
+          - "F^{(n)}(s) = d^n/ds^n[1/(s-1)] = (-1)^n n!/(s-1)^{n+1}"
+          - "L[t^n e^t] = (-1)^n·(-1)^n n!/(s-1)^{n+1}"
+        result: "L[t^n e^t] = n!/(s-1)^{n+1}  (s > 1)"
 
       - id: 例題11
         problem: "L[sin(ωt)/t] を求めよ（ω は正の定数）"

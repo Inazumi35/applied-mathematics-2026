@@ -87,15 +87,16 @@
 
 \begin{frame}{例題10}
   \begin{exampleblock}{問題}
-    $L[t^n]$ を求めよ（ n は正の整数）\\[2pt]
+    $L[t^n e^t]$ を求めよ（ n は正の整数）\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題10　解答}
-  $f(t) = t^n$ とおくと\\[4pt]
-  $f^{(n)}(t) = n!, f(0) = f'(0) = \ldots = f^{(n-1)}(0) = 0$\\[4pt]
-  微分法則を n 回適用 $: s^n F(s) - 0 = L[n!] = n!/s$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^n] = n!/s^{n+1}  (s > 0)$
+  $f(t) = e^{t}$ とおくと $F(s) = L[e^{t}] = 1/(s-1)$\\[4pt]
+  像関数の高次微分 $L[t^n f(t)] = (-1)^n F^{(n)}(s)$ を適用\\[4pt]
+  $F^{(n)}(s) = d^n/ds^n[1/(s-1)] = (-1)^n n!/(s-1)^{n+1}$\\[4pt]
+  $L[t^n e^{t}] = (-1)^n\cdot(-1)^n n!/(s-1)^{n+1}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^n e^{t}] = n!/(s-1)^{n+1}  (s > 1)$
 \end{frame}
 
 \begin{frame}{演習問題}
