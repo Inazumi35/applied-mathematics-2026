@@ -125,9 +125,12 @@
 \begin{frame}{定理：像関数の積分}
   \begin{block}{}
   \[
-    L[f(t)/t] = \int_{s}^\infty F(u)du
+    L[f(t)/t] = \int_{s}^\infty F(u)\,du
   \]
   \end{block}
+  \vspace{4pt}
+  {\small 注：$F(s)$ の $s$ を積分変数 $u$ に置き換えて $F(u)$ とする。\\
+  $s$ は積分の下限として残る。}
 \end{frame}
 
 \begin{frame}{例題11}
@@ -136,12 +139,20 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題11　解答}
+\begin{frame}{例題11　解答（1/2）}
   像関数の積分 $: L[f(t)/t] = \int_{s}^\infty F(u)du$ を利用\\[4pt]
-  $L[\sin(\omega t)] = \omega/(u^{2}+\omega^{2})$ なので\\[4pt]
-  $L[\sin(\omega t)/t] = \int_{s}^\infty \omega/(u^{2}+\omega^{2}) du = [\arctan(u/\omega)]_{s}^\infty$\\[4pt]
+  $f(t) = \sin(\omega t)$ とおくと $F(s) = L[\sin(\omega t)] = \omega/(s^{2}+\omega^{2})$\\[4pt]
+  像関数の積分に代入（積分変数を $u$ にする）\\[4pt]
+  $L[\sin(\omega t)/t] = \int_{s}^\infty \dfrac{\omega}{u^{2}+\omega^{2}}\,du$\\[6pt]
+  $\int \dfrac{\omega}{u^{2}+\omega^{2}}\,du = \arctan(u/\omega) + C$ なので\\[4pt]
+  $= [\arctan(u/\omega)]_{s}^\infty = \lim_{u\to\infty}\arctan(u/\omega) - \arctan(s/\omega)$\\[4pt]
   $= \pi/2 - \arctan(s/\omega)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin(\omega t)/t] = \pi/2 - \arctan(s/\omega) = \arctan(\omega/s) \ (s > 0)$
+\end{frame}
+
+\begin{frame}{例題11　解答（2/2）}
+  余角の関係 $: x > 0$ のとき $\arctan(x) + \arctan(1/x) = \pi/2$ より\\[4pt]
+  $\pi/2 - \arctan(s/\omega) = \arctan(\omega/s)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[\sin(\omega t)/t] = \arctan(\omega/s) \ (s > 0)$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -152,14 +163,22 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問16　解答}
+\begin{frame}{問16　解答（1/2）}
   像関数の積分 $: L[f(t)/t] = \int_{s}^\infty F(u)du$ を利用\\[4pt]
-  $f(t) = e^{2t} - e^t$ とおくと $F(u) = L[e^{2t}-e^t]|_{s=u} = 1/(u-2) - 1/(u-1)$\\[4pt]
-  $L[(e^{2t}-e^t)/t] = \int_{s}^\infty (1/(u-2) - 1/(u-1)) du$\\[4pt]
-  $= [\ln(u-2) - \ln(u-1)]_{s}^\infty$\\[4pt]
-  $= \lim_{u \to \infty} \ln((u-2)/(u-1)) - \ln((s-2)/(s-1))$\\[4pt]
-  $= 0 - \ln((s-2)/(s-1)) = \ln((s-1)/(s-2))$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[(e^{2t}-e^t)/t] = \ln((s-1)/(s-2)) \ (s > 2)$
+  $f(t) = e^{2t} - e^{t}$ とおくと（積分変数を $u$ にする）\\[4pt]
+  $F(u) = L[e^{2t}]\big|_{s=u} - L[e^{t}]\big|_{s=u} = \dfrac{1}{u-2} - \dfrac{1}{u-1}$\\[6pt]
+  像関数の積分に代入：\\[4pt]
+  $L[(e^{2t}-e^{t})/t] = \int_{s}^\infty \left(\dfrac{1}{u-2} - \dfrac{1}{u-1}\right) du$\\[6pt]
+  各項を積分：$\int 1/(u-a)\,du = \ln|u-a| + C$ なので\\[4pt]
+  $= \big[\ln|u-2| - \ln|u-1|\big]_{s}^\infty = \left[\ln\dfrac{u-2}{u-1}\right]_{s}^\infty$
+\end{frame}
+
+\begin{frame}{問16　解答（2/2）}
+  $\displaystyle\lim_{u \to \infty} \ln\frac{u-2}{u-1}$ を評価する：\\[4pt]
+  $\dfrac{u-2}{u-1} = \dfrac{1-2/u}{1-1/u} \to \dfrac{1}{1} = 1 \quad (u\to\infty)$\\[4pt]
+  よって $\ln(1) = 0$\\[6pt]
+  $= 0 - \ln\dfrac{s-2}{s-1} = -\ln\dfrac{s-2}{s-1} = \ln\dfrac{s-1}{s-2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[(e^{2t}-e^{t})/t] = \ln\dfrac{s-1}{s-2} \ (s > 2)$
 \end{frame}
 
 \end{document}
