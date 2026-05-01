@@ -19,7 +19,10 @@
 \end{frame}
 
 \begin{frame}{定義：逆ラプラス変換}
-  \begin{block}{}
+  \begin{block}{原関数の一致性}
+  $f_{1}(t)$ と $f_{2}(t)$ がともに連続で $L[f_{1}(t)] = L[f_{2}(t)] = F(s)$ ならば $f_{1}(t) = f_{2}(t)$
+  \end{block}
+  \begin{block}{逆ラプラス変換}
   $F(s) = L[f(t)]$ であるとき、$f(t)$ を $F(s)$ の\textbf{逆ラプラス変換}といい
   \[
     f(t) = L^{-1}[F(s)]
@@ -29,7 +32,7 @@
   {\footnotesize \textcolor{gray}{線形性 $: L^{-1}[c_{1}F_{1}(s)+c_{2}F_{2}(s)] = c_{1}L^{-1}[F_{1}(s)]+c_{2}L^{-1}[F_{2}(s)]$}}
 \end{frame}
 
-\begin{frame}{部分分数分解による逆ラプラス変換}
+\begin{frame}{逆ラプラス変換の基本公式}
   \begin{block}{基本公式}
   \begin{align*}
     L^{-1}[1/(s-\alpha)] &= e^{\alpha t} \\
@@ -38,7 +41,6 @@
     L^{-1}[(s-\alpha)/((s-\alpha)^{2}+\beta^{2})] &= e^{\alpha t}\cos(\beta t)
   \end{align*}
   \end{block}
-  {\footnotesize \textcolor{gray}{有理関数 $N(s)/D(s)$ は部分分数に分解してから上記公式を適用}}
 \end{frame}
 
 \begin{frame}{例題12}
@@ -54,7 +56,10 @@
 \begin{frame}{例題12　解答}
   $(1)\ L^{-1}[1/(s-\alpha)] = e^{\alpha t}$（基本公式）\\[4pt]
   $(2)\ L[t e^{\alpha t}] = 1/(s-\alpha)^{2}$ より $L^{-1}[1/(s-\alpha)^{2}] = t e^{\alpha t}$\\[4pt]
-  $(3)\ 1/((s-\alpha)(s-\beta)) = (1/(\alpha-\beta))[1/(s-\alpha) - 1/(s-\beta)]$\\[4pt]
+  $(3)\ 1/((s-\alpha)(s-\beta)) = A/(s-\alpha) + B/(s-\beta)$ とおく\\[4pt]
+  $\hphantom{(3)\ }1 = A(s-\beta) + B(s-\alpha)$\\[4pt]
+  $\hphantom{(3)\ }s=\alpha: 1=A(\alpha-\beta)+B\cdot 0 = A(\alpha-\beta) \to A=1/(\alpha-\beta)$\\[4pt]
+  $\hphantom{(3)\ }s=\beta: 1=A\cdot 0+B(\beta-\alpha) = B(\beta-\alpha) \to B=-1/(\alpha-\beta)$\\[4pt]
   $\hphantom{(3)\ }L^{-1} = (e^{\alpha t} - e^{\beta t})/(\alpha-\beta)$\\[4pt]
   $(4)\ L^{-1}[1/((s-\alpha)^{2}+\beta^{2})] = (1/\beta)\cdot L^{-1}[\beta/((s-\alpha)^{2}+\beta^{2})] = (1/\beta)e^{\alpha t}\sin(\beta t)$
   \\[8pt]\textcolor{red}{\textbf{答}}：$(1) e^{\alpha t},\ (2) t e^{\alpha t},\ (3) (e^{\alpha t}-e^{\beta t})/(\alpha-\beta),\ (4) (1/\beta)e^{\alpha t}\sin(\beta t)$
@@ -63,85 +68,94 @@
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問17] 次の逆ラプラス変換を求めよ $: (1) 1/(s^{2}-2s+5) (2) 1/(s^{2}-4s+8)$
-    \item[問13\_演習] 次の関数の逆ラプラス変換を求めよ
-    $(1) 1/(s-4)^{2}$\\
-    $(2) 1/((s-1)^{2}+4)$\\
+    \item[問17] 次の逆ラプラス変換を求めよ $: (1) 1/(s^{2}-s-2) \quad (2) 1/(s^{2}-2s+5)$
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問17　解答}
-  (1) 平方完成 $: s^{2}-2s+5 = (s-1)^{2}+4 = (s-1)^{2}+2^{2}$\\[4pt]
-  $    L^{-1}[1/((s-1)^{2}+4)] = (1/2)\cdot L^{-1}[2/((s-1)^{2}+2^{2})] = (1/2)e^t \sin(2t)$\\[4pt]
-  (2) 平方完成 $: s^{2}-4s+8 = (s-2)^{2}+4 = (s-2)^{2}+2^{2}$\\[4pt]
-  $    L^{-1}[1/((s-2)^{2}+4)] = (1/2)e^{2t}\sin(2t)$
+  (1) 因数分解 $: s^{2}-s-2 = (s-2)(s+1)$\\[4pt]
+  $    1/((s-2)(s+1)) = A/(s-2) + B/(s+1)$ とおく\\[4pt]
+  通分 $: 1 = A(s+1) + B(s-2)$\\[4pt]
+  $    s=2: 1 = A(3) \to A=1/3$\\[4pt]
+  $    s=-1: 1 = B(-3) \to B=-1/3$\\[4pt]
+  $    L^{-1} = (1/3)e^{2t} - (1/3)e^{-t}$\\[4pt]
+  (2) 平方完成 $: s^{2}-2s+5 = (s-1)^{2}+2^{2}$\\[4pt]
+  $    L^{-1}[1/((s-1)^{2}+2^{2})] = (1/2)e^t \sin(2t)$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) (1/2)e^t \sin(2t)$\\
-  $(2) (1/2)e^{2t}\sin(2t)$\\
-\end{frame}
-
-\begin{frame}{問13\_演習　解答}
-  (1) 基本公式 $L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$ に $\alpha=4$ を代入\\[4pt]
-  $(2) L^{-1}[1/((s-1)^{2}+4)] = (1/2)e^t \sin(2t)$（問 17(1) と同じ）
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) te^{4t}$\\
+  $(1) (1/3)(e^{2t} - e^{-t})$\\
   $(2) (1/2)e^t \sin(2t)$\\
 \end{frame}
 
 \begin{frame}{例題13}
   \begin{exampleblock}{問題}
     次の関数の逆ラプラス変換を求めよ\\[2pt]
-    $(1) 1/((s-1)^{2}+4)$\\[2pt]
-    $(2) (s+2)/((s+2)^{2}+9)$\\[2pt]
+    $(1)\ s/(s-4)^{2}$\\[2pt]
+    $(2)\ s/((s-1)^{2}+2^{2})$\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題13　解答}
-  $(1)\ \alpha=1, \beta=2: L^{-1}[1/((s-1)^{2}+4)] = (1/2)\cdot L^{-1}[2/((s-1)^{2}+2^{2})] = (1/2)e^t \sin(2t)$\\[4pt]
-  $(2)\ \alpha=-2, \beta=3$ で分子 $s+2 = s-\alpha$ に一致\\[4pt]
-  $\hphantom{(2)\ }L^{-1}[(s+2)/((s+2)^{2}+9)] = e^{-2t}\cos(3t)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$(1) (1/2)e^t \sin(2t),\ (2) e^{-2t}\cos(3t)$
+  $(1)\ s/(s-4)^{2} = A/(s-4) + B/(s-4)^{2}$ とおく\\[4pt]
+  $\hphantom{(1)\ }$通分 $: s = A(s-4)+B$\\[4pt]
+  $\hphantom{(1)\ }s=4: 4 = B \to B=4$\\[4pt]
+  $\hphantom{(1)\ }s$ の係数 $: 1=A \to A=1$\\[4pt]
+  $\hphantom{(1)\ }L^{-1} = e^{4t} + 4te^{4t}$\\[4pt]
+  $(2)\ s/((s-1)^{2}+2^{2})$：分子を $s=(s-1)+1$ と分解\\[4pt]
+  $\hphantom{(2)\ }(s-1)/((s-1)^{2}+2^{2}) + 1/((s-1)^{2}+2^{2})$\\[4pt]
+  $\hphantom{(2)\ }L^{-1} = e^{t}\cos(2t) + (1/2)e^{t}\sin(2t)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$(1) (1+4t)e^{4t},\ (2) e^{t}\cos(2t)+(1/2)e^{t}\sin(2t)$
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問18] 次の逆ラプラス変換を求めよ
-    $(1) (s-1)/(s^{2}-4s+5)$\\
-    $(2) (s-2)/(s^{2}-6s+10)$\\
+    $(1) (s-1)/(s^{2}-4s+4)$\\
+    $(2) (s-3)/(s^{2}-6s+10)$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問18　解答}
-  (1) 平方完成 $: s^{2}-4s+5 = (s-2)^{2}+1$ 分子 $s-1 = (s-2)+1$\\[4pt]
-  $    (s-1)/((s-2)^{2}+1) = (s-2)/((s-2)^{2}+1) + 1/((s-2)^{2}+1)$\\[4pt]
-  $    L^{-1} = e^{2t}\cos t + e^{2t}\sin t = e^{2t}(\cos t + \sin t)$\\[4pt]
-  (2) 平方完成 $: s^{2}-6s+10 = (s-3)^{2}+1$ 分子 $s-2 = (s-3)+1$\\[4pt]
-  $    (s-2)/((s-3)^{2}+1) = (s-3)/((s-3)^{2}+1) + 1/((s-3)^{2}+1)$\\[4pt]
-  $    L^{-1} = e^{3t}\cos t + e^{3t}\sin t = e^{3t}(\cos t + \sin t)$
+  (1) $s^{2}-4s+4 = (s-2)^{2}$ なので $(s-1)/(s-2)^{2} = A/(s-2) + B/(s-2)^{2}$ とおく\\[4pt]
+  通分 $: s-1 = A(s-2)+B$\\[4pt]
+  $    s=2: 1 = B \to B=1$\\[4pt]
+  $    s$ の係数 $: 1=A \to A=1$\\[4pt]
+  $    L^{-1} = e^{2t} + te^{2t}$\\[4pt]
+  (2) 平方完成 $: s^{2}-6s+10 = (s-3)^{2}+1$ 分子 $s-3 = s-\alpha$\\[4pt]
+  $    L^{-1}[(s-3)/((s-3)^{2}+1)] = e^{3t}\cos t$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) e^{2t}(\cos t + \sin t)$\\
-  $(2) e^{3t}(\cos t + \sin t)$\\
+  $(1) (1+t)e^{2t}$\\
+  $(2) e^{3t}\cos t$\\
 \end{frame}
 
 \begin{frame}{例題14}
   \begin{exampleblock}{問題}
     次の逆ラプラス変換を求めよ\\[2pt]
-    $(1)$ $1/((s+2)(s+3)(s+4))$\\[2pt]
-    $(2)$ $(3s^{2}+5) / (s(s+1)^{2}(s-3))$\\[2pt]
+    $(1)$ $s/((s+2)(s+3)(s+4))$\\[2pt]
+    $(2)$ $(3s^{2}+5) / ((s+1)^{2}(s-3))$\\[2pt]
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題14　解答}
-  $(1)\ 1/((s+2)(s+3)(s+4)) = A/(s+2) + B/(s+3) + C/(s+4)$\\[4pt]
-  $\hphantom{(1)\ }s=-2: A=1/2;\ s=-3: B=-1;\ s=-4: C=1/2$\\[4pt]
-  $\hphantom{(1)\ }L^{-1} = (1/2)e^{-2t} - e^{-3t} + (1/2)e^{-4t}$\\[4pt]
-  $(2)\ (3s^{2}+5)/(s(s+1)^{2}(s-3)) = A/s + B/(s+1) + C/(s+1)^{2} + D/(s-3)$\\[4pt]
-  $\hphantom{(2)\ }s=0: A=-5/3;\ s=-1: C=2;\ s=3: D=2/3;\ s^{3}$ の係数 $: A+B+D=0 \to B=1$\\[4pt]
-  $\hphantom{(2)\ }L^{-1} = -5/3 + e^{-t} + 2t e^{-t} + (2/3)e^{3t}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$(1) (1/2)e^{-2t} - e^{-3t} + (1/2)e^{-4t},\ (2) -5/3 + (1+2t)e^{-t} + (2/3)e^{3t}$
+\begin{frame}{例題14　解答(1)}
+  $s/((s+2)(s+3)(s+4)) = A/(s+2) + B/(s+3) + C/(s+4)$ とおく\\[4pt]
+  通分 $: s = A(s+3)(s+4) + B(s+2)(s+4) + C(s+2)(s+3)$\\[4pt]
+  $s=-2: -2 = A(1)(2) \to A=-1$\\[4pt]
+  $s=-3: -3 = B(-1)(1) \to B=3$\\[4pt]
+  $s=-4: -4 = C(-2)(-1) \to C=-2$\\[4pt]
+  $L^{-1} = -e^{-2t} + 3e^{-3t} - 2e^{-4t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$-e^{-2t} + 3e^{-3t} - 2e^{-4t}$
+\end{frame}
+
+\begin{frame}{例題14　解答(2)}
+  $(3s^{2}+5)/((s+1)^{2}(s-3)) = A/(s+1) + B/(s+1)^{2} + C/(s-3)$ とおく\\[4pt]
+  通分 $: 3s^{2}+5 = A(s+1)(s-3) + B(s-3) + C(s+1)^{2}$\\[4pt]
+  $s=-1: 8 = B(-4) \to B=-2$\\[4pt]
+  $s=3: 32 = C(4)^{2} \to C=2$\\[4pt]
+  $s^{2}$ の係数 $: A+C=3 \to A=1$\\[4pt]
+  $L^{-1} = e^{-t} - 2t e^{-t} + 2e^{3t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$(1-2t)e^{-t} + 2e^{3t}$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -149,25 +163,29 @@
   \begin{description}
     \item[問19] 次の逆ラプラス変換を求めよ
     $(1)$ $1/(s(s-1)(s-2))$\\
-    $(2)$ $(5s+1)/(s(s-1)(s+2))$\\
+    $(2)$ $(5s+1)/((s-1)^{2}(s+2))$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問19　解答}
-  (1) 部分分数: $A/s + B/(s-1) + C/(s-2)$\\[4pt]
-  $    A = 1/((0-1)(0-2)) = 1/2$\\[4pt]
-  $    B = 1/(1\cdot(1-2)) = -1$\\[4pt]
-  $    C = 1/(2\cdot(2-1)) = 1/2$\\[4pt]
-  $    L^{-1} = 1/2 - e^t + (1/2)e^{2t}$\\[4pt]
-  (2) 部分分数: $A/s + B/(s-1) + C/(s+2)$\\[4pt]
-  $    A = 1/((0-1)(0+2)) = -1/2$\\[4pt]
-  $    B = (5+1)/(1\cdot(1+2)) = 2$\\[4pt]
-  $    C = (-10+1)/((-2)(-3)) = -9/6 = -3/2$\\[4pt]
-  $    L^{-1} = -1/2 + 2e^t - (3/2)e^{-2t}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) 1/2 - e^t + (1/2)e^{2t}$\\
-  $(2) -1/2 + 2e^t - (3/2)e^{-2t}$\\
+\begin{frame}{問19　解答(1)}
+  $1/(s(s-1)(s-2)) = A/s + B/(s-1) + C/(s-2)$ とおく\\[4pt]
+  通分 $: 1 = A(s-1)(s-2) + Bs(s-2) + Cs(s-1)$\\[4pt]
+  $s=0: 1 = A(-1)(-2) \to A=1/2$\\[4pt]
+  $s=1: 1 = B(1)(-1) \to B=-1$\\[4pt]
+  $s=2: 1 = C(2)(1) \to C=1/2$\\[4pt]
+  $L^{-1} = 1/2 - e^t + (1/2)e^{2t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$1/2 - e^t + (1/2)e^{2t}$
+\end{frame}
+
+\begin{frame}{問19　解答(2)}
+  $(5s+1)/((s-1)^{2}(s+2)) = A/(s-1) + B/(s-1)^{2} + C/(s+2)$ とおく\\[4pt]
+  通分 $: 5s+1 = A(s-1)(s+2) + B(s+2) + C(s-1)^{2}$\\[4pt]
+  $s=1: 6 = B(3) \to B=2$\\[4pt]
+  $s=-2: -9 = C(-3)^{2} \to C=-1$\\[4pt]
+  $s^{2}$ の係数 $: 0=A+C \to A=1$\\[4pt]
+  $L^{-1} = e^t + 2te^t - e^{-2t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$(1+2t)e^t - e^{-2t}$
 \end{frame}
 
 \end{document}
