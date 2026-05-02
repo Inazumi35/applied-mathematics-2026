@@ -22,7 +22,7 @@
 }
 \kotae{
 (1) $(t+1)^2 = t^2+2t+1$ より
-$\mathcal{L}[(t+1)^2] = \dfrac{2}{s^3}+\dfrac{2}{s^2}+\dfrac{1}{s} \quad (s>0)$\\[2pt]
+$\mathcal{L}[(t+1)^2] = \dfrac{s^2+2s+2}{s^3} \quad (s>0)$\\[2pt]
 (2) 積和公式：$\sin t\cos 2t = \dfrac{1}{2}(\sin 3t - \sin t)$ より
 $\mathcal{L}[\sin t\cos 2t] = \dfrac{1}{2}\!\left(\dfrac{3}{s^2+9}-\dfrac{1}{s^2+1}\right) = \dfrac{s^2-3}{(s^2+1)(s^2+9)} \quad (s>0)$\\[2pt]
 (3) 像関数の移動法則より
@@ -69,7 +69,7 @@ $\mathcal{L}^{-1} = \cos 3t + \dfrac{1}{3}\sin 3t$\\[2pt]
 (3) $4s^2-1=(2s-1)(2s+1)$ を部分分数分解：
 $\dfrac{1}{(2s-1)(2s+1)} = \dfrac{1/4}{s-1/2} - \dfrac{1/4}{s+1/2}$
 \[
-  \mathcal{L}^{-1} = \dfrac{1}{4}e^{t/2} - \dfrac{1}{4}e^{-t/2}
+  \mathcal{L}^{-1} = \dfrac{1}{4}e^{t/2} - \dfrac{1}{4}e^{-t/2} = \dfrac{1}{2}\sinh\dfrac{t}{2}
 \]
 (4) $s=(s+1)-1$ より $\dfrac{s}{(s+1)^2} = \dfrac{1}{s+1}-\dfrac{1}{(s+1)^2}$
 \[
