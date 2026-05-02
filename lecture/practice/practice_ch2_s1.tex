@@ -13,114 +13,115 @@
 \end{center}
 \vspace{0.5em}
 
-\noindent\textbf{\large【ラプラス変換の定義と性質】}
-\vspace{0.3em}
-
 \mondai{1}{
 次の関数のラプラス変換を求めよ．\\
-(1) $f(t) = 1$ \quad
-(2) $\sin 2t$ \quad
-(3) $(2^t + 3^t)\sin 4t$ \quad
-(4) $t^n \cos t$
+(1) $(t+1)^2$ \quad
+(2) $\sin t \cos 2t$ \quad
+(3) $(e^t + 3e^{-2t})\sin t$ \quad
+(4) $t^2 \cos t$
 }
 \kotae{
-(1) $\mathcal{L}[1] = \dfrac{1}{s} \quad (s>0)$\\[2pt]
-(2) $\mathcal{L}[\sin 2t] = \dfrac{2}{s^2+4} \quad (s>0)$\\[2pt]
-(3) $2^t = e^{t\ln 2}$, $3^t = e^{t\ln 3}$ より像関数の移動法則を用いて
-\begin{align*}
-  \mathcal{L}[(2^t+3^t)\sin 4t] &= \dfrac{4}{(s-\ln 2)^2+16} \\
-  &\quad + \dfrac{4}{(s-\ln 3)^2+16} \quad (s>\ln 3)
-\end{align*}
-(4) 像関数の高次微分 $\mathcal{L}[t^n f(t)] = (-1)^n F^{(n)}(s)$ を $F(s)=\dfrac{s}{s^2+1}$ に適用して
-\[
-  \mathcal{L}[t^n \cos t] = (-1)^n \dfrac{d^n}{ds^n}\!\left(\dfrac{s}{s^2+1}\right) \quad (s>0)
-\]
+(1) $(t+1)^2 = t^2+2t+1$ より
+$\mathcal{L}[(t+1)^2] = \dfrac{2}{s^3}+\dfrac{2}{s^2}+\dfrac{1}{s} \quad (s>0)$\\[2pt]
+(2) 積和公式：$\sin t\cos 2t = \dfrac{1}{2}(\sin 3t - \sin t)$ より
+$\mathcal{L}[\sin t\cos 2t] = \dfrac{1}{2}\!\left(\dfrac{3}{s^2+9}-\dfrac{1}{s^2+1}\right) = \dfrac{s^2-3}{(s^2+1)(s^2+9)} \quad (s>0)$\\[2pt]
+(3) 像関数の移動法則より
+$\mathcal{L}[(e^t+3e^{-2t})\sin t] = \dfrac{1}{(s-1)^2+1}+\dfrac{3}{(s+2)^2+1} \quad (s>1)$\\[2pt]
+(4) $\mathcal{L}[t^2 f(t)] = F''(s)$（$F(s)=\mathcal{L}[\cos t]=\dfrac{s}{s^2+1}$）を用いる．
+
+$F'(s) = \dfrac{1-s^2}{(s^2+1)^2}$，\quad
+$F''(s) = \dfrac{2s(s^2-3)}{(s^2+1)^3}$
+
+$\mathcal{L}[t^2\cos t] = \dfrac{2s(s^2-3)}{(s^2+1)^3} \quad (s>0)$
 }
 
 \mondai{2}{
-正の実数 $a, b, k$（ただし $a < b \leq c$）について，次の関数を単位ステップ関数で表し，
+正の定数 $a, b, k, l$ について，次の関数を単位ステップ関数で表し，
 そのラプラス変換を求めよ．\\
-(1) $f(t) = \begin{cases} 0 & (0 \leq t < a) \\ k & (a \leq t < b) \\ 0 & (b \leq t) \end{cases}$
+(1) $f(t) = \begin{cases} k & (a \leq t < b) \\ 0 & (t < a,\ t \geq b) \end{cases}$
 \quad
-(2) $g(t)$：階段状の関数（グラフ参照）
+(2) $g(t) = \begin{cases} 0 & (t < 0) \\ k & (0 \leq t < a,\ t \geq b) \\ l & (a \leq t < b) \end{cases}$
 }
 \kotae{
 (1) $f(t) = k\bigl[U(t-a) - U(t-b)\bigr]$ より
 \[
   \mathcal{L}[f(t)] = \dfrac{k(e^{-as} - e^{-bs})}{s} \quad (s>0)
 \]
-(2) 教科書 p.\,61 のグラフを参照．階段状関数 $g(t)$ は複数の単位ステップ関数の和で表され，
-ラプラス変換は各 $U(t-c_i)$ に対応する $e^{-c_i s}/s$ の和となる．
+(2) $g(t) = kU(t) + (l-k)U(t-a) + (k-l)U(t-b)$ より
+\[
+  \mathcal{L}[g(t)] = \dfrac{k + (l-k)e^{-as} + (k-l)e^{-bs}}{s} \quad (s>0)
+\]
 }
 
 \mondai{3}{
 次の関数の逆ラプラス変換を求めよ．\\
-(1) $\dfrac{s+1}{s^2+2s+5}$ \quad
-(2) $\dfrac{1}{s^2-2s+5}$ \quad
-(3) $\dfrac{s+3}{(s+1)(s^2+4)}$ \quad
-(4) $\dfrac{s}{(2s-1)^2}$
+(1) $\dfrac{s}{s^2+4}$ \quad
+(2) $\dfrac{s+1}{s^2+9}$ \quad
+(3) $\dfrac{1}{4s^2-1}$ \quad
+(4) $\dfrac{s}{(s+1)^2}$ \quad
+(5) $\dfrac{s+3}{(s+1)(s-2)}$ \quad
+(6) $\dfrac{s+1}{(2s-1)^2}$
 }
 \kotae{
-(1) 平方完成 $s^2+2s+5 = (s+1)^2+4$ より $\dfrac{s+1}{(s+1)^2+2^2}$．
+(1) $\mathcal{L}^{-1}\!\left[\dfrac{s}{s^2+2^2}\right] = \cos 2t$\\[2pt]
+(2) $\dfrac{s+1}{s^2+9} = \dfrac{s}{s^2+9}+\dfrac{1}{s^2+9}$ より
+$\mathcal{L}^{-1} = \cos 3t + \dfrac{1}{3}\sin 3t$\\[2pt]
+(3) $4s^2-1=(2s-1)(2s+1)$ を部分分数分解：
+$\dfrac{1}{(2s-1)(2s+1)} = \dfrac{1/4}{s-1/2} - \dfrac{1/4}{s+1/2}$
 \[
-  \mathcal{L}^{-1}\!\left[\dfrac{s+1}{(s+1)^2+2^2}\right] = e^{-t}\cos 2t
+  \mathcal{L}^{-1} = \dfrac{1}{4}e^{t/2} - \dfrac{1}{4}e^{-t/2}
 \]
-(2) 平方完成 $s^2-2s+5 = (s-1)^2+4$ より
+(4) $s=(s+1)-1$ より $\dfrac{s}{(s+1)^2} = \dfrac{1}{s+1}-\dfrac{1}{(s+1)^2}$
 \[
-  \mathcal{L}^{-1}\!\left[\dfrac{1}{(s-1)^2+2^2}\right] = \dfrac{1}{2}e^{t}\sin 2t
+  \mathcal{L}^{-1} = e^{-t} - te^{-t} = (1-t)e^{-t}
 \]
-(3) 部分分数分解 $\dfrac{s+3}{(s+1)(s^2+4)} = \dfrac{A}{s+1} + \dfrac{Bs+C}{s^2+4}$．\\
-$s=-1$ で $A = \dfrac{2}{5}$．係数比較で $B = -\dfrac{2}{5},\ C = \dfrac{7}{5}$．
+(5) $\dfrac{s+3}{(s+1)(s-2)} = \dfrac{A}{s+1}+\dfrac{B}{s-2}$ とおく．\\
+通分：$s+3=A(s-2)+B(s+1)$\\
+$s=-1$：$2=-3A \Rightarrow A=-\dfrac{2}{3}$，\quad $s=2$：$5=3B \Rightarrow B=\dfrac{5}{3}$
 \[
-  \mathcal{L}^{-1} = \dfrac{2}{5}e^{-t} - \dfrac{2}{5}\cos 2t + \dfrac{7}{10}\sin 2t
+  \mathcal{L}^{-1} = -\dfrac{2}{3}e^{-t}+\dfrac{5}{3}e^{2t}
 \]
-(4) $s = \dfrac{1}{2}(2s-1) + \dfrac{1}{2}$ より
-$\dfrac{s}{(2s-1)^2} = \dfrac{1/2}{2s-1} + \dfrac{1/2}{(2s-1)^2}$．
-$\dfrac{1}{2s-1} = \dfrac{1/2}{s-1/2}$，$\dfrac{1}{(2s-1)^2} = \dfrac{1/4}{(s-1/2)^2}$ を用いて
+(6) $s+1=\dfrac{1}{2}(2s-1)+\dfrac{3}{2}$ より
+$\dfrac{s+1}{(2s-1)^2} = \dfrac{1/2}{2s-1}+\dfrac{3/2}{(2s-1)^2} = \dfrac{1/4}{s-1/2}+\dfrac{3/8}{(s-1/2)^2}$
 \[
-  \mathcal{L}^{-1}\!\left[\dfrac{s}{(2s-1)^2}\right] = \dfrac{1}{4}e^{t/2} + \dfrac{1}{8}t e^{t/2} = \dfrac{(2+t)e^{t/2}}{8}
+  \mathcal{L}^{-1} = \dfrac{1}{4}e^{t/2}+\dfrac{3}{8}te^{t/2} = \dfrac{(2+3t)e^{t/2}}{8}
 \]
 }
 
 \mondai{4}{
-関数 $F(s) = \dfrac{s}{(s+2)(s^2+4)}$ について，次の問いに答えよ．\\
+関数 $F(s) = \dfrac{s^2}{s^3+8}$ について，次の問いに答えよ．\\
 (1) 次の形式が成り立つように $A, B, C$ の値を定めよ：
-$F(s) = \dfrac{A}{s+2} + \dfrac{Bs+C}{s^2+4}$\\
+$F(s) = \dfrac{A}{s+2} + \dfrac{Bs+C}{s^2-2s+4}$\\
 (2) 関数 $F(s)$ の逆ラプラス変換を求めよ．
 }
 \kotae{
-(1) 両辺に $(s+2)(s^2+4)$ を掛けて
-$s = A(s^2+4) + (Bs+C)(s+2)$．\\
-$s=-2$ で $-2 = 8A \Rightarrow A = -\dfrac{1}{4}$．\\
-$s^2$ の係数: $0 = A + B \Rightarrow B = \dfrac{1}{4}$．\\
-定数項: $0 = 4A + 2C \Rightarrow C = -2A = \dfrac{1}{2}$．
+(1) $s^3+8=(s+2)(s^2-2s+4)$ より，両辺に $(s+2)(s^2-2s+4)$ を掛けて
+$s^2 = A(s^2-2s+4) + (Bs+C)(s+2)$．\\
+$s=-2$ で $4 = 12A \Rightarrow A = \dfrac{1}{3}$．\\
+$s^2$ の係数: $1 = A + B \Rightarrow B = \dfrac{2}{3}$．\\
+定数項: $0 = 4A + 2C \Rightarrow C = -2A = -\dfrac{2}{3}$．
 \[
-  A = -\dfrac{1}{4},\quad B = \dfrac{1}{4},\quad C = \dfrac{1}{2}
+  A = \dfrac{1}{3},\quad B = \dfrac{2}{3},\quad C = -\dfrac{2}{3}
 \]
-(2) 各項を逆変換して
+(2) $\dfrac{Bs+C}{s^2-2s+4} = \dfrac{2}{3}\cdot\dfrac{s-1}{(s-1)^2+3}$ より
 \[
-  \mathcal{L}^{-1}[F(s)] = -\dfrac{1}{4}e^{-2t} + \dfrac{1}{4}\cos 2t + \dfrac{1}{4}\sin 2t
+  \mathcal{L}^{-1}[F(s)] = \dfrac{1}{3}e^{-2t} + \dfrac{2}{3}e^{t}\cos\sqrt{3}\,t
 \]
 }
 
 \mondai{5}{
-像関数の微分法則を用いて，次の関数の逆ラプラス変換を求めよ．\\
-(1) $\dfrac{s}{(s^2+4)^2}$ \quad
-(2) $\dfrac{1}{(s^2+4)^2}$
+原関数の移動法則を用いて，次の関数の逆ラプラス変換を求めよ．\\
+(1) $\dfrac{e^{-s}}{s^3}$ \quad
+(2) $\dfrac{e^{-2\pi s}}{s^2+1}$
 }
 \kotae{
-(1) $F(s) = \dfrac{1}{s^2+4}$ とおくと $F'(s) = -\dfrac{2s}{(s^2+4)^2}$．\\
-$\mathcal{L}^{-1}[F(s)] = \dfrac{1}{2}\sin 2t$ で，$\mathcal{L}[t f(t)] = -F'(s)$ より
+(1) $\mathcal{L}^{-1}\!\left[\dfrac{1}{s^3}\right] = \dfrac{t^2}{2}$ と原関数の移動法則 $\mathcal{L}^{-1}[e^{-as}F(s)] = f(t-a)U(t-a)$ より
 \[
-  \mathcal{L}^{-1}\!\left[\dfrac{s}{(s^2+4)^2}\right] = \dfrac{t \sin 2t}{4}
+  \mathcal{L}^{-1}\!\left[\dfrac{e^{-s}}{s^3}\right] = \dfrac{(t-1)^2}{2}U(t-1)
 \]
-(2) $G(s) = \dfrac{s}{s^2+4}$ とおくと
-$G'(s) = \dfrac{(s^2+4) - s\cdot 2s}{(s^2+4)^2} = \dfrac{4 - s^2}{(s^2+4)^2}$．\\
-$\mathcal{L}^{-1}[G(s)] = \cos 2t$，$\mathcal{L}[t\cos 2t] = -G'(s) = \dfrac{s^2-4}{(s^2+4)^2}$．\\
-さらに (1) より $\mathcal{L}[t\sin 2t/4] = \dfrac{s}{(s^2+4)^2}$．
-これらを組み合わせて
+(2) $\mathcal{L}^{-1}\!\left[\dfrac{1}{s^2+1}\right] = \sin t$ と原関数の移動法則より
 \[
-  \mathcal{L}^{-1}\!\left[\dfrac{1}{(s^2+4)^2}\right] = \dfrac{\sin 2t - 2t\cos 2t}{16}
+  \mathcal{L}^{-1}\!\left[\dfrac{e^{-2\pi s}}{s^2+1}\right] = \sin(t-2\pi)\,U(t-2\pi) = \sin t \cdot U(t-2\pi)
 \]
 }
 
