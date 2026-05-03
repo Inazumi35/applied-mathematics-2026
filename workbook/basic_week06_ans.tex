@@ -54,15 +54,15 @@ $\mathcal{L}[f(t)] = F(s)$ のとき，次の関数の逆ラプラス変換を�
 }
 
 \kotae{
-(1) $\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{(s+2)^2}\right] = f(t) * te^{-2t}$
+(1) $\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{(s+2)^2}\right] = f(t) * te^{-2t} = \displaystyle\int_0^t f(\tau)(t-\tau)e^{-2(t-\tau)}\,d\tau$
 
 (2) $\dfrac{1}{s^2-7s+12} = \dfrac{1}{(s-3)(s-4)} = \dfrac{1}{s-4}-\dfrac{1}{s-3}$
 
-$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-7s+12}\right] = f(t) * (e^{4t}-e^{3t})$
+$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-7s+12}\right] = f(t) * (e^{4t}-e^{3t}) = \displaystyle\int_0^t f(\tau)\!\left(e^{4(t-\tau)}-e^{3(t-\tau)}\right)d\tau$
 
 (3) $\dfrac{1}{(s-2)^2+9}$ の逆変換は $\dfrac{1}{3}e^{2t}\sin 3t$
 
-$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-4s+13}\right] = f(t) * \dfrac{1}{3}e^{2t}\sin 3t$
+$\mathcal{L}^{-1}\!\left[\dfrac{F(s)}{s^2-4s+13}\right] = f(t) * \dfrac{1}{3}e^{2t}\sin 3t = \dfrac{1}{3}\displaystyle\int_0^t f(\tau)e^{2(t-\tau)}\sin 3(t-\tau)\,d\tau$
 }
 
 \mondai{114}{
