@@ -20,14 +20,16 @@
 
 \begin{frame}{ラプラス変換による微分方程式の解法}
   \begin{block}{}
-  \begin{enumerate}[Step 1.]
+  \begin{itemize}
     \item 微分方程式と初期条件をラプラス変換
-    $\Rightarrow$ $X(s)$ に関する代数方程式\\
+    $\Rightarrow$ $X(s)$ に関する代数方程式
     \item 代数方程式を $X(s)$ について解く
-    $\Rightarrow$ $X(s)$ の有理式（部分分数分解）\\
+    $\Rightarrow$ $X(s)$ の分数式（部分分数分解）
     \item $X(s)$ を逆ラプラス変換
-    $\Rightarrow$ 解 $x(t)$\\
-  \end{enumerate}
+    $\Rightarrow$ 解 $x(t)$
+  \end{itemize}
+  \vspace{4pt}
+  {\small ※ 代数方程式：微分を含まない，四則演算だけの方程式}
   \end{block}
 \end{frame}
 
@@ -38,14 +40,15 @@
 \end{frame}
 
 \begin{frame}{例題1　解答}
-  $L[x(t)] = X(s)$ とする\\[4pt]
-  原関数の微分法則より $L[dx/dt] = sX(s) - x(0) = sX(s) - 1$\\[4pt]
-  方程式の両辺をラプラス変換 $: (sX(s) - 1) + X(s) = 1/(s-1)$\\[4pt]
-  $(s+1)X(s) = 1 + 1/(s-1) = s/(s-1)$\\[4pt]
-  $X(s) = s/((s+1)(s-1))$ 部分分数分解 :\\[4pt]
-  $s = A(s+1) + B(s-1)$ より $A = 1/2, B = 1/2$\\[4pt]
-  $X(s) = (1/2)\cdot1/(s-1) + (1/2)\cdot1/(s+1)$\\[4pt]
-  逆ラプラス変換 $: x(t) = (1/2)e^t + (1/2)e^{-t}$
+  $\mathcal{L}[x(t)] = X(s)$ とおく．原関数の微分法則より\\[4pt]
+  $\mathcal{L}\!\left[\dfrac{dx}{dt}\right] = sX(s) - x(0) = sX(s) - 1$\\[4pt]
+  両辺をラプラス変換：$(sX(s) - 1) + X(s) = \dfrac{1}{s-1}$\\[4pt]
+  $(s+1)X(s) = 1 + \dfrac{1}{s-1} = \dfrac{s}{s-1}$\\[4pt]
+  $X(s) = \dfrac{s}{(s+1)(s-1)}$ を部分分数分解：$\dfrac{s}{(s+1)(s-1)} = \dfrac{A}{s-1}+\dfrac{B}{s+1}$\\[4pt]
+  通分：$s = A(s+1) + B(s-1)$\\[4pt]
+  $s=1$：$1=2A \Rightarrow A=\dfrac{1}{2}$，\quad $s=-1$：$-1=-2B \Rightarrow B=\dfrac{1}{2}$\\[4pt]
+  $X(s) = \dfrac{1/2}{s-1} + \dfrac{1/2}{s+1}$\\[4pt]
+  逆ラプラス変換：$x(t) = \dfrac{1}{2}e^t + \dfrac{1}{2}e^{-t}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \cosh t$
 \end{frame}
 
@@ -60,14 +63,14 @@
 \end{frame}
 
 \begin{frame}{問1　解答}
-  $(1) L: (sX-1) - 2X = 0   \to   (s-2)X = 1   \to   X = 1/(s-2)$\\[4pt]
-  $    x(t) = e^{2t}$\\[4pt]
-  $(2) L: (sX-0) - X = 1/(s+1)   \to   (s-1)X = 1/(s+1)$\\[4pt]
-  $    X = 1/((s-1)(s+1)) = (1/2)(1/(s-1) - 1/(s+1))$\\[4pt]
-  $    x(t) = (1/2)(e^t - e^{-t}) = \sinh t$
+  (1) ラプラス変換：$(sX-1) - 2X = 0$ \quad $\therefore (s-2)X = 1$\\[4pt]
+  $X = \dfrac{1}{s-2}$ \quad $\therefore x(t) = e^{2t}$\\[6pt]
+  (2) ラプラス変換：$(sX-0) - X = \dfrac{1}{s+1}$ \quad $\therefore (s-1)X = \dfrac{1}{s+1}$\\[4pt]
+  $X = \dfrac{1}{(s-1)(s+1)} = \dfrac{1}{2}\!\left(\dfrac{1}{s-1} - \dfrac{1}{s+1}\right)$\\[4pt]
+  $x(t) = \dfrac{1}{2}(e^t - e^{-t}) = \sinh t$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) x(t) = e^{2t}$\\
-  $(2) x(t) = \sinh t$\\
+  $(1)\ x(t) = e^{2t}$\\
+  $(2)\ x(t) = \sinh t$\\
 \end{frame}
 
 \begin{frame}{例題2}
@@ -77,15 +80,13 @@
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  $L[x(t)] = X(s)$ とする\\[4pt]
-  $(s^{2}+4)X(s) - s\cdot x(0) - x'(0) = 1/(s+1)$\\[4pt]
-  $(s^{2}+4)X(s) = 1/(s+1)$\\[4pt]
-  $X(s) = 1/((s+1)(s^{2}+4))$\\[4pt]
-  部分分数分解 $: A/(s+1) + (Bs+C)/(s^{2}+4)$\\[4pt]
-  $1 = A(s^{2}+4) + (Bs+C)(s+1)$\\[4pt]
-  $s=-1: A = 1/5; s^{2}$ の係数 $: B = -1/5;$ 定数項 $: C = 1/5$\\[4pt]
-  $X(s) = (1/5)/(s+1) - (1/5)\cdot s/(s^{2}+4) + (1/10)\cdot2/(s^{2}+4)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  $\mathcal{L}[x(t)] = X(s)$ とおく．両辺をラプラス変換：\\[4pt]
+  $(s^{2}+4)X(s) = \dfrac{1}{s+1}$ \quad $\therefore X(s) = \dfrac{1}{(s+1)(s^{2}+4)}$\\[4pt]
+  部分分数分解：$\dfrac{1}{(s+1)(s^{2}+4)} = \dfrac{A}{s+1} + \dfrac{Bs+C}{s^{2}+4}$\\[4pt]
+  通分：$1 = A(s^{2}+4) + (Bs+C)(s+1)$\\[4pt]
+  $s=-1$：$A = \dfrac{1}{5}$，\quad $s^{2}$の係数：$B = -\dfrac{1}{5}$，\quad 定数項：$C = \dfrac{1}{5}$\\[4pt]
+  $X(s) = \dfrac{1/5}{s+1} - \dfrac{1}{5}\cdot\dfrac{s}{s^{2}+4} + \dfrac{1}{10}\cdot\dfrac{2}{s^{2}+4}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{1}{5}\!\left[e^{-t} - \cos 2t + \dfrac{1}{2}\sin 2t\right]$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -99,17 +100,16 @@
 \end{frame}
 
 \begin{frame}{問2　解答}
-  $(1) L: (s^{2}-2)X = 1/(s-1)   \to   X = 1/((s-1)(s^{2}-2))$\\[4pt]
-  部分分数 $: A/(s-1) + (Bs+C)/(s^{2}-2)$\\[4pt]
-  $    A = 1/(1-2) = -1;  Bs+C = (s^{2}-1)/(s-1) = s+1   \to   B=1, C=1$\\[4pt]
-  $    X = -1/(s-1) + s/(s^{2}-2) + 1/(s^{2}-2)$\\[4pt]
-  $    x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\[4pt]
-  $(2) (s^{2}+4)X = 1/(s+1)   \to   X = 1/((s+1)(s^{2}+4))$（例題 2 と同じ）\\[4pt]
-  $    A=1/5, B=-1/5, C=1/5$\\[4pt]
-  $    x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$
+  (1) ラプラス変換：$(s^{2}-2)X = \dfrac{1}{s-1}$ \quad $\therefore X = \dfrac{1}{(s-1)(s^{2}-2)}$\\[4pt]
+  部分分数分解：$\dfrac{A}{s-1} + \dfrac{Bs+C}{s^{2}-2}$，\quad $s=1$：$A = -1$\\[4pt]
+  $Bs+C = \dfrac{s^{2}-1}{s-1} = s+1$ より $B=1,\ C=1$\\[4pt]
+  $X = \dfrac{-1}{s-1} + \dfrac{s}{s^{2}-2} + \dfrac{1}{s^{2}-2}$\\[4pt]
+  $x(t) = -e^t + \cosh\!\sqrt{2}\,t + \dfrac{1}{\sqrt{2}}\sinh\!\sqrt{2}\,t$\\[6pt]
+  (2) $X = \dfrac{1}{(s+1)(s^{2}+4)}$（例題2と同じ）\\[4pt]
+  $x(t) = \dfrac{1}{5}\!\left[e^{-t} - \cos 2t + \dfrac{1}{2}\sin 2t\right]$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) x(t) = -e^t + \cosh(\sqrt2 t) + (1/\sqrt2)\sinh(\sqrt2 t)$\\
-  $(2) x(t) = (1/5)[e^{-t} - \cos(2t) + (1/2)\sin(2t)]$\\
+  $(1)\ x(t) = -e^t + \cosh\!\sqrt{2}\,t + \dfrac{1}{\sqrt{2}}\sinh\!\sqrt{2}\,t$\\
+  $(2)\ x(t) = \dfrac{1}{5}\!\left[e^{-t} - \cos 2t + \dfrac{1}{2}\sin 2t\right]$\\
 \end{frame}
 
 \begin{frame}{例題3}
@@ -119,14 +119,12 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  $x'(0) = a$ とおき、 $L[x(t)] = X(s)$ とする\\[4pt]
-  $(s^{2}-1)X(s) - s\cdot x(0) - x'(0) = 0$\\[4pt]
-  $(s^{2}-1)X(s) = a$\\[4pt]
-  $X(s) = a/(s^{2}-1)$\\[4pt]
-  逆変換 $: x(t) = a\cdot \sinh(t)$\\[4pt]
-  境界条件 $x(1) = 1$ を代入 $: a\cdot \sinh(1) = 1 \to a = 1/\sinh(1)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \sinh(t)/\sinh(1)$
-  {\footnotesize \textcolor{gray}{\textit{境界値問題では未知の初期値 a を置き、もう一方の境界条件で決定する}}}
+  $x'(0) = a$（未知）とおく．$\mathcal{L}[x(t)] = X(s)$ として両辺��ラプラス変換：\\[4pt]
+  $(s^{2}-1)X(s) = a$ \quad $\therefore X(s) = \dfrac{a}{s^{2}-1}$\\[4pt]
+  逆変換：$x(t) = a\sinh t$\\[4pt]
+  境界条件 $x(1) = 1$ より $a\sinh 1 = 1$ \quad $\therefore a = \dfrac{1}{\sinh 1}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{\sinh t}{\sinh 1}$\\[4pt]
+  {\footnotesize \textcolor{gray}{※ 境界値問題では未知の初期値 $a$ を置き，もう一方の境界条件で��定する}}
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -139,13 +137,12 @@
 \end{frame}
 
 \begin{frame}{問3　解答}
-  $x'(0) = a$ （未知）とおく\\[4pt]
-  $L: (s^{2}-1)X = 1/s + a   \to   X = 1/(s(s^{2}-1)) + a/(s^{2}-1)$\\[4pt]
-  部分分数 $: 1/(s(s^{2}-1)) = -1/s + (1/2)/(s-1) + (1/2)/(s+1)$\\[4pt]
-  $L^{-1} = -1 + \cosh t$（逆変換）\\[4pt]
-  $x(t) = -1 + \cosh t + a\cdot \sinh t$\\[4pt]
-  境界条件 $x(\pi/2) = 0: a = (1 - \cosh(\pi/2))/\sinh(\pi/2)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = -1 + \cosh t + ((1-\cosh(\pi/2))/\sinh(\pi/2))\cdot \sinh t$
+  $x'(0) = a$（未知）とおく．ラプラス変換：\\[4pt]
+  $(s^{2}-1)X = \dfrac{1}{s} + a$ \quad $\therefore X = \dfrac{1}{s(s^{2}-1)} + \dfrac{a}{s^{2}-1}$\\[4pt]
+  部分分数分解：$\dfrac{1}{s(s^{2}-1)} = \dfrac{-1}{s} + \dfrac{1/2}{s-1} + \dfrac{1/2}{s+1}$\\[4pt]
+  逆変換：$-1 + \cosh t$ \quad $\therefore x(t) = -1 + \cosh t + a\sinh t$\\[4pt]
+  境界条件 $x(\pi/2) = 0$ より $a = \dfrac{1 - \cosh(\pi/2)}{\sinh(\pi/2)}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = -1 + \cosh t + \dfrac{1-\cosh(\pi/2)}{\sinh(\pi/2)}\sinh t$
 \end{frame}
 
 \begin{frame}{例題4}
@@ -156,14 +153,13 @@
 \end{frame}
 
 \begin{frame}{例題4　解答}
-  $x(0) = \alpha$ （未知）とおき、 $L[x(t)] = X(s)$ とする\\[4pt]
-  $L: (sX(s) - \alpha) + 2X(s) = 1/(s+1)$\\[4pt]
-  $(s+2)X(s) = \alpha + 1/(s+1)$\\[4pt]
-  $X(s) = \alpha/(s+2) + 1/((s+1)(s+2))$\\[4pt]
-  部分分数 $: 1/((s+1)(s+2)) = 1/(s+1) - 1/(s+2)$\\[4pt]
-  $X(s) = (\alpha-1)/(s+2) + 1/(s+1)$\\[4pt]
-  逆変換 $: x(t) = (\alpha-1)e^{-2t} + e^{-t}$\ ；$C = \alpha-1$ を任意定数とする
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = Ce^{-2t} + e^{-t}$（C は任意定数）
+  $x(0) = \alpha$（未知）とおく．$\mathcal{L}[x(t)] = X(s)$ としてラプラス変換：\\[4pt]
+  $(s+2)X(s) = \alpha + \dfrac{1}{s+1}$\\[4pt]
+  $X(s) = \dfrac{\alpha}{s+2} + \dfrac{1}{(s+1)(s+2)}$\\[4pt]
+  部分分数分解：$\dfrac{1}{(s+1)(s+2)} = \dfrac{1}{s+1} - \dfrac{1}{s+2}$\\[4pt]
+  $X(s) = \dfrac{\alpha-1}{s+2} + \dfrac{1}{s+1}$\\[4pt]
+  逆変換：$x(t) = (\alpha-1)e^{-2t} + e^{-t}$，\quad $C = \alpha-1$ を任意定数とする
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = Ce^{-2t} + e^{-t}$（$C$ は任意定数）
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -177,19 +173,19 @@
 \end{frame}
 
 \begin{frame}{問4　解答}
-  $(1) x(0) = \alpha$ （未知）とおく\\[4pt]
-  $    (s-2)X = \alpha + 1/(s-3)   \to   X = \alpha/(s-2) + 1/((s-2)(s-3))$\\[4pt]
-  部分分数 $: 1/((s-2)(s-3)) = -1/(s-2) + 1/(s-3)$\\[4pt]
-  $X = (\alpha-1)/(s-2) + 1/(s-3)$（$C = \alpha-1$ を任意定数とする）\\[4pt]
-  $    x(t) = Ce^{2t} + e^{3t}$\\[4pt]
-  $(2) x(0)=\alpha, x'(0)=\beta$ （未知）とおく\\[4pt]
-  $    (s^{2}+4)X = \alpha s + \beta + s/(s^{2}+4)$\\[4pt]
-  $    X = \alpha s/(s^{2}+4) + \beta/(s^{2}+4) + s/(s^{2}+4)^{2}$\\[4pt]
-  $L^{-1}[s/(s^{2}+4)^{2}] = (t/4)\sin(2t)$（像関数の高次微分から導出）\\[4pt]
-  $C_{1} = \alpha, C_{2} = \beta/2$ を任意定数とする
+  (1) $x(0) = \alpha$（未知）とおく．ラプラス変換：\\[4pt]
+  $(s-2)X = \alpha + \dfrac{1}{s-3}$ \quad $\therefore X = \dfrac{\alpha}{s-2} + \dfrac{1}{(s-2)(s-3)}$\\[4pt]
+  部分分数分解：$\dfrac{1}{(s-2)(s-3)} = \dfrac{-1}{s-2} + \dfrac{1}{s-3}$\\[4pt]
+  $X = \dfrac{\alpha-1}{s-2} + \dfrac{1}{s-3}$，\quad $C = \alpha-1$ を任意定数とする\\[4pt]
+  $x(t) = Ce^{2t} + e^{3t}$\\[6pt]
+  (2) $x(0)=\alpha,\ x'(0)=\beta$（未知）とおく．ラプラス変換：\\[4pt]
+  $(s^{2}+4)X = \alpha s + \beta + \dfrac{s}{s^{2}+4}$\\[4pt]
+  $X = \dfrac{\alpha s}{s^{2}+4} + \dfrac{\beta}{s^{2}+4} + \dfrac{s}{(s^{2}+4)^{2}}$\\[4pt]
+  $\mathcal{L}^{-1}\!\left[\dfrac{s}{(s^{2}+4)^{2}}\right] = \dfrac{t}{4}\sin 2t$（像関数の微分から導出）\\[4pt]
+  $C_{1} = \alpha,\ C_{2} = \beta/2$ を任意定数とする
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) x(t) = Ce^{2t} + e^{3t}$（C は任意定数）\\
-  $(2) x(t) = C_{1}\cos(2t) + C_{2}\sin(2t) + (t/4)\sin(2t)$\\
+  $(1)\ x(t) = Ce^{2t} + e^{3t}$（$C$ は任意定数）\\
+  $(2)\ x(t) = C_{1}\cos 2t + C_{2}\sin 2t + \dfrac{t}{4}\sin 2t$\\
 \end{frame}
 
 \end{document}
