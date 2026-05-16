@@ -39,12 +39,16 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題1　解答}
+\begin{frame}{例題1　解答 (1/2)}
   $\mathcal{L}[x(t)] = X(s)$ とおく．原関数の微分法則より\\[4pt]
   $\mathcal{L}\!\left[\dfrac{dx}{dt}\right] = sX(s) - x(0) = sX(s) - 1$\\[4pt]
   両辺をラプラス変換：$(sX(s) - 1) + X(s) = \dfrac{1}{s-1}$\\[4pt]
-  $(s+1)X(s) = 1 + \dfrac{1}{s-1} = \dfrac{s}{s-1}$\\[4pt]
-  $X(s) = \dfrac{s}{(s+1)(s-1)}$ を部分分数分解：$\dfrac{s}{(s+1)(s-1)} = \dfrac{A}{s-1}+\dfrac{B}{s+1}$\\[4pt]
+  $(s+1)X(s) = 1 + \dfrac{1}{s-1} = \dfrac{s}{s-1}$\\[6pt]
+  $\therefore\quad X(s) = \dfrac{s}{(s+1)(s-1)}$
+\end{frame}
+
+\begin{frame}{例題1　解答 (2/2)}
+  部分分数分解：$\dfrac{s}{(s+1)(s-1)} = \dfrac{A}{s-1}+\dfrac{B}{s+1}$\\[4pt]
   通分：$s = A(s+1) + B(s-1)$\\[4pt]
   $s=1$：$1=2A \Rightarrow A=\dfrac{1}{2}$，\quad $s=-1$：$-1=-2B \Rightarrow B=\dfrac{1}{2}$\\[4pt]
   $X(s) = \dfrac{1/2}{s-1} + \dfrac{1/2}{s+1}$\\[4pt]
@@ -56,30 +60,30 @@
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問1] 次の微分方程式を解け
-    $(1) dx/dt - 2x = 0,  x(0) = 1$\\
-    $(2) dx/dt - x = e^{-t},  x(0) = 0$\\
+    $(1) dx/dt = 2x,  x(0) = 1$\\
+    $(2) dx/dt + x = e^{-t},  x(0) = 0$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問1　解答}
-  (1) ラプラス変換：$(sX-1) - 2X = 0$ \quad $\therefore (s-2)X = 1$\\[4pt]
+  (1) ラプラス変換：$sX - 1 = 2X$ \quad $\therefore (s-2)X = 1$\\[4pt]
   $X = \dfrac{1}{s-2}$ \quad $\therefore x(t) = e^{2t}$\\[6pt]
-  (2) ラプラス変換：$(sX-0) - X = \dfrac{1}{s+1}$ \quad $\therefore (s-1)X = \dfrac{1}{s+1}$\\[4pt]
-  $X = \dfrac{1}{(s-1)(s+1)} = \dfrac{1}{2}\!\left(\dfrac{1}{s-1} - \dfrac{1}{s+1}\right)$\\[4pt]
-  $x(t) = \dfrac{1}{2}(e^t - e^{-t}) = \sinh t$
+  (2) ラプラス変換：$(sX-0) + X = \dfrac{1}{s+1}$ \quad $\therefore (s+1)X = \dfrac{1}{s+1}$\\[4pt]
+  $X = \dfrac{1}{(s+1)^{2}}$\\[4pt]
+  逆変換：$x(t) = te^{-t}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1)\ x(t) = e^{2t}$\\
-  $(2)\ x(t) = \sinh t$\\
+  $(2)\ x(t) = te^{-t}$\\
 \end{frame}
 
 \begin{frame}{例題2}
   \begin{exampleblock}{問題}
-    $d^{2}x/dt^{2} + 4x = e^{-t}, x(0) = 0, x'(0) = 0$ を解け\\[2pt]
+    $d^{2}x/dt^{2} + 4x = e^{-t}$，（$t=0$ のとき $x=0,\ dx/dt=0$）を解け\\[2pt]
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題2　解答}
+\begin{frame}[shrink=5]{例題2　解答}
   $\mathcal{L}[x(t)] = X(s)$ とおく．両辺をラプラス変換：\\[4pt]
   $(s^{2}+4)X(s) = \dfrac{1}{s+1}$ \quad $\therefore X(s) = \dfrac{1}{(s+1)(s^{2}+4)}$\\[4pt]
   部分分数分解：$\dfrac{1}{(s+1)(s^{2}+4)} = \dfrac{A}{s+1} + \dfrac{Bs+C}{s^{2}+4}$\\[4pt]
@@ -92,24 +96,26 @@
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問2] 次の微分方程式を解け（ $t = 0$ のとき $x = 0, dx/dt = 0$ ）
-    $(1) d^{2}x/dt^{2} - 2x = e^t$\\
-    $(2) d^{2}x/dt^{2} + 4x = e^{-t}$\\
+    \item[問2] 次の微分方程式を解け
+    $(1)\ d^{2}x/dt^{2} - 5\,dx/dt + 6x = e^{t}$，（$t=0$ のとき $x=0,\ dx/dt=0$）\\
+    $(2)\ d^{2}x/dt^{2} + 4\,dx/dt + 5x = 0$，（$t=0$ のとき $x=0,\ dx/dt=1$）\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問2　解答}
-  (1) ラプラス変換：$(s^{2}-2)X = \dfrac{1}{s-1}$ \quad $\therefore X = \dfrac{1}{(s-1)(s^{2}-2)}$\\[4pt]
-  部分分数分解：$\dfrac{A}{s-1} + \dfrac{Bs+C}{s^{2}-2}$，\quad $s=1$：$A = -1$\\[4pt]
-  $Bs+C = \dfrac{s^{2}-1}{s-1} = s+1$ より $B=1,\ C=1$\\[4pt]
-  $X = \dfrac{-1}{s-1} + \dfrac{s}{s^{2}-2} + \dfrac{1}{s^{2}-2}$\\[4pt]
-  $x(t) = -e^t + \cosh\!\sqrt{2}\,t + \dfrac{1}{\sqrt{2}}\sinh\!\sqrt{2}\,t$\\[6pt]
-  (2) $X = \dfrac{1}{(s+1)(s^{2}+4)}$（例題2と同じ）\\[4pt]
-  $x(t) = \dfrac{1}{5}\!\left[e^{-t} - \cos 2t + \dfrac{1}{2}\sin 2t\right]$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1)\ x(t) = -e^t + \cosh\!\sqrt{2}\,t + \dfrac{1}{\sqrt{2}}\sinh\!\sqrt{2}\,t$\\
-  $(2)\ x(t) = \dfrac{1}{5}\!\left[e^{-t} - \cos 2t + \dfrac{1}{2}\sin 2t\right]$\\
+\begin{frame}{問2　解答 (1)}
+  (1) ラプラス変換：$(s^{2}-5s+6)X = \dfrac{1}{s-1}$ \quad $\therefore X = \dfrac{1}{(s-1)(s-2)(s-3)}$\\[4pt]
+  部分分数分解：$s=1$：$A=\dfrac{1}{2}$，\quad $s=2$：$B=-1$，\quad $s=3$：$C=\dfrac{1}{2}$\\[4pt]
+  $X = \dfrac{1/2}{s-1} - \dfrac{1}{s-2} + \dfrac{1/2}{s-3}$\\[4pt]
+  逆変換：$x(t) = \dfrac{1}{2}e^{t} - e^{2t} + \dfrac{1}{2}e^{3t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{1}{2}e^{t} - e^{2t} + \dfrac{1}{2}e^{3t}$
+\end{frame}
+
+\begin{frame}{問2　解答 (2)}
+  (2) ラプラス変換：$(s^{2}+4s+5)X = 1$\\[4pt]
+  $X = \dfrac{1}{s^{2}+4s+5} = \dfrac{1}{(s+2)^{2}+1}$\\[4pt]
+  逆変換：$x(t) = e^{-2t}\sin t$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = e^{-2t}\sin t$
 \end{frame}
 
 \begin{frame}{例題3}
@@ -119,47 +125,59 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  $x'(0) = a$（未知）とおく．$\mathcal{L}[x(t)] = X(s)$ として両辺��ラプラス変換：\\[4pt]
-  $(s^{2}-1)X(s) = a$ \quad $\therefore X(s) = \dfrac{a}{s^{2}-1}$\\[4pt]
-  逆変換：$x(t) = a\sinh t$\\[4pt]
-  境界条件 $x(1) = 1$ より $a\sinh 1 = 1$ \quad $\therefore a = \dfrac{1}{\sinh 1}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{\sinh t}{\sinh 1}$\\[4pt]
-  {\footnotesize \textcolor{gray}{※ 境界値問題では未知の初期値 $a$ を置き，もう一方の境界条件で��定する}}
+  $x'(0) = \alpha$（未知）とおく．ラプラス変換：\\[4pt]
+  $(s^{2}-1)X = \alpha$ \quad $\therefore X = \dfrac{\alpha}{(s-1)(s+1)} = \dfrac{\alpha/2}{s-1} - \dfrac{\alpha/2}{s+1}$\\[4pt]
+  逆変換：$x(t) = \dfrac{\alpha}{2}(e^{t} - e^{-t})$\\[4pt]
+  境界条件 $x(1) = 1$ より $\dfrac{\alpha}{2}(e - e^{-1}) = 1$ \quad $\therefore \alpha = \dfrac{2}{e - e^{-1}}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{e^{t} - e^{-t}}{e - e^{-1}}$\\[4pt]
+  {\footnotesize \textcolor{gray}{※ 境界値問題では未知の初期値 $\alpha$ を置き，もう一方の境界条件で決定する}}
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
     \item[問3] 次の微分方程式を解け（境界値問題）
-    $d^{2}x/dt^{2} - x = 1,  x(0) = 0,  x(\pi/2) = 0$\\
+    $(1)\ d^{2}x/dt^{2} + dx/dt = 0,\quad x(0)=2,\ x(1)=1+e^{-1}$\\
+    $(2)\ d^{2}x/dt^{2} + x = 1,\quad x(0)=0,\ x(\pi/2)=0$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問3　解答}
-  $x'(0) = a$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s^{2}-1)X = \dfrac{1}{s} + a$ \quad $\therefore X = \dfrac{1}{s(s^{2}-1)} + \dfrac{a}{s^{2}-1}$\\[4pt]
-  部分分数分解：$\dfrac{1}{s(s^{2}-1)} = \dfrac{-1}{s} + \dfrac{1/2}{s-1} + \dfrac{1/2}{s+1}$\\[4pt]
-  逆変換：$-1 + \cosh t$ \quad $\therefore x(t) = -1 + \cosh t + a\sinh t$\\[4pt]
-  境界条件 $x(\pi/2) = 0$ より $a = \dfrac{1 - \cosh(\pi/2)}{\sinh(\pi/2)}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = -1 + \cosh t + \dfrac{1-\cosh(\pi/2)}{\sinh(\pi/2)}\sinh t$
+\begin{frame}{問3　解答 (1)}
+  (1) $x'(0)=\alpha$（未知）とおく．ラプラス変換：\\[4pt]
+  $s(s+1)X = 2s+\alpha+2$ \quad $\therefore X = \dfrac{\alpha+2}{s} - \dfrac{\alpha}{s+1}$\\[4pt]
+  逆変換：$x(t) = (\alpha+2) - \alpha e^{-t}$\\[4pt]
+  境界条件 $x(1)=1+e^{-1}$ より $\alpha(1-e^{-1}) = -(1-e^{-1})$ \quad $\therefore \alpha=-1$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = 1 + e^{-t}$
+\end{frame}
+
+\begin{frame}{問3　解答 (2)}
+  (2) $x'(0)=\alpha$（未知）とおく．ラプラス変換：\\[4pt]
+  $(s^{2}+1)X = \dfrac{1}{s}+\alpha$ \quad $\therefore X = \dfrac{1}{s}-\dfrac{s}{s^{2}+1}+\dfrac{\alpha}{s^{2}+1}$\\[4pt]
+  逆変換：$x(t) = 1-\cos t+\alpha\sin t$\\[4pt]
+  境界条件 $x(\pi/2)=0$ より $1+\alpha=0$ \quad $\therefore \alpha=-1$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = 1-\cos t-\sin t$
 \end{frame}
 
 \begin{frame}{例題4}
   \begin{exampleblock}{問題}
     次の微分方程式の一般解を求めよ\\[2pt]
-    $dx/dt + 2x = e^{-t}$
+    $d^{2}x/dt^{2} - 4\,dx/dt + 4x = e^{2t}$
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題4　解答}
-  $x(0) = \alpha$（未知）とおく．$\mathcal{L}[x(t)] = X(s)$ としてラプラス変換：\\[4pt]
-  $(s+2)X(s) = \alpha + \dfrac{1}{s+1}$\\[4pt]
-  $X(s) = \dfrac{\alpha}{s+2} + \dfrac{1}{(s+1)(s+2)}$\\[4pt]
-  部分分数分解：$\dfrac{1}{(s+1)(s+2)} = \dfrac{1}{s+1} - \dfrac{1}{s+2}$\\[4pt]
-  $X(s) = \dfrac{\alpha-1}{s+2} + \dfrac{1}{s+1}$\\[4pt]
-  逆変換：$x(t) = (\alpha-1)e^{-2t} + e^{-t}$，\quad $C = \alpha-1$ を任意定数とする
-  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = Ce^{-2t} + e^{-t}$（$C$ は任意定数）
+\begin{frame}{例題4　解答 (1/2)}
+  $x(0)=\alpha,\ x'(0)=\beta$（未知）とおく．ラプラス変換：\\[4pt]
+  $(s^{2}-4s+4)X = \alpha s+\beta-4\alpha+\dfrac{1}{s-2}$\\[4pt]
+  $(s-2)^{2}X = \alpha(s-2)+(\beta-2\alpha)+\dfrac{1}{s-2}$\\[6pt]
+  $\therefore\quad X = \dfrac{\alpha}{s-2}+\dfrac{\beta-2\alpha}{(s-2)^{2}}+\dfrac{1}{(s-2)^{3}}$
+\end{frame}
+
+\begin{frame}{例題4　解答 (2/2)}
+  $\mathcal{L}^{-1}\!\left[\dfrac{1}{(s-2)^{3}}\right]=\dfrac{t^{2}}{2}e^{2t}$ を用いて逆変換：\\[4pt]
+  $x(t)=\alpha e^{2t}+(\beta-2\alpha)te^{2t}+\dfrac{t^{2}}{2}e^{2t}$\\[4pt]
+  $C_{1}=\alpha,\ C_{2}=\beta-2\alpha$ を任意定数とする
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t)=C_{1}e^{2t}+C_{2}te^{2t}+\dfrac{t^{2}}{2}e^{2t}$（$C_{1},C_{2}$ は任意定数）
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -172,20 +190,22 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問4　解答}
+\begin{frame}{問4　解答 (1)}
   (1) $x(0) = \alpha$（未知）とおく．ラプラス変換：\\[4pt]
   $(s-2)X = \alpha + \dfrac{1}{s-3}$ \quad $\therefore X = \dfrac{\alpha}{s-2} + \dfrac{1}{(s-2)(s-3)}$\\[4pt]
   部分分数分解：$\dfrac{1}{(s-2)(s-3)} = \dfrac{-1}{s-2} + \dfrac{1}{s-3}$\\[4pt]
   $X = \dfrac{\alpha-1}{s-2} + \dfrac{1}{s-3}$，\quad $C = \alpha-1$ を任意定数とする\\[4pt]
-  $x(t) = Ce^{2t} + e^{3t}$\\[6pt]
+  逆変換：$x(t) = Ce^{2t} + e^{3t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = Ce^{2t} + e^{3t}$（$C$ は任意定数）
+\end{frame}
+
+\begin{frame}{問4　解答 (2)}
   (2) $x(0)=\alpha,\ x'(0)=\beta$（未知）とおく．ラプラス変換：\\[4pt]
   $(s^{2}+4)X = \alpha s + \beta + \dfrac{s}{s^{2}+4}$\\[4pt]
   $X = \dfrac{\alpha s}{s^{2}+4} + \dfrac{\beta}{s^{2}+4} + \dfrac{s}{(s^{2}+4)^{2}}$\\[4pt]
   $\mathcal{L}^{-1}\!\left[\dfrac{s}{(s^{2}+4)^{2}}\right] = \dfrac{t}{4}\sin 2t$（像関数の微分から導出）\\[4pt]
   $C_{1} = \alpha,\ C_{2} = \beta/2$ を任意定数とする
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1)\ x(t) = Ce^{2t} + e^{3t}$（$C$ は任意定数）\\
-  $(2)\ x(t) = C_{1}\cos 2t + C_{2}\sin 2t + \dfrac{t}{4}\sin 2t$\\
+  \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = C_{1}\cos 2t + C_{2}\sin 2t + \dfrac{t}{4}\sin 2t$
 \end{frame}
 
 \end{document}
