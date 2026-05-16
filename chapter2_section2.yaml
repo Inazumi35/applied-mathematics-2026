@@ -163,7 +163,7 @@ subsections:
 
     definition:
       name: たたみこみ（合成積）
-      formula: "(f * g)(t) = ∫₀^t f(t-τ)g(τ) dτ"
+      formula: "(f * g)(t) = ∫₀^t f(τ)g(t-τ) dτ"
       note: "f(t), g(t) はいずれも t ≥ 0 で定義された関数"
 
     theorems:
@@ -171,14 +171,14 @@ subsections:
         formula: "f(t) * g(t) = g(t) * f(t)"
         proof_sketch: |
           u = t-τ と置換（τ: 0→t  ⟹  u: t→0）
-          ∫₀^t f(t-τ)g(τ)dτ = ∫₀^t g(t-u)f(u)du = g*f
+          ∫₀^t f(τ)g(t-τ)dτ = ∫₀^t g(u)f(t-u)du = g*f
 
       - name: 分配法則
         formula: "f * (g₁ + g₂) = f*g₁ + f*g₂"
 
       - name: たたみこみのラプラス変換（たたみこみ定理）
         formula: "L[f(t) * g(t)] = L[f(t)] · L[g(t)] = F(s) · G(s)"
-        inverse: "L⁻¹[F(s) · G(s)] = f(t) * g(t) = ∫₀^t f(t-τ)g(τ) dτ"
+        inverse: "L⁻¹[F(s) · G(s)] = f(t) * g(t) = ∫₀^t f(τ)g(t-τ) dτ"
         proof_sketch: |
           L[f*g] = ∫₀^∞ e^{-st}[∫₀^t f(t-τ)g(τ)dτ]dt
           積分順序交換（0≤τ≤t<∞ の領域）
@@ -187,25 +187,25 @@ subsections:
 
     examples:
       - id: 例題5
-        problem: "∫₀^t sin τ · cos(t-τ) dτ を求めよ"
+        problem: "sin t * cos t を求めよ"
         solution:
           steps:
-            - "これは sin t * cos t のたたみこみ"
+            - "定義より sin t * cos t = ∫₀^t sin τ · cos(t-τ) dτ"
             - "積和公式: sin τ·cos(t-τ) = (1/2)[sin(τ+(t-τ)) + sin(τ-(t-τ))]"
             - "                         = (1/2)[sin t + sin(2τ-t)]"
             - "∫₀^t (1/2)[sin t + sin(2τ-t)]dτ"
             - "= (1/2){[sin t · τ]₀^t + [-cos(2τ-t)/2]₀^t}"
             - "= (1/2){t sin t + (-cos t/2 - (-cos(-t)/2))}"
             - "= (1/2){t sin t + 0}  （cos(-t) = cos t より）"
-        result: "∫₀^t sin τ · cos(t-τ) dτ = (t/2) sin t"
+        result: "sin t * cos t = (t/2) sin t"
 
       - id: 例題6
         problem: "f(t) * g(t) = g(t) * f(t) を証明せよ"
         solution:
           steps:
-            - "f(t)*g(t) = ∫₀^t f(t-τ)g(τ)dτ"
+            - "f(t)*g(t) = ∫₀^t f(τ)g(t-τ)dτ"
             - "u = t-τ と置換: dτ = -du, τ=0→u=t, τ=t→u=0"
-            - "= ∫ₜ^0 f(u)g(t-u)(-du) = ∫₀^t g(t-u)f(u)du"
+            - "= ∫ₜ^0 f(t-u)g(u)(-du) = ∫₀^t g(u)f(t-u)du"
             - "= g(t)*f(t)"
 
       - id: 例題7
@@ -232,29 +232,19 @@ subsections:
       - id: 問5
         content: |
           次のたたみこみを求めよ
-          (1) ∫₀^t e^τ sin(t-τ) dτ
-          (2) ∫₀^t τ·cos(t-τ) dτ
+          t² * t
         answer:
           steps:
-            - "(1) e^t * sin t のたたみこみ"
-            - "    L[e^t]·L[sin t] = 1/(s-1)·1/(s²+1) = 1/((s-1)(s²+1))"
-            - "    部分分数: A/(s-1) + (Bs+C)/(s²+1)"
-            - "    A = 1/2;  Bs+C の係数: B = -1/2, C = -1/2"
-            - "    L⁻¹ = (e^t - cos t - sin t)/2"
-            - "(2) t * cos t のたたみこみ"
-            - "    L[t]·L[cos t] = 1/s²·s/(s²+1) = 1/(s(s²+1))"
-            - "    部分分数: A/s + (Bs+C)/(s²+1): A=1, B=-1, C=0"
-            - "    L⁻¹ = 1 - cos t"
-          results:
-            - "(1) (e^t - cos t - sin t)/2"
-            - "(2) 1 - cos t"
+            - "t²*t = ∫₀^t τ²(t-τ) dτ = ∫₀^t (τ²t - τ³) dτ"
+            - "= t·[τ³/3]₀^t - [τ⁴/4]₀^t = t⁴/3 - t⁴/4 = t⁴/12"
+          result: "t² * t = t⁴/12"
 
       - id: 問6
         content: "分配法則 f*(g₁+g₂) = f*g₁ + f*g₂ を証明せよ"
         answer:
           steps:
-            - "定義: f*(g₁+g₂) = ∫₀^t f(t-τ)(g₁(τ)+g₂(τ))dτ"
-            - "積分の線形性より = ∫₀^t f(t-τ)g₁(τ)dτ + ∫₀^t f(t-τ)g₂(τ)dτ"
+            - "定義: f*(g₁+g₂) = ∫₀^t f(τ)(g₁(t-τ)+g₂(t-τ))dτ"
+            - "積分の線形性より = ∫₀^t f(τ)g₁(t-τ)dτ + ∫₀^t f(τ)g₂(t-τ)dτ"
             - "= f*g₁ + f*g₂  （証明終）"
 
       - id: 問7
@@ -392,14 +382,14 @@ subsections:
     exercises:
       - id: 問10
         content: |
-          微分方程式 x'' + ax' + bx = y(t), x(0)=0, x'(0)=0 の
+          微分方程式 y'' + y' - 2y = x(t), y(0)=0, y'(0)=0 の
           伝達関数 H(s) を求めよ
         answer:
           steps:
             - "初期値ゼロで両辺をラプラス変換:"
-            - "(s²+as+b)X(s) = Y(s)"
-            - "H(s) = X(s)/Y(s) = 1/(s²+as+b)"
-          result: "H(s) = 1/(s²+as+b)"
+            - "(s²+s-2)Y(s) = X(s)"
+            - "H(s) = Y(s)/X(s) = 1/(s²+s-2) = 1/((s-1)(s+2))"
+          result: "H(s) = 1/(s²+s-2) = 1/((s-1)(s+2))"
 
       - id: 問11
         content: "f(t)*δ(t) = δ(t)*f(t) = f(t) を、たたみこみの性質を用いて証明せよ"

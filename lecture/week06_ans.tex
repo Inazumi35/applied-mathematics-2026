@@ -21,7 +21,7 @@
 \begin{frame}{定義：たたみこみ（合成積）}
   \begin{block}{}
   \[
-    (f * g)(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
+    (f * g)(t) = \int_{0}^t f(\tau)g(t-\tau) d\tau
   \]
   {\footnotesize \textcolor{gray}{$f(t), g(t)$ はいずれも $t \geq 0$ で定義された関数}}
   \end{block}
@@ -49,51 +49,41 @@
     L[f(t) * g(t)] = L[f(t)] \cdot L[g(t)] = F(s) \cdot G(s)
   \]
   \[
-    L^{-1}[F(s) \cdot G(s)] = f(t) * g(t) = \int_{0}^t f(t-\tau)g(\tau) d\tau
+    L^{-1}[F(s) \cdot G(s)] = f(t) * g(t) = \int_{0}^t f(\tau)g(t-\tau) d\tau
   \]
   \end{block}
 \end{frame}
 
 \begin{frame}{例題5}
   \begin{exampleblock}{問題}
-    $\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau$ を求めよ\\[2pt]
+    $\sin t * \cos t$ を求めよ\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題5　解答}
-  これは $\sin t * \cos t$ のたたみこみ\\[4pt]
+  定義より $\sin t * \cos t = \int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau$\\[4pt]
   積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$\\[4pt]
   $= (1/2)[\sin t + \sin(2\tau-t)]$\\[4pt]
   $\int_{0}^t (1/2)[\sin t + \sin(2\tau-t)]d\tau$\\[4pt]
   $= (1/2)\left\{ [\sin t \cdot \tau]_{0}^t + [-\cos(2\tau-t)/2]_{0}^t \right\}$\\[4pt]
   $= (1/2)\left\{ t\sin t + (-\cos t/2 - (-\cos(-t)/2)) \right\}$\\[4pt]
   $= (1/2)\left\{ t\sin t + 0 \right\}$（$\cos(-t) = \cos t$ より）
-  \\[8pt]\textcolor{red}{\textbf{答}}：$\int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau = (t/2) \sin t$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\sin t * \cos t = (t/2) \sin t$
 \end{frame}
 
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問5] 次のたたみこみを求めよ
-    $(1) \int_{0}^t e^\tau \sin(t-\tau) d\tau$\\
-    $(2) \int_{0}^t \tau\cdot \cos(t-\tau) d\tau$\\
+    \item[問5] 次のたたみこみを求めよ\\
+    $t^{2} * t$\\
   \end{description}
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問5　解答}
-  $(1) e^t * \sin t$ のたたみこみ\\[4pt]
-  $    L[e^t]\cdot L[\sin t] = 1/(s-1)\cdot1/(s^{2}+1) = 1/((s-1)(s^{2}+1))$\\[4pt]
-  部分分数 $: A/(s-1) + (Bs+C)/(s^{2}+1)$\\[4pt]
-  $A = 1/2; Bs+C$ の係数 $: B = -1/2, C = -1/2$\\[4pt]
-  $    L^{-1} = (e^t - \cos t - \sin t)/2$\\[4pt]
-  $(2) t * \cos t$ のたたみこみ\\[4pt]
-  $    L[t]\cdot L[\cos t] = 1/s^{2}\cdot s/(s^{2}+1) = 1/(s(s^{2}+1))$\\[4pt]
-  部分分数 $: A/s + (Bs+C)/(s^{2}+1): A=1, B=-1, C=0$\\[4pt]
-  $    L^{-1} = 1 - \cos t$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) (e^t - \cos t - \sin t)/2$\\
-  $(2) 1 - \cos t$\\
+  $t^{2} * t = \int_{0}^t \tau^{2}(t-\tau) d\tau = \int_{0}^t (\tau^{2}t - \tau^{3}) d\tau$\\[4pt]
+  $= t\cdot[\tau^{3}/3]_{0}^t - [\tau^{4}/4]_{0}^t = t^{4}/3 - t^{4}/4 = t^{4}/12$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$t^{2} * t = t^{4}/12$
 \end{frame}
 
 \begin{frame}{例題6}
@@ -103,9 +93,9 @@
 \end{frame}
 
 \begin{frame}{例題6　解答}
-  $f(t)*g(t) = \int_{0}^t f(t-\tau)g(\tau)d\tau$\\[4pt]
+  $f(t)*g(t) = \int_{0}^t f(\tau)g(t-\tau)d\tau$\\[4pt]
   $u = t-\tau$ と置換 $: d\tau = -du, \tau=0 \to u=t, \tau=t \to u=0$\\[4pt]
-  $= \int_{t}^0 f(u)g(t-u)(-du) = \int_{0}^t g(t-u)f(u)du$\\[4pt]
+  $= \int_{t}^0 f(t-u)g(u)(-du) = \int_{0}^t g(u)f(t-u)du$\\[4pt]
   $= g(t)*f(t)$\hfill$\square$
 \end{frame}
 
@@ -118,9 +108,26 @@
 \end{frame}
 
 \begin{frame}{問6　解答}
-  定義 $: f*(g_{1}+g_{2}) = \int_{0}^t f(t-\tau)(g_{1}(\tau)+g_{2}(\tau))d\tau$\\[4pt]
-  積分の線形性より $= \int_{0}^t f(t-\tau)g_{1}(\tau)d\tau + \int_{0}^t f(t-\tau)g_{2}(\tau)d\tau$\\[4pt]
+  定義 $: f*(g_{1}+g_{2}) = \int_{0}^t f(\tau)(g_{1}(t-\tau)+g_{2}(t-\tau))d\tau$\\[4pt]
+  積分の線形性より $= \int_{0}^t f(\tau)g_{1}(t-\tau)d\tau + \int_{0}^t f(\tau)g_{2}(t-\tau)d\tau$\\[4pt]
   $= f*g_{1} + f*g_{2}$（証明終）
+\end{frame}
+
+\begin{frame}{演習問題}
+  \begin{exampleblock}{自分で解いてみよう}
+  \begin{description}
+    \item[問7] $L[t^{2}*t]$ を求めよ。また、問 5 の結果から直接 $L[t^{2}*t]$ を求めよ
+  \end{description}
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問7　解答}
+  【たたみこみ定理を使う方法】\\[4pt]
+  $L[t^{2}*t] = L[t^{2}]\cdot L[t] = (2/s^{3})\cdot(1/s^{2}) = 2/s^{5}$\\[8pt]
+  【問5の結果から直接求める方法】\\[4pt]
+  問5より $t^{2}*t = t^{4}/12$ であるから\\[4pt]
+  $L[t^{2}*t] = L[t^{4}/12] = (1/12)\cdot4!/s^{5} = 2/s^{5}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^{2}*t] = 2/s^{5}$
 \end{frame}
 
 \begin{frame}{例題7}
@@ -139,7 +146,6 @@
 \begin{frame}{演習問題}
   \begin{exampleblock}{自分で解いてみよう}
   \begin{description}
-    \item[問7] $L[t^{2}*t]$ を求めよ。また、問 5 の結果から直接 $L[t^{2}*t]$ を求めよ
     \item[問8] $L[f(t)] = F(s)$ のとき、次の関数の逆ラプラス変換を求めよ。
     ただし $\alpha, \beta$ は定数で、 (2) では $\alpha \neq \beta$ 、 (3) では $\beta \neq 0$ とする。\\
     $(1) F(s)/(s-\alpha)^{2}$\\
@@ -149,22 +155,13 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問7　解答}
-  【方法1：たたみこみを直接計算】\\[4pt]
-  $t^{2}*t = \int_{0}^t \tau^{2}(t-\tau) d\tau = t\cdot[\tau^{3}/3]_{0}^t - [\tau^{4}/4]_{0}^t = t^{4}/3 - t^{4}/4 = t^{4}/12$\\[4pt]
-  $L[t^{4}/12] = (1/12)\cdot4!/s^{5} = (1/12)\cdot24/s^{5}$\\[4pt]
-  【方法2：問5（たたみこみ定理）を使う】\\[4pt]
-  $L[t^{2}*t] = L[t^{2}]\cdot L[t] = (2/s^{3})\cdot(1/s^{2})$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$L[t^{2}*t] = 2/s^{5}$
-\end{frame}
-
 \begin{frame}{問8　解答}
   $(1) L^{-1}[F(s)\cdot1/(s-\alpha)^{2}]:  L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$\\[4pt]
-  たたみこみ定理より $f(t)*te^{\alpha t} = \int_{0}^t f(t-\tau)\cdot\tau\cdot e^{\alpha\tau}d\tau$\\[4pt]
+  たたみこみ定理より $f(t)*te^{\alpha t} = \int_{0}^t f(\tau)\cdot(t-\tau)\cdot e^{\alpha(t-\tau)}d\tau$\\[4pt]
   $(2) L^{-1}[F(s)\cdot1/((s-\alpha)(s-\beta))]:  L^{-1}[1/((s-\alpha)(s-\beta))] = (e^{\alpha t}-e^{\beta t})/(\alpha-\beta)$\\[4pt]
-  $    = f(t)*(e^{\alpha t}-e^{\beta t})/(\alpha-\beta) = (1/(\alpha-\beta))\int_{0}^t f(t-\tau)(e^{\alpha\tau}-e^{\beta\tau})d\tau$\\[4pt]
+  $    = (1/(\alpha-\beta))\int_{0}^t f(\tau)(e^{\alpha(t-\tau)}-e^{\beta(t-\tau)})d\tau$\\[4pt]
   $(3) L^{-1}[F(s)\cdot1/((s-\alpha)^{2}+\beta^{2})]:  L^{-1}[1/((s-\alpha)^{2}+\beta^{2})] = (1/\beta)e^{\alpha t}\sin(\beta t)$\\[4pt]
-  $    = f(t)*(1/\beta)e^{\alpha t}\sin(\beta t) = (1/\beta)\int_{0}^t f(t-\tau)e^{\alpha\tau}\sin(\beta\tau)d\tau$
+  $    = (1/\beta)\int_{0}^t f(\tau)e^{\alpha(t-\tau)}\sin(\beta(t-\tau))d\tau$
 \end{frame}
 
 \begin{frame}{例題8}
@@ -192,7 +189,7 @@
 \end{frame}
 
 \begin{frame}{問9　解答}
-  $\int_{0}^t x(t-\tau)e^\tau d\tau = x(t)*e^t$ のたたみこみ\\[4pt]
+  $\int_{0}^t e^\tau x(t-\tau) d\tau = e^t * x(t) = x(t)*e^t$ （たたみこみ）\\[4pt]
   両辺をラプラス変換 $: X(s) + X(s)\cdot1/(s-1) = s/(s^{2}+9)$\\[4pt]
   $X(s)(1 + 1/(s-1)) = s/(s^{2}+9)$\\[4pt]
   $X(s)\cdot s/(s-1) = s/(s^{2}+9)$\\[4pt]
