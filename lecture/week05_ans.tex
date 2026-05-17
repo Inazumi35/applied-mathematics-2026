@@ -67,10 +67,10 @@
 \end{frame}
 
 \begin{frame}{問1　解答}
-  (1) ラプラス変換：$sX - 1 = 2X$ \quad $\therefore (s-2)X = 1$\\[4pt]
-  $X = \dfrac{1}{s-2}$ \quad $\therefore x(t) = e^{2t}$\\[6pt]
-  (2) ラプラス変換：$(sX-0) + X = \dfrac{1}{s+1}$ \quad $\therefore (s+1)X = \dfrac{1}{s+1}$\\[4pt]
-  $X = \dfrac{1}{(s+1)^{2}}$\\[4pt]
+  (1) ラプラス変換：$sX(s) - 1 = 2X(s)$ \quad $\therefore (s-2)X(s) = 1$\\[4pt]
+  $X(s) = \dfrac{1}{s-2}$ \quad $\therefore x(t) = e^{2t}$\\[6pt]
+  (2) ラプラス変換：$(sX(s)-0) + X(s) = \dfrac{1}{s+1}$ \quad $\therefore (s+1)X(s) = \dfrac{1}{s+1}$\\[4pt]
+  $X(s) = \dfrac{1}{(s+1)^{2}}$\\[4pt]
   逆変換：$x(t) = te^{-t}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1)\ x(t) = e^{2t}$\\
@@ -104,16 +104,16 @@
 \end{frame}
 
 \begin{frame}{問2　解答 (1)}
-  (1) ラプラス変換：$(s^{2}-5s+6)X = \dfrac{1}{s-1}$ \quad $\therefore X = \dfrac{1}{(s-1)(s-2)(s-3)}$\\[4pt]
+  (1) ラプラス変換：$(s^{2}-5s+6)X(s) = \dfrac{1}{s-1}$ \quad $\therefore X(s) = \dfrac{1}{(s-1)(s-2)(s-3)}$\\[4pt]
   部分分数分解：$s=1$：$A=\dfrac{1}{2}$，\quad $s=2$：$B=-1$，\quad $s=3$：$C=\dfrac{1}{2}$\\[4pt]
-  $X = \dfrac{1/2}{s-1} - \dfrac{1}{s-2} + \dfrac{1/2}{s-3}$\\[4pt]
+  $X(s) = \dfrac{1/2}{s-1} - \dfrac{1}{s-2} + \dfrac{1/2}{s-3}$\\[4pt]
   逆変換：$x(t) = \dfrac{1}{2}e^{t} - e^{2t} + \dfrac{1}{2}e^{3t}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{1}{2}e^{t} - e^{2t} + \dfrac{1}{2}e^{3t}$
 \end{frame}
 
 \begin{frame}{問2　解答 (2)}
-  (2) ラプラス変換：$(s^{2}+4s+5)X = 1$\\[4pt]
-  $X = \dfrac{1}{s^{2}+4s+5} = \dfrac{1}{(s+2)^{2}+1}$\\[4pt]
+  (2) ラプラス変換：$(s^{2}+4s+5)X(s) = 1$\\[4pt]
+  $X(s) = \dfrac{1}{s^{2}+4s+5} = \dfrac{1}{(s+2)^{2}+1}$\\[4pt]
   逆変換：$x(t) = e^{-2t}\sin t$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = e^{-2t}\sin t$
 \end{frame}
@@ -125,8 +125,10 @@
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  $x'(0) = \alpha$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s^{2}-1)X = \alpha$ \quad $\therefore X = \dfrac{\alpha}{(s-1)(s+1)} = \dfrac{\alpha/2}{s-1} - \dfrac{\alpha/2}{s+1}$\\[4pt]
+  $\mathcal{L}[x(t)] = X(s)$ とおく．$x(0)=0,\ x'(0)=\alpha$（未知）\\[4pt]
+  原関数の微分法則：$\mathcal{L}[x''] = s^{2}X(s) - sx(0) - x'(0) = s^{2}X(s) - \alpha$\\[4pt]
+  両辺をラプラス変換：$(s^{2}X(s)-\alpha) - X(s) = 0$\\[4pt]
+  $(s^{2}-1)X(s) = \alpha$ \quad $\therefore X(s) = \dfrac{\alpha}{(s-1)(s+1)} = \dfrac{\alpha/2}{s-1} - \dfrac{\alpha/2}{s+1}$\\[4pt]
   逆変換：$x(t) = \dfrac{\alpha}{2}(e^{t} - e^{-t})$\\[4pt]
   境界条件 $x(1) = 1$ より $\dfrac{\alpha}{2}(e - e^{-1}) = 1$ \quad $\therefore \alpha = \dfrac{2}{e - e^{-1}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = \dfrac{e^{t} - e^{-t}}{e - e^{-1}}$\\[4pt]
@@ -145,7 +147,7 @@
 
 \begin{frame}{問3　解答 (1)}
   (1) $x'(0)=\alpha$（未知）とおく．ラプラス変換：\\[4pt]
-  $s(s+1)X = 2s+\alpha+2$ \quad $\therefore X = \dfrac{\alpha+2}{s} - \dfrac{\alpha}{s+1}$\\[4pt]
+  $s(s+1)X(s) = 2s+\alpha+2$ \quad $\therefore X(s) = \dfrac{\alpha+2}{s} - \dfrac{\alpha}{s+1}$\\[4pt]
   逆変換：$x(t) = (\alpha+2) - \alpha e^{-t}$\\[4pt]
   境界条件 $x(1)=1+e^{-1}$ より $\alpha(1-e^{-1}) = -(1-e^{-1})$ \quad $\therefore \alpha=-1$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = 1 + e^{-t}$
@@ -153,7 +155,7 @@
 
 \begin{frame}{問3　解答 (2)}
   (2) $x'(0)=\alpha$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s^{2}+1)X = \dfrac{1}{s}+\alpha$ \quad $\therefore X = \dfrac{1}{s}-\dfrac{s}{s^{2}+1}+\dfrac{\alpha}{s^{2}+1}$\\[4pt]
+  $(s^{2}+1)X(s) = \dfrac{1}{s}+\alpha$ \quad $\therefore X(s) = \dfrac{1}{s}-\dfrac{s}{s^{2}+1}+\dfrac{\alpha}{s^{2}+1}$\\[4pt]
   逆変換：$x(t) = 1-\cos t+\alpha\sin t$\\[4pt]
   境界条件 $x(\pi/2)=0$ より $1+\alpha=0$ \quad $\therefore \alpha=-1$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = 1-\cos t-\sin t$
@@ -168,9 +170,9 @@
 
 \begin{frame}{例題4　解答 (1/2)}
   $x(0)=\alpha,\ x'(0)=\beta$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s^{2}-4s+4)X = \alpha s+\beta-4\alpha+\dfrac{1}{s-2}$\\[4pt]
-  $(s-2)^{2}X = \alpha(s-2)+(\beta-2\alpha)+\dfrac{1}{s-2}$\\[6pt]
-  $\therefore\quad X = \dfrac{\alpha}{s-2}+\dfrac{\beta-2\alpha}{(s-2)^{2}}+\dfrac{1}{(s-2)^{3}}$
+  $(s^{2}-4s+4)X(s) = \alpha s+\beta-4\alpha+\dfrac{1}{s-2}$\\[4pt]
+  $(s-2)^{2}X(s) = \alpha(s-2)+(\beta-2\alpha)+\dfrac{1}{s-2}$\\[6pt]
+  $\therefore\quad X(s) = \dfrac{\alpha}{s-2}+\dfrac{\beta-2\alpha}{(s-2)^{2}}+\dfrac{1}{(s-2)^{3}}$
 \end{frame}
 
 \begin{frame}{例題4　解答 (2/2)}
@@ -192,17 +194,17 @@
 
 \begin{frame}{問4　解答 (1)}
   (1) $x(0) = \alpha$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s-2)X = \alpha + \dfrac{1}{s-3}$ \quad $\therefore X = \dfrac{\alpha}{s-2} + \dfrac{1}{(s-2)(s-3)}$\\[4pt]
+  $(s-2)X(s) = \alpha + \dfrac{1}{s-3}$ \quad $\therefore X(s) = \dfrac{\alpha}{s-2} + \dfrac{1}{(s-2)(s-3)}$\\[4pt]
   部分分数分解：$\dfrac{1}{(s-2)(s-3)} = \dfrac{-1}{s-2} + \dfrac{1}{s-3}$\\[4pt]
-  $X = \dfrac{\alpha-1}{s-2} + \dfrac{1}{s-3}$，\quad $C = \alpha-1$ を任意定数とする\\[4pt]
+  $X(s) = \dfrac{\alpha-1}{s-2} + \dfrac{1}{s-3}$，\quad $C = \alpha-1$ を任意定数とする\\[4pt]
   逆変換：$x(t) = Ce^{2t} + e^{3t}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = Ce^{2t} + e^{3t}$（$C$ は任意定数）
 \end{frame}
 
 \begin{frame}{問4　解答 (2)}
   (2) $x(0)=\alpha,\ x'(0)=\beta$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s^{2}+4)X = \alpha s + \beta + \dfrac{s}{s^{2}+4}$\\[4pt]
-  $X = \dfrac{\alpha s}{s^{2}+4} + \dfrac{\beta}{s^{2}+4} + \dfrac{s}{(s^{2}+4)^{2}}$\\[4pt]
+  $(s^{2}+4)X(s) = \alpha s + \beta + \dfrac{s}{s^{2}+4}$\\[4pt]
+  $X(s) = \dfrac{\alpha s}{s^{2}+4} + \dfrac{\beta}{s^{2}+4} + \dfrac{s}{(s^{2}+4)^{2}}$\\[4pt]
   $\mathcal{L}^{-1}\!\left[\dfrac{s}{(s^{2}+4)^{2}}\right] = \dfrac{t}{4}\sin 2t$（像関数の微分から導出）\\[4pt]
   $C_{1} = \alpha,\ C_{2} = \beta/2$ を任意定数とする
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = C_{1}\cos 2t + C_{2}\sin 2t + \dfrac{t}{4}\sin 2t$
