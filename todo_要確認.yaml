@@ -23,24 +23,24 @@ items:
   - file: chapter2_section2.yaml
     items:
       - id: 問4（小節1末尾）
-        issue: "スキャン _001.jpg p.64 右列で存在確認済み（欠落ではなかった）。具体的な問題文は原本で要確認"
+        issue: "スキャン p.64 とYAML照合完了。問題文一致: (1) dx/dt-2x=e^{3t}, (2) d²x/dt²+4x=cos2t"
         location: "p.64"
-        status: "存在確認済み"
+        status: "確認済み"
 
       - id: 問8（小節2末尾）
-        issue: "スキャン _002.jpg p.67 右列で存在確認済み（欠落ではなかった）。積分方程式または逆ラプラス変換と推定。具体的内容は要確認"
+        issue: "スキャン p.67 とYAML照合完了。逆ラプラス変換3問: (1)F(s)/(s-α)², (2)F(s)/((s-α)(s-β)), (3)F(s)/((s-α)²+β²)"
         location: "p.67"
-        status: "存在確認済み"
+        status: "確認済み"
 
       - id: 問9（小節2末尾）
-        issue: "スキャン _002.jpg p.67 右列で存在確認済み（欠落ではなかった）。問8と同ページに2問並列。具体的内容は要確認"
+        issue: "スキャン p.67 とYAML照合完了。積分方程式: x(t)+∫₀ᵗx(t-τ)eᵗdτ=cos3t"
         location: "p.67"
-        status: "存在確認済み"
+        status: "確認済み"
 
       - id: 例題9（小節3）
-        issue: "スキャン _003.jpg p.68 で小節3の開始を確認。伝達関数H(s)のYAML内容は妥当と判断。例題番号・問題文は原本で最終確認推奨"
+        issue: "教科書に例題9は存在しない。小節3（伝達関数とデルタ関数）には例題なし。YAMLの examples:[] は正しい"
         location: "pp.68-70"
-        status: "内容推定確認済み"
+        status: "確認済み（存在しない）"
 
       - id: 練習問題2 問1(2)
         issue: "スキャン Scan2026-03-24_122538_002.jpg p.72 より確認: d²x/dt²+4dx/dt+3x=0, x(0)=0, x'(0)=1"
@@ -53,9 +53,9 @@ items:
         status: "確認済み"
 
       - id: 練習問題2 問2
-        issue: "スキャン _005.jpg p.72 で存在確認済み。具体的な内容（連立微分方程式か積分方程式か）は原本で要確認"
+        issue: "スキャン p.72 とYAML照合完了。連立微分方程式: dx/dt=3x-y, dy/dt=x+y, x(0)=0, y(0)=1"
         location: "p.72"
-        status: "存在確認済み"
+        status: "確認済み"
 
   - file: chapter3_section1.yaml
     items:

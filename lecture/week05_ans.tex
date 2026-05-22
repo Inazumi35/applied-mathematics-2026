@@ -153,9 +153,17 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = 1 + e^{-t}$
 \end{frame}
 
-\begin{frame}{問3　解答 (2)}
+\begin{frame}{問3　解答 (2) --- 1/2}
   (2) $x'(0)=\alpha$（未知）とおく．ラプラス変換：\\[4pt]
-  $(s^{2}+1)X(s) = \dfrac{1}{s}+\alpha$ \quad $\therefore X(s) = \dfrac{1}{s}-\dfrac{s}{s^{2}+1}+\dfrac{\alpha}{s^{2}+1}$\\[4pt]
+  $(s^{2}+1)X(s) = \dfrac{1}{s}+\alpha$ \quad $\therefore X(s) = \dfrac{1}{s(s^{2}+1)}+\dfrac{\alpha}{s^{2}+1}$\\[4pt]
+  部分分数分解：$\dfrac{1}{s(s^{2}+1)} = \dfrac{A}{s} + \dfrac{Bs+C}{s^{2}+1}$\\[4pt]
+  通分：$1 = A(s^{2}+1) + (Bs+C)s = (A+B)s^{2} + Cs + A$\\[4pt]
+  定数項：$A=1$，\quad $s$の係数：$C=0$，\quad $s^{2}$の係数：$A+B=0 \Rightarrow B=-1$\\[4pt]
+  $\therefore \dfrac{1}{s(s^{2}+1)} = \dfrac{1}{s} - \dfrac{s}{s^{2}+1}$
+\end{frame}
+
+\begin{frame}{問3　解答 (2) --- 2/2}
+  $X(s) = \dfrac{1}{s}-\dfrac{s}{s^{2}+1}+\dfrac{\alpha}{s^{2}+1}$\\[4pt]
   逆変換：$x(t) = 1-\cos t+\alpha\sin t$\\[4pt]
   境界条件 $x(\pi/2)=0$ より $1+\alpha=0$ \quad $\therefore \alpha=-1$
   \\[8pt]\textcolor{red}{\textbf{答}}：$x(t) = 1-\cos t-\sin t$

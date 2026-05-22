@@ -155,13 +155,41 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問8　解答}
-  $(1) L^{-1}[F(s)\cdot1/(s-\alpha)^{2}]:  L^{-1}[1/(s-\alpha)^{2}] = te^{\alpha t}$\\[4pt]
-  たたみこみ定理より $f(t)*te^{\alpha t} = \int_{0}^t f(\tau)\cdot(t-\tau)\cdot e^{\alpha(t-\tau)}d\tau$\\[4pt]
-  $(2) L^{-1}[F(s)\cdot1/((s-\alpha)(s-\beta))]:  L^{-1}[1/((s-\alpha)(s-\beta))] = (e^{\alpha t}-e^{\beta t})/(\alpha-\beta)$\\[4pt]
-  $    = (1/(\alpha-\beta))\int_{0}^t f(\tau)(e^{\alpha(t-\tau)}-e^{\beta(t-\tau)})d\tau$\\[4pt]
-  $(3) L^{-1}[F(s)\cdot1/((s-\alpha)^{2}+\beta^{2})]:  L^{-1}[1/((s-\alpha)^{2}+\beta^{2})] = (1/\beta)e^{\alpha t}\sin(\beta t)$\\[4pt]
-  $    = (1/\beta)\int_{0}^t f(\tau)e^{\alpha(t-\tau)}\sin(\beta(t-\tau))d\tau$
+\begin{frame}{問8　解答（1）}
+  $F(s)/(s-\alpha)^{2}$ の逆ラプラス変換を求める\\[8pt]
+  $F(s)\cdot\dfrac{1}{(s-\alpha)^{2}}$ と分解する\\[8pt]
+  $L^{-1}\!\left[\dfrac{1}{(s-\alpha)^{2}}\right] = te^{\alpha t}$ であるから、たたみこみ定理より\\[8pt]
+  $L^{-1}\!\left[\dfrac{F(s)}{(s-\alpha)^{2}}\right] = f(t) * te^{\alpha t}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\displaystyle\int_{0}^t f(\tau)\cdot(t-\tau)\cdot e^{\alpha(t-\tau)}d\tau$
+\end{frame}
+
+\begin{frame}{問8　解答（2）}
+  $F(s)/((s-\alpha)(s-\beta))$ の逆ラプラス変換を求める（$\alpha \neq \beta$）\\[8pt]
+  まず $\dfrac{1}{(s-\alpha)(s-\beta)}$ を部分分数分解する\\[8pt]
+  $\dfrac{1}{(s-\alpha)(s-\beta)} = \dfrac{A}{s-\alpha} + \dfrac{B}{s-\beta}$\\[8pt]
+  両辺に $(s-\alpha)(s-\beta)$ を掛けて $: 1 = A(s-\beta) + B(s-\alpha)$\\[4pt]
+  $s = \alpha$ を代入 $: 1 = A(\alpha-\beta) \;\Rightarrow\; A = \dfrac{1}{\alpha-\beta}$\\[4pt]
+  $s = \beta$ を代入 $: 1 = B(\beta-\alpha) \;\Rightarrow\; B = \dfrac{1}{\beta-\alpha} = -\dfrac{1}{\alpha-\beta}$\\[8pt]
+  $\therefore\quad \dfrac{1}{(s-\alpha)(s-\beta)} = \dfrac{1}{\alpha-\beta}\!\left(\dfrac{1}{s-\alpha} - \dfrac{1}{s-\beta}\right)$
+\end{frame}
+
+\begin{frame}{問8　解答（2）つづき}
+  $L^{-1}\!\left[\dfrac{1}{(s-\alpha)(s-\beta)}\right]
+   = \dfrac{1}{\alpha-\beta}\!\left(e^{\alpha t} - e^{\beta t}\right)$\\[8pt]
+  したがって、たたみこみ定理より\\[8pt]
+  $L^{-1}\!\left[\dfrac{F(s)}{(s-\alpha)(s-\beta)}\right]
+   = f(t) * \dfrac{e^{\alpha t} - e^{\beta t}}{\alpha-\beta}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\displaystyle\frac{1}{\alpha-\beta}\int_{0}^t f(\tau)\!\left(e^{\alpha(t-\tau)}-e^{\beta(t-\tau)}\right)d\tau$
+\end{frame}
+
+\begin{frame}{問8　解答（3）}
+  $F(s)/((s-\alpha)^{2}+\beta^{2})$ の逆ラプラス変換を求める（$\beta \neq 0$）\\[8pt]
+  $L^{-1}\!\left[\dfrac{1}{(s-\alpha)^{2}+\beta^{2}}\right]$：移動法則より\\[4pt]
+  $L^{-1}\!\left[\dfrac{\beta}{s^{2}+\beta^{2}}\right] = \sin(\beta t)$ を $s \to s-\alpha$ に移動\\[8pt]
+  $\therefore\quad L^{-1}\!\left[\dfrac{1}{(s-\alpha)^{2}+\beta^{2}}\right] = \dfrac{1}{\beta}e^{\alpha t}\sin(\beta t)$\\[8pt]
+  たたみこみ定理より\\[4pt]
+  $L^{-1}\!\left[\dfrac{F(s)}{(s-\alpha)^{2}+\beta^{2}}\right] = f(t) * \dfrac{1}{\beta}e^{\alpha t}\sin(\beta t)$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\displaystyle\frac{1}{\beta}\int_{0}^t f(\tau)e^{\alpha(t-\tau)}\sin(\beta(t-\tau))d\tau$
 \end{frame}
 
 \begin{frame}{例題8}
