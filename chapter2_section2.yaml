@@ -295,13 +295,13 @@ subsections:
     linear_system:
       description: |
         定数係数線形常微分方程式で記述されるシステム
-        a_n y^{(n)} + … + a_1 y' + a_0 y = b_m x^{(m)} + … + b_0 x
-        初期値はすべてゼロ（y(0) = y'(0) = … = 0）
+        y'' + ay' + by = x(t), y(0) = 0, y'(0) = 0
+        入力 x(t)、出力 y(t)
 
       transfer_function:
         name: 伝達関数
         symbol: H(s)
-        formula: "H(s) = Y(s)/X(s) = (b_m s^m + … + b_0)/(a_n s^n + … + a_0)"
+        formula: "H(s) = Y(s)/X(s) = 1/(s² + as + b)"
         note: "入力 x(t) に対する出力 y(t) の比（ラプラス変換の比）"
 
       impulse_response:
@@ -323,26 +323,24 @@ subsections:
                    { 0    (t < 0 または t ≥ ε) }
         description: "極めて短時間に働く撃力やインパルス電圧などを表す近似関数"
 
-      definition: "δ(t) = lim_{ε→0} φ_ε(t)"
+      definition: "δ(t) = lim_{ε→+0} φ_ε(t)"
 
       derivation:
         steps:
           - "入力 φ_ε(t) に対する出力: y_ε(t) = ∫₀^t h(t-τ)φ_ε(τ)dτ = (1/ε)∫₀^ε h(t-τ)dτ  (t > ε)"
           - "u = t-τ と置換: = (1/ε)∫_{t-ε}^t h(u)du"
           - "積分の平均値の定理より: = h(c)  (t-ε < c < t)"
-          - "ε → 0 とすると: lim y_ε(t) = h(t)"
+          - "ε → +0 とすると: lim y_ε(t) = h(t)"
         conclusion: "δ(t) 入力に対する出力はインパルス応答 h(t) そのものである"
 
       properties:
         - "δ(t) = 0  (t ≠ 0)"
-        - "∫₋∞^∞ δ(t) dt = 1"
-        - "∫₋∞^∞ f(t)δ(t) dt = f(0)  （サンプリング性質）"
-        - "f(t) * δ(t) = f(t)  （たたみこみの単位元）"
+        - "∫₀^∞ δ(t) dt = 1"
 
       laplace_transform:
         formula: "L[δ(t)] = 1"
         derivation: |
-          lim_{ε→0} L[φ_ε(t)] = lim_{ε→0} (1 - e^{-εs})/(εs) = 1
+          lim_{ε→+0} L[φ_ε(t)] = lim_{ε→+0} (1 - e^{-εs})/(εs) = 1
           （ロピタルの定理により）
 
       note: "δ(t) は通常の関数ではなく「超関数」として数学的に正当化される"
