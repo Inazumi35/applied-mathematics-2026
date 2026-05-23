@@ -14,3 +14,4 @@ lecture/*_main.pdf
 *.snm
 # スキャン画像（大容量）
 scan_pages/
+exam/
