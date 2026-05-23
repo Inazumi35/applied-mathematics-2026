@@ -416,12 +416,12 @@ practice_problems:
         (1) d²x/dt² + 25x = 25t  （t=0 のとき x=0, dx/dt=0）
         (2) d³x/dt³ + 3d²x/dt² + 3dx/dt + x = 0  （t=0 のとき x=0, dx/dt=1, d²x/dt²=-2）
         (3) d²x/dt² + 4x = 1,  x(0) = 0,  x(π/4) = 0  （境界値問題）
-        (4) d²x/dt² + x = 2sin 2t  （x(0)=0, x'(0)=0）
+        (4) d²x/dt² + x = 2sin 2t（一般解）
       results:
         "(1)": "x(t) = t - (1/5)sin 5t"
         "(2)": "x(t) = t e^{-t}"
         "(3)": "x(t) = (1/4)(1 - cos 2t - sin 2t)"
-        "(4)": "x(t) = (4/3)sin t - (2/3)sin 2t"
+        "(4)": "x(t) = C₁cos t + C₂sin t - (2/3)sin 2t"
     - id: 2
       content: |
         次の関係を同時に満たす関数 x(t), y(t) を求めよ
