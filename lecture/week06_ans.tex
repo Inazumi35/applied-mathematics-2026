@@ -60,6 +60,30 @@
   \end{exampleblock}
 \end{frame}
 
+\begin{frame}{補足：積和公式}
+  \begin{block}{公式}
+  \[
+    \sin A \cos B = \frac{1}{2}[\sin(A+B) + \sin(A-B)]
+  \]
+  \end{block}
+  \textbf{導出}：加法定理より
+  \begin{align*}
+    \sin(A+B) &= \sin A \cos B + \cos A \sin B \\
+    \sin(A-B) &= \sin A \cos B - \cos A \sin B
+  \end{align*}
+  辺々足すと $\cos A \sin B$ が消えて
+  \[
+    \sin(A+B) + \sin(A-B) = 2\sin A \cos B
+  \]
+  \textbf{例題5への適用}：$A=\tau,\; B=t-\tau$ とおくと
+  \[
+    A+B = t,\quad A-B = 2\tau - t
+  \]
+  \[
+    \therefore\quad \sin\tau\cos(t-\tau) = \tfrac{1}{2}[\sin t + \sin(2\tau-t)]
+  \]
+\end{frame}
+
 \begin{frame}{例題5　解答}
   定義より $\sin t * \cos t = \int_{0}^t \sin \tau \cdot \cos(t-\tau) d\tau$\\[4pt]
   積和公式 $: \sin \tau\cdot \cos(t-\tau) = (1/2)[\sin(\tau+(t-\tau)) + \sin(\tau-(t-\tau))]$\\[4pt]
@@ -90,6 +114,26 @@
   \begin{exampleblock}{問題}
     $f(t) * g(t) = g(t) * f(t)$ を証明せよ\\[2pt]
   \end{exampleblock}
+\end{frame}
+
+\begin{frame}{補足：置換積分の積分限界}
+  $u = t - \tau$ と置換するときの変数変化を確認する。\\[6pt]
+  \begin{block}{置換のルール}
+  \begin{tabular}{ll}
+    微分 & $u = t-\tau \;\Rightarrow\; du = -d\tau$ \\[4pt]
+    限界 & $\tau = 0 \;\Rightarrow\; u = t$ \\
+         & $\tau = t \;\Rightarrow\; u = 0$
+  \end{tabular}
+  \end{block}
+  \vspace{4pt}
+  よって積分は
+  \[
+    \int_{\tau=0}^{\tau=t} (\cdots)\,d\tau
+    = \int_{u=t}^{u=0} (\cdots)(-du)
+    = \int_{0}^{t} (\cdots)\,du
+  \]
+  \textbf{ポイント}：$-du$ の符号と限界の逆転が打ち消し合い、\\
+  結果として符号が変わらない。
 \end{frame}
 
 \begin{frame}{例題6　解答}
@@ -182,6 +226,26 @@
   \\[8pt]\textcolor{red}{\textbf{答}}：$\displaystyle\frac{1}{\alpha-\beta}\int_{0}^t f(\tau)\!\left(e^{\alpha(t-\tau)}-e^{\beta(t-\tau)}\right)d\tau$
 \end{frame}
 
+\begin{frame}{補足：移動法則（第一移動定理）}
+  \begin{block}{定理}
+  \[
+    L\bigl[e^{at}f(t)\bigr] = F(s-a), \quad
+    L^{-1}\bigl[F(s-a)\bigr] = e^{at}f(t)
+  \]
+  \end{block}
+  \textbf{使い方}：$s$ を $s-\alpha$ に置き換えると、逆変換に $e^{\alpha t}$ が掛かる。\\[6pt]
+  \textbf{問8(3)での適用}：\\[4pt]
+  $L^{-1}\!\left[\dfrac{\beta}{s^{2}+\beta^{2}}\right] = \sin(\beta t)$ は既知。\\[8pt]
+  $s \to s-\alpha$ に移動すると
+  \[
+    L^{-1}\!\left[\frac{\beta}{(s-\alpha)^{2}+\beta^{2}}\right] = e^{\alpha t}\sin(\beta t)
+  \]
+  両辺を $\beta$ で割ると
+  \[
+    L^{-1}\!\left[\frac{1}{(s-\alpha)^{2}+\beta^{2}}\right] = \frac{1}{\beta}e^{\alpha t}\sin(\beta t)
+  \]
+\end{frame}
+
 \begin{frame}{問8　解答（3）}
   $F(s)/((s-\alpha)^{2}+\beta^{2})$ の逆ラプラス変換を求める（$\beta \neq 0$）\\[8pt]
   $L^{-1}\!\left[\dfrac{1}{(s-\alpha)^{2}+\beta^{2}}\right]$：移動法則より\\[4pt]
@@ -196,6 +260,27 @@
   \begin{exampleblock}{問題}
     $\int_{0}^t x(\tau) \sin(t-\tau) d\tau = t^{2}$ を満たす関数 $x(t)$ を求めよ（積分方程式）\\[2pt]
   \end{exampleblock}
+\end{frame}
+
+\begin{frame}{補足：積分方程式でたたみこみを見抜く}
+  \begin{block}{たたみこみの形}
+  \[
+    \int_{0}^{t} f(\tau)\,g(t-\tau)\,d\tau = f(t) * g(t)
+  \]
+  \end{block}
+  \textbf{チェックポイント}：被積分関数が $(\tau\text{の関数})\times(t-\tau\text{の関数})$ の積になっているか。\\[8pt]
+  \textbf{例題8の場合}
+  \[
+    \int_{0}^{t} x(\tau)\sin(t-\tau)\,d\tau
+  \]
+  \begin{itemize}
+    \item $f(\tau) = x(\tau)$（求めたい関数）
+    \item $g(t-\tau) = \sin(t-\tau)$
+  \end{itemize}
+  \[
+    \therefore\quad \int_{0}^{t} x(\tau)\sin(t-\tau)\,d\tau = x(t)*\sin t
+  \]
+  両辺をラプラス変換すると $X(s)\cdot L[\sin t]$ と分離できる。
 \end{frame}
 
 \begin{frame}{例題8　解答}
