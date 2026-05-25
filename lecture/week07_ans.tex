@@ -49,6 +49,19 @@
   \end{exampleblock}
 \end{frame}
 
+\begin{frame}{補足：部分分数分解（問10）}
+  $\dfrac{1}{(s-1)(s+2)} = \dfrac{A}{s-1} + \dfrac{B}{s+2}$ とおく\\[8pt]
+  両辺に $(s-1)(s+2)$ を掛けて
+  \[
+    1 = A(s+2) + B(s-1)
+  \]
+  $s=1$ を代入：$1 = 3A \;\Rightarrow\; A = \dfrac{1}{3}$\\[6pt]
+  $s=-2$ を代入：$1 = -3B \;\Rightarrow\; B = -\dfrac{1}{3}$\\[8pt]
+  \[
+    \therefore\quad \frac{1}{(s-1)(s+2)} = \frac{1}{3}\cdot\frac{1}{s-1} - \frac{1}{3}\cdot\frac{1}{s+2}
+  \]
+\end{frame}
+
 \begin{frame}{問10　解答}
   初期値ゼロで両辺をラプラス変換:\\[4pt]
   $(s^{2}+s-2)Y(s) = X(s)$\\[4pt]
@@ -92,6 +105,38 @@
   $\varepsilon \to +0$ でロピタルの定理より $\to 1$
 \end{frame}
 
+\begin{frame}{補足：ロピタルの定理の適用}
+  $L[\varphi_\varepsilon(t)] = \dfrac{1-e^{-\varepsilon s}}{\varepsilon s}$ の $\varepsilon\to+0$ の極限を求める。\\[8pt]
+  $\varepsilon=0$ を代入すると分子・分母ともに $0$ → $\boldsymbol{0/0}$ 型\\[8pt]
+  \begin{block}{ロピタルの定理}
+    分子・分母をそれぞれ $\varepsilon$ で微分して極限をとる
+  \end{block}
+  \vspace{4pt}
+  分子 $\dfrac{d}{d\varepsilon}(1-e^{-\varepsilon s}) = se^{-\varepsilon s}$\\[6pt]
+  分母 $\dfrac{d}{d\varepsilon}(\varepsilon s) = s$\\[8pt]
+  \[
+    \lim_{\varepsilon\to+0}\frac{1-e^{-\varepsilon s}}{\varepsilon s}
+    = \lim_{\varepsilon\to+0}\frac{se^{-\varepsilon s}}{s}
+    = e^{0} = 1
+  \]
+\end{frame}
+
+\begin{frame}{補足：積分の平均値の定理}
+  \begin{block}{定理}
+    $h(u)$ が連続なとき、ある $c\in(t-\varepsilon,\, t)$ が存在して
+    \[
+      \frac{1}{\varepsilon}\int_{t-\varepsilon}^{t} h(u)\,du = h(c)
+    \]
+  \end{block}
+  \vspace{4pt}
+  \textbf{直感}：区間 $[t-\varepsilon, t]$ 上の $h$ の「平均値」はどこかの点での値に等しい。\\[8pt]
+  $\varepsilon\to+0$ とすると区間が縮まり $c\to t$、連続性より
+  \[
+    h(c) \to h(t)
+  \]
+  \textbf{ポイント}：$h$ が連続であることが前提。インパルス応答 $h(t)$ はなめらかな関数なので適用できる。
+\end{frame}
+
 \begin{frame}{デルタ入力とインパルス応答}
   入力 $\varphi_\varepsilon(t)$ に対する出力：\\[4pt]
   $y_\varepsilon(t) = \int_0^t \varphi_\varepsilon(\tau)\, h(t-\tau)\, d\tau = (1/\varepsilon)\int_0^\varepsilon h(t-\tau)\, d\tau \quad (t > \varepsilon)$\\[4pt]
@@ -118,6 +163,22 @@
     $y'' + \omega^{2}y = \delta(t),  y(0) = 0,  y'(0) = 0$\\
   \end{description}
   \end{exampleblock}
+\end{frame}
+
+\begin{frame}{補足：$\delta(\tau)$ が $\tau=0$ を「選び出す」理由}
+  デルタ関数の性質：
+  \begin{itemize}
+    \item $\delta(\tau) = 0 \quad (\tau \neq 0)$
+    \item $\displaystyle\int_{0}^{\infty} \delta(\tau)\,d\tau = 1$
+  \end{itemize}
+  \vspace{6pt}
+  これを使うと $\tau\neq 0$ では $\delta(\tau)=0$ なので被積分関数は $\tau=0$ の近傍だけに寄与する。\\[6pt]
+  $f(t-\tau)$ は $\tau=0$ の近傍では $f(t-0)=f(t)$ とみなせるから
+  \[
+    \int_{0}^{t} \delta(\tau)\,f(t-\tau)\,d\tau
+    = f(t)\int_{0}^{t} \delta(\tau)\,d\tau = f(t)\cdot 1 = f(t)
+  \]
+  \textbf{まとめ}：$\delta(\tau)$ との積分は $\tau=0$ の値だけを取り出す。
 \end{frame}
 
 \begin{frame}{問11　解答}
