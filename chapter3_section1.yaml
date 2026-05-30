@@ -13,33 +13,32 @@ subsections:
     definition:
       name: フーリエ展開（周期 2π）
       condition: |
-        f(t) が周期 2π の区分的に滑らかな関数であるとき、
+        f(x) が周期 2π の区分的に滑らかな関数であるとき、
         次の無限級数に展開できる（フーリエ展開という）
-      formula: "f(t) = a₀/2 + Σ_{n=1}^∞ (aₙcos(nt) + bₙsin(nt))"
+      formula: "f(x) = c₀ + Σ_{n=1}^∞ (aₙcos(nx) + bₙsin(nx))"
 
     fourier_coefficients:
       name: フーリエ係数
       formulas:
-        - "a₀ = (1/π) ∫_{-π}^{π} f(t) dt"
-        - "aₙ = (1/π) ∫_{-π}^{π} f(t)cos(nt) dt  (n = 1, 2, 3, ...)"
-        - "bₙ = (1/π) ∫_{-π}^{π} f(t)sin(nt) dt  (n = 1, 2, 3, ...)"
+        - "c₀ = (1/2π) ∫_{-π}^{π} f(x) dx"
+        - "aₙ = (1/π) ∫_{-π}^{π} f(x)cos(nx) dx  (n = 1, 2, 3, ...)"
+        - "bₙ = (1/π) ∫_{-π}^{π} f(x)sin(nx) dx  (n = 1, 2, 3, ...)"
       derivation: "三角関数の直交性を利用して導出"
 
     orthogonality:
       title: 三角関数の直交性
       formulas:
-        - "∫_{-π}^{π} cos(mt)cos(nt) dt = { 0 (m ≠ n), π (m = n ≠ 0), 2π (m = n = 0) }"
-        - "∫_{-π}^{π} sin(mt)sin(nt) dt = { 0 (m ≠ n), π (m = n) }"
-        - "∫_{-π}^{π} cos(mt)sin(nt) dt = 0  （任意の m, n）"
+        - "∫_{-π}^{π} cos(mx)cos(nx) dx = { 0 (m ≠ n), π (m = n) }"
+        - "∫_{-π}^{π} sin(mx)sin(nx) dx = { 0 (m ≠ n), π (m = n) }"
+        - "∫_{-π}^{π} cos(mx)sin(nx) dx = 0  （任意の m, n）"
 
     convergence_theorem:
       title: フーリエ展開の収束定理
       conditions:
-        - "f(t) は任意の有限区間で区分的に滑らか"
-        - "1周期内で区分的に連続"
+        - "f(x) は周期 2π で1周期内において区分的に滑らか"
       results:
-        - "連続点 t₀ では: フーリエ級数 → f(t₀)"
-        - "不連続点 t₀ では: フーリエ級数 → (1/2)[f(t₀+0) + f(t₀-0)]"
+        - "連続点 x₀ では: フーリエ級数 → f(x₀)"
+        - "不連続点 x₀ では: フーリエ級数 → (1/2)[f(x₀+0) + f(x₀-0)]"
       note: "グラフの N = 10, 20, 50 での収束の様子（p.79）参照"
 
     examples:
@@ -54,32 +53,6 @@ subsections:
             - "aₙ = (1/π)∫₀^π x cos(nx) dx = -(1/n²π)(1-(-1)^n)"
             - "bₙ = (1/π)∫₀^π x sin(nx) dx = (-1)^{n+1}/n"
         result: "f(x) = π/4 + Σ_{n=1}^∞ [-(1/n²π)(1-(-1)^n)cos(nx) + (-1)^{n+1}/n · sin(nx)] = π/4 + (-2/π · cos x + sin x) - (1/2)sin 2x + …"
-
-      - id: 例題2
-        page: "80-81"
-        problem: |
-          f(x) = { 0  (-1 ≤ x < 0),  1  (0 ≤ x < 1) },  f(x+2) = f(x) のフーリエ展開を求めよ
-        solution:
-          steps:
-            - "c₀ = (1/2)∫_{-1}^{1} f(x)dx = (1/2)∫₀^{1} 1 dx = 1/2"
-            - "aₙ = ∫_{-1}^{1} f(x)cos(nπx) dx = ∫₀^1 cos(nπx) dx = 0"
-            - "bₙ = ∫_{-1}^{1} f(x)sin(nπx) dx = ∫₀^1 sin(nπx) dx = (1/nπ)(1 - (-1)^n)"
-        result: "f(x) = 1/2 + Σ_{n=1}^∞ (1/nπ)(1-(-1)^n) sin(nπx) = 1/2 + (2/π)(sin πx + sin(3πx)/3 + sin(5πx)/5 + …)"
-        note: "N=20, N=50 での部分和グラフ（ギブス現象）を p.81 に掲載"
-
-      - id: 例題3
-        page: "80"
-        problem: |
-          f(t) = |t|  (-π ≤ t ≤ π),  f(t+2π) = f(t) のフーリエ展開を求めよ
-        solution:
-          steps:
-            - "f(t) は偶関数なので bₙ = 0"
-            - "a₀ = (2/π) ∫₀^{π} t dt = π"
-            - "aₙ = (2/π) ∫₀^{π} t cos(nt) dt"
-            - "部分積分: = (2/π){[t sin(nt)/n]₀^π - (1/n)∫₀^π sin(nt) dt}"
-            - "= (2/π) · (1/n²)[cos(nπ) - 1] = (2/n²π)[(-1)^n - 1]"
-            - "n が奇数のとき aₙ = -4/n²π,  n が偶数のとき aₙ = 0"
-        result: "f(t) = π/2 - (4/π)(cos t + cos(3t)/9 + cos(5t)/25 + …)"
 
 
   - id: 2
@@ -107,6 +80,18 @@ subsections:
         formula: "f(t) = Σ_{n=1}^∞ bₙsin(nπt/l)"
 
     examples:
+
+      - id: 例題2
+        page: "80-81"
+        problem: |
+          f(x) = { 0  (-1 ≤ x < 0),  1  (0 ≤ x < 1) },  f(x+2) = f(x) のフーリエ展開を求めよ
+        solution:
+          steps:
+            - "c₀ = (1/2)∫_{-1}^{1} f(x)dx = (1/2)∫₀^{1} 1 dx = 1/2"
+            - "aₙ = ∫_{-1}^{1} f(x)cos(nπx) dx = ∫₀^1 cos(nπx) dx = 0"
+            - "bₙ = ∫_{-1}^{1} f(x)sin(nπx) dx = ∫₀^1 sin(nπx) dx = (1/nπ)(1 - (-1)^n)"
+        result: "f(x) = 1/2 + Σ_{n=1}^∞ (1/nπ)(1-(-1)^n) sin(nπx) = 1/2 + (2/π)(sin πx + sin(3πx)/3 + sin(5πx)/5 + …)"
+        note: "N=20, N=50 での部分和グラフ（ギブス現象）を p.81 に掲載"
 
       - id: 例題3
         page: "83"
