@@ -64,6 +64,21 @@
   $\int_{-\pi}^{\pi}\cos^{2}(nx)\,dx = \frac{1}{2}\cdot 2\pi = \pi$
 \end{frame}
 
+\begin{frame}{直交性の証明（$\sin\cdot\sin$）}
+  積和公式：$\sin(mx)\sin(nx) = \frac{1}{2}[\cos((m-n)x) - \cos((m+n)x)]$\\[4pt]
+  $m \neq n$ のとき：各項 $\int_{-\pi}^{\pi}\cos(kx)\,dx = \left[\frac{\sin(kx)}{k}\right]_{-\pi}^{\pi} = 0$\\[4pt]
+  $m = n$ のとき：$\sin^{2}(nx) = \frac{1}{2}(1-\cos(2nx))$\\[4pt]
+  $\int_{-\pi}^{\pi}\sin^{2}(nx)\,dx = \frac{1}{2}\cdot 2\pi = \pi$
+\end{frame}
+
+\begin{frame}{直交性の証明（$\cos\cdot\sin$）}
+  積和公式：$\cos(mx)\sin(nx) = \frac{1}{2}[\sin((m+n)x) + \sin((m-n)x)]$\\[4pt]
+  任意の整数 $k$ に対して $\int_{-\pi}^{\pi}\sin(kx)\,dx = \left[-\frac{\cos(kx)}{k}\right]_{-\pi}^{\pi} = 0$\\[4pt]
+  $m = n$ のときも：$\cos(nx)\sin(nx) = \frac{1}{2}\sin(2nx)$\\[4pt]
+  $\int_{-\pi}^{\pi}\frac{1}{2}\sin(2nx)\,dx = 0$\\[6pt]
+  よって任意の $m,\,n$ に対して $\int_{-\pi}^{\pi}\cos(mx)\sin(nx)\,dx = 0$
+\end{frame}
+
 \begin{frame}{定理：フーリエ展開の収束定理}
   \begin{block}{}
   \textbf{条件}：$f(x)$ は周期 $2\pi$ で 1 周期内において区分的に滑らか\\[6pt]
@@ -105,7 +120,7 @@
   \begin{align*}
     a_{n} &= \frac{1}{\pi}\int_{0}^{\pi} x\cos(nx)\,dx \\[4pt]
     &= \frac{1}{\pi}\left\{\left[\frac{x\sin(nx)}{n}\right]_{0}^{\pi} - \frac{1}{n}\int_{0}^{\pi}\sin(nx)\,dx\right\} \\[4pt]
-    &= \frac{1}{\pi}\left\{0 + \frac{1}{n}\left[\frac{\cos(nx)}{n}\right]_{0}^{\pi}\right\} \\[4pt]
+    &= \frac{1}{\pi}\left\{\underbrace{\frac{\pi\sin(n\pi)}{n}}_{=\,0\;(\because\,\sin(n\pi)=0)} + \frac{1}{n}\left[\frac{\cos(nx)}{n}\right]_{0}^{\pi}\right\} \\[4pt]
     &= \frac{1}{n^{2}\pi}(\cos(n\pi) - 1)
      = \frac{(-1)^{n} - 1}{n^{2}\pi}
   \end{align*}
@@ -115,7 +130,7 @@
   \begin{align*}
     b_{n} &= \frac{1}{\pi}\int_{0}^{\pi} x\sin(nx)\,dx \\[4pt]
     &= \frac{1}{\pi}\left\{\left[-\frac{x\cos(nx)}{n}\right]_{0}^{\pi} + \frac{1}{n}\int_{0}^{\pi}\cos(nx)\,dx\right\} \\[4pt]
-    &= \frac{1}{\pi}\left\{-\frac{\pi\cos(n\pi)}{n} + 0\right\}
+    &= \frac{1}{\pi}\left\{-\frac{\pi\cos(n\pi)}{n} + \underbrace{\frac{1}{n}\left[\frac{\sin(nx)}{n}\right]_{0}^{\pi}}_{=\,0\;(\because\,\sin(n\pi)=0)}\right\}
      = \frac{-(-1)^{n}}{n}
      = \frac{(-1)^{n+1}}{n}
   \end{align*}
