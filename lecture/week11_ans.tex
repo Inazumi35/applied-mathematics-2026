@@ -18,21 +18,21 @@
   \vfill\hfill{\scriptsize \textcolor{gray}{第3章 フーリエ解析　§1}}
 \end{frame}
 
-\begin{frame}{定義：複素フーリエ展開（周期 $2\pi$）}
+\begin{frame}{定義：複素フーリエ級数（周期 $2\pi$）}
   \begin{block}{}
   \[
-    f(t) = \sum_{n=-\infty}^{\infty} c_{n} e^{int}, \quad
-    c_{n} = (1/2\pi) \int_{-\pi}^{\pi} f(t) e^{-int} dt
+    f(x) = \sum_{n=-\infty}^{\infty} c_{n} e^{inx}, \quad
+    c_{n} = (1/2\pi) \int_{-\pi}^{\pi} f(x) e^{-inx} dx
   \]
-  {\footnotesize \textcolor{gray}{オイラーの公式 $e^{int} = \cos(nt) + i \sin(nt)$ を利用}}
+  {\footnotesize \textcolor{gray}{オイラーの公式 $e^{inx} = \cos(nx) + i \sin(nx)$ を利用}}
   \end{block}
 \end{frame}
 
-\begin{frame}{一般周期関数の複素フーリエ展開（周期 $2l$）}
+\begin{frame}{一般周期関数の複素フーリエ級数（周期 $2l$）}
   \begin{block}{}
   \[
-    f(t) = \sum_{n=-\infty}^{\infty} c_{n} e^{in\pi t/l}, \quad
-    c_{n} = (1/2l) \int_{-l}^{l} f(t) e^{-in\pi t/l} dt
+    f(x) = \sum_{n=-\infty}^{\infty} c_{n} e^{in\pi x/l}, \quad
+    c_{n} = (1/2l) \int_{-l}^{l} f(x) e^{-in\pi x/l} dx
   \]
   \end{block}
 \end{frame}

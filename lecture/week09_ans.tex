@@ -18,40 +18,40 @@
   \vfill\hfill{\scriptsize \textcolor{gray}{第3章 フーリエ解析　§1}}
 \end{frame}
 
-\begin{frame}{定義：フーリエ展開（周期 T = 2l）}
+\begin{frame}{定義：フーリエ級数（周期 T = 2l）}
   \begin{block}{}
   \[
-    f(t) = c_{0} + \sum_{n=1}^\infty \left(a_{n}\cos\frac{n\pi t}{l} + b_{n}\sin\frac{n\pi t}{l}\right)
+    f(x) = c_{0} + \sum_{n=1}^\infty \left(a_{n}\cos\frac{n\pi x}{l} + b_{n}\sin\frac{n\pi x}{l}\right)
   \]
   \medskip\textbf{フーリエ係数}：
   \begin{align*}
-    c_{0} &= \frac{1}{2l} \int_{-l}^{l} f(t)\,dt \\[4pt]
-    a_{n} &= \frac{1}{l} \int_{-l}^{l} f(t)\cos\frac{n\pi t}{l}\,dt \quad(n=1,2,\ldots) \\[4pt]
-    b_{n} &= \frac{1}{l} \int_{-l}^{l} f(t)\sin\frac{n\pi t}{l}\,dt \quad(n=1,2,\ldots)
+    c_{0} &= \frac{1}{2l} \int_{-l}^{l} f(x)\,dx \\[4pt]
+    a_{n} &= \frac{1}{l} \int_{-l}^{l} f(x)\cos\frac{n\pi x}{l}\,dx \quad(n=1,2,\ldots) \\[4pt]
+    b_{n} &= \frac{1}{l} \int_{-l}^{l} f(x)\sin\frac{n\pi x}{l}\,dx \quad(n=1,2,\ldots)
   \end{align*}
   \end{block}
 \end{frame}
 
-\begin{frame}{フーリエ余弦展開・フーリエ正弦展開}
-  \begin{block}{偶関数 $f(-t)=f(t)$ のとき（フーリエ余弦展開）}
+\begin{frame}{フーリエ余弦級数・フーリエ正弦級数}
+  \begin{block}{偶関数 $f(-x)=f(x)$ のとき（フーリエ余弦級数）}
     $b_{n}=0$ なので
     \[
-      f(t) = c_{0} + \sum_{n=1}^{\infty} a_{n}\cos\frac{n\pi t}{l},\quad
-      a_{n} = \frac{2}{l}\int_{0}^{l} f(t)\cos\frac{n\pi t}{l}\,dt
+      f(x) = c_{0} + \sum_{n=1}^{\infty} a_{n}\cos\frac{n\pi x}{l},\quad
+      a_{n} = \frac{2}{l}\int_{0}^{l} f(x)\cos\frac{n\pi x}{l}\,dx
     \]
   \end{block}
-  \begin{block}{奇関数 $f(-t)=-f(t)$ のとき（フーリエ正弦展開）}
+  \begin{block}{奇関数 $f(-x)=-f(x)$ のとき（フーリエ正弦級数）}
     $c_{0}=0,\;a_{n}=0$ なので
     \[
-      f(t) = \sum_{n=1}^{\infty} b_{n}\sin\frac{n\pi t}{l},\quad
-      b_{n} = \frac{2}{l}\int_{0}^{l} f(t)\sin\frac{n\pi t}{l}\,dt
+      f(x) = \sum_{n=1}^{\infty} b_{n}\sin\frac{n\pi x}{l},\quad
+      b_{n} = \frac{2}{l}\int_{0}^{l} f(x)\sin\frac{n\pi x}{l}\,dx
     \]
   \end{block}
 \end{frame}
 
 \begin{frame}{例題2　（p.\,80--81）}
   \begin{exampleblock}{問題}
-    $f(x) = \begin{cases} 0 & (-1 \leq x < 0) \\ 1 & (0 \leq x < 1) \end{cases},\; f(x+2) = f(x)$ のフーリエ展開を求めよ\\[2pt]
+    $f(x) = \begin{cases} 0 & (-1 \leq x < 0) \\ 1 & (0 \leq x < 1) \end{cases},\; f(x+2) = f(x)$ のフーリエ級数を求めよ\\[2pt]
   \end{exampleblock}
 \end{frame}
 
@@ -65,12 +65,12 @@
 
 \begin{frame}{例題3　（p.\,83）}
   \begin{exampleblock}{問題}
-    $f(x) = |x| (-1 \leq x < 1), f(x+2) = f(x)$ のフーリエ展開を求めよ\\[2pt]
+    $f(x) = |x| (-1 \leq x < 1), f(x+2) = f(x)$ のフーリエ級数を求めよ\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  $f(x)$ は偶関数なので $b_{n} = 0$．フーリエ余弦展開を求めればよい．\\[4pt]
+  $f(x)$ は偶関数なので $b_{n} = 0$．フーリエ余弦級数を求めればよい．\\[4pt]
   $c_{0} = \dfrac{1}{2}\displaystyle\int_{-1}^{1} |x|\,dx = \dfrac{1}{2}$\\[6pt]
   $a_{n} = 2\displaystyle\int_{0}^{1} x \cos(n\pi x)\,dx = -\dfrac{2(1-(-1)^n)}{n^{2}\pi^{2}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = \dfrac{1}{2} - \dfrac{4}{\pi^{2}}\!\left(\cos \pi x + \dfrac{\cos 3\pi x}{9} + \dfrac{\cos 5\pi x}{25} + \cdots\right)$

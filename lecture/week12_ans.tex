@@ -20,15 +20,15 @@
 
 \begin{frame}{定義：フーリエ変換}
   \begin{block}{}
-  \medskip\textbf{フーリエ変換}　$\bigl(F(\omega) = F[f(t)]\bigr)$：
+  \medskip\textbf{フーリエ変換}　$\bigl(F(u) = F[f(x)]\bigr)$：
   \[
-    F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt
+    F(u) = \int_{-\infty}^{\infty} f(x) e^{-iux} dx
   \]
-  \medskip\textbf{逆フーリエ変換}　$\bigl(f(t) = F^{-1}[F(\omega)]\bigr)$：
+  \medskip\textbf{逆フーリエ変換}　$\bigl(f(x) = F^{-1}[F(u)]\bigr)$：
   \[
-    f(t) = (1/2\pi) \int_{-\infty}^{\infty} F(\omega) e^{i\omega t} d\omega
+    f(x) = (1/2\pi) \int_{-\infty}^{\infty} F(u) e^{iux} du
   \]
-  {\footnotesize \textcolor{gray}{$F(\omega)$ を $f(t)$ のフーリエ変換、 $f(t)$ を $F(\omega)$ の逆フーリエ変換という}}
+  {\footnotesize \textcolor{gray}{$F(u)$ を $f(x)$ のフーリエ変換、 $f(x)$ を $F(u)$ の逆フーリエ変換という}}
   \end{block}
 \end{frame}
 
@@ -36,11 +36,11 @@
   \begin{block}{}
   \textbf{条件}：
   \begin{itemize}
-    \item $f(t)$ は任意の有限区間で区分的に滑らか
-    \item $\int_{-\infty}^{\infty} |f(t)| dt < \infty$（絶対可積分）
+    \item $f(x)$ は任意の有限区間で区分的に滑らか
+    \item $\int_{-\infty}^{\infty} |f(x)| dx < \infty$（絶対可積分）
   \end{itemize}
   \[
-    f(t) = (1/\pi) \int_{0}^\infty [\int_{-\infty}^{\infty} f(\tau)\cos(\omega(t-\tau)) d\tau] d\omega
+    f(x) = (1/\pi) \int_{0}^\infty [\int_{-\infty}^{\infty} f(\tau)\cos(u(x-\tau)) d\tau] du
   \]
   \end{block}
 \end{frame}
@@ -48,24 +48,24 @@
 \begin{frame}{フーリエ余弦変換}
   \begin{block}{}
   \[
-    Fc(\omega) = \int_{0}^\infty f(t)\cos(\omega t) dt
+    Fc(u) = \int_{0}^\infty f(x)\cos(ux) dx
   \]
   \[
-    f(t) = (2/\pi) \int_{0}^\infty Fc(\omega)\cos(\omega t) d\omega
+    f(x) = (2/\pi) \int_{0}^\infty Fc(u)\cos(ux) du
   \]
-  {\footnotesize $f(t)$ が偶関数の場合に対応}
+  {\footnotesize $f(x)$ が偶関数の場合に対応}
   \end{block}
 \end{frame}
 
 \begin{frame}{フーリエサイン変換}
   \begin{block}{}
   \[
-    Fs(\omega) = \int_{0}^\infty f(t)\sin(\omega t) dt
+    Fs(u) = \int_{0}^\infty f(x)\sin(ux) dx
   \]
   \[
-    f(t) = (2/\pi) \int_{0}^\infty Fs(\omega)\sin(\omega t) d\omega
+    f(x) = (2/\pi) \int_{0}^\infty Fs(u)\sin(ux) du
   \]
-  {\footnotesize $f(t)$ が奇関数の場合に対応}
+  {\footnotesize $f(x)$ が奇関数の場合に対応}
   \end{block}
 \end{frame}
 
