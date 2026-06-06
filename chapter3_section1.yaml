@@ -1,7 +1,7 @@
 chapter: 3
 chapter_title: フーリエ解析
 section: 1
-section_title: フーリエ展開
+section_title: フーリエ級数
 pages: "74-90"
 
 subsections:
@@ -11,10 +11,10 @@ subsections:
     pages: "74-79"
 
     definition:
-      name: フーリエ展開（周期 2π）
+      name: フーリエ級数（周期 2π）
       condition: |
         f(x) が周期 2π の区分的に滑らかな関数であるとき、
-        次の無限級数に展開できる（フーリエ展開という）
+        次の無限級数に展開できる（フーリエ級数という）
       formula: "f(x) = c₀ + Σ_{n=1}^∞ (aₙcos(nx) + bₙsin(nx))"
 
     fourier_coefficients:
@@ -33,7 +33,7 @@ subsections:
         - "∫_{-π}^{π} cos(mx)sin(nx) dx = 0  （任意の m, n）"
 
     convergence_theorem:
-      title: フーリエ展開の収束定理
+      title: フーリエ級数の収束定理
       conditions:
         - "f(x) は周期 2π で1周期内において区分的に滑らか"
       results:
@@ -56,28 +56,28 @@ subsections:
 
 
   - id: 2
-    title: 一般の周期関数のフーリエ展開
+    title: 一般の周期関数のフーリエ級数
     pages: "80-85"
 
     definition:
-      name: フーリエ展開（周期 T = 2l）
-      formula: "f(t) = a₀/2 + Σ_{n=1}^∞ (aₙcos(nπt/l) + bₙsin(nπt/l))"
+      name: フーリエ級数（周期 T = 2l）
+      formula: "f(x) = c₀ + Σ_{n=1}^∞ (aₙcos(nπx/l) + bₙsin(nπx/l))"
       fourier_coefficients:
-        - "a₀ = (1/l) ∫_{-l}^{l} f(t) dt"
-        - "aₙ = (1/l) ∫_{-l}^{l} f(t)cos(nπt/l) dt  (n = 1, 2, ...)"
-        - "bₙ = (1/l) ∫_{-l}^{l} f(t)sin(nπt/l) dt  (n = 1, 2, ...)"
+        - "c₀ = (1/2l) ∫_{-l}^{l} f(x) dx"
+        - "aₙ = (1/l) ∫_{-l}^{l} f(x)cos(nπx/l) dx  (n = 1, 2, ...)"
+        - "bₙ = (1/l) ∫_{-l}^{l} f(x)sin(nπx/l) dx  (n = 1, 2, ...)"
 
     even_odd:
-      cosine_expansion:
-        name: フーリエ余弦展開（偶関数）
-        condition: "f(-t) = f(t)"
-        result: "bₙ = 0,  aₙ = (2/l) ∫₀^{l} f(t)cos(nπt/l) dt"
-        formula: "f(t) = a₀/2 + Σ_{n=1}^∞ aₙcos(nπt/l)"
-      sine_expansion:
-        name: フーリエサイン展開（奇関数）
-        condition: "f(-t) = -f(t)"
-        result: "aₙ = 0,  bₙ = (2/l) ∫₀^{l} f(t)sin(nπt/l) dt"
-        formula: "f(t) = Σ_{n=1}^∞ bₙsin(nπt/l)"
+      cosine_series:
+        name: フーリエ余弦級数（偶関数）
+        condition: "f(-x) = f(x)"
+        result: "bₙ = 0,  aₙ = (2/l) ∫₀^{l} f(x)cos(nπx/l) dx"
+        formula: "f(x) = c₀ + Σ_{n=1}^∞ aₙcos(nπx/l)"
+      sine_series:
+        name: フーリエ正弦級数（奇関数）
+        condition: "f(-x) = -f(x)"
+        result: "c₀ = 0, aₙ = 0,  bₙ = (2/l) ∫₀^{l} f(x)sin(nπx/l) dx"
+        formula: "f(x) = Σ_{n=1}^∞ bₙsin(nπx/l)"
 
     examples:
 
@@ -207,19 +207,19 @@ subsections:
     pages: "86-89"
 
     definition:
-      name: 複素フーリエ展開
-      formula: "f(t) = Σ_{n=-∞}^{∞} cₙ e^{int}"
+      name: 複素フーリエ級数
+      formula: "f(x) = Σ_{n=-∞}^{∞} cₙ e^{inx}"
       coefficients:
-        formula: "cₙ = (1/2π) ∫_{-π}^{π} f(t) e^{-int} dt"
+        formula: "cₙ = (1/2π) ∫_{-π}^{π} f(x) e^{-inx} dx"
         relation_to_real:
           - "c₀ = a₀/2"
           - "cₙ = (aₙ - ibₙ)/2  (n ≥ 1)"
           - "c_{-n} = (aₙ + ibₙ)/2  (n ≥ 1)"
-      note: "オイラーの公式 e^{int} = cos(nt) + i sin(nt) を利用"
+      note: "オイラーの公式 e^{inx} = cos(nx) + i sin(nx) を利用"
 
     general_period:
-      formula: "f(t) = Σ_{n=-∞}^{∞} cₙ e^{inπt/l}"
-      coefficients: "cₙ = (1/2l) ∫_{-l}^{l} f(t) e^{-inπt/l} dt"
+      formula: "f(x) = Σ_{n=-∞}^{∞} cₙ e^{inπx/l}"
+      coefficients: "cₙ = (1/2l) ∫_{-l}^{l} f(x) e^{-inπx/l} dx"
 
     examples:
       - id: 例題6
