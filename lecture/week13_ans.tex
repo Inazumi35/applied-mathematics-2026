@@ -76,43 +76,50 @@
 \end{frame}
 
 \begin{frame}{問5　解答}
-  $III: F[e^{iax}f(x)] = \int e^{iax}f(x)e^{-iux}dx = \int f(x)e^{-i(u-a)x}dx = F(u-a)$\\[4pt]
-  $VI: F^{(n)}(u) = d^n/du^n \int f(x)e^{-iux}dx = \int f(x)(-ix)^n e^{-iux}dx = F[(-ix)^n f(x)]$
+  $III:\; F[e^{iax}f(x)] = \displaystyle\int_{-\infty}^{\infty} e^{iax}f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)e^{-i(u-a)x}\,dx = F(u-a)$\\[6pt]
+  $VI:\; F^{(n)}(u) = \dfrac{d^n}{du^n} \displaystyle\int_{-\infty}^{\infty} f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)(-ix)^n e^{-iux}\,dx = F[(-ix)^n f(x)]$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
 \begin{frame}{問6　解答}
-  $g(x) = (1/2\pi)\int G(v)e^{ivx}dv$ を $F[f(x)g(x)]$ に代入\\[4pt]
-  $= (1/2\pi)\int G(v)[\int f(x)e^{-i(u-v)x}dx]dv = (1/2\pi)\int G(v)F(u-v)dv = (1/2\pi)F*G$
+  $g(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\,e^{ivx}\,dv$ を $F[f(x)g(x)]$ に代入\\[6pt]
+  $= \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\!\left[\int_{-\infty}^{\infty} f(x)e^{-i(u-v)x}\,dx\right]dv = \dfrac{1}{2\pi}\int_{-\infty}^{\infty} G(v)F(u-v)\,dv = \dfrac{1}{2\pi}F*G$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
-\begin{frame}{問7　解答}
-  性質 $VI: F[(-ix)^n f(x)] = F^{(n)}(u)$\\[4pt]
-  $(1) n=1: F[(-ix)e^{-x^{2}/2}] = d/du[\sqrt{2\pi}e^{-u^{2}/2}] = -\sqrt{2\pi}\cdot u\cdot e^{-u^{2}/2}$\\[4pt]
-  $    F[xe^{-x^{2}/2}] = (1/(-i))\cdot(-\sqrt{2\pi}u e^{-u^{2}/2}) = -i\sqrt{2\pi} u e^{-u^{2}/2}$\\[4pt]
-  $(2) n=2: (-ix)^{2} = -x^{2}, F[-x^{2}e^{-x^{2}/2}] = d^{2}/du^{2}[\sqrt{2\pi}e^{-u^{2}/2}] = \sqrt{2\pi}(u^{2}-1)e^{-u^{2}/2}$\\[4pt]
-  $    F[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})e^{-u^{2}/2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1) F[xe^{-x^{2}/2}] = -i\sqrt{2\pi} u e^{-u^{2}/2}$\\
-  $(2) F[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2}) e^{-u^{2}/2}$\\
+\begin{frame}{問7(1)　解答}
+  性質 $VI:\; F[(-ix)^n f(x)] = F^{(n)}(u)$\\[6pt]
+  $(1)\; n=1:\; F[(-ix)e^{-x^{2}/2}] = \dfrac{d}{du}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = -\sqrt{2\pi}\cdot u\cdot e^{-u^{2}/2}$\\[6pt]
+  $F[xe^{-x^{2}/2}] = \dfrac{1}{-i}\cdot(-\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$(1)\; F[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$\\
+\end{frame}
+
+\begin{frame}{問7(2)　解答}
+  $(2)\; n=2:\; (-ix)^{2} = -x^{2}$\\[6pt]
+  $F[-x^{2}e^{-x^{2}/2}] = \dfrac{d^{2}}{du^{2}}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = \sqrt{2\pi}(u^{2}-1)e^{-u^{2}/2}$\\[6pt]
+  $F[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$(2)\; F[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$\\
 \end{frame}
 
 \begin{frame}{問8　解答}
-  p.98 公式 $F[e^{-ax^{2}}] = \sqrt{\pi/a}\cdot e^{-u^{2}/(4a)}$ で $b = 1/(4a)$ とおくと $a = 1/(4b)$\\[4pt]
-  $F[e^{-x^{2}/(4b)}] = \sqrt{4\pi b}\cdot e^{-bu^{2}} = 2\sqrt{\pi b}\cdot e^{-bu^{2}}$\\[4pt]
-  両辺を $2\sqrt{\pi b}$ で割って逆変換 $: F^{-1}[e^{-bu^{2}}] = e^{-x^{2}/(4b)}/(2\sqrt{\pi b})$
+  p.98 公式 $F[e^{-ax^{2}}] = \sqrt{\dfrac{\pi}{a}}\cdot e^{-u^{2}/(4a)}$ で $b = \dfrac{1}{4a}$ とおくと $a = \dfrac{1}{4b}$\\[6pt]
+  $F[e^{-x^{2}/(4b)}] = \sqrt{4\pi b}\cdot e^{-bu^{2}} = 2\sqrt{\pi b}\cdot e^{-bu^{2}}$\\[6pt]
+  両辺を $2\sqrt{\pi b}$ で割って逆変換 $:\; F^{-1}[e^{-bu^{2}}] = \dfrac{e^{-x^{2}/(4b)}}{2\sqrt{\pi b}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
-\begin{frame}{問9　解答}
-  (1) たたみこみ定理 $: F[f*g] = F(u)\cdot G(u)$\\[4pt]
-  $F[e^{-x^{2}/2}] = \sqrt{2\pi}e^{-u^{2}/2},  F[xe^{-x^{2}/2}] = -i\sqrt{2\pi}ue^{-u^{2}/2}$（問 7(1)）\\[4pt]
-  積 $: \sqrt{2\pi}e^{-u^{2}/2}\cdot(-i\sqrt{2\pi}ue^{-u^{2}/2}) = -2\pi iu\cdot e^{-u^{2}}$\\[4pt]
-  $(2) F^{-1}[-2\pi iue^{-u^{2}}]$ を計算\\[4pt]
-  $F^{-1}[e^{-u^{2}}] = e^{-x^{2}/4}/(2\sqrt{\pi})$（問 8 で $b=1$）\\[4pt]
-  $I(x)=\int e^{-u^{2}}e^{iux}du = \sqrt{\pi} e^{-x^{2}/4}$ の微分 $: \int ue^{-u^{2}}e^{iux}du = (ix/2)\sqrt{\pi} e^{-x^{2}/4}$\\[4pt]
-  $    F^{-1}[-2\pi iue^{-u^{2}}] = (-i)\cdot(1/2\pi)\cdot2\pi\cdot(ix/2)\sqrt{\pi} e^{-x^{2}/4} = (x/2)\sqrt{\pi}\cdot e^{-x^{2}/4} = (\sqrt{\pi}/2)xe^{-x^{2}/4}$
+\begin{frame}{問9(1)　解答}
+  $(1)$ たたみこみ定理 $:\; F[f*g] = F(u)\cdot G(u)$\\[6pt]
+  $F[e^{-x^{2}/2}] = \sqrt{2\pi}\,e^{-u^{2}/2},\quad F[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$（問7(1)）\\[6pt]
+  積 $:\; \sqrt{2\pi}\,e^{-u^{2}/2}\cdot(-i\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -2\pi i u\cdot e^{-u^{2}}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$F[(e^{-x^{2}/2})*(xe^{-x^{2}/2})] = -2\pi i u\,e^{-u^{2}}$\\
+\end{frame}
+
+\begin{frame}{問9(2)　解答}
+  $(2)\; F^{-1}[-2\pi iu\,e^{-u^{2}}]$ を計算\\[6pt]
+  $F^{-1}[e^{-u^{2}}] = \dfrac{e^{-x^{2}/4}}{2\sqrt{\pi}}$（問8 で $b=1$）\\[6pt]
+  $I(x)=\displaystyle\int_{-\infty}^{\infty} e^{-u^{2}}e^{iux}\,du = \sqrt{\pi}\,e^{-x^{2}/4}$ を微分 $:\; \int_{-\infty}^{\infty} ue^{-u^{2}}e^{iux}\,du = \dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4}$\\[6pt]
+  $F^{-1}[-2\pi iu\,e^{-u^{2}}] = (-i)\cdot\dfrac{1}{2\pi}\cdot2\pi\cdot\dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4} = \dfrac{\sqrt{\pi}}{2}\,x\,e^{-x^{2}/4}$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
