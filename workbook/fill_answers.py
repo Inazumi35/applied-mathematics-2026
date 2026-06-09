@@ -531,20 +531,20 @@ ANSWERS = {
 
     142: [
         (
-            r"$a_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{0}2\,dx + \dfrac{1}{2}\int_0^1 1\,dx = \dfrac{3}{2}$"
+            r"$c_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{0}2\,dx + \dfrac{1}{2}\int_0^1 1\,dx = \dfrac{3}{2}$"
             "\n\n"
-            r"$a_n = \displaystyle\int_{-1}^{0}2\cos n\pi x\,dx + \int_0^1 \cos n\pi x\,dx = \dfrac{\sin n\pi}{n\pi} = 0$"
+            r"$a_n = \displaystyle\int_{-1}^{0}2\cos n\pi x\,dx + \int_0^1 \cos n\pi x\,dx = 0$"
             "\n\n"
-            r"$b_n = \displaystyle\int_{-1}^{0}2\sin n\pi x\,dx + \int_0^1 \sin n\pi x\,dx = -\dfrac{1+(-1)^n}{n\pi}+\dfrac{2(1-(-1)^n)}{n\pi}$"
+            r"$b_n = \displaystyle\int_{-1}^{0}2\sin n\pi x\,dx + \int_0^1 \sin n\pi x\,dx = \dfrac{2((-1)^n-1)}{n\pi}+\dfrac{1-(-1)^n}{n\pi}$"
             "\n\n"
-            r"$= \dfrac{1-3(-1)^n}{n\pi}$"
+            r"$= \dfrac{(-1)^n-1}{n\pi}$"
             "\n\n"
-            r"$f(x) = \dfrac{3}{4} + \displaystyle\sum_{n=1}^{\infty}\dfrac{1-3(-1)^n}{2n\pi}\sin n\pi x$"
+            r"$f(x) = \dfrac{3}{2} - \dfrac{2}{\pi}\displaystyle\sum_{k=0}^{\infty}\dfrac{\sin(2k+1)\pi x}{2k+1}$"
         ),
         (
             r"周期 $2l=6$，$l=3$ として"
             "\n"
-            r"$a_0 = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\,dx + \dfrac{1}{3}\int_0^3 x\,dx = 3+\dfrac{3}{2} = \dfrac{9}{2}$"
+            r"$c_0 = \dfrac{1}{6}\displaystyle\int_{-3}^{0}3\,dx + \dfrac{1}{6}\int_0^3 x\,dx = \dfrac{3}{2}+\dfrac{3}{4} = \dfrac{9}{4}$"
             "\n\n"
             r"$a_n = \dfrac{1}{3}\displaystyle\int_{-3}^{0}3\cos\dfrac{n\pi x}{3}\,dx + \dfrac{1}{3}\int_0^3 x\cos\dfrac{n\pi x}{3}\,dx = \dfrac{3((-1)^n-1)}{n^2\pi^2}$"
             "\n\n"
