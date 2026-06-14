@@ -48,7 +48,7 @@ $= \dfrac{1}{n\pi} - 0 = \dfrac{1}{n\pi}$．\\[2pt]
 \mondai{2}{
 グラフが図で示されている次の関数のフーリエ級数を求めよ．\\
 (1) 三角波：$f(x) = 2 - |x|\ (-2 \leq x < 2),\ f(x+4) = f(x)$\\
-(2) のこぎり波：$f(x) = x\ (-1 \leq x < 1),\ f(x+2) = f(x)$
+(2) のこぎり波：$f(x) = x\ (-2 \leq x < 2),\ f(x+4) = f(x)$
 }
 \kotae{
 (1) 周期 $4,\ l=2$．偶関数なので $b_n=0$．\\[2pt]
@@ -64,13 +64,15 @@ $n$ 奇数で $\dfrac{8}{n^2\pi^2}$，$n$ 偶数で $0$ となるので
 \[
   f(x) = 1 + \sum_{k=1}^\infty \dfrac{8}{(2k-1)^2\pi^2}\cos\dfrac{(2k-1)\pi x}{2}
 \]
-(2) 周期 $2,\ l=1$．奇関数なので $a_n=0$．\\[2pt]
-$b_n = 2\displaystyle\int_0^1 x\sin n\pi x\,dx$：$u=x,\;dv=\sin n\pi x\,dx$ より\\[2pt]
-$= 2\!\left\{\!\left[-\dfrac{x\cos n\pi x}{n\pi}\right]_0^1\!
-  + \dfrac{1}{n\pi}\!\int_0^1\!\cos n\pi x\,dx\right\}$\\[2pt]
-$= 2\!\left\{-\dfrac{(-1)^n}{n\pi}+0\right\} = \dfrac{2(-1)^{n+1}}{n\pi}$．
+(2) 周期 $4,\ l=2$．奇関数なので $a_n=0$．\\[2pt]
+$b_n = \displaystyle\int_0^2 x\sin\dfrac{n\pi x}{2}\,dx$：$u=x,\;dv=\sin\dfrac{n\pi x}{2}dx$ より\\[2pt]
+$= \!\left[-\dfrac{2x\cos\frac{n\pi x}{2}}{n\pi}\right]_0^2\!
+  + \dfrac{2}{n\pi}\!\int_0^2\!\cos\dfrac{n\pi x}{2}\,dx$\\[2pt]
+$= -\dfrac{4(-1)^n}{n\pi}
+  + \dfrac{2}{n\pi}\!\left[\dfrac{2\sin\frac{n\pi x}{2}}{n\pi}\right]_0^2\!
+  = -\dfrac{4(-1)^n}{n\pi} + 0 = \dfrac{4(-1)^{n+1}}{n\pi}$．
 \[
-  f(x) = \sum_{n=1}^\infty \dfrac{2(-1)^{n+1}}{n\pi}\sin n\pi x
+  f(x) = \sum_{n=1}^\infty \dfrac{4(-1)^{n+1}}{n\pi}\sin\dfrac{n\pi x}{2}
 \]
 }
 
@@ -112,21 +114,25 @@ $\cos n\pi=(-1)^n$ より $1 = \dfrac{1}{3}+\dfrac{4}{\pi^2}\displaystyle\sum_{n
 $f(x) = e^x\ (-\pi/2 \leq x < \pi/2),\ f(x+\pi) = f(x)$
 }
 \kotae{
-周期 $\pi,\ l=\pi/2$．複素フーリエ係数は
+周期 $\pi,\ l=\pi/2$．\\[4pt]
+\textbf{$n=0$：}
+$c_0 = \dfrac{1}{\pi}\displaystyle\int_{-\pi/2}^{\pi/2}e^x\,dx
+  = \dfrac{1}{\pi}\bigl[e^x\bigr]_{-\pi/2}^{\pi/2}
+  = \dfrac{e^{\pi/2}-e^{-\pi/2}}{\pi} = \dfrac{2\sinh(\pi/2)}{\pi}$．\\[4pt]
+\textbf{$n\neq 0$：}
 \[
-  c_n = \dfrac{1}{\pi}\int_{-\pi/2}^{\pi/2} e^{(1-2in)x}\,dx
+  c_n = \dfrac{1}{\pi}\int_{-\pi/2}^{\pi/2}\!e^{(1-2in)x}\,dx
       = \dfrac{1}{\pi(1-2in)}\bigl[e^{(1-2in)x}\bigr]_{-\pi/2}^{\pi/2}
 \]
-$e^{(1-2in)\pi/2} = e^{\pi/2}\cdot e^{-in\pi} = (-1)^n e^{\pi/2}$，\\[2pt]
-$e^{-(1-2in)\pi/2} = e^{-\pi/2}\cdot e^{in\pi} = (-1)^n e^{-\pi/2}$ より\\[2pt]
-$\bigl[e^{(1-2in)x}\bigr]_{-\pi/2}^{\pi/2}
-  = (-1)^n(e^{\pi/2}-e^{-\pi/2}) = 2(-1)^n\sinh\dfrac{\pi}{2}$．\\[4pt]
-よって
+$e^{(1-2in)\pi/2}=(-1)^n e^{\pi/2}$，$e^{-(1-2in)\pi/2}=(-1)^n e^{-\pi/2}$ より\\[2pt]
+$\bigl[e^{(1-2in)x}\bigr]_{-\pi/2}^{\pi/2} = 2(-1)^n\sinh\dfrac{\pi}{2}$，\\[4pt]
+$c_n = \dfrac{2(-1)^n\sinh(\pi/2)}{\pi(1-2in)}$．
+分母有理化 $\left(\cdot\dfrac{1+2in}{1+2in}\right)$：
 \[
-  c_n = \dfrac{2(-1)^n\sinh(\pi/2)}{\pi(1-2in)}
+  c_n = \dfrac{2(-1)^n(1+2in)\sinh(\pi/2)}{\pi(1+4n^2)}
 \]
 \[
-  f(x) = \dfrac{2\sinh(\pi/2)}{\pi}\sum_{n=-\infty}^\infty \dfrac{(-1)^n}{1-2in} e^{2inx}
+  f(x) = c_0 + \sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty} c_n\,e^{2inx}
 \]
 }
 
