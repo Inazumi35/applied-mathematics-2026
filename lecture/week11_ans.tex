@@ -41,22 +41,21 @@
   $c_{0} = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(x+1)\,dx
     = \dfrac{1}{4}\!\left[\dfrac{x^{2}}{2}+x\right]_{-2}^{2}
     = \dfrac{1}{4}\!\left[(2+2)-(2-2)\right] = 1$\\[6pt]
-  \textbf{$n\neq 0$ のとき（被積分関数を分割）：}\\[4pt]
+  \textbf{$n\neq 0$ のとき：}部分積分 $u=x+1,\;dv=e^{-in\pi x/2}dx$ より\\[4pt]
   $\displaystyle\int_{-2}^{2}(x+1)e^{-in\pi x/2}dx
-    = \underbrace{\int_{-2}^{2}xe^{-in\pi x/2}dx}_{I_{1}}
-    + \underbrace{\int_{-2}^{2}e^{-in\pi x/2}dx}_{I_{2}}$
+    = \!\left[\dfrac{-2(x+1)}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
+    + \dfrac{2}{in\pi}\int_{-2}^{2}e^{-in\pi x/2}dx$
 \end{frame}
 
 \begin{frame}{例題6　解答（2/2）}
-  $I_{2} = \!\left[\dfrac{-2}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
+  \textbf{第2項：}$\displaystyle\int_{-2}^{2}e^{-in\pi x/2}dx
+    = \!\left[\dfrac{-2}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
     = \dfrac{-2}{in\pi}(e^{-in\pi}-e^{in\pi})
     = \dfrac{-2}{in\pi}\cdot(-2i\sin n\pi) = 0$\\[4pt]
-  $I_{1}$：部分積分 $u=x,\;dv=e^{-in\pi x/2}dx$ より\\[2pt]
-  $\hphantom{I_1:}\displaystyle= \!\left[\dfrac{-2x}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
-    + \underbrace{\dfrac{2}{in\pi}I_{2}}_{=0}$\\[2pt]
-  $\hphantom{I_1:}= \dfrac{-4(-1)^{n}}{in\pi} - \dfrac{4(-1)^{n}}{in\pi}
-    = \dfrac{-8(-1)^{n}}{in\pi}$
-    \hspace{6pt}{\footnotesize\textcolor{gray}{$e^{\pm in\pi}=(-1)^{n}$ を代入}}\\[4pt]
+  \textbf{第1項}（$e^{\pm in\pi}=(-1)^{n}$ を代入）：\\[2pt]
+  $\!\left[\dfrac{-2(x+1)}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
+    = \dfrac{-6(-1)^{n}}{in\pi} - \dfrac{2(-1)^{n}}{in\pi}
+    = \dfrac{-8(-1)^{n}}{in\pi}$\\[4pt]
   $c_{n} = \dfrac{1}{4}\cdot\dfrac{-8(-1)^{n}}{in\pi} = \dfrac{2(-1)^{n+1}}{in\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = 1 + \displaystyle\sum_{n\neq0}\dfrac{2(-1)^{n+1}}{in\pi}\,e^{in\pi x/2}$
 \end{frame}
