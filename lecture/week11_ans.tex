@@ -18,23 +18,14 @@
   \vfill\hfill{\scriptsize \textcolor{gray}{第3章 フーリエ解析　§1}}
 \end{frame}
 
-\begin{frame}{定義：複素フーリエ級数（周期 $2\pi$）}
-  \begin{block}{}
-  \[
-    f(x) = \sum_{n=-\infty}^{\infty} c_{n} e^{inx}, \quad
-    c_{n} = (1/2\pi) \int_{-\pi}^{\pi} f(x) e^{-inx} dx
-  \]
-  {\footnotesize \textcolor{gray}{オイラーの公式 $e^{inx} = \cos(nx) + i \sin(nx)$ を利用}}
-  \end{block}
-\end{frame}
-
-\begin{frame}{一般周期関数の複素フーリエ級数（周期 $2l$）}
+\begin{frame}{定義：複素フーリエ級数（周期 $2l$）}
   \begin{block}{}
   \[
     f(x) = \sum_{n=-\infty}^{\infty} c_{n} e^{in\pi x/l}, \quad
-    c_{n} = (1/2l) \int_{-l}^{l} f(x) e^{-in\pi x/l} dx
+    c_{n} = \frac{1}{2l} \int_{-l}^{l} f(x) e^{-in\pi x/l} dx
   \]
   \end{block}
+  {\footnotesize\textcolor{gray}{$e^{i\theta}=\cos\theta+i\sin\theta$（オイラーの公式）より，$e^{in\pi x/l}$ は $\cos/\sin$ の代わりとして機能する}}
 \end{frame}
 
 \begin{frame}{例題6　（p.\,88）}
@@ -44,12 +35,30 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題6　解答}
-  $c_{n} = (1/4) \int_{-2}^{2} (x+1) e^{-in\pi x/2} dx$\\[4pt]
-  $n \neq 0$ のとき $: e^{in\pi} = (-1)^n$ を用いて計算\\[4pt]
-  $c_{n} = 2(-1)^{n+1} / (in\pi)$\\[4pt]
-  $n = 0$ のとき $: c_{0} = (1/4)\int_{-2}^{2}(x+1)dx = 1$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = 1 + \sum_{n\neq0} 2(-1)^{n+1}/(in\pi) \cdot e^{in\pi x/2}$
+\begin{frame}{例題6　解答（1/2）}
+  $l=2$ より $c_{n} = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(x+1)e^{-in\pi x/2}dx$\\[6pt]
+  \textbf{$n=0$ のとき：}\\[4pt]
+  $c_{0} = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(x+1)\,dx
+    = \dfrac{1}{4}\!\left[\dfrac{x^{2}}{2}+x\right]_{-2}^{2}
+    = \dfrac{1}{4}\!\left[(2+2)-(2-2)\right] = 1$\\[6pt]
+  \textbf{$n\neq 0$ のとき（被積分関数を分割）：}\\[4pt]
+  $\displaystyle\int_{-2}^{2}(x+1)e^{-in\pi x/2}dx
+    = \underbrace{\int_{-2}^{2}xe^{-in\pi x/2}dx}_{I_{1}}
+    + \underbrace{\int_{-2}^{2}e^{-in\pi x/2}dx}_{I_{2}}$
+\end{frame}
+
+\begin{frame}{例題6　解答（2/2）}
+  $I_{2} = \!\left[\dfrac{-2}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
+    = \dfrac{-2}{in\pi}(e^{-in\pi}-e^{in\pi})
+    = \dfrac{-2}{in\pi}\cdot(-2i\sin n\pi) = 0$\\[4pt]
+  $I_{1}$：部分積分 $u=x,\;dv=e^{-in\pi x/2}dx$ より\\[2pt]
+  $\hphantom{I_1:}\displaystyle= \!\left[\dfrac{-2x}{in\pi}e^{-in\pi x/2}\right]_{-2}^{2}
+    + \underbrace{\dfrac{2}{in\pi}I_{2}}_{=0}$\\[2pt]
+  $\hphantom{I_1:}= \dfrac{-4(-1)^{n}}{in\pi} - \dfrac{4(-1)^{n}}{in\pi}
+    = \dfrac{-8(-1)^{n}}{in\pi}$
+    \hspace{6pt}{\footnotesize\textcolor{gray}{$e^{\pm in\pi}=(-1)^{n}$ を代入}}\\[4pt]
+  $c_{n} = \dfrac{1}{4}\cdot\dfrac{-8(-1)^{n}}{in\pi} = \dfrac{2(-1)^{n+1}}{in\pi}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = 1 + \displaystyle\sum_{n\neq0}\dfrac{2(-1)^{n+1}}{in\pi}\,e^{in\pi x/2}$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -66,35 +75,76 @@
 \end{frame}
 
 \begin{frame}{問6(1)　解答}
-  $(1)\; l=1:\; c_{n} = \dfrac{1}{2}\displaystyle\int_{0}^1 e^{-in\pi x}\,dx = \dfrac{1}{2}\!\left[\dfrac{e^{-in\pi x}}{-in\pi}\right]_{0}^{1}$\\[6pt]
-  $n \neq 0:\; c_{n} = \dfrac{1-e^{-in\pi}}{2in\pi} = \dfrac{1-(-1)^n}{2in\pi}$\\[6pt]
-  $n = 0:\; c_{0} = \dfrac{1}{2}\displaystyle\int_{0}^1 dx = \dfrac{1}{2}$
+  $l=1$：$c_{n} = \dfrac{1}{2}\displaystyle\int_{0}^{1}e^{-in\pi x}\,dx$\\[6pt]
+  \textbf{$n=0$：}$c_{0} = \dfrac{1}{2}\displaystyle\int_{0}^{1}dx = \dfrac{1}{2}$\\[6pt]
+  \textbf{$n\neq 0$：}
+  $c_{n} = \dfrac{1}{2}\!\left[\dfrac{-e^{-in\pi x}}{in\pi}\right]_{0}^{1}
+    = \dfrac{-1}{2in\pi}(e^{-in\pi}-1)
+    = \dfrac{1-e^{-in\pi}}{2in\pi}$\\[4pt]
+  $e^{-in\pi}=\cos(n\pi)=(-1)^{n}$ を代入：
+  $c_{n} = \dfrac{1-(-1)^{n}}{2in\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1)\; f(x) = \dfrac{1}{2} + \displaystyle\sum_{n\neq0} \dfrac{1-(-1)^n}{2in\pi} \cdot e^{in\pi x}$\\
 \end{frame}
 
-\begin{frame}{問6(2)　解答}
-  $(2)\; l=1:\; c_{n} = \dfrac{1}{2}\displaystyle\int_{0}^1 x\,e^{-in\pi x}\,dx$\\[6pt]
-  $n \neq 0$: 部分積分 $\to\; c_{n} = \dfrac{i(-1)^n}{2n\pi} + \dfrac{(-1)^n - 1}{2n^{2}\pi^{2}}$\\[6pt]
-  $n = 0:\; c_{0} = \dfrac{1}{2}\displaystyle\int_{0}^1 x\,dx = \dfrac{1}{4}$
+\begin{frame}{問6(2)　解答（1/2）}
+  $l=1$：$c_{n} = \dfrac{1}{2}\displaystyle\int_{0}^{1}x\,e^{-in\pi x}\,dx$\\[4pt]
+  \textbf{$n=0$：}$c_{0} = \dfrac{1}{2}\displaystyle\int_{0}^{1}x\,dx = \dfrac{1}{4}$\\[6pt]
+  \textbf{$n\neq 0$：}部分積分 ($u=x,\; dv=e^{-in\pi x}dx$)\\[4pt]
+  $= \dfrac{1}{2}\!\left\{\!\left[\dfrac{-xe^{-in\pi x}}{in\pi}\right]_{0}^{1}
+    + \dfrac{1}{in\pi}\displaystyle\int_{0}^{1}e^{-in\pi x}\,dx\right\}$\\[4pt]
+  $= \dfrac{1}{2}\!\left\{
+      \underbrace{\dfrac{-e^{-in\pi}}{in\pi}}_{A}
+      + \dfrac{1}{in\pi}\underbrace{\left[\dfrac{-e^{-in\pi x}}{in\pi}\right]_{0}^{1}}_{B}
+    \right\}$
+\end{frame}
+
+\begin{frame}{問6(2)　解答（2/2）}
+  $A = \dfrac{-(-1)^{n}}{in\pi} = \dfrac{i(-1)^{n}}{n\pi}$
+  \hspace{8pt}{\footnotesize\textcolor{gray}{$-1/(in) = i/n$ を利用}}\\[6pt]
+  $B = \dfrac{-1}{in\pi}(e^{-in\pi}-1) = \dfrac{1-(-1)^{n}}{in\pi}$
+  なので\\[4pt]
+  $(in\pi)^{2} = -n^{2}\pi^{2}$ より
+  $\dfrac{1}{in\pi}\cdot B = \dfrac{1-(-1)^{n}}{(in\pi)^{2}} = \dfrac{1-(-1)^{n}}{-n^{2}\pi^{2}} = \dfrac{(-1)^{n}-1}{n^{2}\pi^{2}}$\\[4pt]
+  $c_{n} = \dfrac{1}{2}\!\left(\dfrac{i(-1)^{n}}{n\pi} + \dfrac{(-1)^{n}-1}{n^{2}\pi^{2}}\right)
+    = \dfrac{i(-1)^{n}}{2n\pi} + \dfrac{(-1)^{n}-1}{2n^{2}\pi^{2}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
   $(2)\; g(x) = \dfrac{1}{4} + \displaystyle\sum_{n\neq0} \!\left[\dfrac{i(-1)^n}{2n\pi} + \dfrac{(-1)^n-1}{2n^{2}\pi^{2}}\right] e^{in\pi x}$\\
 \end{frame}
 
 \begin{frame}{問7(1)　解答}
-  $(1)\; l=2:\; c_{n} = \dfrac{1}{4}\displaystyle\int_{-2}^{0} 2\,e^{-in\pi x/2}\,dx$\\[6pt]
-  $n \neq 0:\; c_{n} = \dfrac{1}{2}\!\left[\dfrac{e^{-in\pi x/2}}{-in\pi/2}\right]_{-2}^{0} = \dfrac{e^{in\pi}-1}{in\pi} = \dfrac{(-1)^n-1}{in\pi}$\\[6pt]
-  $n = 0:\; c_{0} = \dfrac{1}{4}\displaystyle\int_{-2}^{0}2\,dx = 1$
+  $l=2$：$c_{n} = \dfrac{1}{4}\displaystyle\int_{-2}^{0}2\,e^{-in\pi x/2}\,dx
+    = \dfrac{1}{2}\displaystyle\int_{-2}^{0}e^{-in\pi x/2}\,dx$\\[6pt]
+  \textbf{$n=0$：}$c_{0} = \dfrac{1}{2}\displaystyle\int_{-2}^{0}dx = 1$\\[6pt]
+  \textbf{$n\neq 0$：}
+  $c_{n} = \dfrac{1}{2}\!\left[\dfrac{-2\,e^{-in\pi x/2}}{in\pi}\right]_{-2}^{0}
+    = \dfrac{-1}{in\pi}(1 - e^{in\pi})$\\[4pt]
+  $e^{in\pi}=(-1)^{n}$ を代入：
+  $c_{n} = \dfrac{-1}{in\pi}(1-(-1)^{n}) = \dfrac{(-1)^{n}-1}{in\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
   $(1)\; f(x) = 1 + \displaystyle\sum_{n\neq0} \dfrac{(-1)^n-1}{in\pi} \cdot e^{in\pi x/2}$\\
 \end{frame}
 
-\begin{frame}{問7(2)　解答}
-  $(2)\; l=2:\; c_{n} = \dfrac{1}{4}\displaystyle\int_{0}^2 (2-x)\,e^{-in\pi x/2}\,dx$\\[6pt]
-  $n \neq 0$: 部分積分 $\to\; c_{n} = \dfrac{1}{in\pi} + \dfrac{1-(-1)^n}{n^{2}\pi^{2}}$\\[6pt]
-  $n = 0:\; c_{0} = \dfrac{1}{4}\displaystyle\int_{0}^2(2-x)\,dx = \dfrac{1}{4}\!\left[2x-\dfrac{x^{2}}{2}\right]_{0}^2 = \dfrac{1}{2}$
+\begin{frame}{問7(2)　解答（1/2）}
+  $l=2$：$c_{n} = \dfrac{1}{4}\displaystyle\int_{0}^{2}(2-x)\,e^{-in\pi x/2}\,dx$\\[4pt]
+  \textbf{$n=0$：}$c_{0} = \dfrac{1}{4}\!\left[2x-\dfrac{x^{2}}{2}\right]_{0}^{2} = \dfrac{1}{2}$\\[6pt]
+  \textbf{$n\neq 0$：}部分積分 ($u=2-x,\; dv=e^{-in\pi x/2}dx$)\\[4pt]
+  $\displaystyle\int_{0}^{2}(2-x)e^{-in\pi x/2}dx
+    = \underbrace{\!\left[\dfrac{-2(2-x)}{in\pi}e^{-in\pi x/2}\right]_{0}^{2}}_{A}
+      - \underbrace{\int_{0}^{2}\dfrac{2}{in\pi}e^{-in\pi x/2}dx}_{B}$
+\end{frame}
+
+\begin{frame}{問7(2)　解答（2/2）}
+  $A = 0 - \dfrac{-2\cdot 2}{in\pi}\cdot 1 = \dfrac{4}{in\pi}$\\[4pt]
+  $B = \dfrac{2}{in\pi}\!\left[\dfrac{-2\,e^{-in\pi x/2}}{in\pi}\right]_{0}^{2}
+    = \dfrac{-4}{(in\pi)^{2}}((-1)^{n}-1)
+    = \dfrac{4((-1)^{n}-1)}{n^{2}\pi^{2}}$\\[6pt]
+  $\displaystyle\int_{0}^{2}(2-x)e^{-in\pi x/2}dx = \dfrac{4}{in\pi} - \dfrac{4((-1)^{n}-1)}{n^{2}\pi^{2}}
+    = \dfrac{4}{in\pi} + \dfrac{4(1-(-1)^{n})}{n^{2}\pi^{2}}$\\[4pt]
+  $c_{n} = \dfrac{1}{4}\!\left(\dfrac{4}{in\pi} + \dfrac{4(1-(-1)^{n})}{n^{2}\pi^{2}}\right)
+    = \dfrac{1}{in\pi} + \dfrac{1-(-1)^{n}}{n^{2}\pi^{2}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(2)\; g(x) = \dfrac{1}{2} + \displaystyle\sum_{n\neq0} \!\left[\dfrac{1}{in\pi} + \dfrac{1-(-1)^n}{n^{2}\pi^{2}}\right] e^{in\pi x/2}$\\
+  $(2)\; g(x) = \dfrac{1}{2} + \displaystyle\sum_{n\neq0}\!\left[\dfrac{1}{in\pi} + \dfrac{1-(-1)^n}{n^{2}\pi^{2}}\right] e^{in\pi x/2}$\\
 \end{frame}
 
 \end{document}
