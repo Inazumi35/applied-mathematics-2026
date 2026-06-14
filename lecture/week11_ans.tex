@@ -57,7 +57,8 @@
     = \dfrac{-6(-1)^{n}}{in\pi} - \dfrac{2(-1)^{n}}{in\pi}
     = \dfrac{-8(-1)^{n}}{in\pi}$\\[4pt]
   $c_{n} = \dfrac{1}{4}\cdot\dfrac{-8(-1)^{n}}{in\pi} = \dfrac{2(-1)^{n+1}}{in\pi}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = 1 + \displaystyle\sum_{n\neq0}\dfrac{2(-1)^{n+1}}{in\pi}\,e^{in\pi x/2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = \displaystyle\sum_{n=-\infty}^{\infty} c_{n}\,e^{in\pi x/2}$，
+  $c_{0}=1$，$c_{n}=\dfrac{2(-1)^{n+1}}{in\pi}\;(n\neq 0)$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -83,7 +84,8 @@
   $e^{-in\pi}=\cos(n\pi)=(-1)^{n}$ を代入：
   $c_{n} = \dfrac{1-(-1)^{n}}{2in\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1)\; f(x) = \dfrac{1}{2} + \displaystyle\sum_{n\neq0} \dfrac{1-(-1)^n}{2in\pi} \cdot e^{in\pi x}$\\
+  $(1)\; f(x) = \displaystyle\sum_{n=-\infty}^{\infty} c_{n}\,e^{in\pi x}$，
+  $c_{0}=\dfrac{1}{2}$，$c_{n}=\dfrac{1-(-1)^{n}}{2in\pi}\;(n\neq 0)$\\
 \end{frame}
 
 \begin{frame}{問6(2)　解答（1/2）}
@@ -108,7 +110,8 @@
   $c_{n} = \dfrac{1}{2}\!\left(\dfrac{i(-1)^{n}}{n\pi} + \dfrac{(-1)^{n}-1}{n^{2}\pi^{2}}\right)
     = \dfrac{i(-1)^{n}}{2n\pi} + \dfrac{(-1)^{n}-1}{2n^{2}\pi^{2}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(2)\; g(x) = \dfrac{1}{4} + \displaystyle\sum_{n\neq0} \!\left[\dfrac{i(-1)^n}{2n\pi} + \dfrac{(-1)^n-1}{2n^{2}\pi^{2}}\right] e^{in\pi x}$\\
+  $(2)\; g(x) = \displaystyle\sum_{n=-\infty}^{\infty} c_{n}\,e^{in\pi x}$，
+  $c_{0}=\dfrac{1}{4}$，$c_{n}=\dfrac{i(-1)^{n}}{2n\pi}+\dfrac{(-1)^{n}-1}{2n^{2}\pi^{2}}\;(n\neq 0)$\\
 \end{frame}
 
 \begin{frame}{問7(1)　解答}
@@ -121,7 +124,8 @@
   $e^{in\pi}=(-1)^{n}$ を代入：
   $c_{n} = \dfrac{-1}{in\pi}(1-(-1)^{n}) = \dfrac{(-1)^{n}-1}{in\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1)\; f(x) = 1 + \displaystyle\sum_{n\neq0} \dfrac{(-1)^n-1}{in\pi} \cdot e^{in\pi x/2}$\\
+  $(1)\; f(x) = \displaystyle\sum_{n=-\infty}^{\infty} c_{n}\,e^{in\pi x/2}$，
+  $c_{0}=1$，$c_{n}=\dfrac{(-1)^{n}-1}{in\pi}\;(n\neq 0)$\\
 \end{frame}
 
 \begin{frame}{問7(2)　解答（1/2）}
@@ -143,7 +147,8 @@
   $c_{n} = \dfrac{1}{4}\!\left(\dfrac{4}{in\pi} + \dfrac{4(1-(-1)^{n})}{n^{2}\pi^{2}}\right)
     = \dfrac{1}{in\pi} + \dfrac{1-(-1)^{n}}{n^{2}\pi^{2}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(2)\; g(x) = \dfrac{1}{2} + \displaystyle\sum_{n\neq0}\!\left[\dfrac{1}{in\pi} + \dfrac{1-(-1)^n}{n^{2}\pi^{2}}\right] e^{in\pi x/2}$\\
+  $(2)\; g(x) = \displaystyle\sum_{n=-\infty}^{\infty} c_{n}\,e^{in\pi x/2}$，
+  $c_{0}=\dfrac{1}{2}$，$c_{n}=\dfrac{1}{in\pi}+\dfrac{1-(-1)^{n}}{n^{2}\pi^{2}}\;(n\neq 0)$\\
 \end{frame}
 
 \end{document}
