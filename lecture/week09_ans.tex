@@ -79,21 +79,51 @@
 \end{frame}
 
 \begin{frame}{問3(1)　解答}
-  $(1)\; l=1:\; c_{0}=\dfrac{1}{2},\; a_{n}=\displaystyle\int_{-1}^{0}\cos(n\pi x)\,dx=0$\\[4pt]
-  $b_{n}=\displaystyle\int_{-1}^{0}\sin(n\pi x)\,dx=\dfrac{(-1)^n-1}{n\pi}$
+  $l=1$．\\[4pt]
+  $c_{0}=\dfrac{1}{2}\displaystyle\int_{-1}^{0}1\,dx=\dfrac{1}{2}$\\[6pt]
+  $a_{n}=\displaystyle\int_{-1}^{0}\cos(n\pi x)\,dx
+    =\left[\dfrac{\sin(n\pi x)}{n\pi}\right]_{-1}^{0}=0$\\[6pt]
+  $b_{n}=\displaystyle\int_{-1}^{0}\sin(n\pi x)\,dx
+    =\left[-\dfrac{\cos(n\pi x)}{n\pi}\right]_{-1}^{0}
+    =\dfrac{-1+(-1)^{n}}{n\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = \dfrac{1}{2} - \dfrac{2}{\pi}\displaystyle\sum_{k=0}^{\infty} \dfrac{\sin(2k+1)\pi x}{2k+1} = \dfrac{1}{2} - \dfrac{2}{\pi}\!\left(\sin \pi x + \dfrac{\sin 3\pi x}{3} + \cdots\right)$\\
 \end{frame}
 
 \begin{frame}{問3(2)　解答}
-  $(2)\; l=2:\; c_{0}=3,\; a_{n}=0$\\[4pt]
-  $b_{n}=\dfrac{1}{2}\!\left[2\displaystyle\int_{-2}^{0}\sin\dfrac{n\pi x}{2}\,dx + 4\int_{0}^{2}\sin\dfrac{n\pi x}{2}\,dx\right] = \dfrac{2(1-(-1)^n)}{n\pi}$
+  $l=2$．$c_{0}=\dfrac{1}{4}\!\left(\displaystyle\int_{-2}^{0}2\,dx+\int_{0}^{2}4\,dx\right)=\dfrac{4+8}{4}=3$，$a_{n}=0$\\[4pt]
+  $b_{n}=\dfrac{1}{2}\!\left[2\displaystyle\int_{-2}^{0}\sin\dfrac{n\pi x}{2}\,dx+4\int_{0}^{2}\sin\dfrac{n\pi x}{2}\,dx\right]$\\[4pt]
+  $2\displaystyle\int_{-2}^{0}\sin\dfrac{n\pi x}{2}\,dx
+    =\left[-\dfrac{4\cos\dfrac{n\pi x}{2}}{n\pi}\right]_{-2}^{0}
+    =\dfrac{4((-1)^{n}-1)}{n\pi}$\\[4pt]
+  $4\displaystyle\int_{0}^{2}\sin\dfrac{n\pi x}{2}\,dx
+    =\left[-\dfrac{8\cos\dfrac{n\pi x}{2}}{n\pi}\right]_{0}^{2}
+    =\dfrac{8(1-(-1)^{n})}{n\pi}$\\[4pt]
+  $b_{n}=\dfrac{1}{2}\!\cdot\!\dfrac{4(1-(-1)^{n})}{n\pi}=\dfrac{2(1-(-1)^{n})}{n\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：$g(x) = 3 + \dfrac{4}{\pi}\displaystyle\sum_{k=0}^{\infty} \dfrac{\sin\frac{(2k+1)\pi x}{2}}{2k+1} = 3 + \dfrac{4}{\pi}\!\left(\sin\dfrac{\pi x}{2} + \dfrac{\sin\frac{3\pi x}{2}}{3} + \cdots\right)$\\
 \end{frame}
 
-\begin{frame}{問3(3)　解答}
-  $(3)\; l=\dfrac{1}{2}:\; c_{0}=\dfrac{1}{4},\; a_{n}=\dfrac{1-(-1)^n}{n^{2}\pi^{2}},\; b_{n}=-\dfrac{1}{n\pi}$
+\begin{frame}{問3(3)　解答（1/2）}
+  $l=\dfrac{1}{2}$．\\[4pt]
+  $c_{0}=\displaystyle\int_{-1/2}^{0}(2x+1)\,dx
+    =\bigl[x^{2}+x\bigr]_{-1/2}^{0}
+    =0-\!\left(\tfrac{1}{4}-\tfrac{1}{2}\right)=\dfrac{1}{4}$\\[6pt]
+  $a_{n}=2\displaystyle\int_{-1/2}^{0}(2x+1)\cos(2n\pi x)\,dx$\quad（部分積分）\\[4pt]
+  $=2\!\left[\dfrac{(2x+1)\sin(2n\pi x)}{2n\pi}\right]_{-1/2}^{0}
+   -\dfrac{2}{n\pi}\displaystyle\int_{-1/2}^{0}\sin(2n\pi x)\,dx$\\[2pt]
+  {\footnotesize（境界項：$x=0$ で $\sin 0=0$，$x=-\tfrac{1}{2}$ で $2x+1=0$ より 0）}\\[2pt]
+  $=0+\dfrac{2}{n\pi}\!\left[\dfrac{\cos(2n\pi x)}{2n\pi}\right]_{-1/2}^{0}
+   =\dfrac{1-(-1)^{n}}{n^{2}\pi^{2}}$
+\end{frame}
+
+\begin{frame}{問3(3)　解答（2/2）}
+  $b_{n}=2\displaystyle\int_{-1/2}^{0}(2x+1)\sin(2n\pi x)\,dx$\quad（部分積分）\\[4pt]
+  $=2\!\left[-\dfrac{(2x+1)\cos(2n\pi x)}{2n\pi}\right]_{-1/2}^{0}
+   +\dfrac{2}{n\pi}\displaystyle\int_{-1/2}^{0}\cos(2n\pi x)\,dx$\\[2pt]
+  {\footnotesize（境界項：$x=-\tfrac{1}{2}$ で $2x+1=0$ より 0，$x=0$ で $-\tfrac{1}{2n\pi}$）}\\[2pt]
+  $=2\!\left(-\dfrac{1}{2n\pi}-0\right)+\dfrac{2}{n\pi}\!\left[\dfrac{\sin(2n\pi x)}{2n\pi}\right]_{-1/2}^{0}$\\[4pt]
+  $=-\dfrac{1}{n\pi}+0=-\dfrac{1}{n\pi}$
   \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(3)\; h(x) = \dfrac{1}{4} + \displaystyle\sum_{n=1}^\infty\!\left[\dfrac{1-(-1)^n}{n^{2}\pi^{2}}\cos(2n\pi x) - \dfrac{1}{n\pi}\sin(2n\pi x)\right]$\\
+  $h(x) = \dfrac{1}{4} + \displaystyle\sum_{n=1}^\infty\!\left[\dfrac{1-(-1)^n}{n^{2}\pi^{2}}\cos(2n\pi x) - \dfrac{1}{n\pi}\sin(2n\pi x)\right]$\\
 \end{frame}
 
 \begin{frame}{例題3　（p.\,83）}
