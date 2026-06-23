@@ -839,7 +839,7 @@ chapter3:
       ref: 教p.86(問5)
       problem: "問題141のフーリエ級数を用いて，次の公式を導け．$\\dfrac{1}{1^2} + \\dfrac{1}{3^2} + \\dfrac{1}{5^2} + \\cdots = \\dfrac{\\pi^2}{8}$"
       answer: |
-        問題141で $x=-\pi$ を代入すると（不連続点の平均値を利用して）
+        フーリエ級数の収束定理より，$x=-\pi$ を代入すると
 
         $-\dfrac{\pi}{4}-\dfrac{2}{\pi}\!\left(\dfrac{1}{1^2}+\dfrac{1}{3^2}+\dfrac{1}{5^2}+\cdots\right) = -\dfrac{\pi}{2}$
 
