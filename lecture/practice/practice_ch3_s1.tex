@@ -119,21 +119,22 @@ $f(x) = e^x\ (-\pi/2 \leq x < \pi/2),\ f(x+\pi) = f(x)$
 \textbf{$n=0$：}
 $c_0 = \dfrac{1}{\pi}\displaystyle\int_{-\pi/2}^{\pi/2}e^x\,dx
   = \dfrac{1}{\pi}\bigl[e^x\bigr]_{-\pi/2}^{\pi/2}
-  = \dfrac{e^{\pi/2}-e^{-\pi/2}}{\pi} = \dfrac{2\sinh(\pi/2)}{\pi}$．\\[4pt]
+  = \dfrac{e^{\pi/2}-e^{-\pi/2}}{\pi}$．\\[4pt]
 \textbf{$n\neq 0$：}
 \[
   c_n = \dfrac{1}{\pi}\int_{-\pi/2}^{\pi/2}\!e^{(1-2in)x}\,dx
       = \dfrac{1}{\pi(1-2in)}\bigl[e^{(1-2in)x}\bigr]_{-\pi/2}^{\pi/2}
 \]
 $e^{(1-2in)\pi/2}=(-1)^n e^{\pi/2}$，$e^{-(1-2in)\pi/2}=(-1)^n e^{-\pi/2}$ より\\[2pt]
-$\bigl[e^{(1-2in)x}\bigr]_{-\pi/2}^{\pi/2} = 2(-1)^n\sinh\dfrac{\pi}{2}$，\\[4pt]
-$c_n = \dfrac{2(-1)^n\sinh(\pi/2)}{\pi(1-2in)}$．
+$\bigl[e^{(1-2in)x}\bigr]_{-\pi/2}^{\pi/2} = (-1)^n(e^{\pi/2}-e^{-\pi/2})$，\\[4pt]
+$c_n = \dfrac{(-1)^n(e^{\pi/2}-e^{-\pi/2})}{\pi(1-2in)}$．
 分母有理化 $\left(\cdot\dfrac{1+2in}{1+2in}\right)$：
 \[
-  c_n = \dfrac{2(-1)^n(1+2in)\sinh(\pi/2)}{\pi(1+4n^2)}
+  c_n = \dfrac{(-1)^n(1+2in)(e^{\pi/2}-e^{-\pi/2})}{\pi(1+4n^2)}
 \]
 \[
-  f(x) = c_0 + \sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty} c_n\,e^{2inx}
+  f(x) = \frac{e^{\pi/2}-e^{-\pi/2}}{\pi}
+    \sum_{n=-\infty}^{\infty} \frac{(-1)^n(1+2in)}{1+4n^2}\,e^{2inx}
 \]
 }
 
