@@ -47,23 +47,23 @@ $= \dfrac{1}{n\pi} - 0 = \dfrac{1}{n\pi}$．\\[2pt]
 
 \mondai{2}{
 グラフが図で示されている次の関数のフーリエ級数を求めよ．\\
-(1) 三角波：$f(x) = 2 - |x|\ (-2 \leq x < 2),\ f(x+4) = f(x)$\\
+(1) 三角波：
+$f(x) = \begin{cases} 2-2|x| & (-1 \leq x \leq 1) \\ 0 & (|x| > 1) \end{cases},\quad f(x+4) = f(x)$\\
 (2) のこぎり波：
 $f(x) = \begin{cases} -x-2 & (-2 \leq x < -1) \\ 0 & (-1 \leq x < 1) \\ 2-x & (1 \leq x < 2) \end{cases},\quad f(x+4) = f(x)$
 }
 \kotae{
 (1) 周期 $4,\ l=2$．偶関数なので $b_n=0$．\\[2pt]
-$c_0 = \dfrac{1}{4}\cdot 2\displaystyle\int_0^2(2-x)dx
-  = \dfrac{1}{2}\!\left[2x-\dfrac{x^2}{2}\right]_0^2\! = 1$．\\[4pt]
-$a_n = \displaystyle\int_0^2(2-x)\cos\dfrac{n\pi x}{2}dx$：
-$u=2-x,\;dv=\cos\dfrac{n\pi x}{2}dx$ より\\[2pt]
-$= \!\left[\dfrac{2(2-x)\sin\frac{n\pi x}{2}}{n\pi}\right]_0^2\!
-  + \dfrac{2}{n\pi}\!\int_0^2\!\sin\dfrac{n\pi x}{2}dx$\\[2pt]
-$= 0 + \dfrac{2}{n\pi}\!\left[-\dfrac{2\cos\frac{n\pi x}{2}}{n\pi}\right]_0^2\!
-  = \dfrac{4(1-(-1)^n)}{n^2\pi^2}$．\\[2pt]
-$n$ 奇数で $\dfrac{8}{n^2\pi^2}$，$n$ 偶数で $0$ となるので
+$c_0 = \dfrac{1}{4}\cdot 2\displaystyle\int_0^1(2-2x)dx
+  = \dfrac{1}{2}\!\left[2x-x^2\right]_0^1\! = \dfrac{1}{2}$．\\[4pt]
+$a_n = \displaystyle\int_0^1(2-2x)\cos\dfrac{n\pi x}{2}dx$：
+$u=2-2x,\;dv=\cos\dfrac{n\pi x}{2}dx$ より\\[2pt]
+$= \!\left[\dfrac{2(2-2x)\sin\frac{n\pi x}{2}}{n\pi}\right]_0^1\!
+  + \dfrac{4}{n\pi}\!\int_0^1\!\sin\dfrac{n\pi x}{2}dx$\\[2pt]
+$= 0 + \dfrac{4}{n\pi}\!\left[-\dfrac{2\cos\frac{n\pi x}{2}}{n\pi}\right]_0^1\!
+  = \dfrac{8\!\left(1-\cos\dfrac{n\pi}{2}\right)}{n^2\pi^2}$．
 \[
-  f(x) = 1 + \sum_{k=1}^\infty \dfrac{8}{(2k-1)^2\pi^2}\cos\dfrac{(2k-1)\pi x}{2}
+  f(x) = \dfrac{1}{2} + \sum_{n=1}^\infty \dfrac{8\!\left(1-\cos\dfrac{n\pi}{2}\right)}{n^2\pi^2}\cos\dfrac{n\pi x}{2}
 \]
 (2) 周期 $4,\ l=2$．奇関数なので $a_n=0$．\\[2pt]
 $b_n = \displaystyle\int_1^2 (2-x)\sin\dfrac{n\pi x}{2}\,dx$：$u=2-x,\;dv=\sin\dfrac{n\pi x}{2}dx$ より\\[2pt]
