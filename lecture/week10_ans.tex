@@ -24,11 +24,41 @@
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題4　解答}
-  $f(x)$ は奇関数なので $c_{0} = 0,\; a_{n} = 0,$ フーリエ正弦級数を求めればよい\\[4pt]
-  $b_{n} = 2\displaystyle\int_{0}^{1} x(1-x) \sin(n\pi x)\,dx = \dfrac{4(1-(-1)^n)}{n^{3}\pi^{3}}$\\[6pt]
-  $n$ が奇数のとき $b_{n} = \dfrac{8}{n^{3}\pi^{3}}$，偶数のとき $b_{n} = 0$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$f(x) = \dfrac{8}{\pi^{3}}\displaystyle\sum_{k=0}^{\infty} \dfrac{\sin(2k+1)\pi x}{(2k+1)^{3}} = \dfrac{8}{\pi^{3}}\!\left(\sin \pi x + \dfrac{\sin 3\pi x}{27} + \dfrac{\sin 5\pi x}{125} + \cdots\right)$
+\begin{frame}{例題4　解答（1/3）}
+  $f(x)$ は奇関数 $\Rightarrow c_{0}=0,\;a_{n}=0$，フーリエ正弦級数\\[4pt]
+  $\displaystyle b_{n} = 2\int_{0}^{1} x(1-x)\sin(n\pi x)\,dx
+    = 2\!\left[\int_{0}^{1}x\sin(n\pi x)\,dx-\int_{0}^{1}x^{2}\sin(n\pi x)\,dx\right]$\\[6pt]
+  \textbf{①} $\displaystyle\int_{0}^{1}x\sin(n\pi x)\,dx$：$u=x,\;v'=\sin(n\pi x)$ で部分積分\\[4pt]
+  $\displaystyle
+  =\left[-\frac{x}{n\pi}\cos(n\pi x)\right]_{0}^{1}+\frac{1}{n\pi}\int_{0}^{1}\cos(n\pi x)\,dx$\\[4pt]
+  $\displaystyle
+  =-\frac{(-1)^{n}}{n\pi}+\frac{1}{n\pi}\Bigl[\frac{\sin(n\pi x)}{n\pi}\Bigr]_{0}^{1}
+  =-\frac{(-1)^{n}}{n\pi}+0=\frac{(-1)^{n+1}}{n\pi}$
+\end{frame}
+
+\begin{frame}{例題4　解答（2/3）}
+  \textbf{②} $\displaystyle\int_{0}^{1}x^{2}\sin(n\pi x)\,dx$：$u=x^{2},\;v'=\sin(n\pi x)$ で部分積分\\[4pt]
+  $\displaystyle
+  =\left[-\frac{x^{2}}{n\pi}\cos(n\pi x)\right]_{0}^{1}+\frac{2}{n\pi}\int_{0}^{1}x\cos(n\pi x)\,dx
+  =\frac{(-1)^{n+1}}{n\pi}+\frac{2}{n\pi}\int_{0}^{1}x\cos(n\pi x)\,dx$\\[6pt]
+  $\displaystyle\int_{0}^{1}x\cos(n\pi x)\,dx$：$u=x,\;v'=\cos(n\pi x)$ で部分積分\\[4pt]
+  $\displaystyle
+  =\left[\frac{x}{n\pi}\sin(n\pi x)\right]_{0}^{1}-\frac{1}{n\pi}\int_{0}^{1}\sin(n\pi x)\,dx
+  =0+\frac{1}{n^{2}\pi^{2}}[\cos(n\pi x)]_{0}^{1}=\frac{(-1)^{n}-1}{n^{2}\pi^{2}}$\\[6pt]
+  代入すると\\[2pt]
+  $\displaystyle\int_{0}^{1}x^{2}\sin(n\pi x)\,dx
+  =\frac{(-1)^{n+1}}{n\pi}+\frac{2((-1)^{n}-1)}{n^{3}\pi^{3}}$
+\end{frame}
+
+\begin{frame}{例題4　解答（3/3）}
+  ①，② をまとめる\\[4pt]
+  $\displaystyle\int_{0}^{1}(x-x^{2})\sin(n\pi x)\,dx
+  =\underbrace{\frac{(-1)^{n+1}}{n\pi}-\frac{(-1)^{n+1}}{n\pi}}_{=0}
+  -\frac{2((-1)^{n}-1)}{n^{3}\pi^{3}}
+  =\frac{2(1-(-1)^{n})}{n^{3}\pi^{3}}$\\[6pt]
+  $b_{n}=2\times\dfrac{2(1-(-1)^{n})}{n^{3}\pi^{3}}=\dfrac{4(1-(-1)^{n})}{n^{3}\pi^{3}}$\\[4pt]
+  $n$ 奇数：$b_{n}=\dfrac{8}{n^{3}\pi^{3}}$，$n$ 偶数：$b_{n}=0$\\[8pt]
+  \textcolor{red}{\textbf{答}}：$f(x) = \dfrac{8}{\pi^{3}}\displaystyle\sum_{k=0}^{\infty} \dfrac{\sin(2k+1)\pi x}{(2k+1)^{3}} = \dfrac{8}{\pi^{3}}\!\left(\sin \pi x + \dfrac{\sin 3\pi x}{27} + \dfrac{\sin 5\pi x}{125} + \cdots\right)$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -50,19 +80,34 @@
 \end{frame}
 
 \begin{frame}{問4(2)　解答}
-  $(2)$ 偶関数 $:\; b_{n}=0$\\[4pt]
-  $c_{0}=\displaystyle\int_{0}^1(1-x)\,dx=\dfrac{1}{2},\quad a_{n}=2\int_{0}^1(1-x)\cos(n\pi x)\,dx = \dfrac{2(1-(-1)^n)}{n^{2}\pi^{2}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(2)$ 偶関数 $\Rightarrow b_{n}=0$\\[4pt]
+  $\displaystyle c_{0}=\int_{0}^{1}(1-x)\,dx=\left[x-\frac{x^{2}}{2}\right]_{0}^{1}=\frac{1}{2}$\\[4pt]
+  $\displaystyle a_{n}=2\int_{0}^{1}(1-x)\cos(n\pi x)\,dx$：$u=1-x,\;v'=\cos(n\pi x)$ で部分積分\\[4pt]
+  $\displaystyle =2\left[\frac{(1-x)\sin(n\pi x)}{n\pi}\right]_{0}^{1}+\frac{2}{n\pi}\int_{0}^{1}\sin(n\pi x)\,dx$\\[4pt]
+  $\displaystyle =0+\frac{2}{n\pi}\left[-\frac{\cos(n\pi x)}{n\pi}\right]_{0}^{1}
+  =\frac{2}{n^{2}\pi^{2}}\bigl(1-(-1)^{n}\bigr)=\dfrac{2(1-(-1)^{n})}{n^{2}\pi^{2}}$\\[8pt]
+  \textcolor{red}{\textbf{答}}：
   $(2)\; g(x) = \dfrac{1}{2} + \dfrac{4}{\pi^{2}}\displaystyle\sum_{k=0}^{\infty} \dfrac{\cos(2k+1)\pi x}{(2k+1)^{2}} = \dfrac{1}{2} + \dfrac{4}{\pi^{2}}\!\left(\cos \pi x + \dfrac{\cos 3\pi x}{9} + \dfrac{\cos 5\pi x}{25} + \cdots\right)$
 \end{frame}
 
-\begin{frame}{問4(3)　解答}
-  $(3)\; l=2:\; b_{n}=0$\\[4pt]
-  $c_{0}=\dfrac{1}{2}\displaystyle\int_{0}^2\cos\dfrac{\pi x}{4}\,dx=\dfrac{2}{\pi}$\\[6pt]
-  $a_{n}=\dfrac{1}{2}\displaystyle\int_{-2}^{2}\cos\dfrac{\pi x}{4}\cos\dfrac{n\pi x}{2}\,dx$\\[6pt]
-  積和公式で積分 $:\; a_{n} = \dfrac{-4(-1)^n}{\pi(4n^{2}-1)}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(3)\; h(x) = \dfrac{2}{\pi} + \dfrac{4}{\pi}\displaystyle\sum_{n=1}^\infty \dfrac{(-1)^{n+1}}{4n^{2}-1} \cos\dfrac{n\pi x}{2}$\\
+\begin{frame}{問4(3)　解答（1/2）}
+  $(3)\; l=2$，偶関数 $\Rightarrow b_{n}=0$\\[4pt]
+  $\displaystyle c_{0}=\frac{1}{2}\int_{0}^{2}\cos\frac{\pi x}{4}\,dx
+  =\frac{1}{2}\left[\frac{4}{\pi}\sin\frac{\pi x}{4}\right]_{0}^{2}=\frac{2}{\pi}$\\[6pt]
+  偶関数より $\displaystyle a_{n}=\int_{0}^{2}\cos\frac{\pi x}{4}\cos\frac{n\pi x}{2}\,dx$\\[4pt]
+  積和公式 $\cos A\cos B=\dfrac{1}{2}[\cos(A-B)+\cos(A+B)]$ を適用\\[4pt]
+  $\displaystyle=\frac{1}{2}\int_{0}^{2}\!\left[\cos\frac{(1-2n)\pi x}{4}+\cos\frac{(1+2n)\pi x}{4}\right]\,dx$\\[4pt]
+  $\displaystyle=\frac{1}{2}\left[\frac{4}{(1-2n)\pi}\sin\frac{(1-2n)\pi x}{4}+\frac{4}{(1+2n)\pi}\sin\frac{(1+2n)\pi x}{4}\right]_{0}^{2}$
+\end{frame}
+
+\begin{frame}{問4(3)　解答（2/2）}
+  $x=0$ では各 $\sin=0$，$x=2$ では\\[4pt]
+  $\sin\dfrac{(1\pm2n)\pi}{2}=\sin\!\left(\dfrac{\pi}{2}\pm n\pi\right)=\cos(n\pi)=(-1)^{n}$\\[6pt]
+  $\displaystyle a_{n}=\frac{1}{2}\!\left[\frac{4(-1)^{n}}{(1-2n)\pi}+\frac{4(-1)^{n}}{(1+2n)\pi}\right]
+  =\frac{2(-1)^{n}}{\pi}\!\left[\frac{1}{1-2n}+\frac{1}{1+2n}\right]$\\[4pt]
+  $\displaystyle=\frac{2(-1)^{n}}{\pi}\cdot\frac{2}{1-4n^{2}}=\dfrac{-4(-1)^{n}}{\pi(4n^{2}-1)}$\\[8pt]
+  \textcolor{red}{\textbf{答}}：
+  $(3)\; h(x) = \dfrac{2}{\pi} + \dfrac{4}{\pi}\displaystyle\sum_{n=1}^\infty \dfrac{(-1)^{n+1}}{4n^{2}-1} \cos\dfrac{n\pi x}{2}$
 \end{frame}
 
 \begin{frame}{定理：フーリエ級数の収束定理}
