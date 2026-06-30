@@ -73,9 +73,12 @@
 \end{frame}
 
 \begin{frame}{問4(1)　解答}
-  $(1)$ 奇関数 $:\; c_{0}=a_{n}=0$\\[4pt]
-  $b_{n}=2\displaystyle\int_{0}^1 \sin(n\pi x)\,dx = \dfrac{2(1-(-1)^n)}{n\pi}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
+  $(1)$ 奇関数 $\Rightarrow c_{0}=a_{n}=0$，フーリエ正弦級数\\[4pt]
+  $\displaystyle b_{n}=2\int_{0}^{1}\sin(n\pi x)\,dx
+  =2\left[-\frac{\cos(n\pi x)}{n\pi}\right]_{0}^{1}
+  =\frac{2}{n\pi}(1-(-1)^{n})=\dfrac{2(1-(-1)^{n})}{n\pi}$\\[6pt]
+  $n$ 奇数：$b_{n}=\dfrac{4}{n\pi}$，$n$ 偶数：$b_{n}=0$\\[8pt]
+  \textcolor{red}{\textbf{答}}：
   $(1)\; f(x) = \dfrac{4}{\pi}\displaystyle\sum_{n=1}^{\infty} \dfrac{\sin(2n-1)\pi x}{2n-1} = \dfrac{4}{\pi}\!\left(\sin \pi x + \dfrac{\sin 3\pi x}{3} + \dfrac{\sin 5\pi x}{5} + \cdots\right)$
 \end{frame}
 
