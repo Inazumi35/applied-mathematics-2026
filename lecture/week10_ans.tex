@@ -158,6 +158,19 @@
   \end{exampleblock}
 \end{frame}
 
+\begin{frame}{問5　$x$ の選び方}
+  \textbf{ポイント}：代入する $x$ は「目標の符号パターン」から逆算する\\[8pt]
+  \begin{tabular}{lll}
+    \hline
+    目標の符号 & 使う項 & 選ぶ $x$ \\
+    \hline
+    全部 $+$（$\cos$ 系） & $\cos(n\pi x)=1$ が必要 & $x=0$ \\
+    交互 $+-$（$\sin$ 系） & $\sin\dfrac{(2n-1)\pi x}{1}=(-1)^{n+1}$ が必要 & $x=\dfrac{1}{2}$ \\
+    \hline
+  \end{tabular}\\[8pt]
+  {\footnotesize\textcolor{gray}{確認：$n=1,2,3$ で $\sin\dfrac{(2n-1)\pi}{2}=+1,-1,+1,\ldots$ → 目標の交互符号と一致}}
+\end{frame}
+
 \begin{frame}{問5(1)　解答}
   例題3 $:\; f(x) = \dfrac{1}{2} - \dfrac{4}{\pi^{2}}\!\left(\cos \pi x + \dfrac{\cos 3\pi x}{9} + \cdots\right)$ に $x=0$ を代入\\[6pt]
   $f(0) = 0 = \dfrac{1}{2} - \dfrac{4}{\pi^{2}}\!\left(1 + \dfrac{1}{9} + \dfrac{1}{25} + \cdots\right)$
