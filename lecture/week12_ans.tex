@@ -1,6 +1,6 @@
-% !TEX program = lualatex
+﻿% !TEX program = lualatex
 \documentclass[professionalfonts]{beamer}
-\newcommand{\slidemode}{1}  % カラー投影モード
+\newcommand{\slidemode}{1}
 \usepackage{beamer_template}
 \usepackage{enumerate}
 
@@ -19,168 +19,249 @@
 \end{frame}
 
 \begin{frame}{定義：フーリエ変換}
-  \begin{block}{}
-  \medskip\textbf{フーリエ変換}　$\bigl(F(u) = F[f(x)]\bigr)$：
+  \begin{block}{フーリエ変換}
   \[
-    F(u) = \int_{-\infty}^{\infty} f(x) e^{-iux} dx
+    F(u) = \mathcal{F}[f(x)] = \int_{-\infty}^{\infty} f(x)\,e^{-iux}\,dx
   \]
-  \medskip\textbf{逆フーリエ変換}　$\bigl(f(x) = F^{-1}[F(u)]\bigr)$：
-  \[
-    f(x) = (1/2\pi) \int_{-\infty}^{\infty} F(u) e^{iux} du
-  \]
-  {\footnotesize \textcolor{gray}{$F(u)$ を $f(x)$ のフーリエ変換、 $f(x)$ を $F(u)$ の逆フーリエ変換という}}
   \end{block}
+  {\footnotesize\textcolor{gray}{$F(u)$ を $f(x)$ のフーリエ変換という}}
 \end{frame}
 
-\begin{frame}{定理：フーリエ積分定理}
-  \begin{block}{}
-  \textbf{条件}：
+\begin{frame}{補足：複素指数関数の極限}
+  複素数 $a = \alpha + i\beta$ に対して：
+  \[
+    \left|e^{ax}\right| = \left|e^{\alpha x} \cdot e^{i\beta x}\right| = e^{\alpha x}
+  \]
+  なぜなら，オイラーの公式 $e^{i\beta x} = \cos(\beta x) + i\sin(\beta x)$ より\\[4pt]
+  \[
+    \left|e^{i\beta x}\right| = \sqrt{\cos^2(\beta x)+\sin^2(\beta x)} = 1
+  \]
+  虚部 $\beta$ は方向（位相）だけを決め，大きさには影響しない。\\[6pt]
+  \begin{block}{まとめ}
   \begin{itemize}
-    \item $f(x)$ は任意の有限区間で区分的に滑らか
-    \item $\int_{-\infty}^{\infty} |f(x)| dx < \infty$（絶対可積分）
+    \item $\mathrm{Re}(a) = \alpha > 0$ のとき：$x \to -\infty$ で $e^{ax} \to 0$
+    \item $\mathrm{Re}(a) = \alpha < 0$ のとき：$x \to +\infty$ で $e^{ax} \to 0$
   \end{itemize}
-  \[
-    f(x) = (1/\pi) \int_{0}^\infty [\int_{-\infty}^{\infty} f(\tau)\cos(u(x-\tau)) d\tau] du
-  \]
   \end{block}
+  {\footnotesize\textcolor{gray}{無限積分の端点での値を求めるときに使う}}
 \end{frame}
 
-\begin{frame}{フーリエ余弦変換}
-  \begin{block}{}
-  \[
-    Fc(u) = \int_{0}^\infty f(x)\cos(ux) dx
-  \]
-  \[
-    f(x) = (2/\pi) \int_{0}^\infty Fc(u)\cos(ux) du
-  \]
-  {\footnotesize $f(x)$ が偶関数の場合に対応}
-  \end{block}
-\end{frame}
-
-\begin{frame}{フーリエサイン変換}
-  \begin{block}{}
-  \[
-    Fs(u) = \int_{0}^\infty f(x)\sin(ux) dx
-  \]
-  \[
-    f(x) = (2/\pi) \int_{0}^\infty Fs(u)\sin(ux) du
-  \]
-  {\footnotesize $f(x)$ が奇関数の場合に対応}
-  \end{block}
-\end{frame}
-
-\begin{frame}{例題1　（p.\,91）}
+\begin{frame}{例題1　}
   \begin{exampleblock}{問題}
-    $f(x) = e^{-|x|}$ のフーリエ変換を求めよ\\[2pt]
+    次の関数のフーリエ変換を求めよ\\[2pt]
+    $f(x) = e^{-|x|}$\\[2pt]
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{例題1　解答}
-  $F(u) = \int_{-\infty}^{\infty} e^{-|x|} e^{-iux} dx$\\[4pt]
-  $= \int_{-\infty}^{0} e^{x} e^{-iux} dx + \int_{0}^{\infty} e^{-x} e^{-iux} dx$\\[4pt]
-  $= 1/(1-iu) + 1/(1+iu)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$F(u) = 2/(1+u^{2})$
-  {\footnotesize \textcolor{gray}{\textit{$x\to-\infty$ で $e^{(1-iu)x}\to 0$、$x\to+\infty$ で $e^{-(1+iu)x}\to 0$（実部 $e^x, e^{-x}$ より）}}}
+\begin{frame}{例題1　解答（1/2）}
+  $F(u) = \displaystyle\int_{-\infty}^{\infty}e^{-|x|}e^{-iux}\,dx
+    = \int_{-\infty}^{0}e^{(1-iu)x}\,dx + \int_{0}^{\infty}e^{-(1+iu)x}\,dx$\\[6pt]
+  \textbf{第1項：}
+  $\displaystyle\left[\frac{e^{(1-iu)x}}{1-iu}\right]_{-\infty}^{0}
+    = \frac{e^{0}}{1-iu} - \frac{e^{-\infty}}{1-iu}$\\[4pt]
+  \hspace{2em}$\mathrm{Re}(1-iu)=1>0$ より $e^{(1-iu)\cdot(-\infty)}\to 0$，よって\\[2pt]
+  \hspace{6em}$= \dfrac{1}{1-iu} - 0 = \dfrac{1}{1-iu}$\\[8pt]
+  \textbf{第2項：}
+  $\displaystyle\left[\frac{-e^{-(1+iu)x}}{1+iu}\right]_{0}^{\infty}
+    = \frac{-e^{-\infty}}{1+iu} - \frac{-e^{0}}{1+iu}$\\[4pt]
+  \hspace{2em}$\mathrm{Re}(1+iu)=1>0$ より $e^{-(1+iu)\cdot\infty}\to 0$，よって\\[2pt]
+  \hspace{6em}$= 0 + \dfrac{1}{1+iu} = \dfrac{1}{1+iu}$
 \end{frame}
 
-\begin{frame}{演習問題}
-  \begin{exampleblock}{自分で解いてみよう}
-  \begin{description}
-    \item[問1] 次の関数のフーリエ変換を求めよ
-    $(1) f(x) = \begin{cases} 0 & (x > 0) \\ e^x & (x \leq 0) \end{cases}$\\
-    $(2) g(x) = \begin{cases} xe^{-x} & (x > 0) \\ 0 & (x \leq 0) \end{cases}$\\
-  \end{description}
-  \end{exampleblock}
+\begin{frame}{例題1　解答（2/2）}
+  第1項・第2項を合わせると：\\[6pt]
+  $F(u) = \dfrac{1}{1-iu}+\dfrac{1}{1+iu}$\\[8pt]
+  通分（分母 $(1-iu)(1+iu) = 1+u^{2}$）：\\[4pt]
+  $= \dfrac{1+iu}{(1-iu)(1+iu)} + \dfrac{1-iu}{(1-iu)(1+iu)}
+    = \dfrac{(1+iu)+(1-iu)}{1+u^{2}}
+    = \dfrac{2}{1+u^{2}}$
+  \\[12pt]\textcolor{red}{\textbf{答}}：$F(u) = \dfrac{2}{1+u^{2}}$
 \end{frame}
 
-\begin{frame}{問1　解答}
-  $(1)\; F(u) = \displaystyle\int_{-\infty}^{0} e^x e^{-iux}\,dx = \int_{-\infty}^{0} e^{(1-iu)x}\,dx$\\[4pt]
-  $= \left[\dfrac{e^{(1-iu)x}}{1-iu}\right]_{-\infty}^{0} = \dfrac{1}{1-iu} \quad (\Re(1-iu)=1>0)$\\[6pt]
-  $(2)\; G(u) = \displaystyle\int_{0}^{\infty} x e^{-x} e^{-iux}\,dx = \int_{0}^{\infty} x e^{-(1+iu)x}\,dx$\\[4pt]
-  $\displaystyle\int_{0}^\infty x e^{-ax}\,dx = \dfrac{1}{a^{2}}$ より $G(u) = \dfrac{1}{(1+iu)^{2}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：
-  $(1)\; F(u) = \dfrac{1}{1-iu}$\qquad
-  $(2)\; G(u) = \dfrac{1}{(1+iu)^{2}}$\\
-\end{frame}
-
-\begin{frame}{例題2　（p.\,92）}
+\begin{frame}{例題2　}
   \begin{exampleblock}{問題}
-    $f(x) = \begin{cases} 1 & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$ のフーリエ変換を求めよ\\[2pt]
+    次の関数のフーリエ変換を求めよ\\[2pt]
+    $f(x) = \begin{cases} 1 & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題2　解答}
-  $F(u) = \int_{-1}^{1} e^{-iux} dx = [-e^{-iux}/(iu)]_{-1}^{1}$\\[4pt]
-  $= (e^{iu} - e^{-iu})/(iu) = 2\sin u / u$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$F(u) = 2\sin u / u$
+  $F(u) = \displaystyle\int_{-1}^{1}e^{-iux}\,dx
+    = \!\left[\frac{e^{-iux}}{-iu}\right]_{-1}^{1}$\\[8pt]
+  $x=1$ を代入：$\dfrac{e^{-iu}}{-iu}$\\[6pt]
+  $x=-1$ を代入：$\dfrac{e^{iu}}{-iu}$\\[6pt]
+  差を計算：
+  $\dfrac{e^{-iu}}{-iu} - \dfrac{e^{iu}}{-iu}
+    = \dfrac{e^{-iu}-e^{iu}}{-iu}
+    = \dfrac{e^{iu}-e^{-iu}}{iu}$\\[8pt]
+  オイラーの公式 $e^{i\theta}-e^{-i\theta}=2i\sin\theta$ より\\[4pt]
+  \hspace{2em}$F(u) = \dfrac{2i\sin u}{iu} = \dfrac{2\sin u}{u}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$F(u) = \dfrac{2\sin u}{u}$
 \end{frame}
 
-\begin{frame}{演習問題}
-  \begin{exampleblock}{自分で解いてみよう}
-  \begin{description}
-    \item[問2] 次の関数のフーリエ変換を求めよ
-    $(1) f(x) = \begin{cases} 1 & (0 \leq x \leq 1) \\ 0 & (x < 0, x > 1) \end{cases}$\\
-    $(2) g(x) = \begin{cases} x & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\
-    \item[問3] 問2(1)の関数に積分定理を適用して、次の等式を証明せよ
-    $(1) (1/2\pi)\int_{-\infty}^{\infty} (1-e^{-iu})/iu \cdot e^{iux} du = \begin{cases} 1 & (0<x<1) \\ 1/2 & (x=0,1) \\ 0 & (x<0, x>1) \end{cases}$\\
-    $(2) \int_{-\infty}^{\infty} \sin u / u  du = \pi$\\
-  \end{description}
+\begin{frame}{問1　}
+  \begin{exampleblock}{問題}
+    次の関数のフーリエ変換を求めよ\\[4pt]
+    $(1)\; f(x) = \begin{cases} 0 & (x > 0) \\ e^{x} & (x \leq 0) \end{cases}$\\[6pt]
+    $(2)\; g(x) = \begin{cases} xe^{-x} & (x > 0) \\ 0 & (x \leq 0) \end{cases}$
   \end{exampleblock}
 \end{frame}
 
-\begin{frame}{問2(1)　解答}
-  $(1)\; F(u) = \displaystyle\int_{0}^1 e^{-iux}\,dx = \left[\dfrac{e^{-iux}}{-iu}\right]_{0}^1 = \dfrac{1-e^{-iu}}{iu}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$(1)\; F(u) = \dfrac{1-e^{-iu}}{iu}$\\
-\end{frame}
-
-\begin{frame}{問2(2)　解答}
-  $(2)\; g(x)$ は奇関数 $:\; G(u) = \displaystyle\int_{-1}^{1} x e^{-iux}\,dx = -2i\int_{0}^1 x \sin(ux)\,dx$\\[4pt]
-  $\displaystyle\int_{0}^1 x \sin(ux)\,dx = \left[-\dfrac{x \cos(ux)}{u}\right]_{0}^1 + \dfrac{1}{u}\int_{0}^1 \cos(ux)\,dx = -\dfrac{\cos u}{u} + \dfrac{\sin u}{u^{2}}$\\[6pt]
-  $G(u) = -2i\!\left(-\dfrac{\cos u}{u} + \dfrac{\sin u}{u^{2}}\right) = \dfrac{2i\cos u}{u} - \dfrac{2i\sin u}{u^{2}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$(2)\; G(u) = \dfrac{2i\cos u}{u} - \dfrac{2i\sin u}{u^{2}}$\\
-\end{frame}
-
-\begin{frame}{問3(1)　解答}
-  $(1)$ フーリエ積分定理 $:\; f(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} F(u)\,e^{iux}\,du$\\[6pt]
-  連続点では $f(x)$、不連続点 $x=0,1$ では $\dfrac{f(x+0)+f(x-0)}{2} = \dfrac{1}{2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
-\end{frame}
-
-\begin{frame}{問3(2)　解答}
-  $(2)\; x=1$（不連続点）を代入 $:\; \dfrac{1}{2} = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{1-e^{-iu}}{iu}\cdot e^{iu}\,du$\\[6pt]
-  $\dfrac{(1-e^{-iu})e^{iu}}{iu} = \dfrac{e^{iu}-1}{iu} = \dfrac{\sin u}{u} + \dfrac{i(1-\cos u)}{u}$\\[6pt]
-  実部（偶関数）のみ寄与 $:\; \dfrac{1}{2} = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} \dfrac{\sin u}{u}\,du$\\[6pt]
-  $\therefore\; \displaystyle\int_{-\infty}^{\infty} \dfrac{\sin u}{u}\,du = \pi$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
-\end{frame}
-
-\begin{frame}{例題3　（p.\,95）}
+\begin{frame}{問2　}
   \begin{exampleblock}{問題}
-    $f(x) = \begin{cases} 1-|x| & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$ のフーリエ余弦変換を求めよ\\[2pt]
+    次の関数のフーリエ変換を求めよ\\[4pt]
+    $(1)\; f(x) = \begin{cases} 1 & (0 \leq x \leq 1) \\ 0 & (x < 0,\; x > 1) \end{cases}$\\[6pt]
+    $(2)\; g(x) = \begin{cases} x & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問1(1)　解答}
+  $F(u) = \displaystyle\int_{-\infty}^{0}e^{x}e^{-iux}\,dx
+    = \int_{-\infty}^{0}e^{(1-iu)x}\,dx
+    = \!\left[\dfrac{e^{(1-iu)x}}{1-iu}\right]_{-\infty}^{0}$\\[8pt]
+  $x=0$ を代入：$\dfrac{e^{0}}{1-iu} = \dfrac{1}{1-iu}$\\[6pt]
+  $x\to-\infty$：$\mathrm{Re}(1-iu)=1>0$ より $e^{(1-iu)x}\to 0$\\[6pt]
+  差：$\dfrac{1}{1-iu} - 0$
+  \\[12pt]\textcolor{red}{\textbf{答}}：$F(u) = \dfrac{1}{1-iu}$
+\end{frame}
+
+\begin{frame}{問1(2)　解答}
+  $G(u) = \displaystyle\int_{0}^{\infty}xe^{-x}e^{-iux}\,dx
+    = \int_{0}^{\infty}x\,e^{-(1+iu)x}\,dx$\\[4pt]
+  $a=1+iu$ とおく（$\mathrm{Re}(a)=1>0$）。部分積分 $p=x$，$dq=e^{-ax}dx$：\\[4pt]
+  $\displaystyle\int_{0}^{\infty}xe^{-ax}\,dx
+    = \!\left[\frac{-xe^{-ax}}{a}\right]_{0}^{\infty}+\frac{1}{a}\int_{0}^{\infty}e^{-ax}\,dx$\\[4pt]
+  第1項：$\mathrm{Re}(a)>0$ より $x\to\infty$ で $xe^{-ax}\to 0$，$x=0$ で $0$ → 第1項 $=0$\\[4pt]
+  第2項：$\dfrac{1}{a}\!\left[\dfrac{-e^{-ax}}{a}\right]_{0}^{\infty}
+    = \dfrac{1}{a}\cdot\dfrac{1}{a} = \dfrac{1}{a^{2}}$\\[6pt]
+  よって $G(u) = \dfrac{1}{a^{2}} = \dfrac{1}{(1+iu)^{2}}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$G(u) = \dfrac{1}{(1+iu)^{2}}$
+\end{frame}
+
+\begin{frame}{問2　解答}
+  \textbf{(1)} $F(u) = \displaystyle\int_{0}^{1}e^{-iux}\,dx
+    = \!\left[\dfrac{e^{-iux}}{-iu}\right]_{0}^{1}
+    = \dfrac{e^{-iu}-1}{-iu} = \dfrac{1-e^{-iu}}{iu}$\\[8pt]
+  \textbf{(2)} $g(x)=x$ は奇関数より $G(u) = -2i\displaystyle\int_{0}^{1}x\sin(ux)\,dx$\\[4pt]
+  部分積分：$p=x$，$dq=\sin(ux)dx$，$dp=dx$，$q=\dfrac{-\cos(ux)}{u}$\\[4pt]
+  $\displaystyle\int_{0}^{1}x\sin(ux)\,dx
+    = \!\left[\dfrac{-x\cos(ux)}{u}\right]_{0}^{1}+\dfrac{1}{u}\int_{0}^{1}\cos(ux)\,dx
+    = \dfrac{-\cos u}{u}+\dfrac{\sin u}{u^{2}}$\\[4pt]
+  $G(u) = -2i\!\left(\dfrac{-\cos u}{u}+\dfrac{\sin u}{u^{2}}\right)
+    = \dfrac{2i\cos u}{u}-\dfrac{2i\sin u}{u^{2}}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$(1)\; F(u) = \dfrac{1-e^{-iu}}{iu}$ \hspace{2em}
+  $(2)\; G(u) = \dfrac{2i\cos u}{u}-\dfrac{2i\sin u}{u^{2}}$
+\end{frame}
+
+\begin{frame}{定理：フーリエ積分定理}
+  \begin{block}{成立条件}
+  \begin{itemize}
+    \item 区分的に滑らか：有限区間に不連続点が有限個、かつ $f'$ も区分的に連続
+    \item $\displaystyle\int_{-\infty}^{\infty}|f(x)|\,dx$ が存在する
+  \end{itemize}
+  \end{block}
+  \begin{block}{定理}
+  \[
+    \frac{f(x+0)+f(x-0)}{2} = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(u)\,e^{iux}\,du
+  \]
+  \end{block}
+  {\footnotesize\textcolor{gray}{連続点では $f(x+0)=f(x-0)=f(x)$ なので、左辺 $= f(x)$}}
+\end{frame}
+
+\begin{frame}{逆フーリエ変換}
+  \begin{block}{逆フーリエ変換}
+  \[
+    f(x) = \mathcal{F}^{-1}[F(u)] = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(u)\,e^{iux}\,du
+  \]
+  \end{block}
+  {\footnotesize\textcolor{gray}{$f(x)$ を $F(u)$ の逆フーリエ変換という}}
+\end{frame}
+
+\begin{frame}{問3　}
+  \begin{exampleblock}{問題}
+    問2(1)の関数に積分定理を適用して，次の等式を証明せよ\\[4pt]
+    $(1)\;\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\frac{1-e^{-iu}}{iu}\,e^{iux}\,du
+      = \begin{cases} 1 & (0<x<1) \\ \tfrac{1}{2} & (x=0,\;x=1) \\ 0 & (x<0,\;x>1) \end{cases}$\\[8pt]
+    $(2)\;\displaystyle\int_{-\infty}^{\infty}\frac{\sin u}{u}\,du = \pi$
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{問3　解答（1）}
+  問2(1) より $F(u)=\dfrac{1-e^{-iu}}{iu}$，逆フーリエ変換の公式を適用する：\\[6pt]
+  \[
+    \frac{1}{2\pi}\int_{-\infty}^{\infty}\frac{1-e^{-iu}}{iu}\,e^{iux}\,du
+    = \begin{cases} 1 & (0<x<1) \\[4pt] \dfrac{1}{2} & (x=0,\;x=1) \\[4pt] 0 & (x<0,\;x>1) \end{cases}
+  \]
+  {\footnotesize\textcolor{gray}{不連続点 $x=0,\,1$ では $\dfrac{f(x+0)+f(x-0)}{2}=\dfrac{1}{2}$ に収束（フーリエ積分定理）}}
+  \vfill\hfill 証明終
+\end{frame}
+
+\begin{frame}{問3　解答（2）}
+  連続点 $x=\dfrac{1}{2}$（$f\!\left(\tfrac{1}{2}\right)=1$）を代入：\\[1pt]
+  $1 = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}
+    \dfrac{1-e^{-iu}}{iu}\cdot e^{iu/2}\,du
+    = \dfrac{1}{2\pi}\int_{-\infty}^{\infty}
+    \dfrac{e^{iu/2}-e^{-iu/2}}{iu}\,du$\\[2pt]
+  $e^{i\theta}-e^{-i\theta}=2i\sin\theta$ より
+  $\dfrac{e^{iu/2}-e^{-iu/2}}{iu} = \dfrac{2\sin(u/2)}{u}$ なので\\[1pt]
+  $1 = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{2\sin(u/2)}{u}\,du
+    = \dfrac{1}{\pi}\int_{0}^{\infty}\dfrac{2\sin(u/2)}{u}\,du$\\[1pt]
+  $t=\dfrac{u}{2}$（$du=2\,dt$）と置換：
+  $\displaystyle\int_{0}^{\infty}\dfrac{2\sin(u/2)}{u}\,du
+    = \int_{0}^{\infty}\dfrac{2\sin t}{2t}\cdot 2\,dt
+    = \int_{-\infty}^{\infty}\dfrac{\sin t}{t}\,dt$\\[1pt]
+  よって $\displaystyle\int_{-\infty}^{\infty}\dfrac{\sin u}{u}\,du = \pi$\hfill 証明終
+\end{frame}
+
+\begin{frame}{フーリエ余弦変換・正弦変換}
+  \begin{block}{フーリエ余弦変換（$f(x)$ が偶関数の場合）}
+  \[
+    F_c(u) = \int_{0}^{\infty} f(x)\cos(ux)\,dx, \qquad
+    f(x) = \frac{2}{\pi}\int_{0}^{\infty} F_c(u)\cos(ux)\,du
+  \]
+  \end{block}
+  \begin{block}{フーリエ正弦変換（$f(x)$ が奇関数の場合）}
+  \[
+    F_s(u) = \int_{0}^{\infty} f(x)\sin(ux)\,dx, \qquad
+    f(x) = \frac{2}{\pi}\int_{0}^{\infty} F_s(u)\sin(ux)\,du
+  \]
+  \end{block}
+\end{frame}
+
+\begin{frame}{例題3　}
+  \begin{exampleblock}{問題}
+    次の関数のフーリエ変換を求めよ\\[2pt]
+    $f(x) = \begin{cases} 1-|x| & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\[2pt]
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題3　解答}
-  $f(x)$ は偶関数なのでフーリエ余弦変換を用いる\\[4pt]
-  $Fc(u) = \int_{0}^{1} (1-x) \cos(ux) dx$\\[4pt]
-  $= [(1-x)\sin(ux)/u]_{0}^1 + (1/u)\int_{0}^1 \sin(ux) dx$\\[4pt]
-  $= 0 + (1/u)[-\cos(ux)/u]_{0}^1 = (1-\cos u)/u^{2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$Fc(u) = (1-\cos u)/u^{2}$
+  $f(x)$ は偶関数なのでフーリエ変換はフーリエ余弦変換に帰着する\\[4pt]
+  $F(u) = 2\displaystyle\int_{0}^{1}(1-x)\cos(ux)\,dx$\\[6pt]
+  部分積分：$p=1-x$，$dq=\cos(ux)dx$ とおくと $dp=-dx$，$q=\dfrac{\sin(ux)}{u}$\\[4pt]
+  $F(u) = 2\!\left\{\!\left[\dfrac{(1-x)\sin(ux)}{u}\right]_{0}^{1}
+    + \dfrac{1}{u}\displaystyle\int_{0}^{1}\sin(ux)\,dx\right\}$\\[4pt]
+  $= 2\!\left\{0 + \dfrac{1}{u}\!\left[\dfrac{-\cos(ux)}{u}\right]_{0}^{1}\right\}
+    = \dfrac{2}{u}\cdot\dfrac{1-\cos u}{u}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$F(u) = \dfrac{2(1-\cos u)}{u^{2}}$
 \end{frame}
 
-\begin{frame}{演習問題}
-  \begin{exampleblock}{自分で解いてみよう}
-  \begin{description}
-    \item[問4] 次の関数のフーリエサイン変換を求めよ
-    $f(x) = \begin{cases} -1 & (-1 \leq x < 0) \\ 1 & (0 \leq x \leq 1) \\ 0 & (|x| > 1) \end{cases}$\\
-  \end{description}
+\begin{frame}{問4　}
+  \begin{exampleblock}{問題}
+    次の関数のフーリエ正弦変換を求めよ\\[4pt]
+    $f(x) = \begin{cases} -1 & (-1 \leq x < 0) \\ 1 & (0 \leq x \leq 1) \\ 0 & (|x| > 1) \end{cases}$
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問4　解答}
-  $f(x)$ は奇関数なのでフーリエサイン変換を用いる\\[6pt]
-  $Fs(u) = \displaystyle\int_{0}^1 \sin(ux)\,dx = \left[-\dfrac{\cos(ux)}{u}\right]_{0}^1 = \dfrac{1-\cos u}{u}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$Fs(u) = \dfrac{1-\cos u}{u}$
+  $f(x)$ は奇関数なのでフーリエ変換はフーリエ正弦変換に帰着する\\[4pt]
+  $F_{s}(u) = 2\displaystyle\int_{0}^{1}\sin(ux)\,dx
+    = 2\!\left[\dfrac{-\cos(ux)}{u}\right]_{0}^{1}$\\[6pt]
+  $x=1$ を代入：$\dfrac{-\cos u}{u}$，
+  $x=0$ を代入：$\dfrac{-\cos 0}{u}=\dfrac{-1}{u}$\\[4pt]
+  差：$\dfrac{-\cos u}{u}-\!\left(\dfrac{-1}{u}\right)=\dfrac{1-\cos u}{u}$\\[6pt]
+  $F_{s}(u) = 2\cdot\dfrac{1-\cos u}{u}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$F_{s}(u) = \dfrac{2(1-\cos u)}{u}$
 \end{frame}
 
 \end{document}
