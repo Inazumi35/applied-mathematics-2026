@@ -887,7 +887,7 @@ chapter3:
 
         $x=0$：$\dfrac{e^0}{-(1+iu)}=-\dfrac{1}{1+iu}$
 
-        差：$0-\!\left(-\dfrac{1}{1+iu}\right)=\dfrac{1}{1+iu}$
+        差：$0-\!\left(-\dfrac{1}{1+iu}\right)=\dfrac{1}{1+iu}=\dfrac{1-iu}{1+u^2}$
 
     - no: 153
       week: 12
@@ -905,7 +905,7 @@ chapter3:
 
           $x=0$ 代入：$\dfrac{2}{-iu}$，$x=-3$ 代入：$\dfrac{2e^{3iu}}{-iu}$
 
-          差：$\dfrac{2}{-iu}-\dfrac{2e^{3iu}}{-iu}=\dfrac{2(e^{3iu}-1)}{iu}$
+          差：$\dfrac{2}{-iu}-\dfrac{2e^{3iu}}{-iu}=\dfrac{2(e^{3iu}-1)}{iu}=\dfrac{-2i(e^{3iu}-1)}{u}$
         - |
           $\mathcal{F}[g] = \displaystyle\int_0^1 xe^{-iux}\,dx$
 
