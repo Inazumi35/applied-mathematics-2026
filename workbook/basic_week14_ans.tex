@@ -23,11 +23,15 @@ $f(x) = |x| \quad (|x| \leq 1)$，\quad $f(x+2)=f(x)$
 }
 
 \kotae{
-$f(x) = |x|$（$|x|\leq 1$），周期 2 のフーリエ係数
+周期 2（$l=1$）なのでフーリエ係数：$c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|e^{-in\pi x}\,dx$
 
-$c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|e^{-in\pi x}\,dx$
+$c_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|\,dx = \displaystyle\int_{0}^{1}x\,dx = \dfrac{1}{2}$
 
-$c_0 = \dfrac{1}{2}$，$c_n = \dfrac{(-1)^n - 1}{n^2\pi^2}$（$n \neq 0$）
+$n\neq 0$：$|x|$ が偶関数なので虚部は 0，$c_n = \displaystyle\int_{0}^{1}x\cos(n\pi x)\,dx$
+
+部分積分：$p=x$，$dq=\cos(n\pi x)dx$，$dp=dx$，$q=\dfrac{\sin(n\pi x)}{n\pi}$
+
+$= \left[\dfrac{x\sin(n\pi x)}{n\pi}\right]_0^1 - \dfrac{1}{n\pi}\displaystyle\int_0^1\sin(n\pi x)\,dx = 0 + \dfrac{1}{n\pi}\left[\dfrac{\cos(n\pi x)}{n\pi}\right]_0^1 = \dfrac{(-1)^n-1}{n^2\pi^2}$
 
 スペクトル $|c_n|$：$|c_0|=\dfrac{1}{2}$，$|c_n|=\dfrac{|(-1)^n-1|}{n^2\pi^2}$
 }
@@ -39,11 +43,17 @@ $f(x) = \begin{cases} |x| & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$
 }
 
 \kotae{
-非周期関数なのでフーリエ変換を用いる．
+非周期関数なのでフーリエ変換を用いる：$F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx$
 
-$F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx = 2\int_0^1 x\cos ux\,dx = \dfrac{2(\cos u + u\sin u - 1)}{u^2}$
+$|x|$ が偶関数なので $F(u) = 2\displaystyle\int_{0}^{1}x\cos(ux)\,dx$
 
-スペクトル $|F(u)| = \dfrac{2|\cos u + u\sin u - 1|}{u^2}$
+部分積分：$p=x$，$dq=\cos(ux)dx$，$dp=dx$，$q=\dfrac{\sin(ux)}{u}$
+
+$= 2\left[\dfrac{x\sin(ux)}{u}\right]_0^1 - \dfrac{2}{u}\displaystyle\int_0^1\sin(ux)\,dx = \dfrac{2\sin u}{u} + \dfrac{2}{u}\left[\dfrac{\cos(ux)}{u}\right]_0^1$
+
+$= \dfrac{2\sin u}{u} + \dfrac{2(\cos u-1)}{u^2} = \dfrac{2(u\sin u+\cos u-1)}{u^2}$
+
+スペクトル $|F(u)| = \dfrac{2|u\sin u+\cos u-1|}{u^2}$
 }
 
 \end{document}

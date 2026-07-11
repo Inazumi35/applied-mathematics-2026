@@ -24,9 +24,13 @@
 \kotae{
 $\mathcal{F}[f(ax)] = \displaystyle\int_{-\infty}^{\infty}f(ax)e^{-iux}\,dx$
 
-$ax=t$ と置換すると $dx = dt/a$（$a>0$），$dx = dt/a$（$a<0$）
+$t=ax$ と置換（$dx=dt/a$）：
 
-$= \dfrac{1}{|a|}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
+$a>0$：積分範囲変わらず，$\dfrac{1}{a}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{a}F\!\left(\dfrac{u}{a}\right)$
+
+$a<0$：積分範囲が逆転して符号変わり，$\dfrac{1}{a}\displaystyle\int_{+\infty}^{-\infty}f(t)e^{-i(u/a)t}\,dt = -\dfrac{1}{a}F\!\left(\dfrac{u}{a}\right)$
+
+いずれも $\dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
 }
 
 \mondai{157}{
@@ -35,11 +39,11 @@ $= \dfrac{1}{|a|}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfr
 }
 
 \kotae{
-$\mathcal{F}[f*g] = \mathcal{F}[f]\cdot\mathcal{F}[g]$
+たたみこみ定理：$\mathcal{F}[f*g] = \mathcal{F}[f]\cdot\mathcal{F}[g]$
 
-$\mathcal{F}[f] = \dfrac{2(e^{3iu}-1)}{iu}$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
+問153より $\mathcal{F}[f] = \dfrac{-2i(e^{3iu}-1)}{u}$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
 
-$\mathcal{F}[f*g] = \dfrac{2(e^{3iu}-1)}{iu}\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2}$
+$\mathcal{F}[f*g] = \dfrac{-2i(e^{3iu}-1)}{u}\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2} = \dfrac{-2i(e^{3iu}-1)\{(1+iu)e^{-iu}-1\}}{u^3}$
 }
 
 \mondai{158}{
@@ -56,7 +60,9 @@ $\mathcal{F}[xe^{-x^2/4}] = i\cdot(-2u)\cdot 2\sqrt{\pi}\,e^{-u^2} = -4i\sqrt{\p
 
 (3) $\mathcal{F}[x^2 e^{-x^2/4}] = (i)^2\dfrac{d^2}{du^2}(2\sqrt{\pi}\,e^{-u^2})$
 
-$= -2\sqrt{\pi}(4u^2-2)e^{-u^2} = 2\sqrt{\pi}(2-4u^2)e^{-u^2}$
+$\dfrac{d^2}{du^2}(e^{-u^2}) = (-2+4u^2)e^{-u^2}$
+
+$= -2\sqrt{\pi}(-2+4u^2)e^{-u^2} = 4\sqrt{\pi}(1-2u^2)e^{-u^2}$
 }
 
 \mondai{159}{
@@ -82,10 +88,17 @@ $\mathcal{F}^{-1}[e^{-3u^2}] = \dfrac{1}{2\sqrt{3\pi}}\,e^{-x^2/12}$
 
 $\mathcal{F}[e^{-x^2/4}*xe^{-x^2/4}] = 2\sqrt{\pi}\,e^{-u^2}\cdot(-4i\sqrt{\pi}\,ue^{-u^2}) = -8\pi iu\,e^{-2u^2}$
 
-(2) $\mathcal{F}^{-1}[-8\pi iu\,e^{-2u^2}]$ を計算する．
+(2) $\mathcal{F}\!\left[\sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}\right]$ を計算する．
 
-$e^{-2u^2}$ の逆変換と微分法則を用いて
-$e^{-x^2/4}*xe^{-x^2/4} = \sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}$
+$a=\dfrac{1}{8}$ として公式を適用：$\sqrt{\dfrac{\pi}{a}}=\sqrt{8\pi}=2\sqrt{2\pi}$，$e^{-u^2/(4\cdot 1/8)}=e^{-2u^2}$
+
+$\mathcal{F}[e^{-x^2/8}] = 2\sqrt{2\pi}\,e^{-2u^2}$
+
+微分法則 $\mathcal{F}[xf]=i\dfrac{d}{du}F(u)$：$\mathcal{F}[xe^{-x^2/8}] = i(-4u)\cdot 2\sqrt{2\pi}\,e^{-2u^2} = -8i\sqrt{2\pi}\,ue^{-2u^2}$
+
+$\mathcal{F}\!\left[\sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}\right] = \sqrt{\dfrac{\pi}{2}}\cdot(-8i\sqrt{2\pi}\,ue^{-2u^2}) = -8\pi iu\,e^{-2u^2}$
+
+(1) の結果と一致するので，逆変換の一意性より等式が成立する．
 }
 
 \end{document}

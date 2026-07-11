@@ -967,21 +967,25 @@ chapter3:
       problem: "次の公式を証明せよ．ただし，$a$ は $0$ でない実数とする．$\\mathcal{F}[f(ax)] = \\dfrac{1}{|a|}F\\!\\left(\\dfrac{u}{a}\\right)$"
       answer: |
         $\mathcal{F}[f(ax)] = \displaystyle\int_{-\infty}^{\infty}f(ax)e^{-iux}\,dx$
-        
-        $ax=t$ と置換すると $dx = dt/a$（$a>0$），$dx = dt/a$（$a<0$）
-        
-        $= \dfrac{1}{|a|}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
+
+        $t=ax$ と置換（$dx=dt/a$）：
+
+        $a>0$：積分範囲変わらず，$\dfrac{1}{a}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{a}F\!\left(\dfrac{u}{a}\right)$
+
+        $a<0$：積分範囲が逆転して符号変わり，$\dfrac{1}{a}\displaystyle\int_{+\infty}^{-\infty}f(t)e^{-i(u/a)t}\,dt = -\dfrac{1}{a}F\!\left(\dfrac{u}{a}\right)$
+
+        いずれも $\dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$
 
     - no: 157
       week: 13
       ref: 教p.98(問6)
       problem: "問題153の $f(x)$ と $g(x)$ について，$\\mathcal{F}[f(x) * g(x)]$ を求めよ．"
       answer: |
-        $\mathcal{F}[f*g] = \mathcal{F}[f]\cdot\mathcal{F}[g]$
-        
-        $\mathcal{F}[f] = \dfrac{2(e^{3iu}-1)}{iu}$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
+        たたみこみ定理：$\mathcal{F}[f*g] = \mathcal{F}[f]\cdot\mathcal{F}[g]$
 
-        $\mathcal{F}[f*g] = \dfrac{2(e^{3iu}-1)}{iu}\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2}$
+        問153より $\mathcal{F}[f] = \dfrac{-2i(e^{3iu}-1)}{u}$，$\mathcal{F}[g] = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
+
+        $\mathcal{F}[f*g] = \dfrac{-2i(e^{3iu}-1)}{u}\cdot\dfrac{(1+iu)e^{-iu}-1}{u^2} = \dfrac{-2i(e^{3iu}-1)\{(1+iu)e^{-iu}-1\}}{u^3}$
 
     - no: 158
       week: 13
@@ -1001,8 +1005,10 @@ chapter3:
           $\mathcal{F}[xe^{-x^2/4}] = i\cdot(-2u)\cdot 2\sqrt{\pi}\,e^{-u^2} = -4i\sqrt{\pi}\,ue^{-u^2}$
         - |
           $\mathcal{F}[x^2 e^{-x^2/4}] = (i)^2\dfrac{d^2}{du^2}(2\sqrt{\pi}\,e^{-u^2})$
-          
-          $= -2\sqrt{\pi}(4u^2-2)e^{-u^2} = 2\sqrt{\pi}(2-4u^2)e^{-u^2}$
+
+          $\dfrac{d^2}{du^2}(e^{-u^2}) = (-2+4u^2)e^{-u^2}$
+
+          $= -2\sqrt{\pi}(-2+4u^2)e^{-u^2} = 4\sqrt{\pi}(1-2u^2)e^{-u^2}$
 
     - no: 159
       week: 13
@@ -1029,10 +1035,17 @@ chapter3:
           
           $\mathcal{F}[e^{-x^2/4}*xe^{-x^2/4}] = 2\sqrt{\pi}\,e^{-u^2}\cdot(-4i\sqrt{\pi}\,ue^{-u^2}) = -8\pi iu\,e^{-2u^2}$
         - |
-          $\mathcal{F}^{-1}[-8\pi iu\,e^{-2u^2}]$ を計算する．
-          
-          $e^{-2u^2}$ の逆変換と微分法則を用いて
-          $e^{-x^2/4}*xe^{-x^2/4} = \sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}$
+          $\mathcal{F}\!\left[\sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}\right]$ を計算する．
+
+          $a=\dfrac{1}{8}$ として公式を適用：$\sqrt{\dfrac{\pi}{a}}=\sqrt{8\pi}=2\sqrt{2\pi}$，$e^{-u^2/(4\cdot 1/8)}=e^{-2u^2}$
+
+          $\mathcal{F}[e^{-x^2/8}] = 2\sqrt{2\pi}\,e^{-2u^2}$
+
+          微分法則 $\mathcal{F}[xf]=i\dfrac{d}{du}F(u)$：$\mathcal{F}[xe^{-x^2/8}] = i(-4u)\cdot 2\sqrt{2\pi}\,e^{-2u^2} = -8i\sqrt{2\pi}\,ue^{-2u^2}$
+
+          $\mathcal{F}\!\left[\sqrt{\dfrac{\pi}{2}}\,xe^{-x^2/8}\right] = \sqrt{\dfrac{\pi}{2}}\cdot(-8i\sqrt{2\pi}\,ue^{-2u^2}) = -8\pi iu\,e^{-2u^2}$
+
+          (1) の結果と一致するので，逆変換の一意性より等式が成立する．
 
     - no: 161
       week: 14
@@ -1041,12 +1054,16 @@ chapter3:
         次の関数のスペクトルを求めよ．
         $f(x) = |x| \quad (|x| \leq 1)$，\quad $f(x+2)=f(x)$
       answer: |
-        $f(x) = |x|$（$|x|\leq 1$），周期 2 のフーリエ係数
-        
-        $c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|e^{-in\pi x}\,dx$
-        
-        $c_0 = \dfrac{1}{2}$，$c_n = \dfrac{(-1)^n - 1}{n^2\pi^2}$（$n \neq 0$）
-        
+        周期 2（$l=1$）なのでフーリエ係数：$c_n = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|e^{-in\pi x}\,dx$
+
+        $c_0 = \dfrac{1}{2}\displaystyle\int_{-1}^{1}|x|\,dx = \displaystyle\int_{0}^{1}x\,dx = \dfrac{1}{2}$
+
+        $n\neq 0$：$|x|$ が偶関数なので虚部は 0，$c_n = \displaystyle\int_{0}^{1}x\cos(n\pi x)\,dx$
+
+        部分積分：$p=x$，$dq=\cos(n\pi x)dx$，$dp=dx$，$q=\dfrac{\sin(n\pi x)}{n\pi}$
+
+        $= \left[\dfrac{x\sin(n\pi x)}{n\pi}\right]_0^1 - \dfrac{1}{n\pi}\displaystyle\int_0^1\sin(n\pi x)\,dx = 0 + \dfrac{1}{n\pi}\left[\dfrac{\cos(n\pi x)}{n\pi}\right]_0^1 = \dfrac{(-1)^n-1}{n^2\pi^2}$
+
         スペクトル $|c_n|$：$|c_0|=\dfrac{1}{2}$，$|c_n|=\dfrac{|(-1)^n-1|}{n^2\pi^2}$
 
     - no: 162
@@ -1056,11 +1073,17 @@ chapter3:
         次の関数のスペクトルを求めよ．
         $f(x) = \begin{cases} |x| & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$
       answer: |
-        非周期関数なのでフーリエ変換を用いる．
-        
-        $F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx = 2\int_0^1 x\cos ux\,dx = \dfrac{2(\cos u + u\sin u - 1)}{u^2}$
+        非周期関数なのでフーリエ変換を用いる：$F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx$
 
-        スペクトル $|F(u)| = \dfrac{2|\cos u + u\sin u - 1|}{u^2}$
+        $|x|$ が偶関数なので $F(u) = 2\displaystyle\int_{0}^{1}x\cos(ux)\,dx$
+
+        部分積分：$p=x$，$dq=\cos(ux)dx$，$dp=dx$，$q=\dfrac{\sin(ux)}{u}$
+
+        $= 2\left[\dfrac{x\sin(ux)}{u}\right]_0^1 - \dfrac{2}{u}\displaystyle\int_0^1\sin(ux)\,dx = \dfrac{2\sin u}{u} + \dfrac{2}{u}\left[\dfrac{\cos(ux)}{u}\right]_0^1$
+
+        $= \dfrac{2\sin u}{u} + \dfrac{2(\cos u-1)}{u^2} = \dfrac{2(u\sin u+\cos u-1)}{u^2}$
+
+        スペクトル $|F(u)| = \dfrac{2|u\sin u+\cos u-1|}{u^2}$
 
   # ----- Check (問147〜169) -----
   check:
