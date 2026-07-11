@@ -926,7 +926,7 @@ chapter3:
           よって $\displaystyle\int_{-\infty}^{\infty}\dfrac{1}{1+u^2}\,du = \pi$
 
     - no: 155
-      week: 13
+      week: 12
       ref: 教p.95(問4)
       problem: |
         次の関数のフーリエ正弦変換を求めよ．
