@@ -881,9 +881,13 @@ chapter3:
         次の関数のフーリエ変換を求めよ．
         $f(x) = \begin{cases} e^{-x} & (x \geq 0) \\ 0 & (x < 0) \end{cases}$
       answer: |
-        $\mathcal{F}[f] = \displaystyle\int_{-\infty}^{\infty}f(x)e^{-iux}\,dx = \int_0^\infty e^{-x}e^{-iux}\,dx = \int_0^\infty e^{-(1+iu)x}\,dx$
-        
-        $= \dfrac{1}{1+iu}$
+        $\mathcal{F}[f] = \displaystyle\int_0^\infty e^{-x}e^{-iux}\,dx = \int_0^\infty e^{-(1+iu)x}\,dx = \left[\dfrac{e^{-(1+iu)x}}{-(1+iu)}\right]_0^\infty$
+
+        $x\to\infty$：$\mathrm{Re}(1+iu)=1>0$ より $e^{-(1+iu)x}\to 0$
+
+        $x=0$：$\dfrac{e^0}{-(1+iu)}=-\dfrac{1}{1+iu}$
+
+        差：$0-\!\left(-\dfrac{1}{1+iu}\right)=\dfrac{1}{1+iu}$
 
     - no: 153
       week: 12
@@ -897,11 +901,21 @@ chapter3:
         - "(2)"
       answer:
         - |
-          $\mathcal{F}[f] = \displaystyle\int_{-3}^{0}2e^{-iux}\,dx = \dfrac{2(e^{3iu}-1)}{iu}$
+          $\mathcal{F}[f] = \displaystyle\int_{-3}^{0}2e^{-iux}\,dx = 2\left[\dfrac{e^{-iux}}{-iu}\right]_{-3}^{0}$
+
+          $x=0$ 代入：$\dfrac{2}{-iu}$，$x=-3$ 代入：$\dfrac{2e^{3iu}}{-iu}$
+
+          差：$\dfrac{2}{-iu}-\dfrac{2e^{3iu}}{-iu}=\dfrac{2(e^{3iu}-1)}{iu}$
         - |
           $\mathcal{F}[g] = \displaystyle\int_0^1 xe^{-iux}\,dx$
-          
-          部分積分して $= \dfrac{e^{-iu}}{u^2}(1+iu)-\dfrac{1}{u^2} = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
+
+          部分積分：$p=x$，$dq=e^{-iux}dx$，$dp=dx$，$q=\dfrac{e^{-iux}}{-iu}$
+
+          $= \left[\dfrac{xe^{-iux}}{-iu}\right]_0^1 + \dfrac{1}{iu}\displaystyle\int_0^1 e^{-iux}\,dx$
+
+          $= -\dfrac{e^{-iu}}{iu} + \dfrac{1}{iu}\left[\dfrac{e^{-iux}}{-iu}\right]_0^1 = -\dfrac{e^{-iu}}{iu}+\dfrac{e^{-iu}-1}{-u^2}$
+
+          $-\dfrac{1}{iu}=\dfrac{i}{u}$ より $= \dfrac{ie^{-iu}}{u}+\dfrac{e^{-iu}}{u^2}-\dfrac{1}{u^2} = \dfrac{(1+iu)e^{-iu}-1}{u^2}$
 
     - no: 154
       week: 12
@@ -915,10 +929,13 @@ chapter3:
         - "(2)"
       answer:
         - |
-          $F(u) = \dfrac{1}{1+iu}$ をフーリエの積分定理に代入して
-          $\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{e^{iux}}{1+iu}\,du = \dfrac{1}{2\pi}\int_{-\infty}^{\infty}\dfrac{1-iu}{1+u^2}e^{iux}\,du$
-          
-          不連続点 $x=0$ では $\dfrac{f(0^+)+f(0^-)}{2} = \dfrac{1}{2}$ に収束する．
+          問152より $F(u)=\dfrac{1}{1+iu}$，逆フーリエ変換の公式を適用する．
+
+          $\dfrac{1}{1+iu}=\dfrac{1-iu}{(1+iu)(1-iu)}=\dfrac{1-iu}{1+u^2}$ なので
+
+          $\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{1-iu}{1+u^2}e^{iux}\,du = \begin{cases} e^{-x} & (x>0) \\ \frac{1}{2} & (x=0) \\ 0 & (x<0) \end{cases}$
+
+          不連続点 $x=0$ では $\dfrac{f(0^+)+f(0^-)}{2}=\dfrac{e^0+0}{2}=\dfrac{1}{2}$ に収束する（フーリエ積分定理）．
         - |
           (1)で $x=0$ を代入すると
           $\dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty}\dfrac{1}{1+u^2}\,du = \dfrac{1}{2}$
@@ -932,12 +949,17 @@ chapter3:
         次の関数のフーリエ正弦変換を求めよ．
         $f(x) = \begin{cases} -x-1 & (-1 \leq x < 0) \\ -x+1 & (0 < x \leq 1) \\ 0 & (x < -1,\ x = 0,\ x > 1) \end{cases}$
       answer: |
-        $f(x)$ は奇関数なので，フーリエ正弦変換
-        $\mathcal{F}_s[f] = \displaystyle\int_{-\infty}^{\infty}f(x)\sin ux\,dx$
-        
-        $= 2\displaystyle\int_0^1(-x+1)\sin ux\,dx$
-        
-        部分積分して $= \dfrac{2(u-\sin u)}{u^2}$
+        $f(x)$ は奇関数なのでフーリエ変換はフーリエ正弦変換に帰着する．
+
+        $\mathcal{F}_s[f] = 2\displaystyle\int_0^1(-x+1)\sin(ux)\,dx$
+
+        部分積分：$p=-x+1$，$dq=\sin(ux)dx$，$dp=-dx$，$q=\dfrac{-\cos(ux)}{u}$
+
+        $= 2\left\{\left[\dfrac{(-x+1)(-\cos(ux))}{u}\right]_0^1 - \dfrac{1}{u}\displaystyle\int_0^1\cos(ux)\,dx\right\}$
+
+        $x=1$：$0$，$x=0$：$\dfrac{-1}{u}$，差：$\dfrac{1}{u}$
+
+        $= 2\left\{\dfrac{1}{u}-\dfrac{1}{u}\left[\dfrac{\sin(ux)}{u}\right]_0^1\right\} = 2\left\{\dfrac{1}{u}-\dfrac{\sin u}{u^2}\right\} = \dfrac{2(u-\sin u)}{u^2}$
 
     - no: 156
       week: 13
