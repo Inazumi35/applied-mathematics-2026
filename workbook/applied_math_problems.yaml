@@ -1314,4 +1314,4 @@ chapter3:
 
           $= 2\!\left[-\dfrac{\sin 2\omega}{\omega}+\dfrac{1}{\omega}\!\left[-\dfrac{\cos(\omega x)}{\omega}\right]_0^2\right] = -\dfrac{2\sin 2\omega}{\omega}+\dfrac{2(1-\cos 2\omega)}{\omega^2} = \dfrac{2(1-\cos 2\omega-\omega\sin 2\omega)}{\omega^2}$
 
-          スペクトル：$S_f(\omega) = \dfrac{2|1-\cos 2\omega-\omega\sin 2\omega|}{\omega^2} \quad (\omega>0)$
+          スペクトル：$S_f(\omega) = \begin{cases} 0 & (\omega=0) \\[4pt] \dfrac{2|1-\cos 2\omega-\omega\sin 2\omega|}{\omega^2} & (\omega>0) \end{cases}$
