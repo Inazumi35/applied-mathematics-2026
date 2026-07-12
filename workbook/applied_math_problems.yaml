@@ -1168,15 +1168,15 @@ chapter3:
 
           $c_n = \dfrac{1}{2}\!\left[\dfrac{(2x+1)e^{-in\pi x}}{-in\pi}\right]_{-1}^1 + 0$
 
-          $= \dfrac{1}{2}\cdot\dfrac{-4(-1)^n}{in\pi} = \dfrac{2(-1)^{n+1}}{in\pi}$
+          $= \dfrac{1}{2}\cdot\dfrac{-4(-1)^n}{in\pi} = \dfrac{2(-1)^{n+1}}{in\pi} = \dfrac{-2i(-1)^{n+1}}{n\pi}$
 
-          $f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty}\dfrac{2(-1)^{n+1}}{in\pi}\,e^{in\pi x}$
+          $f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty}\dfrac{-2i(-1)^{n+1}}{n\pi}\,e^{in\pi x}$
         - |
           $c_n = \dfrac{1}{6}\displaystyle\int_{-3}^{3}g(x)e^{-in\pi x/3}\,dx = \dfrac{1}{6}\!\left[\int_{-3}^{0}(-1)e^{-in\pi x/3}dx+\int_0^3 e^{-in\pi x/3}dx\right]$
 
           $c_0 = \dfrac{1}{6}(-3+3)=0$
 
-          $n\neq 0$：各積分 $\dfrac{3(1-(-1)^n)}{in\pi}$ ずつ，合計 $c_n = \dfrac{1-(-1)^n}{in\pi}$
+          $n\neq 0$：各積分 $\dfrac{3(1-(-1)^n)}{in\pi}$ ずつ，合計 $c_n = \dfrac{1-(-1)^n}{in\pi} = \dfrac{-i(1-(-1)^n)}{n\pi}$
 
     - no: 163
       week: 12
@@ -1191,13 +1191,13 @@ chapter3:
         - "(3)"
       answer:
         - |
-          $\mathcal{F}[f] = \displaystyle\int_1^2 e^{-iux}\,dx = \left[\dfrac{e^{-iux}}{-iu}\right]_1^2 = \dfrac{e^{-2iu}}{-iu}-\dfrac{e^{-iu}}{-iu} = \dfrac{e^{-iu}-e^{-2iu}}{iu}$
+          $\mathcal{F}[f] = \displaystyle\int_1^2 e^{-iux}\,dx = \left[\dfrac{e^{-iux}}{-iu}\right]_1^2 = \dfrac{e^{-2iu}}{-iu}-\dfrac{e^{-iu}}{-iu} = \dfrac{e^{-iu}-e^{-2iu}}{iu} = \dfrac{-i(e^{-iu}-e^{-2iu})}{u}$
         - |
-          $\mathcal{F}[g] = \displaystyle\int_0^2 (2-x)e^{-iux}\,dx = \dfrac{2(1-e^{-2iu})}{iu} - \displaystyle\int_0^2 xe^{-iux}\,dx$
+          $\mathcal{F}[g] = \displaystyle\int_0^2 (2-x)e^{-iux}\,dx = \dfrac{-2i(1-e^{-2iu})}{u} - \displaystyle\int_0^2 xe^{-iux}\,dx$
 
-          部分積分より $\displaystyle\int_0^2 xe^{-iux}\,dx = -\dfrac{2e^{-2iu}}{iu} + \dfrac{e^{-2iu}-1}{u^2}$
+          部分積分より $\displaystyle\int_0^2 xe^{-iux}\,dx = \dfrac{2ie^{-2iu}}{u} + \dfrac{e^{-2iu}-1}{u^2}$
 
-          整理して $\mathcal{F}[g] = \dfrac{2}{iu} + \dfrac{1-e^{-2iu}}{u^2} = \dfrac{1-2iu-e^{-2iu}}{u^2}$
+          整理して $\mathcal{F}[g] = \dfrac{-2i}{u} + \dfrac{1-e^{-2iu}}{u^2} = \dfrac{1-2iu-e^{-2iu}}{u^2}$
         - |
           $\mathcal{F}[h] = \displaystyle\int_{-\infty}^{0} e^{(3-iu)x}\,dx = \left[\dfrac{e^{(3-iu)x}}{3-iu}\right]_{-\infty}^0$
 
