@@ -1083,7 +1083,7 @@ chapter3:
 
         $= \dfrac{2\sin\omega}{\omega} + \dfrac{2(\cos\omega-1)}{\omega^2} = \dfrac{2(\omega\sin\omega+\cos\omega-1)}{\omega^2}$
 
-        スペクトル：$S_f(\omega) = \dfrac{2|\omega\sin\omega+\cos\omega-1|}{\omega^2} \quad (\omega\neq 0)$
+        スペクトル：$S_f(\omega) = \begin{cases} 1 & (\omega=0) \\[4pt] \dfrac{2|\omega\sin\omega+\cos\omega-1|}{\omega^2} & (\omega\neq 0) \end{cases}$
 
   # ----- Check (問147〜169) -----
   check:
