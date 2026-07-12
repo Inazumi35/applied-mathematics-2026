@@ -1083,7 +1083,7 @@ chapter3:
 
         $= \dfrac{2\sin\omega}{\omega} + \dfrac{2(\cos\omega-1)}{\omega^2} = \dfrac{2(\omega\sin\omega+\cos\omega-1)}{\omega^2}$
 
-        スペクトル：$S_f(\omega) = \dfrac{2|\omega\sin\omega+\cos\omega-1|}{\omega^2} \quad (\omega>0)$
+        スペクトル：$S_f(\omega) = \dfrac{2|\omega\sin\omega+\cos\omega-1|}{\pi\omega^2} \quad (\omega>0)$
 
   # ----- Check (問147〜169) -----
   check:
@@ -1314,4 +1314,4 @@ chapter3:
 
           $= 2\!\left[-\dfrac{\sin 2\omega}{\omega}+\dfrac{1}{\omega}\!\left[-\dfrac{\cos(\omega x)}{\omega}\right]_0^2\right] = -\dfrac{2\sin 2\omega}{\omega}+\dfrac{2(1-\cos 2\omega)}{\omega^2} = \dfrac{2(1-\cos 2\omega-\omega\sin 2\omega)}{\omega^2}$
 
-          スペクトル：$S_f(\omega) = \begin{cases} 0 & (\omega=0) \\[4pt] \dfrac{2|1-\cos 2\omega-\omega\sin 2\omega|}{\omega^2} & (\omega>0) \end{cases}$
+          スペクトル：$S_f(\omega) = \begin{cases} 0 & (\omega=0) \\[4pt] \dfrac{2|1-\cos 2\omega-\omega\sin 2\omega|}{\pi\omega^2} & (\omega>0) \end{cases}$
