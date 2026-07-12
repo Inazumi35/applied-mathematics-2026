@@ -100,6 +100,8 @@ $f(x) = 1 + \displaystyle\sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty}\dfrac{-
 $c_0 = \dfrac{1}{6}(-3+3)=0$
 
 $n\neq 0$：各積分 $\dfrac{3(1-(-1)^n)}{in\pi}$ ずつ，合計 $c_n = \dfrac{1-(-1)^n}{in\pi} = \dfrac{-i(1-(-1)^n)}{n\pi}$
+
+$g(x) = \displaystyle\sum_{\substack{n=-\infty \\ n\neq 0}}^{\infty}\dfrac{-i(1-(-1)^n)}{n\pi}\,e^{in\pi x/3}$
 }
 
 \mondai{163}{
@@ -222,7 +224,7 @@ $c_0 = \dfrac{1}{4}\displaystyle\int_{-2}^{2}(1-|x|)\,dx = \dfrac{1}{2}\displays
 
 $= \dfrac{1}{2}\!\left[0+\dfrac{-4}{n^2\pi^2}((-1)^n-1)\right] = \dfrac{2(1-(-1)^n)}{n^2\pi^2}$
 
-スペクトル（$\omega_0=\pi/2$）：$S_f(\omega) = \begin{cases} 0 & (\omega=0) \\[4pt] \dfrac{4}{n^2\pi^2} & \!\!\left(\omega=\dfrac{n\pi}{2},\ n\text{ 奇数}\right) \\[4pt] 0 & \!\!\left(\omega=\dfrac{n\pi}{2},\ n\text{ 偶数}\right) \end{cases}$
+スペクトル（$\omega_0=\pi/2$）：$S_f(\omega) = \begin{cases} \dfrac{4}{(2k-1)^2\pi^2} & \left(\omega = \dfrac{(2k-1)\pi}{2},\ k=1,2,\ldots\right) \\[6pt] 0 & (\text{それ以外}) \end{cases}$
 
 (2) 非周期関数のフーリエ変換：$F(\omega) = \displaystyle\int_{-2}^{2}(1-|x|)e^{-i\omega x}\,dx$
 
@@ -232,7 +234,7 @@ $= \dfrac{1}{2}\!\left[0+\dfrac{-4}{n^2\pi^2}((-1)^n-1)\right] = \dfrac{2(1-(-1)
 
 $= 2\!\left[-\dfrac{\sin 2\omega}{\omega}+\dfrac{1}{\omega}\!\left[-\dfrac{\cos(\omega x)}{\omega}\right]_0^2\right] = -\dfrac{2\sin 2\omega}{\omega}+\dfrac{2(1-\cos 2\omega)}{\omega^2} = \dfrac{2(1-\cos 2\omega-\omega\sin 2\omega)}{\omega^2}$
 
-スペクトル：$S_f(\omega) = \begin{cases} 0 & (\omega=0) \\[4pt] \dfrac{2|1-\cos 2\omega-\omega\sin 2\omega|}{\omega^2} & (\omega\neq 0) \end{cases}$
+スペクトル：$S_f(\omega) = \dfrac{2|1-\cos 2\omega-\omega\sin 2\omega|}{\omega^2} \quad (\omega>0)$
 }
 
 \end{document}
