@@ -1064,7 +1064,7 @@ chapter3:
 
         $= \left[\dfrac{x\sin(n\pi x)}{n\pi}\right]_0^1 - \dfrac{1}{n\pi}\displaystyle\int_0^1\sin(n\pi x)\,dx = 0 + \dfrac{1}{n\pi}\left[\dfrac{\cos(n\pi x)}{n\pi}\right]_0^1 = \dfrac{(-1)^n-1}{n^2\pi^2}$
 
-        スペクトル $|c_n|$：$|c_0|=\dfrac{1}{2}$，$|c_n|=\dfrac{|(-1)^n-1|}{n^2\pi^2}$
+        スペクトル $S_f(n\omega_0)=|c_n|$（$\omega_0=\pi$）：$S_f(0)=\dfrac{1}{2}$，$S_f(n\pi)=\dfrac{|(-1)^n-1|}{n^2\pi^2}$
 
     - no: 162
       week: 14
@@ -1073,17 +1073,17 @@ chapter3:
         次の関数のスペクトルを求めよ．
         $f(x) = \begin{cases} |x| & (|x| \leq 1) \\ 0 & (|x| > 1) \end{cases}$
       answer: |
-        非周期関数なのでフーリエ変換を用いる：$F(u) = \displaystyle\int_{-1}^{1}|x|e^{-iux}\,dx$
+        非周期関数なのでフーリエ変換を用いる：$F(\omega) = \displaystyle\int_{-1}^{1}|x|e^{-i\omega x}\,dx$
 
-        $|x|$ が偶関数なので $F(u) = 2\displaystyle\int_{0}^{1}x\cos(ux)\,dx$
+        $|x|$ が偶関数なので $F(\omega) = 2\displaystyle\int_{0}^{1}x\cos(\omega x)\,dx$
 
-        部分積分：$p=x$，$dq=\cos(ux)dx$，$dp=dx$，$q=\dfrac{\sin(ux)}{u}$
+        部分積分：$p=x$，$dq=\cos(\omega x)dx$，$dp=dx$，$q=\dfrac{\sin(\omega x)}{\omega}$
 
-        $= 2\left[\dfrac{x\sin(ux)}{u}\right]_0^1 - \dfrac{2}{u}\displaystyle\int_0^1\sin(ux)\,dx = \dfrac{2\sin u}{u} + \dfrac{2}{u}\left[\dfrac{\cos(ux)}{u}\right]_0^1$
+        $= 2\left[\dfrac{x\sin(\omega x)}{\omega}\right]_0^1 - \dfrac{2}{\omega}\displaystyle\int_0^1\sin(\omega x)\,dx = \dfrac{2\sin\omega}{\omega} + \dfrac{2}{\omega}\left[\dfrac{\cos(\omega x)}{\omega}\right]_0^1$
 
-        $= \dfrac{2\sin u}{u} + \dfrac{2(\cos u-1)}{u^2} = \dfrac{2(u\sin u+\cos u-1)}{u^2}$
+        $= \dfrac{2\sin\omega}{\omega} + \dfrac{2(\cos\omega-1)}{\omega^2} = \dfrac{2(\omega\sin\omega+\cos\omega-1)}{\omega^2}$
 
-        スペクトル $|F(u)| = \dfrac{2|u\sin u+\cos u-1|}{u^2}$
+        スペクトル $S_f(\omega)=|F(\omega)| = \dfrac{2|\omega\sin\omega+\cos\omega-1|}{\omega^2}$
 
   # ----- Check (問147〜169) -----
   check:
