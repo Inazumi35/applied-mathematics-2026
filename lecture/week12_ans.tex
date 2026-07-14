@@ -216,14 +216,14 @@
 \begin{frame}{フーリエ余弦変換・正弦変換}
   \begin{block}{フーリエ余弦変換（$f(x)$ が偶関数の場合）}
   \[
-    F_c(u) = \int_{0}^{\infty} f(x)\cos(ux)\,dx, \qquad
-    f(x) = \frac{2}{\pi}\int_{0}^{\infty} F_c(u)\cos(ux)\,du
+    F_c(u) = 2\int_{0}^{\infty} f(x)\cos(ux)\,dx, \qquad
+    f(x) = \frac{1}{\pi}\int_{0}^{\infty} F_c(u)\cos(ux)\,du
   \]
   \end{block}
   \begin{block}{フーリエ正弦変換（$f(x)$ が奇関数の場合）}
   \[
-    F_s(u) = \int_{0}^{\infty} f(x)\sin(ux)\,dx, \qquad
-    f(x) = \frac{2}{\pi}\int_{0}^{\infty} F_s(u)\sin(ux)\,du
+    F_s(u) = 2\int_{0}^{\infty} f(x)\sin(ux)\,dx, \qquad
+    f(x) = \frac{1}{\pi}\int_{0}^{\infty} F_s(u)\sin(ux)\,du
   \]
   \end{block}
 \end{frame}
