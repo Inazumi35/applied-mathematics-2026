@@ -155,13 +155,17 @@
 
 \begin{frame}{定理：フーリエ積分定理}
   \begin{block}{成立条件}
-  $f(x)$ は区分的に滑らか
+  \begin{itemize}
+    \item 区分的に滑らか：有限区間に不連続点が有限個、かつ $f'$ も区分的に連続
+    \item $\displaystyle\int_{-\infty}^{\infty}|f(x)|\,dx$ が存在する
+  \end{itemize}
   \end{block}
   \begin{block}{定理}
   \[
-    \frac{f(x-0)+f(x+0)}{2} = f(x)
+    \frac{f(x+0)+f(x-0)}{2} = \frac{1}{2\pi}\int_{-\infty}^{\infty} F(u)\,e^{iux}\,du
   \]
   \end{block}
+  {\footnotesize\textcolor{gray}{連続点では $f(x+0)=f(x-0)=f(x)$ なので、左辺 $= f(x)$}}
 \end{frame}
 
 \begin{frame}{逆フーリエ変換}
