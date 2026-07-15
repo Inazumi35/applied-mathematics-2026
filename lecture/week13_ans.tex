@@ -139,18 +139,20 @@
 \begin{frame}{例題4　（p.\,99）}
   \begin{exampleblock}{問題}
     次の等式を証明せよ\\[4pt]
-    $(1)\; \mathcal{F}[e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}] = \dfrac{\pi}{ab}\,e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[6pt]
-    $(2)\; e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}$ を求めよ
+    $(1)\; \mathcal{F}[e^{-x^{2}/a} * e^{-x^{2}/b}] = \pi\sqrt{ab}\,e^{-(a+b)u^{2}/4}$\\[6pt]
+    $(2)\; e^{-x^{2}/a} * e^{-x^{2}/b} = \sqrt{\dfrac{\pi ab}{a+b}}\,e^{-x^{2}/(a+b)}$ を証明せよ
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{例題4　解答}
-  $(1)$ p.\,98 公式 $\mathcal{F}[e^{-cx^{2}}] = \sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ より\\[4pt]
-  $\mathcal{F}[e^{-a^{2}x^{2}}] = \dfrac{\sqrt{\pi}}{a}e^{-u^{2}/(4a^{2})},\quad \mathcal{F}[e^{-b^{2}x^{2}}] = \dfrac{\sqrt{\pi}}{b}e^{-u^{2}/(4b^{2})}$\\[4pt]
-  たたみこみ定理を適用：$\mathcal{F}[e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}}] = \dfrac{\pi}{ab}\,e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[6pt]
-  $(2)$ 結果を $\sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ の形と比較：$c = \dfrac{a^{2}b^{2}}{a^{2}+b^{2}}$\\[4pt]
-  $e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}} = \dfrac{\sqrt{\pi}}{\sqrt{a^{2}+b^{2}}}\,e^{-(a^{2}b^{2}/(a^{2}+b^{2}))x^{2}}$
-  \\[6pt]\hfill 証明終
+  $(1)$ p.\,98 公式 $\mathcal{F}[e^{-cx^{2}}] = \sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ より（$c=1/a,\,1/b$）\\[4pt]
+  $\mathcal{F}[e^{-x^{2}/a}] = \sqrt{\pi a}\,e^{-au^{2}/4},\quad \mathcal{F}[e^{-x^{2}/b}] = \sqrt{\pi b}\,e^{-bu^{2}/4}$\\[4pt]
+  たたみこみ定理を適用：$\mathcal{F}[e^{-x^{2}/a}*e^{-x^{2}/b}] = \pi\sqrt{ab}\,e^{-(a+b)u^{2}/4}$\\[6pt]
+  $(2)$ (1)の結果を $\sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ の形と比較（$c=1/(a+b)$）：\\[4pt]
+  $\mathcal{F}[e^{-x^{2}/(a+b)}] = \sqrt{\pi(a+b)}\,e^{-(a+b)u^{2}/4}$\\[4pt]
+  $\pi\sqrt{ab}\,e^{-(a+b)u^{2}/4} = \sqrt{\dfrac{\pi ab}{a+b}}\cdot\sqrt{\pi(a+b)}\,e^{-(a+b)u^{2}/4} = \sqrt{\dfrac{\pi ab}{a+b}}\cdot\mathcal{F}[e^{-x^{2}/(a+b)}]$\\[4pt]
+  逆変換より $e^{-x^{2}/a}*e^{-x^{2}/b} = \sqrt{\dfrac{\pi ab}{a+b}}\,e^{-x^{2}/(a+b)}$
+  \\[4pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{問9　}
