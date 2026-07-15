@@ -61,8 +61,10 @@
 
 \begin{frame}{問5　解答}
   $III:\; \mathcal{F}[e^{iax}f(x)] = \displaystyle\int_{-\infty}^{\infty} e^{iax}f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)e^{-i(u-a)x}\,dx = F(u-a)$\\[8pt]
-  $VI:\; F^{(n)}(u) = \dfrac{d^{n}}{du^{n}}\displaystyle\int_{-\infty}^{\infty} f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)(-ix)^{n}e^{-iux}\,dx = \mathcal{F}[(-ix)^{n}f(x)]$
-  \\[8pt]\hfill 証明終
+  $VI$：$e^{-iux}$ を $u$ で微分すると $\dfrac{d}{du}e^{-iux} = -ix\cdot e^{-iux}$（$x$ は定数）\\[4pt]
+  繰り返すと $\dfrac{d^{n}}{du^{n}}e^{-iux} = (-ix)^{n}e^{-iux}$ なので\\[4pt]
+  $F^{(n)}(u) = \dfrac{d^{n}}{du^{n}}\displaystyle\int_{-\infty}^{\infty} f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)(-ix)^{n}e^{-iux}\,dx = \mathcal{F}[(-ix)^{n}f(x)]$
+  \\[6pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{たたみこみ}
