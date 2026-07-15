@@ -34,13 +34,13 @@ subsections:
     cosine_sine_transform:
       cosine:
         name: フーリエ余弦変換
-        formula: "Fc(ω) = ∫₀^∞ f(t)cos(ωt) dt"
-        inverse: "f(t) = (2/π) ∫₀^∞ Fc(ω)cos(ωt) dω"
+        formula: "Fc(ω) = 2∫₀^∞ f(t)cos(ωt) dt"
+        inverse: "f(t) = (1/π) ∫₀^∞ Fc(ω)cos(ωt) dω"
         note: "f(t) が偶関数の場合に対応"
       sine:
         name: フーリエサイン変換
-        formula: "Fs(ω) = ∫₀^∞ f(t)sin(ωt) dt"
-        inverse: "f(t) = (2/π) ∫₀^∞ Fs(ω)sin(ωt) dω"
+        formula: "Fs(ω) = 2∫₀^∞ f(t)sin(ωt) dt"
+        inverse: "f(t) = (1/π) ∫₀^∞ Fs(ω)sin(ωt) dω"
         note: "f(t) が奇関数の場合に対応"
 
     examples:
