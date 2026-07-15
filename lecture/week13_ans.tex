@@ -31,14 +31,25 @@
   \end{block}
 \end{frame}
 
-\begin{frame}{性質の証明（II・IV・V）}
+\begin{frame}{性質の証明（II・IV）}
   $II:\; \mathcal{F}[f(x-a)] = \displaystyle\int_{-\infty}^{\infty} f(x-a)e^{-iux}\,dx$\\[2pt]
-  $t=x-a$ と置換：$= \displaystyle\int_{-\infty}^{\infty} f(t)e^{-iu(t+a)}\,dt = e^{-iau}\int_{-\infty}^{\infty}f(t)e^{-iut}\,dt = e^{-iau}F(u)$\\[8pt]
+  $t=x-a$ と置換：$= \displaystyle\int_{-\infty}^{\infty} f(t)e^{-iu(t+a)}\,dt = e^{-iau}\int_{-\infty}^{\infty}f(t)e^{-iut}\,dt = e^{-iau}F(u)$\\[10pt]
   $IV:\; \mathcal{F}[f(ax)] = \displaystyle\int_{-\infty}^{\infty} f(ax)e^{-iux}\,dx$\\[2pt]
   $t=ax$ と置換（$a>0$）：$= \dfrac{1}{a}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{a}F\!\left(\dfrac{u}{a}\right)$\\[4pt]
-  （$a<0$ のとき符号が逆になり同様に $\dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$）\\[8pt]
-  $V:\; \mathcal{F}[f'(x)] = \displaystyle\int_{-\infty}^{\infty}f'(x)e^{-iux}\,dx = \bigl[f(x)e^{-iux}\bigr]_{-\infty}^{\infty}+iu\int_{-\infty}^{\infty}f(x)e^{-iux}\,dx = iuF(u)$\\[2pt]
-  {\footnotesize\textcolor{gray}{$|x|\to\infty$ で $f(x)\to0$ を仮定。繰り返し適用で $\mathcal{F}[f^{(n)}]=(iu)^nF(u)$}}
+  （$a<0$ のとき符号が逆になり同様に $\dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$）
+  \\[8pt]\hfill 証明終
+\end{frame}
+
+\begin{frame}{性質の証明（V）}
+  部分積分：$\mathcal{F}[f'(x)] = \displaystyle\int_{-\infty}^{\infty}f'(x)e^{-iux}\,dx = \Bigl[f(x)e^{-iux}\Bigr]_{-\infty}^{\infty}+iu\int_{-\infty}^{\infty}f(x)e^{-iux}\,dx$\\[8pt]
+  \begin{block}{$\bigl[f(x)e^{-iux}\bigr]_{-\infty}^{\infty} = 0$ について}
+  $|e^{-iux}| = 1$（大きさ 1 の回転）なので
+  \[
+    \bigl|f(x)e^{-iux}\bigr| = |f(x)|
+  \]
+  $f(x)$ が絶対可積分 $\Rightarrow$ $|x|\to\infty$ で $f(x)\to 0$ $\Rightarrow$ 積も $0$
+  \end{block}
+  よって $\mathcal{F}[f'(x)] = iuF(u)$。繰り返し適用で $\mathcal{F}[f^{(n)}(x)] = (iu)^{n}F(u)$
   \\[6pt]\hfill 証明終
 \end{frame}
 
