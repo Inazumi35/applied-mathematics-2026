@@ -93,8 +93,10 @@
 \end{frame}
 
 \begin{frame}{問6　解答}
-  $g(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\,e^{ivx}\,dv$ を $\mathcal{F}[f(x)g(x)]$ に代入\\[6pt]
-  $= \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\!\left[\int_{-\infty}^{\infty} f(x)e^{-i(u-v)x}\,dx\right]dv = \dfrac{1}{2\pi}\int_{-\infty}^{\infty} G(v)F(u-v)\,dv = \dfrac{1}{2\pi}F*G$
+  $g(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\,e^{ivx}\,dv$ を代入：\\[6pt]
+  $\mathcal{F}[f(x)g(x)]$
+  $= \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\!\left[\int_{-\infty}^{\infty} f(x)e^{-i(u-v)x}\,dx\right]dv$\\[4pt]
+  $= \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)F(u-v)\,dv = \dfrac{1}{2\pi}(F*G)(u)$
   \\[8pt]\hfill 証明終
 \end{frame}
 
