@@ -39,7 +39,7 @@
   （$a<0$ のとき符号が逆になり同様に $\dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$）\\[8pt]
   $V:\; \mathcal{F}[f'(x)] = \displaystyle\int_{-\infty}^{\infty}f'(x)e^{-iux}\,dx = \bigl[f(x)e^{-iux}\bigr]_{-\infty}^{\infty}+iu\int_{-\infty}^{\infty}f(x)e^{-iux}\,dx = iuF(u)$\\[2pt]
   {\footnotesize\textcolor{gray}{$|x|\to\infty$ で $f(x)\to0$ を仮定。繰り返し適用で $\mathcal{F}[f^{(n)}]=(iu)^nF(u)$}}
-  \\[6pt]\textcolor{red}{\textbf{答}}：証明終
+  \\[6pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{問5　}
@@ -51,7 +51,7 @@
 \begin{frame}{問5　解答}
   $III:\; \mathcal{F}[e^{iax}f(x)] = \displaystyle\int_{-\infty}^{\infty} e^{iax}f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)e^{-i(u-a)x}\,dx = F(u-a)$\\[8pt]
   $VI:\; F^{(n)}(u) = \dfrac{d^{n}}{du^{n}}\displaystyle\int_{-\infty}^{\infty} f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)(-ix)^{n}e^{-iux}\,dx = \mathcal{F}[(-ix)^{n}f(x)]$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
+  \\[8pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{たたみこみ}
@@ -82,7 +82,7 @@
 \begin{frame}{問6　解答}
   $g(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\,e^{ivx}\,dv$ を $\mathcal{F}[f(x)g(x)]$ に代入\\[6pt]
   $= \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\!\left[\int_{-\infty}^{\infty} f(x)e^{-i(u-v)x}\,dx\right]dv = \dfrac{1}{2\pi}\int_{-\infty}^{\infty} G(v)F(u-v)\,dv = \dfrac{1}{2\pi}F*G$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
+  \\[8pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{問7　}
@@ -118,7 +118,7 @@
   p.98 公式 $\mathcal{F}[e^{-ax^{2}}] = \sqrt{\dfrac{\pi}{a}}\,e^{-u^{2}/(4a)}$ で $b = \dfrac{1}{4a}$ とおくと $a = \dfrac{1}{4b}$\\[6pt]
   $\mathcal{F}[e^{-x^{2}/(4b)}] = \sqrt{4\pi b}\,e^{-bu^{2}} = 2\sqrt{\pi b}\,e^{-bu^{2}}$\\[6pt]
   両辺を $2\sqrt{\pi b}$ で割って逆変換：$\mathcal{F}^{-1}[e^{-bu^{2}}] = \dfrac{e^{-x^{2}/(4b)}}{2\sqrt{\pi b}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
+  \\[8pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{例題4　（p.\,99）}
@@ -135,7 +135,7 @@
   たたみこみ定理を適用：$\mathcal{F}[e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}}] = \dfrac{\pi}{ab}\,e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[6pt]
   $(2)$ 結果を $\sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ の形と比較：$c = \dfrac{a^{2}b^{2}}{a^{2}+b^{2}}$\\[4pt]
   $e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}} = \dfrac{\sqrt{\pi}}{\sqrt{a^{2}+b^{2}}}\,e^{-(a^{2}b^{2}/(a^{2}+b^{2}))x^{2}}$
-  \\[6pt]\textcolor{red}{\textbf{答}}：証明終
+  \\[6pt]\hfill 証明終
 \end{frame}
 
 \begin{frame}{問9　}
@@ -158,7 +158,7 @@
   問8（$b=1$）より $\mathcal{F}^{-1}[e^{-u^{2}}] = \dfrac{e^{-x^{2}/4}}{2\sqrt{\pi}}$\\[6pt]
   $I(x)=\displaystyle\int_{-\infty}^{\infty}e^{-u^{2}}e^{iux}\,du = \sqrt{\pi}\,e^{-x^{2}/4}$ を微分：$\int_{-\infty}^{\infty}ue^{-u^{2}}e^{iux}\,du = \dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4}$\\[6pt]
   $\mathcal{F}^{-1}[-2\pi iu\,e^{-u^{2}}] = (-i)\cdot\dfrac{1}{2\pi}\cdot2\pi\cdot\dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4} = \dfrac{\sqrt{\pi}}{2}\,x\,e^{-x^{2}/4}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
+  \\[8pt]\hfill 証明終
 \end{frame}
 
 \end{document}
