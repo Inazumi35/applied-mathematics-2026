@@ -112,14 +112,14 @@
   性質 $VI:\; \mathcal{F}[(-ix)^{n}f(x)] = F^{(n)}(u)$，$\mathcal{F}[e^{-x^{2}/2}] = \sqrt{2\pi}\,e^{-u^{2}/2}$\\[6pt]
   $n=1:\; \mathcal{F}[(-ix)e^{-x^{2}/2}] = \dfrac{d}{du}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = -\sqrt{2\pi}\,u\,e^{-u^{2}/2}$\\[6pt]
   $\mathcal{F}[xe^{-x^{2}/2}] = \dfrac{1}{-i}\cdot(-\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$\mathcal{F}[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
+  \\[8pt]\hfill $\mathcal{F}[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
 \end{frame}
 
 \begin{frame}{問7(2)　解答}
   $n=2:\; (-ix)^{2} = -x^{2}$\\[6pt]
   $\mathcal{F}[-x^{2}e^{-x^{2}/2}] = \dfrac{d^{2}}{du^{2}}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = \sqrt{2\pi}(u^{2}-1)e^{-u^{2}/2}$\\[6pt]
   $\mathcal{F}[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$\mathcal{F}[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
+  \\[8pt]\hfill $\mathcal{F}[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
 \end{frame}
 
 \begin{frame}{問8　}
@@ -175,8 +175,9 @@
   $\mathcal{F}^{-1}[-2\pi iu\,e^{-u^{2}}]$ を計算\\[6pt]
   問8（$b=1$）より $\mathcal{F}^{-1}[e^{-u^{2}}] = \dfrac{e^{-x^{2}/4}}{2\sqrt{\pi}}$\\[6pt]
   $I(x)=\displaystyle\int_{-\infty}^{\infty}e^{-u^{2}}e^{iux}\,du = \sqrt{\pi}\,e^{-x^{2}/4}$ を微分：$\int_{-\infty}^{\infty}ue^{-u^{2}}e^{iux}\,du = \dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4}$\\[6pt]
-  $\mathcal{F}^{-1}[-2\pi iu\,e^{-u^{2}}] = (-i)\cdot\dfrac{1}{2\pi}\cdot2\pi\cdot\dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4} = \dfrac{\sqrt{\pi}}{2}\,x\,e^{-x^{2}/4}$
-  \\[8pt]\hfill 証明終
+  $\mathcal{F}^{-1}[-2\pi iu\,e^{-u^{2}}] = (-i)\cdot\dfrac{1}{2\pi}\cdot2\pi\cdot\dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4} = \dfrac{\sqrt{\pi}}{2}\,x\,e^{-x^{2}/4}$\\[6pt]
+  よって $e^{-x^{2}/2}*xe^{-x^{2}/2} = \dfrac{\sqrt{\pi}}{2}\,xe^{-x^{2}/4}$
+  \\[6pt]\hfill 証明終
 \end{frame}
 
 \end{document}
