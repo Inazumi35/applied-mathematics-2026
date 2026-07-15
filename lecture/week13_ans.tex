@@ -20,106 +20,144 @@
 
 \begin{frame}{フーリエ変換の性質}
   \begin{block}{}
-  \begin{description}
-    \item[I. 線形性]\mbox{}\\$F[c_{1}f_{1}(x) + c_{2}f_{2}(x)] = c_{1}F_{1}(u) + c_{2}F_{2}(u) \ (c_{1}, c_{2} は定数)$
-    \item[II. 移動則（時間シフト）]\mbox{}\\$F[f(x-a)] = e^{-iau} F(u) \ (a は実数)$
-    \item[III. 移動則（周波数シフト）]\mbox{}\\$F[e^{iax}f(x)] = F(u-a) \ (a は実数)$
-    \item[IV. 相似性（スケーリング）]\mbox{}\\$F[f(ax)] = (1/|a|) F(u/a) \ (a は 0 でない実数)$
-    \item[V. 微分則]\mbox{}\\$F[f^{(n)}(x)] = (iu)^n F(u) \ (n は自然数)$
-    \item[VI. 双対微分則]\mbox{}\\$F[(-ix)^n f(x)] = F^{(n)}(u) \ (n は自然数)$
-  \end{description}
+  \begin{tabular}{ll}
+    I.   & 線形性：$\mathcal{F}[c_{1}f_{1}+c_{2}f_{2}] = c_{1}F_{1}(u)+c_{2}F_{2}(u)$\\[4pt]
+    II.  & 移動則（時間）：$\mathcal{F}[f(x-a)] = e^{-iau}F(u)$\\[4pt]
+    III. & 移動則（周波数）：$\mathcal{F}[e^{iax}f(x)] = F(u-a)$\\[4pt]
+    IV.  & 相似性：$\mathcal{F}[f(ax)] = \dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$\\[6pt]
+    V.   & 微分則：$\mathcal{F}[f^{(n)}(x)] = (iu)^{n}F(u)$\\[4pt]
+    VI.  & 双対微分則：$\mathcal{F}[(-ix)^{n}f(x)] = F^{(n)}(u)$\\
+  \end{tabular}
   \end{block}
 \end{frame}
 
-\begin{frame}{パーセバルの等式}
-  \begin{block}{}
-  \[
-    \int_{-\infty}^\infty |f(x)|^{2} dx = (1/2\pi) \int_{-\infty}^\infty |F(u)|^{2} du
-  \]
-  \end{block}
+\begin{frame}{性質の証明（II・IV・V）}
+  $II:\; \mathcal{F}[f(x-a)] = \displaystyle\int_{-\infty}^{\infty} f(x-a)e^{-iux}\,dx$\\[2pt]
+  $t=x-a$ と置換：$= \displaystyle\int_{-\infty}^{\infty} f(t)e^{-iu(t+a)}\,dt = e^{-iau}\int_{-\infty}^{\infty}f(t)e^{-iut}\,dt = e^{-iau}F(u)$\\[8pt]
+  $IV:\; \mathcal{F}[f(ax)] = \displaystyle\int_{-\infty}^{\infty} f(ax)e^{-iux}\,dx$\\[2pt]
+  $t=ax$ と置換（$a>0$）：$= \dfrac{1}{a}\displaystyle\int_{-\infty}^{\infty}f(t)e^{-i(u/a)t}\,dt = \dfrac{1}{a}F\!\left(\dfrac{u}{a}\right)$\\[4pt]
+  （$a<0$ のとき符号が逆になり同様に $\dfrac{1}{|a|}F\!\left(\dfrac{u}{a}\right)$）\\[8pt]
+  $V:\; \mathcal{F}[f'(x)] = \displaystyle\int_{-\infty}^{\infty}f'(x)e^{-iux}\,dx = \bigl[f(x)e^{-iux}\bigr]_{-\infty}^{\infty}+iu\int_{-\infty}^{\infty}f(x)e^{-iux}\,dx = iuF(u)$\\[2pt]
+  {\footnotesize\textcolor{gray}{$|x|\to\infty$ で $f(x)\to0$ を仮定。繰り返し適用で $\mathcal{F}[f^{(n)}]=(iu)^nF(u)$}}
+  \\[6pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
-\begin{frame}{例題4　（p.\,99）}
+\begin{frame}{問5　}
   \begin{exampleblock}{問題}
-    次の等式を証明せよ\\[2pt]
-    $(1) F[e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}] = (\pi/(ab)) e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$ 等（たたみこみのフーリエ変換と 98 ページの公式 (1) を利用）\\[2pt]
-    (2) 上記の結果と比較して、畳み込み関数の閉じた形を求める\\[2pt]
-  \end{exampleblock}
-\end{frame}
-
-\begin{frame}{例題4　解答}
-  $(1)$ p.\,98 公式 $: F[e^{-cx^{2}}] = \sqrt{\pi/c}\cdot e^{-u^{2}/(4c)}$ より\\[4pt]
-  $\hphantom{(1)\ }F[e^{-a^{2}x^{2}}] = (\sqrt{\pi}/a)e^{-u^{2}/(4a^{2})},\ F[e^{-b^{2}x^{2}}] = (\sqrt{\pi}/b)e^{-u^{2}/(4b^{2})}$\\[4pt]
-  たたみこみ定理 $: F[f*g] = F(u)G(u)$ を適用\\[4pt]
-  $F[e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}] = (\pi/(ab))\cdot e^{-u^{2}(1/(4a^{2})+1/(4b^{2}))} = (\pi/(ab))e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[4pt]
-  $(2)$ 結果を $\sqrt{\pi/c}\cdot e^{-u^{2}/(4c)}$ の形と比較 $: c = a^{2}b^{2}/(a^{2}+b^{2})$\\[4pt]
-  係数を合わせて $e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}} = (\sqrt{\pi}/\sqrt{a^{2}+b^{2}})\cdot e^{-(a^{2}b^{2}/(a^{2}+b^{2}))x^{2}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：証明終
-\end{frame}
-
-\begin{frame}{演習問題}
-  \begin{exampleblock}{自分で解いてみよう}
-  \begin{description}
-    \item[問5] 性質 III および VI を証明せよ
-    \item[問6] $F[f(x)] = F(u), F[g(x)] = G(u)$ のとき、次の等式を証明せよ
-    $F[f(x)g(x)] = (1/(2\pi)) F(u) * G(u)$\\
-    \item[問7] 96ページの性質を用いて、次の関数のフーリエ変換を求めよ
-    $(1) xe^{-x^{2}/2}$\\
-    $(2) x^{2}e^{-x^{2}/2}$\\
-    \item[問8] 次の等式を証明せよ
-    $F^{-1}[e^{-bu^{2}}] = 1/(2\sqrt{\pi b}) \cdot e^{-x^{2}/(4b)}$（b は正の定数）\\
-    \item[問9] 次の等式を証明せよ
-    $(1) F[e^{-x^{2}/2} * xe^{-x^{2}/2}] = -2\pi iu\cdot e^{-u^{2}}$\\
-    $(2) e^{-x^{2}/2} * xe^{-x^{2}/2} = (\sqrt{\pi}/2)\cdot xe^{-x^{2}/4}$\\
-  \end{description}
+    性質 III および VI を証明せよ
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問5　解答}
-  $III:\; F[e^{iax}f(x)] = \displaystyle\int_{-\infty}^{\infty} e^{iax}f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)e^{-i(u-a)x}\,dx = F(u-a)$\\[6pt]
-  $VI:\; F^{(n)}(u) = \dfrac{d^n}{du^n} \displaystyle\int_{-\infty}^{\infty} f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)(-ix)^n e^{-iux}\,dx = F[(-ix)^n f(x)]$
+  $III:\; \mathcal{F}[e^{iax}f(x)] = \displaystyle\int_{-\infty}^{\infty} e^{iax}f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)e^{-i(u-a)x}\,dx = F(u-a)$\\[8pt]
+  $VI:\; F^{(n)}(u) = \dfrac{d^{n}}{du^{n}}\displaystyle\int_{-\infty}^{\infty} f(x)e^{-iux}\,dx = \int_{-\infty}^{\infty} f(x)(-ix)^{n}e^{-iux}\,dx = \mathcal{F}[(-ix)^{n}f(x)]$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
+\begin{frame}{たたみこみ}
+  \begin{block}{定義}
+  \[
+    (f * g)(x) = \int_{-\infty}^{\infty} f(t)\,g(x-t)\,dt
+  \]
+  \end{block}
+  {\footnotesize\textcolor{gray}{$f * g$ を $f$ と $g$ のたたみこみ（合成積）という}}
+\end{frame}
+
+\begin{frame}{たたみこみのフーリエ変換}
+  \begin{block}{定理}
+  \[
+    \mathcal{F}[f * g] = F(u)\cdot G(u)
+  \]
+  \end{block}
+  {\footnotesize\textcolor{gray}{たたみこみのフーリエ変換は、それぞれのフーリエ変換の積に等しい}}
+\end{frame}
+
+\begin{frame}{問6　}
+  \begin{exampleblock}{問題}
+    $\mathcal{F}[f(x)] = F(u)$，$\mathcal{F}[g(x)] = G(u)$ のとき，次の等式を証明せよ\\[6pt]
+    $\mathcal{F}[f(x)g(x)] = \dfrac{1}{2\pi} F(u) * G(u)$
+  \end{exampleblock}
+\end{frame}
+
 \begin{frame}{問6　解答}
-  $g(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\,e^{ivx}\,dv$ を $F[f(x)g(x)]$ に代入\\[6pt]
+  $g(x) = \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\,e^{ivx}\,dv$ を $\mathcal{F}[f(x)g(x)]$ に代入\\[6pt]
   $= \dfrac{1}{2\pi}\displaystyle\int_{-\infty}^{\infty} G(v)\!\left[\int_{-\infty}^{\infty} f(x)e^{-i(u-v)x}\,dx\right]dv = \dfrac{1}{2\pi}\int_{-\infty}^{\infty} G(v)F(u-v)\,dv = \dfrac{1}{2\pi}F*G$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
+\begin{frame}{問7　}
+  \begin{exampleblock}{問題}
+    96ページの性質を用いて，次の関数のフーリエ変換を求めよ\\[6pt]
+    $(1)\; xe^{-x^{2}/2}$\\[4pt]
+    $(2)\; x^{2}e^{-x^{2}/2}$
+  \end{exampleblock}
+\end{frame}
+
 \begin{frame}{問7(1)　解答}
-  性質 $VI:\; F[(-ix)^n f(x)] = F^{(n)}(u)$\\[6pt]
-  $(1)\; n=1:\; F[(-ix)e^{-x^{2}/2}] = \dfrac{d}{du}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = -\sqrt{2\pi}\cdot u\cdot e^{-u^{2}/2}$\\[6pt]
-  $F[xe^{-x^{2}/2}] = \dfrac{1}{-i}\cdot(-\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$(1)\; F[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$\\
+  性質 $VI:\; \mathcal{F}[(-ix)^{n}f(x)] = F^{(n)}(u)$，$\mathcal{F}[e^{-x^{2}/2}] = \sqrt{2\pi}\,e^{-u^{2}/2}$\\[6pt]
+  $n=1:\; \mathcal{F}[(-ix)e^{-x^{2}/2}] = \dfrac{d}{du}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = -\sqrt{2\pi}\,u\,e^{-u^{2}/2}$\\[6pt]
+  $\mathcal{F}[xe^{-x^{2}/2}] = \dfrac{1}{-i}\cdot(-\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\mathcal{F}[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$
 \end{frame}
 
 \begin{frame}{問7(2)　解答}
-  $(2)\; n=2:\; (-ix)^{2} = -x^{2}$\\[6pt]
-  $F[-x^{2}e^{-x^{2}/2}] = \dfrac{d^{2}}{du^{2}}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = \sqrt{2\pi}(u^{2}-1)e^{-u^{2}/2}$\\[6pt]
-  $F[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$(2)\; F[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$\\
+  $n=2:\; (-ix)^{2} = -x^{2}$\\[6pt]
+  $\mathcal{F}[-x^{2}e^{-x^{2}/2}] = \dfrac{d^{2}}{du^{2}}\!\left[\sqrt{2\pi}\,e^{-u^{2}/2}\right] = \sqrt{2\pi}(u^{2}-1)e^{-u^{2}/2}$\\[6pt]
+  $\mathcal{F}[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\mathcal{F}[x^{2}e^{-x^{2}/2}] = \sqrt{2\pi}(1-u^{2})\,e^{-u^{2}/2}$
+\end{frame}
+
+\begin{frame}{問8　}
+  \begin{exampleblock}{問題}
+    次の等式を証明せよ（$b$ は正の定数）\\[6pt]
+    $\mathcal{F}^{-1}[e^{-bu^{2}}] = \dfrac{1}{2\sqrt{\pi b}}\,e^{-x^{2}/(4b)}$
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}{問8　解答}
-  p.98 公式 $F[e^{-ax^{2}}] = \sqrt{\dfrac{\pi}{a}}\cdot e^{-u^{2}/(4a)}$ で $b = \dfrac{1}{4a}$ とおくと $a = \dfrac{1}{4b}$\\[6pt]
-  $F[e^{-x^{2}/(4b)}] = \sqrt{4\pi b}\cdot e^{-bu^{2}} = 2\sqrt{\pi b}\cdot e^{-bu^{2}}$\\[6pt]
-  両辺を $2\sqrt{\pi b}$ で割って逆変換 $:\; F^{-1}[e^{-bu^{2}}] = \dfrac{e^{-x^{2}/(4b)}}{2\sqrt{\pi b}}$
+  p.98 公式 $\mathcal{F}[e^{-ax^{2}}] = \sqrt{\dfrac{\pi}{a}}\,e^{-u^{2}/(4a)}$ で $b = \dfrac{1}{4a}$ とおくと $a = \dfrac{1}{4b}$\\[6pt]
+  $\mathcal{F}[e^{-x^{2}/(4b)}] = \sqrt{4\pi b}\,e^{-bu^{2}} = 2\sqrt{\pi b}\,e^{-bu^{2}}$\\[6pt]
+  両辺を $2\sqrt{\pi b}$ で割って逆変換：$\mathcal{F}^{-1}[e^{-bu^{2}}] = \dfrac{e^{-x^{2}/(4b)}}{2\sqrt{\pi b}}$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
+\begin{frame}{例題4　（p.\,99）}
+  \begin{exampleblock}{問題}
+    次の等式を証明せよ\\[4pt]
+    $(1)\; \mathcal{F}[e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}] = \dfrac{\pi}{ab}\,e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[6pt]
+    $(2)\; e^{-a^{2}x^{2}} * e^{-b^{2}x^{2}}$ を求めよ
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{例題4　解答}
+  $(1)$ p.\,98 公式 $\mathcal{F}[e^{-cx^{2}}] = \sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ より\\[4pt]
+  $\mathcal{F}[e^{-a^{2}x^{2}}] = \dfrac{\sqrt{\pi}}{a}e^{-u^{2}/(4a^{2})},\quad \mathcal{F}[e^{-b^{2}x^{2}}] = \dfrac{\sqrt{\pi}}{b}e^{-u^{2}/(4b^{2})}$\\[4pt]
+  たたみこみ定理を適用：$\mathcal{F}[e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}}] = \dfrac{\pi}{ab}\,e^{-u^{2}(a^{2}+b^{2})/(4a^{2}b^{2})}$\\[6pt]
+  $(2)$ 結果を $\sqrt{\pi/c}\,e^{-u^{2}/(4c)}$ の形と比較：$c = \dfrac{a^{2}b^{2}}{a^{2}+b^{2}}$\\[4pt]
+  $e^{-a^{2}x^{2}}*e^{-b^{2}x^{2}} = \dfrac{\sqrt{\pi}}{\sqrt{a^{2}+b^{2}}}\,e^{-(a^{2}b^{2}/(a^{2}+b^{2}))x^{2}}$
+  \\[6pt]\textcolor{red}{\textbf{答}}：証明終
+\end{frame}
+
+\begin{frame}{問9　}
+  \begin{exampleblock}{問題}
+    次の等式を証明せよ（$*$ はたたみこみ）\\[6pt]
+    $(1)\; \mathcal{F}[e^{-x^{2}/2} * xe^{-x^{2}/2}] = -2\pi iu\,e^{-u^{2}}$\\[4pt]
+    $(2)\; e^{-x^{2}/2} * xe^{-x^{2}/2} = \dfrac{\sqrt{\pi}}{2}\,xe^{-x^{2}/4}$
+  \end{exampleblock}
+\end{frame}
+
 \begin{frame}{問9(1)　解答}
-  $(1)$ たたみこみ定理 $:\; F[f*g] = F(u)\cdot G(u)$\\[6pt]
-  $F[e^{-x^{2}/2}] = \sqrt{2\pi}\,e^{-u^{2}/2},\quad F[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$（問7(1)）\\[6pt]
-  積 $:\; \sqrt{2\pi}\,e^{-u^{2}/2}\cdot(-i\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -2\pi i u\cdot e^{-u^{2}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：$F[(e^{-x^{2}/2})*(xe^{-x^{2}/2})] = -2\pi i u\,e^{-u^{2}}$\\
+  たたみこみ定理：$\mathcal{F}[f*g] = F(u)\cdot G(u)$\\[6pt]
+  $\mathcal{F}[e^{-x^{2}/2}] = \sqrt{2\pi}\,e^{-u^{2}/2},\quad \mathcal{F}[xe^{-x^{2}/2}] = -i\sqrt{2\pi}\,u\,e^{-u^{2}/2}$（問7(1)）\\[6pt]
+  積：$\sqrt{2\pi}\,e^{-u^{2}/2}\cdot(-i\sqrt{2\pi}\,u\,e^{-u^{2}/2}) = -2\pi iu\,e^{-u^{2}}$
+  \\[8pt]\textcolor{red}{\textbf{答}}：$\mathcal{F}[e^{-x^{2}/2}*xe^{-x^{2}/2}] = -2\pi iu\,e^{-u^{2}}$
 \end{frame}
 
 \begin{frame}{問9(2)　解答}
-  $(2)\; F^{-1}[-2\pi iu\,e^{-u^{2}}]$ を計算\\[6pt]
-  $F^{-1}[e^{-u^{2}}] = \dfrac{e^{-x^{2}/4}}{2\sqrt{\pi}}$（問8 で $b=1$）\\[6pt]
-  $I(x)=\displaystyle\int_{-\infty}^{\infty} e^{-u^{2}}e^{iux}\,du = \sqrt{\pi}\,e^{-x^{2}/4}$ を微分 $:\; \int_{-\infty}^{\infty} ue^{-u^{2}}e^{iux}\,du = \dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4}$\\[6pt]
-  $F^{-1}[-2\pi iu\,e^{-u^{2}}] = (-i)\cdot\dfrac{1}{2\pi}\cdot2\pi\cdot\dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4} = \dfrac{\sqrt{\pi}}{2}\,x\,e^{-x^{2}/4}$
+  $\mathcal{F}^{-1}[-2\pi iu\,e^{-u^{2}}]$ を計算\\[6pt]
+  問8（$b=1$）より $\mathcal{F}^{-1}[e^{-u^{2}}] = \dfrac{e^{-x^{2}/4}}{2\sqrt{\pi}}$\\[6pt]
+  $I(x)=\displaystyle\int_{-\infty}^{\infty}e^{-u^{2}}e^{iux}\,du = \sqrt{\pi}\,e^{-x^{2}/4}$ を微分：$\int_{-\infty}^{\infty}ue^{-u^{2}}e^{iux}\,du = \dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4}$\\[6pt]
+  $\mathcal{F}^{-1}[-2\pi iu\,e^{-u^{2}}] = (-i)\cdot\dfrac{1}{2\pi}\cdot2\pi\cdot\dfrac{ix}{2}\sqrt{\pi}\,e^{-x^{2}/4} = \dfrac{\sqrt{\pi}}{2}\,x\,e^{-x^{2}/4}$
   \\[8pt]\textcolor{red}{\textbf{答}}：証明終
 \end{frame}
 
