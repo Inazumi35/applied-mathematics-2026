@@ -35,9 +35,7 @@
   \]
   を \textbf{連続スペクトル}（振幅スペクトル）という
   \end{block}
-  {\footnotesize \textcolor{gray}{周期 $2l$ の関数の線スペクトル $|c_{n}|$ は $\omega_{n}=n\pi/l$ 上で定義され、間隔 $\Delta\omega = \pi/l$。}\\
-  \textcolor{gray}{$l\to\infty$ で $2l\, c_{n} \to F(\omega)$ より $|c_{n}|/\Delta\omega \to |F(\omega)|/(2\pi)$。}\\
-  \textcolor{gray}{線スペクトルは正負両方の $n$ に立つので、片側に集約して $|F(\omega)|/\pi$ とする。}}
+  {\footnotesize \textcolor{gray}{$l\to\infty$ の極限で線スペクトルの密度 $|c_{n}|/\Delta\omega \to |F(\omega)|/(2\pi)$；両側を片側に集約して $S(\omega)=|F(\omega)|/\pi$}}
 \end{frame}
 
 \begin{frame}{例2　（p.\,100）}
@@ -48,13 +46,13 @@
 \end{frame}
 
 \begin{frame}{例2　解答}
-  $l=2$ より $c_{n} = (1/4)\int_{-2}^{2} f(x) e^{-in\pi x/2} dx = (1/4)\int_{-1}^{1} e^{-in\pi x/2} dx$\\[4pt]
-  $n=0: c_{0} = (1/4)\int_{-1}^{1} dx = 1/2$\\[4pt]
-  $n\neq 0: c_{n} = (1/4)[-2 e^{-in\pi x/2}/(in\pi)]_{-1}^{1}$\\[4pt]
-  $\hphantom{n\neq 0: c_{n}} = (-1/(2in\pi))(e^{-in\pi/2} - e^{in\pi/2}) = \sin(n\pi/2)/(n\pi)$\\[4pt]
-  $n$ 奇数 $: |c_{n}| = 1/(|n|\pi),\quad n$ 偶数 ($\neq 0$) $: c_{n} = 0$
-  \\[8pt]\textcolor{red}{\textbf{答}}：線スペクトル\\
-  $|c_{0}| = 1/2,\ |c_{n}| = 1/(|n|\pi)$ （ $n=\pm 1,\pm 3,\ldots$ ）, $0$ （ $n=\pm 2,\pm 4,\ldots$ ）
+  $l=2,\; \omega_{n}=n\pi/2$ より $c_{n} = \dfrac{1}{4}\!\int_{-1}^{1} e^{-i\omega_{n}x}\,dx$\\[4pt]
+  $\omega_{n}=0\ (n=0)$：$c_{0} = \dfrac{1}{2}$\\[4pt]
+  $\omega_{n}\neq 0\ (n\neq 0)$：$c_{n} = \dfrac{\sin(n\pi/2)}{n\pi}$ より\\[6pt]
+  \quad $\omega_{n}=\dfrac{\pi}{2},\dfrac{3\pi}{2},\ldots$（$n$ 奇数）：$|c_{n}| = \dfrac{1}{n\pi}$\\[4pt]
+  \quad $\omega_{n}=\pi, 2\pi,\ldots$（$n$ 偶数，$\neq 0$）：$c_{n} = 0$
+  \\[8pt]\textcolor{red}{\textbf{答}}：線スペクトル\quad
+  $|c_{0}|=\dfrac{1}{2},\quad |c_{n}|=\dfrac{1}{n\pi}$（$\omega_{n}=\dfrac{\pi}{2},\dfrac{3\pi}{2},\ldots$），$0$（その他）
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -67,12 +65,13 @@
 \end{frame}
 
 \begin{frame}{問10　解答}
-  周期 $T=2,\; l=1$ の偶関数 $:\; b_{n}=0$\\[4pt]
+  周期 $T=2,\; l=1$，$\omega_{n}=n\pi$ の偶関数 $:\; b_{n}=0$\\[4pt]
   $c_{0} = \displaystyle\int_{0}^1(1-x)\,dx = \dfrac{1}{2}$\\[6pt]
-  $a_{n} = 2\displaystyle\int_{0}^1(1-x)\cos(n\pi x)\,dx = \dfrac{2(1-(-1)^n)}{n^{2}\pi^{2}}$\\[6pt]
-  $n$ が奇数 $:\; a_{n} = \dfrac{4}{n^{2}\pi^{2}},\quad n$ が偶数 $:\; a_{n} = 0$\\[6pt]
-  複素フーリエ係数 $:\; |c_{n}| = \dfrac{a_{n}}{2} = \dfrac{2}{n^{2}\pi^{2}}$（奇数 $n$）
-  \\[8pt]\textcolor{red}{\textbf{答}}：スペクトル $:\; |c_{0}|=\dfrac{1}{2},\; |c_{n}|=\dfrac{2}{n^{2}\pi^{2}}$（$n=1,3,5,\ldots$），$0$（$n=2,4,6,\ldots$）
+  $a_{n} = 2\displaystyle\int_{0}^1(1-x)\cos(\omega_{n} x)\,dx = \dfrac{2(1-(-1)^n)}{n^{2}\pi^{2}}$\\[4pt]
+  \quad $\omega_{n}=\pi, 3\pi,\ldots$（$n$ 奇数）$:\; a_{n} = \dfrac{4}{n^{2}\pi^{2}}$\\[4pt]
+  \quad $\omega_{n}=2\pi, 4\pi,\ldots$（$n$ 偶数）$:\; a_{n} = 0$\\[4pt]
+  線スペクトル $:\; |c_{n}| = a_{n} = \dfrac{4}{n^{2}\pi^{2}} = \dfrac{4}{\omega_{n}^{2}}$（$n$ 奇数）
+  \\[6pt]\textcolor{red}{\textbf{答}}：スペクトル\quad $|c_{0}|=\dfrac{1}{2}$，$|c_{n}|=\dfrac{4}{\omega_{n}^{2}}$（$\omega_{n}=\pi, 3\pi,\ldots$），$0$（その他）
 \end{frame}
 
 \begin{frame}{例3　（p.\,101）}
@@ -83,11 +82,12 @@
 \end{frame}
 
 \begin{frame}{例3　解答}
-  非周期関数 $\to$ フーリエ変換 $F(u) = \int_{-\infty}^{\infty} f(x) e^{-iux} dx$\\[4pt]
-  $F(u) = \int_{-1}^{1} e^{-iux} dx = [-e^{-iux}/(iu)]_{-1}^{1}$\\[4pt]
-  $\hphantom{F(u)} = (e^{iu} - e^{-iu})/(iu) = 2\sin u / u$\\[4pt]
-  $S(u) = |F(u)|/\pi = 2|\sin u|/(\pi |u|)$
-  \\[8pt]\textcolor{red}{\textbf{答}}：連続スペクトル $S(u) = 2|\sin u|/(\pi |u|)$
+  非周期関数 $\to$ フーリエ変換 $F(\omega) = \int_{-\infty}^{\infty} f(x) e^{-i\omega x} dx$\\[4pt]
+  $F(\omega) = \int_{-1}^{1} e^{-i\omega x} dx = [-e^{-i\omega x}/(i\omega)]_{-1}^{1}$\\[4pt]
+  $\hphantom{F(\omega)} = (e^{i\omega} - e^{-i\omega})/(i\omega) = 2\sin\omega/\omega$\\[4pt]
+  $\omega=0$：$F(0)=\displaystyle\int_{-1}^{1}dx=2$ より $S(\omega)=\dfrac{2}{\pi}$\\[4pt]
+  $\omega> 0$：$S(\omega) = \dfrac{|F(\omega)|}{\pi} = \dfrac{2\sin\omega}{\pi\omega}$
+  \\[6pt]\textcolor{red}{\textbf{答}}：$\omega=0$のとき$S(\omega)=\dfrac{2}{\pi}$，$\omega>0$のとき$S(\omega)=\dfrac{2\sin\omega}{\pi\omega}$
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -101,10 +101,10 @@
 
 \begin{frame}{問11　解答}
   非周期関数 $\to$ フーリエ変換でスペクトルを求める\\[4pt]
-  $f(x)$ は偶関数 $:\; F(u) = 2\displaystyle\int_{0}^1(1-x)\cos(ux)\,dx$\\[4pt]
-  $= 2\!\left\{\!\left[\dfrac{(1-x)\sin(ux)}{u}\right]_{0}^1 + \dfrac{1}{u}\displaystyle\int_{0}^1 \sin(ux)\,dx\right\}$\\[4pt]
-  $= \dfrac{2}{u}\!\left[-\dfrac{\cos(ux)}{u}\right]_{0}^1 = \dfrac{2(1-\cos u)}{u^{2}} = \dfrac{4\sin^{2}(u/2)}{u^{2}}$
-  \\[8pt]\textcolor{red}{\textbf{答}}：スペクトル $S(u) = \dfrac{|F(u)|}{\pi} = \dfrac{4\sin^{2}(u/2)}{\pi u^{2}}$（連続スペクトル）
+  $f(x)$ は偶関数 $:\; F(\omega) = 2\displaystyle\int_{0}^1(1-x)\cos(\omega x)\,dx = \dfrac{2(1-\cos\omega)}{\omega^{2}}$\\[6pt]
+  $\omega=0$：$F(0)=2\displaystyle\int_0^1(1-x)\,dx=1$ より $S(\omega)=\dfrac{1}{\pi}$\\[4pt]
+  $\omega>0$：$S(\omega)=\dfrac{F(\omega)}{\pi}=\dfrac{2(1-\cos\omega)}{\pi\omega^{2}}$
+  \\[6pt]\textcolor{red}{\textbf{答}}：$\omega=0$のとき$S(\omega)=\dfrac{1}{\pi}$，$\omega>0$のとき$S(\omega)=\dfrac{2(1-\cos\omega)}{\pi\omega^{2}}$
 \end{frame}
 
 \end{document}
