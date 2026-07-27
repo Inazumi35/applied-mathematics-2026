@@ -49,10 +49,10 @@
   $l=2,\; \omega_{n}=n\pi/2$ より $c_{n} = \dfrac{1}{4}\!\int_{-1}^{1} e^{-i\omega_{n}x}\,dx$\\[4pt]
   $\omega_{n}=0\ (n=0)$：$c_{0} = \dfrac{1}{2}$\\[4pt]
   $\omega_{n}\neq 0\ (n\neq 0)$：$c_{n} = \dfrac{\sin(n\pi/2)}{n\pi}$ より\\[6pt]
-  \quad $\omega_{n}=\dfrac{\pi}{2},\dfrac{3\pi}{2},\ldots$（$n$ 奇数）：$|c_{n}| = \dfrac{1}{n\pi}$\\[4pt]
+  \quad $\omega_{n}=\dfrac{(2k-1)\pi}{2}$（$k=1,2,\ldots$）：$c_{n} = \dfrac{(-1)^{k+1}}{n\pi}$\\[4pt]
   \quad $\omega_{n}=\pi, 2\pi,\ldots$（$n$ 偶数，$\neq 0$）：$c_{n} = 0$
   \\[8pt]\textcolor{red}{\textbf{答}}：線スペクトル\quad
-  $|c_{0}|=\dfrac{1}{2},\quad |c_{n}|=\dfrac{1}{n\pi}$（$\omega_{n}=\dfrac{\pi}{2},\dfrac{3\pi}{2},\ldots$），$0$（その他）
+  $|c_{0}|=\dfrac{1}{2},\quad c_{n}=\dfrac{(-1)^{k+1}}{n\pi}$（$\omega_{n}=\dfrac{(2k-1)\pi}{2},\; k=1,2,\ldots$），$0$（その他）
 \end{frame}
 
 \begin{frame}{演習問題}
@@ -70,8 +70,8 @@
   $a_{n} = 2\displaystyle\int_{0}^1(1-x)\cos(\omega_{n} x)\,dx = \dfrac{2(1-(-1)^n)}{n^{2}\pi^{2}}$\\[4pt]
   \quad $\omega_{n}=\pi, 3\pi,\ldots$（$n$ 奇数）$:\; a_{n} = \dfrac{4}{n^{2}\pi^{2}}$\\[4pt]
   \quad $\omega_{n}=2\pi, 4\pi,\ldots$（$n$ 偶数）$:\; a_{n} = 0$\\[4pt]
-  線スペクトル $:\; |c_{n}| = a_{n} = \dfrac{4}{n^{2}\pi^{2}} = \dfrac{4}{\omega_{n}^{2}}$（$n$ 奇数）
-  \\[6pt]\textcolor{red}{\textbf{答}}：スペクトル\quad $|c_{0}|=\dfrac{1}{2}$，$|c_{n}|=\dfrac{4}{\omega_{n}^{2}}$（$\omega_{n}=\pi, 3\pi,\ldots$），$0$（その他）
+  線スペクトル $:\; |c_{n}| = \dfrac{a_{n}}{2} = \dfrac{2}{n^{2}\pi^{2}} = \dfrac{2}{\omega_{n}^{2}}$（$n$ 奇数）
+  \\[6pt]\textcolor{red}{\textbf{答}}：スペクトル\quad $|c_{0}|=\dfrac{1}{2}$，$|c_{n}|=\dfrac{2}{\omega_{n}^{2}}$（$\omega_{n}=\pi, 3\pi,\ldots$），$0$（その他）
 \end{frame}
 
 \begin{frame}{例3　（p.\,101）}
@@ -86,8 +86,8 @@
   $F(\omega) = \int_{-1}^{1} e^{-i\omega x} dx = [-e^{-i\omega x}/(i\omega)]_{-1}^{1}$\\[4pt]
   $\hphantom{F(\omega)} = (e^{i\omega} - e^{-i\omega})/(i\omega) = 2\sin\omega/\omega$\\[4pt]
   $\omega=0$：$F(0)=\displaystyle\int_{-1}^{1}dx=2$ より $S(\omega)=\dfrac{2}{\pi}$\\[4pt]
-  $\omega> 0$：$S(\omega) = \dfrac{|F(\omega)|}{\pi} = \dfrac{2\sin\omega}{\pi\omega}$
-  \\[6pt]\textcolor{red}{\textbf{答}}：$\omega=0$のとき$S(\omega)=\dfrac{2}{\pi}$，$\omega>0$のとき$S(\omega)=\dfrac{2\sin\omega}{\pi\omega}$
+  $\omega> 0$：$S(\omega) = \dfrac{|F(\omega)|}{\pi} = \dfrac{2|\sin\omega|}{\pi\omega}$
+  \\[6pt]\textcolor{red}{\textbf{答}}：$\omega=0$のとき$S(\omega)=\dfrac{2}{\pi}$，$\omega>0$のとき$S(\omega)=\dfrac{2|\sin\omega|}{\pi\omega}$
 \end{frame}
 
 \begin{frame}{演習問題}
