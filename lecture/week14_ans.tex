@@ -45,6 +45,28 @@
   \end{exampleblock}
 \end{frame}
 
+\begin{frame}{例2　解答（$c_n$ の計算）}
+  周期 $T=4$，$l=2$，$\omega_n=n\pi/2$，$f(x)=1\ (-1<x<1)$，$0\ (\text{他})$ より
+  \[
+    c_n = \frac{1}{4}\int_{-2}^{2}f(x)e^{-i\omega_n x}dx = \frac{1}{4}\int_{-1}^{1}e^{-i\omega_n x}dx
+  \]
+  \textbf{$n=0$ のとき：}
+  \[
+    c_0 = \frac{1}{4}\int_{-1}^{1}1\,dx = \frac{1}{4}\cdot 2 = \frac{1}{2}
+  \]
+  \textbf{$n\neq 0$ のとき：}
+  \[
+    \int_{-1}^{1}e^{-i\omega_n x}dx
+    = \left[\frac{e^{-i\omega_n x}}{-i\omega_n}\right]_{-1}^{1}
+    = \frac{e^{i\omega_n}-e^{-i\omega_n}}{i\omega_n}
+    = \frac{2\sin\omega_n}{\omega_n}
+  \]
+  \[
+    \therefore\quad c_n = \frac{1}{4}\cdot\frac{2\sin\omega_n}{\omega_n}
+    = \frac{\sin(n\pi/2)}{n\pi}
+  \]
+\end{frame}
+
 \begin{frame}{例2　解答}
   $l=2,\; \omega_{n}=n\pi/2$ より $c_{n} = \dfrac{1}{4}\!\int_{-1}^{1} e^{-i\omega_{n}x}\,dx$\\[4pt]
   $\omega_{n}=0\ (n=0)$：$c_{0} = \dfrac{1}{2}$\\[4pt]
